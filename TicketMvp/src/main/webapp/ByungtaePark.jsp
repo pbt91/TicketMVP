@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <title>메인 페이지</title>
+  <meta charset="utf-8">
 </head>
 <body>
-<h2>seoungik</h2>
+
+<a href="reserve/ReserveChoose.do">reserve choose seat</a>
+
 </body>
 </html>

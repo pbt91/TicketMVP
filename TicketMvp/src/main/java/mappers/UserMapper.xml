@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserDAO">
+
+	<!-- 아이디 중복체크 -->
+	<select id="selectidcheck" parameterType="com.ticketmvp.domain.UserVO" resultType="int">
+		SELECT userid FROM user WHERE userid=#{userid}
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="insertuser"	parameterType="com.ticketmvp.domain.UserVO">
+		INSERT INTO user ( userid, userpw, email, joinstatus, name, admin, phone )
+		VALUES( #{userid},  #{userpw}, #{email}, true, #{name}, false, #{phone} )
+	</insert>
+
+</mapper>
