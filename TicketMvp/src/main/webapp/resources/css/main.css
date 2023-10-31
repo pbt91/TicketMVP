@@ -73,8 +73,10 @@ main {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 10px;
-    padding: 80px;
+    padding: 50px;
     margin-top: 60px;
+    align-content: start; /* 이미지를 위쪽으로 정렬 */
+    justify-items: stretch; /* 이미지를 셀에 꽉 채우도록 확장 */
 }
 
 .image-item {
@@ -82,13 +84,15 @@ main {
     overflow: hidden;
     border-radius: 10px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-item img {
-    width: 100%;
+    width: auto;
+    height: auto;
     max-width: 100%;
-    height: 100%;
-    object-fit: cover;
     max-height: 100%;
     display: block;
 }
@@ -96,11 +100,15 @@ main {
 .image-item.even {
     grid-column: span 2;
     grid-row: span 2;
+   width: 100%; /* 가로 크기를 100%로 유지 */
+    height: auto; /* 높이를 자동으로 조정하여 가로 세로 비율 유지 */
 }
 
 .image-item.odd {
     grid-column: span 2;
     grid-row: span 1;
+   width: 100%; /* 가로 크기를 100%로 유지 */
+    height: auto; /* 높이를 자동으로 조정하여 가로 세로 비율 유지 */
 }
 
 .image-item:hover img {

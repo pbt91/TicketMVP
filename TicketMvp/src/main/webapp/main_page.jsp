@@ -53,7 +53,7 @@
 				</div>
 				<div class="image-item odd">
 					<a href="detail1.html"><img
-						src="resources/images/member_images/pic.02.jpg" alt="" width="400"
+						src="resources/images/member_images/pic.02.jpg" alt="" width="500"
 						height="600"></a>
 				</div>
 				<div class="image-item even">
