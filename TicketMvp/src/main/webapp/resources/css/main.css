@@ -9,50 +9,52 @@ body {
     padding: 0;
 }
 
-.logo {
-	background-color: white;
-    display: flex;
-    flex-direction: column; /* 컨텐츠를 세로로 배치 */
-    align-items: center; /* 가운데 정렬 */
-    padding: 60px;
-}
 
 .header_inner {
-    margin-top: 20px; /* 상단 여백 추가 */
-    flex: 1;
-    font-size 30px;
+   display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.header_inner img {
-    margin-right: 0; /* 이미지를 왼쪽으로 이동 */
-    width: 200px; /* 이미지 너비 조정 */
-    height: 100px; /* 이미지 높이 조정 */
+.logo {
+    margin-left: 100px; /* 로고를 오른쪽으로 20px 이동 */
+    width: 100px; /* 로고의 너비를 조절 */
+    height: auto; /* 로고의 높이를 자동으로 조절하여 비율 유지 */
+}
+
+.header_menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* 메뉴를 오른쪽에 배치 */
+}
+
+.header_util {
+    background: white;
+    margin-left: auto; /* 로그인 및 회원가입 메뉴를 오른쪽에 배치 */
+    padding-right: 20px; /* 오른쪽 여백 추가 */
+    display: flex;
+    align-items: center; /* 아이템을 세로 중앙 정렬 */
 }
 
 .header_util_right {
     display: flex;
-    flex-direction: row; /* 로그인 및 메뉴 항목을 가로로 배치 */
-    align-items: center; /* 가운데 정렬 */
-    margin-left: auto; /* 오른쪽으로 이동 */
-    margin-top: 20px; /* 상단 여백 추가 */
+    align-items: center;
+    margin-left: auto; /* 로그인 및 회원가입 메뉴를 오른쪽에 배치 */
+    margin-right: 50px; /* 오른쪽으로 20px 이동 */
+}
+
+
+.header_util_item {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    margin-left: 20px; /* 각 메뉴 항목 사이의 간격 조절 */
 }
 
 .header_util_list {
     list-style: none;
     padding: 0;
     display: flex; /* 메뉴 항목들을 가로로 배치하기 위해 추가 */
-}
-
-.header_util {
-    background: white;
-    margin-left: auto; /* 오른쪽으로 이동 */
-}
-
-.header_util_item {
-    display: inline-block;
-    position: relative;
-    padding: 0;
-    margin-left: 20px;
 }
 
 h1 {
@@ -67,10 +69,17 @@ main {
 }
 
 .menu {
-   float: left;
-   width: 255px;
-   padding-top: 15px;
+    float: left;
+    width: 255px;
+    padding-top: 15px;
+    margin-right: 20px; /* 메뉴와 로고 사이의 간격 조절 */
 }
+
+.menu-container {
+    display: flex;
+    align-items: center;
+}
+
 .menu li {
     padding 20px 18px 20px 26px;
     border-bottom: 1px solid #ecedf2;

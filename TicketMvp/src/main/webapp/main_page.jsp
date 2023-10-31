@@ -28,23 +28,26 @@
 		</div>
 		</header>
 		
-	<header class = "logo">
-		<div class="header_inner">
-			<a href="detail1.html"><img
-						src="resources/images/member_images/rogo.png" alt="" width="600"
-						height="400"></a>
+	<header class = "header_inner">
+		<div class="logo">
+		<img src="resources/images/member_images/rogo.png" alt="" width="350"
+						height="200">
 		</div>
-
+		<div class = "baner">
+		
+		</div>
 	</header>
 
 
 	<main>
+	<div class="menu-container">
 		<ul class="menu">
 			<li id="ticket_reserved"><a href="#"> 티켓예약 </a></li>
 			<li id="member_introduction"><a href="#"> 선수소개 </a></li>
 			<li id=""><a href="#"> 문의하기 </a></li>
 			<li id="my_page"><a href="#"> 마이페이지 </a></li>
 		</ul>
+	</div>
 
 		<div id="main">
 			<div class="image-grid">
