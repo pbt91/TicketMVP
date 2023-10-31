@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>아이디 찾기</title>
 </head>
 <body>
-<a href='user/insertUserForm.do'> 회원가입 </a>
-<br/>
-<a href='user/login.do'> 로그인 </a>
+
 </body>
 </html>

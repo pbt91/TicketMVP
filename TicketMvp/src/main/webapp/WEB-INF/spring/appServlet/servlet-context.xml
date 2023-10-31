@@ -17,6 +17,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/js/**" location="/resources/js/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -25,7 +26,6 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-<<<<<<< HEAD
 
 	<!-- 사용 패키지 -->
 	<context:component-scan base-package="com.ticketmvp" />
@@ -35,11 +35,6 @@
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
-=======
 	
-	<context:component-scan base-package="com.ticketmvp" />
-	
-	
-	
->>>>>>> branch 'master' of https://github.com/pbt91/TicketMVP.git
+
 </beans:beans>
