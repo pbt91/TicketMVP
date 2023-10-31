@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<a href="reserve/ReserveChoose.do">reserve choose seat</a>
+<a href="reserve/ReserveChoose.do?matchid=1">reserve choose seat</a>
 
 </body>
 </html>

@@ -2,10 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ReserveDAO">
-
-		
-	<select id="getTicketList" resultType="com.ticketmvp.domain.ReserveVO" >
-	 	SELECT * FROM ticket 
-	</select> 
-
+    
+    <select id="getTicketList" resultType="com.ticketmvp.domain.ReserveVO">
+        SELECT * FROM ticket AS t
+        INNER JOIN `match` AS m
+        on t.matchid = m.matchid
+        WHERE t.matchid = #{matchid}
+    </select>
+    
+    <select id="getImageFile" resultType="com.ticketmvp.domain.ReserveVO">
+    	SELECT c.stadiumimgfile, c.stadiumimgfilefull, c.stadiumimgsize, c.stadiumname
+		FROM club AS c
+		INNER JOIN `match` AS m
+		ON c.club = m.homeclub 
+		WHERE m.matchid = #{matchid};
+    </select>
+    
 </mapper>

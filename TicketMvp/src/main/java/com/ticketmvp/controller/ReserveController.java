@@ -16,25 +16,17 @@ public class ReserveController {
 	@Autowired
 	private ReserveService reserveService;
 
-
-	
 	//페이지 이동
 	@RequestMapping("/{step}.do")
 	public String viewPage(@PathVariable String step) {
 		return "reserve/"+step;
 	}
 	
-	
-	//좌석 예약으로 이동 + 티켓 리스트 불러오기
+	//좌석 예약으로 이동 + 티켓 리스트 불러오기 + 경기장 이미지 호출
 	@RequestMapping("/ReserveChoose.do")
 	public void reserveChooseList(ReserveVO vo, Model m ) {
 		m.addAttribute("ticketList", reserveService.getTicketList(vo));
+		m.addAttribute("stadiumImage", reserveService.getImageFile(vo));
 	}
-	
-	//경기장 이미지
-	@RequestMapping("/ReserveMap.do")
-	public String reserveMapChange(ReserveVO vo, Model m){
-		m.addAttribute("imgFile", reserveService.getImageFile(vo));
-		return "redirect:/reserve/ReserveMap.do";
-	}		
+		
 }

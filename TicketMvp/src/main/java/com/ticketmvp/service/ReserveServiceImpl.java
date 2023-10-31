@@ -21,9 +21,9 @@ public class ReserveServiceImpl implements ReserveService {
 	}
 
 
-	@Override
+	//경기장 이미지 호출
 	public ReserveVO getImageFile(ReserveVO vo) {
-		return null;
+		return reserveDAO.getImageFile(vo);
 	}
 	
 } 
