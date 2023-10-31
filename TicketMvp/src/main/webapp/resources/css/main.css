@@ -9,16 +9,24 @@ body {
     padding: 0;
 }
 
-.header {
-	background-color: skyblue;
+.logo {
+	background-color: white;
     display: flex;
     flex-direction: column; /* 컨텐츠를 세로로 배치 */
     align-items: center; /* 가운데 정렬 */
-    padding: 20px;
+    padding: 60px;
 }
 
 .header_inner {
     margin-top: 20px; /* 상단 여백 추가 */
+    flex: 1;
+    font-size 30px;
+}
+
+.header_inner img {
+    margin-right: 0; /* 이미지를 왼쪽으로 이동 */
+    width: 200px; /* 이미지 너비 조정 */
+    height: 100px; /* 이미지 높이 조정 */
 }
 
 .header_util_right {
@@ -36,7 +44,8 @@ body {
 }
 
 .header_util {
-    background: gray;
+    background: white;
+    margin-left: auto; /* 오른쪽으로 이동 */
 }
 
 .header_util_item {
@@ -113,4 +122,36 @@ main {
 
 .image-item:hover img {
     transform: scale(1.05);
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.footer_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.footer_links li {
+    margin-right: 20px;
+}
+
+.footer a {
+	color: white;
+}
+
+.footer_logo {
+    font-weight: bold;
+    font-size: 24px;
 }

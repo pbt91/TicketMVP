@@ -10,7 +10,8 @@
 </head>
 <body>
 <script src="resources/js/main.js"></script>
-	<header class='header'>
+
+	<header class='header_menu'>
 		<div class="header_util">
 			<div class="header_util_inner">
 				<div class="header_util_right">
@@ -25,9 +26,13 @@
 				</div>
 			</div>
 		</div>
-
+		</header>
+		
+	<header class = "logo">
 		<div class="header_inner">
-			<a href="#" class="logo_black">Ticket MVP</a>
+			<a href="detail1.html"><img
+						src="resources/images/member_images/rogo.png" alt="" width="600"
+						height="400"></a>
 		</div>
 
 	</header>
@@ -185,6 +190,20 @@
 			</div>
 		</div>
 	</main>
+	<footer class="footer">
+        <div class="footer_inner">
+            <div class="footer_links">
+                <ul>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보 처리방침</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </div>
+            <div class="footer_logo">
+                <a href="#" class="logo_black">Ticket MVP</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
