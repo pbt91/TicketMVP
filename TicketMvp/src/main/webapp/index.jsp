@@ -9,6 +9,6 @@
 <body>
 <a href='user/insertUserForm.do'> 회원가입 </a>
 <br/>
-<a href='user/login.do'> 로그인 </a>
+<a href='user/loginForm.do'> 로그인 </a>
 </body>
 </html>

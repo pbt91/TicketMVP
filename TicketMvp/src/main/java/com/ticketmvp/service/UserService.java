@@ -10,4 +10,10 @@ public interface UserService {
 	//회원가입
 	void insertUser(UserVO vo);
 	
+	//로그인 체크
+	String loginCheck(String id, String pw);
+	
+	//아이디 찾기 - 이메일 확인하기
+	String findId(String email);
+	
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,9 @@
 <title>로그인</title>
 <link rel="stylesheet" href="/TicketMvp/resources/css/login-page.css">
 <!-- <script defer src="/TicketMvp/resources/js/login.js"></script> -->
+
+<%-- ${sessionScope.temppw } --%>
+
 </head>
 <body>
 	<main id="main-holder">
@@ -23,30 +27,26 @@
 			</p>
 		</div>
 
-<!-- 		<form id="login-form">
-			<input type="text" name="username" id="username-field" class="login-form-field" placeholder="아이디"> 
-			<input type="password" name="password" id="password-field" class="login-form-field" placeholder="비밀번호">
-			<input type="submit" value="Login" id="login-form-submit">
-		</form> -->
-		
-		<form id="login-form" method="post" action="login.do">
+
+		<!-- 1. 로그인 정보가 맞는지 확인 하기위해 controller로 보내서 확인함. -->
+		<form id="login-form" name='login_info' method="post" action="loginCheck.do" >
 			<table>
 				<tr>
 					<td>
-						<input type="text" name="username" id="username-field" class="login-form-field" placeholder="아이디"> 
+						<input type="text" name="userid" id="userid" class="login-form-field" placeholder="아이디"> 
 					</td>
 					<td rowspan="2"><input type="submit" value="Login" id="login-form-submit" style="width:100px;height:40px;font-size:15px;" ></td>
 				</tr>
 				<tr>
 					<td>
-						<input type="password" name="password" id="password-field" class="login-form-field" placeholder="비밀번호">
+						<input type="password" name="userpw" id="userpw" class="login-form-field" placeholder="비밀번호">
 					</td>
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-						<a href="find_id.do" name="find_id" id='find_id' class="find" >아이디찾기</a>
+						<a href="findIdForm.do" name="find_id" id='find_id' class="find" >아이디찾기</a>
 						|<!-- 그냥 구분선 -->
-						<a href="find_pw.do" name="find_pw" id='find_pw' class="find" >비밀번호찾기</a>
+						<a href="findPwForm.do" name="find_pw" id='find_pw' class="find" >비밀번호찾기</a>
 					</td>
 				</tr>
 			</table>

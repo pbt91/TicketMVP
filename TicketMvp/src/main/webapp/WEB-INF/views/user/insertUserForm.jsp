@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>회원가입 폼</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-<script src='../resources/js/joinCheck.js' type="text/javascript"></script>
+<script src='/TicketMvp/resources/js/user/joinCheck.js' type="text/javascript"></script>
 </head>
 <body>
 
