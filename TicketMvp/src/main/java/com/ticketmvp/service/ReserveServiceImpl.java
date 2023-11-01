@@ -25,5 +25,10 @@ public class ReserveServiceImpl implements ReserveService {
 	public ReserveVO getImageFile(ReserveVO vo) {
 		return reserveDAO.getImageFile(vo);
 	}
+
+	//예매/결재 확인 페이지에 결재할 티켓 정보 호출
+	public ReserveVO getTicketInfo(int ticketId) {
+		return reserveDAO.getTicketInfo(ticketId);
+	}
 	
 } 

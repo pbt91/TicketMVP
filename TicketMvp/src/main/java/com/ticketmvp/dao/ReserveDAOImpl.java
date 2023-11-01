@@ -27,6 +27,12 @@ public class ReserveDAOImpl implements ReserveDAO{
 		System.out.println("===> Mybatis getImageList() 호출");
 		return mybatis.selectOne("ReserveDAO.getImageFile", vo);
 	}
+
+	//예매/결재 확인 페이지에 결재할 티켓 정보 호출
+	public ReserveVO getTicketInfo(int ticketId) {
+		System.out.println("===> Mybatis getTicketInfo 호출");
+		return mybatis.selectOne("ReserveDAO.getTicketInfo",ticketId);
+	}
 	
 
 }

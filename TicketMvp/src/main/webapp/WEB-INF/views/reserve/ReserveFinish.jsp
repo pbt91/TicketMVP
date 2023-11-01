@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>메인 페이지</title>
-  <meta charset="utf-8">
+<meta charset="UTF-8">
+<title>예약완료</title>
 </head>
 <body>
-
-<a href="testSession.jsp">reserve choose seat</a>
-
+결제가 완료되었습니다.
 </body>
 </html>

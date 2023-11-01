@@ -25,15 +25,21 @@ public class ReserveController {
 	
 	//좌석 예약으로 이동 + 티켓 리스트 불러오기 + 경기장 이미지 호출
 	@RequestMapping("/ReserveChoose.do")
-	public void reserveChooseList(ReserveVO vo, Model m ) {
+	public void reserveChoose(ReserveVO vo, Model m ) {
 		m.addAttribute("ticketList", reserveService.getTicketList(vo));
 		m.addAttribute("stadiumImage", reserveService.getImageFile(vo));
 	}
 	
 	//예매 페이지로 이동
 	@RequestMapping("/ReservePayment.do")
-	public void reservePayment(@RequestParam("ticketid") int ticketId, @RequestParam("ticketQuantity") int ticketQuantity, Model m) {
-	    m.addAttribute("ticketId", ticketId);
-	    m.addAttribute("ticketQuantity", ticketQuantity);
+	public void reservePayment(Integer ticketId, Integer ticketQuantityBuy, Model m) {
+	    m.addAttribute("ticketQuantityBuy", ticketQuantityBuy);
+	    m.addAttribute("ticket", reserveService.getTicketInfo(ticketId));
+	}
+	
+	//결제완료 페이지로 이동
+	@RequestMapping("/ReserveFinish.do")
+	public void reserveFinish(Model m){
+		
 	}
 }

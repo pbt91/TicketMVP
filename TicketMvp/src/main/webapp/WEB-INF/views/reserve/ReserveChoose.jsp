@@ -4,17 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Jquery 호출 -->
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<!-- Bootstrap 호출 -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<!-- js코드 호출 -->
-<script src="/TicketMvp/resources/js/ReserveChoose.js"></script>
-<!-- css 호출 -->
-<link rel="stylesheet" href="/TicketMvp/resources/css/ReserveChoose.css">
-<meta charset="UTF-8">
-<title>경기 예매 - 좌석 선택</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>경기 예매 - 좌석 선택</title>
+	<!-- Jquery 호출 -->
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<!-- Bootstrap 호출 -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<!-- js코드 호출 -->
+	<script src="/TicketMvp/resources/js/ReserveChoose.js"></script>
+	<!-- css 호출 -->
+	<link rel="stylesheet" href="/TicketMvp/resources/css/ReserveChoose.css">
 </head>
 <body>
 <!-- 예매 페이지 전체 -->
@@ -32,7 +33,7 @@
 			        <c:forEach items="${ticketList}" var="ticket" varStatus="loop">
 		    			<c:if test="${ticket.ticketremain > 0}">
 		    				<c:set var="ticketNone" value="false" />
-		       			 	<li class="list-group-item d-flex justify-content-between align-items-center" data-ticketid="${ticket.ticketid}" >
+		       			 	<li class="list-group-item d-flex justify-content-between align-items-center" data-ticketId="${ticket.ticketid}" >
 		           				<div class="d-flex flex-row">
 		                			<img src="/TicketMvp/resources/images/soccer-ticket.png" class="soccer-ticket">
 		                			<div class="ml-2">
@@ -85,22 +86,21 @@
 					</div>
 					<!-- 경기장 이름, 시간  끝-->
 					
-					<form action="ReservePayment.do" method="post">
-						<!-- 수량표시, 금액 -->
-						<div class="form-group text-center" id="pickQuantity">
-							<label id="matchName" class="mb-3">티켓을 선택해주세요</label> <br/>
-							<label for="ticketQuantity" class="hidden-input">수량을 선택해주세요:</label> <br/>
-	    					<input size="5" type="number" id="ticketQuantity" class="hidden-input form-control" name="ticketQuantity" min="1" value="1"> <br/>
-	    					<p class="mt-2">총금액: <span id="totalAmount">0</span>원</p>
-						</div>
-						<!-- 수량표시, 금액 끝-->
-							<input type="hidden" id="ticketid" name="ticketid" value="" />
-						<!-- 결제 -->
-						<div class="text-center">
-                        	<button id="purchase" type="submit" class="btn btn-primary">예매하기</button>
-                    	</div>
-						<!-- 결제 끝-->
-					</form>
+					<!-- 수량표시, 금액 -->
+					<div class="form-group text-center" id="pickQuantity">
+						<label id="matchName" class="mb-3">티켓을 선택해주세요</label> <br/>
+						<label for="ticketQuantity" class="hidden-input">수량을 선택해주세요:</label> <br/>
+    					<input size="5" type="number" id="ticketQuantity" class="hidden-input form-control" name="ticketQuantity" min="1" value="1"> <br/>
+    					<p class="mt-2">총금액: <span id="totalAmount">0</span>원</p>
+					</div>
+					<!-- 수량표시, 금액 끝-->
+					
+					<!-- 결제 -->
+					<div class="text-center">
+                       	<button id="purchase" class="btn btn-primary">예매하기</button>
+                   	</div>
+					<!-- 결제 끝-->
+					
 				</div>   		
 			</div>	
 			<!-- 예매 페이지 정보 사이드페이지 끝-->
@@ -115,19 +115,37 @@
     <img id="stadiumPopupImage" src="" alt="${stadiumImage.stadiumname}" class="img-fluid">
 </div>
 
-<!--  -->
-<div id="reservationInfoPopup" class="popup">
-    <h2>예약정보</h2>
-    <p>경기장: <span id="reservationStadium"></span></p>
-    <p>경기일: <span id="reservationDate"></span></p>
-    <p>경기시간: <span id="reservationTime"></span></p>
-    <p>좌석: <span id="reservationSeat"></span></p>
-    <p>수량: <span id="reservationQuantity"></span></p>
-    <p>수량: <span id="reservationTotal"></span></p>
-    <button id="purchaseConfirm">예매확인</button>
-    <button id="closeReservationInfoPopup">닫기</button>
+<!-- 예매확인 팝업창 -->
+<div class="modal fade" id="reservationInfoModal" tabindex="-1" role="dialog" aria-labelledby="reservationInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        	<form id="reservationForm" action="ReservePayment.do" method='post'>
+       			<div class="modal-header bg-primary text-white">
+	                <h5 class="modal-title" id="reservationInfoModalLabel">예약정보</h5>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <div class="modal-body">
+	                <p><strong>경기장:</strong> <span id="reservationStadium"></span></p>
+	                <p><strong>경기일:</strong> <span id="reservationDate"></span></p>
+	                <p><strong>경기시간:</strong> <span id="reservationTime"></span></p>
+	                <p><strong>좌석:</strong> <span id="reservationSeat"></span></p>
+	                <p><strong>수량:</strong> <span id="reservationQuantity"></span></p>
+	                <p><strong>총 금액:</strong> <span id="reservationTotal"></span>원</p>
+					<input type="hidden" id="ticketId" name="ticketId" />
+					<input type="hidden" id="ticketQuantityBuy" name="ticketQuantityBuy" />
+	                <br/>
+	                <p>이대로 예매하시겠습니까?</p>
+	            </div>
+	            <div class="modal-footer">
+	                <button id="purchaseConfirm" class="btn btn-primary">예매확인</button>
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+	            </div>
+        	</form>
+        </div>
+    </div>
 </div>
-
 
 </body>
 </html>

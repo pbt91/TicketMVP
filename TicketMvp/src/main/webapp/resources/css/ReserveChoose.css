@@ -143,68 +143,49 @@ button#purchase:hover {
 }
 
 
-
 img#stadium:hover {
     cursor: pointer; 
 }
 
-#reservationInfoPopup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    width: 600px; 
-    max-width: 80%; 
-    height: 600px;
-    max-height: 80vh;
+#reservationInfoModal {
     text-align: center;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-#reservationInfoPopup h2 {
+#reservationInfoModal .modal-dialog {
+    max-width: 800px;
+}
+
+#reservationInfoModal .modal-title {
     font-size: 24px;
-    margin-bottom: 10px;
 }
 
-#reservationInfoPopup p {
-    font-size: 16px;
+#reservationInfoModal .modal-header {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+}
+
+#reservationInfoModal .modal-body {
+    font-size: 18px;
+}
+
+#reservationInfoModal .modal-footer {
+    justify-content: center;
+    border: none;
+}
+
+#reservationInfoModal p {
     margin: 10px 0;
 }
 
-#purchaseConfirm,
-#closeReservationInfoPopup {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
+#purchaseConfirm {
     background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    color: white;
 }
 
-#purchaseConfirm:hover,
-#closeReservationInfoPopup:hover {
+#purchaseConfirm:hover {
     background-color: #0056b3;
-}
-
-#closeReservationInfoPopup {
-    background-color: #ccc;
-    color: #333;
-    margin-left: 10px;
-}
-
-#closeReservationInfoPopup:hover {
-    background-color: #999;
 }
 
 .hidden-input {

@@ -21,6 +21,7 @@ public class ReserveVO {
 	private String awayclub;
 	private Date matchdate;
 	private Time matchtime;
+	private Date canceldate;
 	
 	//경기장 정보
 	private String stadiumname;
