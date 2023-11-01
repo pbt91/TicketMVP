@@ -4,7 +4,7 @@
 <mapper namespace="UserDAO">
 
 	<!-- 아이디 중복체크 -->
-	<select id="selectidcheck" parameterType="com.ticketmvp.domain.UserVO" resultType="int">
+	<select id="selectidcheck" parameterType="String" resultType="String">
 		SELECT userid FROM user WHERE userid=#{userid}
 	</select>
 

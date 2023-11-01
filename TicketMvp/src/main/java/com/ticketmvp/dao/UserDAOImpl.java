@@ -18,7 +18,13 @@ public class UserDAOImpl implements UserDAO {
 	public Integer selectIdCkeck(String id) {
 		System.out.println("===> Mybatis selectIdCheck() 호출");
 		System.out.println(id);
-		return mybatis.selectOne("UserDAO.selectIdCheck", id);
+		String userid = mybatis.selectOne("UserDAO.selectidcheck", id);
+		System.out.println(userid);
+		Integer result;
+		if(userid != null) { result = 1; }
+		else { result = 0; }
+		return result; 
+		
 	}
 	
 	// 회원가입
