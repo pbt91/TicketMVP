@@ -17,7 +17,6 @@
 <title>경기 예매 - 좌석 선택</title>
 </head>
 <body>
-
 <!-- 예매 페이지 전체 -->
 <div id="reserveMain">
 	<div class="container-fluid mt-5">
@@ -33,7 +32,7 @@
 			        <c:forEach items="${ticketList}" var="ticket" varStatus="loop">
 		    			<c:if test="${ticket.ticketremain > 0}">
 		    				<c:set var="ticketNone" value="false" />
-		       			 	<li class="list-group-item d-flex justify-content-between align-items-center" id="${ticket.ticketname}" >
+		       			 	<li class="list-group-item d-flex justify-content-between align-items-center" data-ticketid="${ticket.ticketid}" >
 		           				<div class="d-flex flex-row">
 		                			<img src="/TicketMvp/resources/images/soccer-ticket.png" class="soccer-ticket">
 		                			<div class="ml-2">
@@ -80,9 +79,9 @@
 					
 					<!-- 경기장 이름, 시간  -->
 					<div class="text-center mb-4" id="matchDate" class="reserveSide">
-						<h4>${stadiumImage.stadiumname}</h4>
-                    	<p>${ticketList[0].matchdate}</p>
-                    	<p>${ticketList[0].matchtime}</p>
+						<h4 id="stadiumName">${stadiumImage.stadiumname}</h4>
+                    	<p id="matchDay">경기일: ${ticketList[0].matchdate}</p>
+                    	<p id="matchTime">경기날짜: ${ticketList[0].matchtime}</p>
 					</div>
 					<!-- 경기장 이름, 시간  끝-->
 					
@@ -95,7 +94,7 @@
 	    					<p class="mt-2">총금액: <span id="totalAmount">0</span>원</p>
 						</div>
 						<!-- 수량표시, 금액 끝-->
-							
+							<input type="hidden" id="ticketid" name="ticketid" value="" />
 						<!-- 결제 -->
 						<div class="text-center">
                         	<button id="purchase" type="submit" class="btn btn-primary">예매하기</button>
@@ -110,9 +109,25 @@
 	</div>
 </div>
 <!-- 예매 페이지 전체 -->
+
 <!-- 경기장 이미지 팝업 -->
 <div id="stadiumPopup" class="popup">
     <img id="stadiumPopupImage" src="" alt="${stadiumImage.stadiumname}" class="img-fluid">
 </div>
+
+<!--  -->
+<div id="reservationInfoPopup" class="popup">
+    <h2>예약정보</h2>
+    <p>경기장: <span id="reservationStadium"></span></p>
+    <p>경기일: <span id="reservationDate"></span></p>
+    <p>경기시간: <span id="reservationTime"></span></p>
+    <p>좌석: <span id="reservationSeat"></span></p>
+    <p>수량: <span id="reservationQuantity"></span></p>
+    <p>수량: <span id="reservationTotal"></span></p>
+    <button id="purchaseConfirm">예매확인</button>
+    <button id="closeReservationInfoPopup">닫기</button>
+</div>
+
+
 </body>
 </html>

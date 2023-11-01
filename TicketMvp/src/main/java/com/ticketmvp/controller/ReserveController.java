@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ticketmvp.domain.ReserveVO;
 import com.ticketmvp.service.ReserveService;
@@ -28,5 +29,11 @@ public class ReserveController {
 		m.addAttribute("ticketList", reserveService.getTicketList(vo));
 		m.addAttribute("stadiumImage", reserveService.getImageFile(vo));
 	}
-		
+	
+	//예매 페이지로 이동
+	@RequestMapping("/ReservePayment.do")
+	public void reservePayment(@RequestParam("ticketid") int ticketId, @RequestParam("ticketQuantity") int ticketQuantity, Model m) {
+	    m.addAttribute("ticketId", ticketId);
+	    m.addAttribute("ticketQuantity", ticketQuantity);
+	}
 }

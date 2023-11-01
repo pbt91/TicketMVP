@@ -5,6 +5,9 @@ $(document).ready(function(){
     $(".list-group-item").click(function(event){
     	$(".hidden-input").removeClass("hidden-input");
     	
+    	//예매페이지에 넘길 티켓id hidden input에 값 넣기
+    	$("input#ticketid").val($(this).data("ticketid"));
+    	
         //클릭 된 티켓을 활성화하여 강조
         event.preventDefault()
         $(".list-group-item").removeClass("active");
@@ -14,9 +17,9 @@ $(document).ready(function(){
     	$("#matchName").text($(this).find("h6").text());
     	$("#ticketQuantity").attr("max", parseInt($(this).find(".ticket-info span:last").text()));
     	$("#ticketQuantity").val(1);
-    	
-    	
 		calculate(parseFloat($(this).find(".ticket-info span").attr("price")),1);
+		
+		
     });
     
     //수량이 바뀌면 총 금액 재계산
@@ -40,21 +43,79 @@ $(document).ready(function(){
     function calculate(ticketPrice, quantity) {
     	$("#totalAmount").text((quantity * ticketPrice).toLocaleString());
 	}	
+	 
+	//예매버튼 클릭에 넘어가기 전 확인 메시지
+	$("button#purchase").click(function(event){ 
+		event.preventDefault(); 
 
-     // Handle click on the stadium image
-    $("#stadium").click(function () {
-        var stadiumImageUrl = $(this).attr("src");
-        $("#stadiumPopupImage").attr("src", stadiumImageUrl);
-        $("#stadiumPopup").fadeIn();
-    });
-
-    // Close the pop-up when clicking outside the image
-    $("#stadiumPopup").click(function () {
-        $(this).fadeOut();
-    });
-
-    // Prevent closing the pop-up when clicking on the image itself
-    $("#stadiumPopupImage").click(function (e) {
-        e.stopPropagation();
-    });
+	    // 티켓이 선택 되어있는지 확인
+	    let ticketId = $("#ticketid").val();
+	    if (!ticketId || ticketId.trim() === "") {
+	        alert("티켓을 선택해주세요.");
+	    } else {	
+	        // 예약확인 팝업창 열기 실행
+			updateReservationInfo();
+	        showReservationInfoPopup();
+    	}
+	});
+	
+    // 경기장 이미지 클릭 하면 팝업
+	    $("#stadium").click(function () {
+	        let stadiumImageUrl = $(this).attr("src");
+	        $("#stadiumPopupImage").attr("src", stadiumImageUrl);
+	        $("#stadiumPopup").fadeIn();
+	    });
+	
+	    // 팝업 이미지 외부 영역 클릭 하면 닫기
+	    $("#stadiumPopup").click(function () {
+	        $(this).fadeOut();
+	    });
+	
+	    // 팝업 이미지 자체를 클릭할 시 닫기 멈추기
+	    $("#stadiumPopupImage").click(function (e) {
+	        e.stopPropagation();
+	    });
+	    
+	// 예약확인 팝업창 열기
+	function showReservationInfoPopup() {
+	    $("#reservationInfoPopup").fadeIn();
+	    $("#reservationInfoPopup").css("display", "flex");
+	}
+	
+	// 예약확인 팝업창 닫기
+	function hideReservationInfoPopup() {
+	    $("#reservationInfoPopup").fadeOut();
+	}
+	
+	// 닫기 버튼 클릭시 예약확인 팝업창 닫기
+	$("#closeReservationInfoPopup").click(function () {
+	    hideReservationInfoPopup();
+	});
+	
+	//팝업창에서 예매버튼 클릭하여 예매페이지 넘어가기
+	$("#purchaseConfirm").click(function () {	
+		//예매페이지 폼 정보 넘기기
+	    let form = $("form[action='ReservePayment.do']");
+		form.attr("action", "ReservePayment.do"); 
+	    form.submit();
+	    
+	    hideReservationInfoPopup();
+	});
+	
+	// 예매확인 페이지에 정보 입력
+    function updateReservationInfo() {
+        let reservationStadium = $("#stadiumName").text();
+        let reservationDate = $("#matchDay").text();
+        let reservationTime = $("#matchTime").text();
+        let reservationSeat = $("#matchName").text();
+        let reservationQuantity = $("#ticketQuantity").val();
+        let reservationTotal = $("#totalAmount").text();
+	    
+        $("#reservationStadium").text(reservationStadium);
+        $("#reservationDate").text(reservationDate);
+        $("#reservationTime").text(reservationTime);
+        $("#reservationSeat").text(reservationSeat);
+        $("#reservationQuantity").text(reservationQuantity);
+        $("#reservationTotal").text(reservationTotal);
+    }
 });

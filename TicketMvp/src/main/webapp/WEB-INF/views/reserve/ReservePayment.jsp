@@ -7,6 +7,8 @@
 <title>예매/결제 확인 페이지</title>
 </head>
 <body>
-아직 제작 전
+아직 제작중 <br/>
+${ticketId}<br/>
+${ticketQuantity}
 </body>
 </html>

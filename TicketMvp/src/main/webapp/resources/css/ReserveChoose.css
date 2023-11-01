@@ -76,7 +76,7 @@ body, html {
 #reserveTicketList {
     flex: 70;
     margin-right: 20px;
-    max-height: 625px;
+    max-height: 700px;
     overflow-y: auto; 
 }
 
@@ -95,7 +95,6 @@ body, html {
     display: flex;
     flex-direction: column; 
     align-items: center; 
-
 }
 
 
@@ -104,7 +103,7 @@ body, html {
     max-width: 100%; 
 }
 
-#stadiumMap, #matchDate, #pickQuantity {
+#stadiumMap, #matchDate, #pickQuantity, img#stadium {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px; 
 }
@@ -144,8 +143,68 @@ button#purchase:hover {
 }
 
 
+
 img#stadium:hover {
     cursor: pointer; 
+}
+
+#reservationInfoPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 600px; 
+    max-width: 80%; 
+    height: 600px;
+    max-height: 80vh;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#reservationInfoPopup h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#reservationInfoPopup p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#purchaseConfirm,
+#closeReservationInfoPopup {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#purchaseConfirm:hover,
+#closeReservationInfoPopup:hover {
+    background-color: #0056b3;
+}
+
+#closeReservationInfoPopup {
+    background-color: #ccc;
+    color: #333;
+    margin-left: 10px;
+}
+
+#closeReservationInfoPopup:hover {
+    background-color: #999;
 }
 
 .hidden-input {
