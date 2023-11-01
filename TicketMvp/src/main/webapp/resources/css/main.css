@@ -17,8 +17,9 @@ body {
 }
 
 .logo {
-    margin-left: 100px; /* 로고를 오른쪽으로 20px 이동 */
-    width: 100px; /* 로고의 너비를 조절 */
+    margin-left: 10%; /* 로고를 오른쪽으로 20px 이동 */
+    width: 100%; /* 로고의 너비를 조절 */
+    max-width: 350px;
     height: auto; /* 로고의 높이를 자동으로 조절하여 비율 유지 */
 }
 
@@ -40,7 +41,7 @@ body {
     display: flex;
     align-items: center;
     margin-left: auto; /* 로그인 및 회원가입 메뉴를 오른쪽에 배치 */
-    margin-right: 50px; /* 오른쪽으로 20px 이동 */
+    margin-right: 20px; /* 오른쪽으로 20px 이동 */
 }
 
 
@@ -61,40 +62,44 @@ h1 {
     font-size: 35px;
 }
 
-main {
+/*메인 콘텐츠 설정*/
+#main {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 5%;
 }
 
 .menu {
     float: left;
-    width: 255px;
+    width: 20%;
+    min-width: 150px; /*최소 너비 설정*/
     padding-top: 15px;
-    margin-right: 20px; /* 메뉴와 로고 사이의 간격 조절 */
+    margin-right:15%; /* 메뉴와 로고 사이의 간격 조절 */
 }
 
 .menu-container {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 60px;
 }
 
 .menu li {
-    padding 20px 18px 20px 26px;
+    padding 2% 1.8% 2% 2.6%;
     border-bottom: 1px solid #ecedf2;
     position: relative;
     box-sizing: border-box;
 }
 
+
 .image-grid {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    gap: 10px;
-    padding: 50px;
-    margin-top: 60px;
-    align-content: start; /* 이미지를 위쪽으로 정렬 */
-    justify-items: stretch; /* 이미지를 셀에 꽉 채우도록 확장 */
+    grid-auto-rows: minmax(200px, auto);
+    gap: 10px; /* 그리드 아이템 사이의 간격 */
 }
 
 .image-item {
@@ -105,33 +110,42 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s; /* 확대 애니메이션 효과 */
+    min-width: 100%; /* 이미지를 화면 너비에 맞춤 */
+    min-height: 0; /* 이미지 높이 유연성을 유지 */
 }
 
 .image-item img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
+  width: 100%;
+  height: auto
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
 }
 
-.image-item.even {
-    grid-column: span 2;
-    grid-row: span 2;
-   width: 100%; /* 가로 크기를 100%로 유지 */
+ .even {
+    grid-column: span 2; /* 2열 차지 */
+    grid-row: span 2; /* 2행 차지 */
+    min-width: 400px; /* 최소 너비 설정 (원하는 크기로 조정) */
+    min-height: 200px; /* 최소 높이 설정 (원하는 크기로 조정) */
+    width: 100%; /* 가로 크기를 100%로 유지 */
     height: auto; /* 높이를 자동으로 조정하여 가로 세로 비율 유지 */
 }
 
-.image-item.odd {
-    grid-column: span 2;
-    grid-row: span 1;
-   width: 100%; /* 가로 크기를 100%로 유지 */
+ .odd {
+    grid-column: span 2; /* 2열 차지 */
+    grid-row: span 1; /* 1행 차지 */
+    min-width: 400px; /* 최소 너비 설정 (원하는 크기로 조정) */
+    min-height: 200px; /* 최소 높이 설정 (원하는 크기로 조정) */
+    width: 100%; /* 가로 크기를 100%로 유지 */
     height: auto; /* 높이를 자동으로 조정하여 가로 세로 비율 유지 */
 }
+
 
 .image-item:hover img {
     transform: scale(1.05);
 }
+
 
 /* Footer Styles */
 .footer {
@@ -163,4 +177,23 @@ main {
 .footer_logo {
     font-weight: bold;
     font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .image-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4열로 변경 */
+    gap: 5px; /* 그리드 아이템 사이의 간격 조절 */
+  }
+
+  .image-item {
+    min-width: 200px; /* 최소 너비 조절 */
+    min-height: 200px; /* 최소 높이 조절 */
+  }
+  
+  .even,
+  .odd {
+    min-width: 200px; /* 최소 너비 조절 */
+    min-height: 200px; /* 최소 높이 조절 */
+  }
+  
 }
