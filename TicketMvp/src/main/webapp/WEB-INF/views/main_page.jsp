@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang='en'>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>메인화면</title>
-<link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/main.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src='../resources/js/main.js' type="text/javascript"></script>
+
 </head>
-<body>
-	<script src="resources/js/main.js"></script>
+<body id="page-top">
 
 	<header class='header_menu'>
 		<div class="header_util">
@@ -30,8 +33,8 @@
 
 	<header class="header_inner">
 		<div class="logo">
-			<img src="resources/images/member_images/rogo.png" alt="" width="350"
-				height="200">
+			<img src="../resources/images/member_images/rogo.png" alt=""
+				width="350" height="200">
 		</div>
 		<div class="baner"></div>
 	</header>
@@ -41,54 +44,56 @@
 
 
 		<div id="main">
-		
-			<div class="menu-container">
+
+			<ul
+				class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+				id="accordionSidebar">
+
+				<li id="ticket_reserved"><a href="#"> 티켓예약 </a></li>
+
+				<!-- Divider -->
+				<hr class="sidebar-divider">
+
+				<!-- Heading -->
+				<div class="sidebar-heading">Interface</div>
+
+				<li id="member_introduction"><a href="#"> 선수소개 </a></li>
+
+				<!-- Nav Item - Utilities Collapse Menu -->
+
+				<li id=""><a href="#"> 문의하기 </a></li>
+
+				<!-- Divider -->
+				<hr class="sidebar-divider">
+
+				<!-- Heading -->
+				<div class="sidebar-heading">Addons</div>
+
+
+				<li id="my_page"><a href="#"> 마이페이지 </a></li>
+				
+				
+
+			</ul>
+
+			<!-- <div class="menu-container">
 				<ul class="menu">
 					<li id="ticket_reserved"><a href="#"> 티켓예약 </a></li>
 					<li id="member_introduction"><a href="#"> 선수소개 </a></li>
 					<li id=""><a href="#"> 문의하기 </a></li>
 					<li id="my_page"><a href="#"> 마이페이지 </a></li>
 				</ul>
-			</div>
-			
-			<div id = "image-grid" class="image-grid">
+			</div> -->
 
-				<!-- Column 1 (horizontal, vertical, horizontal, vertical) -->
+			<div id="image-grid" class="image-grid">
 
-				<div class="image-item even"></div>
-				<div class="image-item odd"></div>
-				<div class="image-item even"></div>
-				<div class="image-item odd"></div>
+				<c:forEach var="imagePath" items="${imagePaths}" varStatus="loop">
+					<div class="image-item ${loop.index % 4 < 2 ? 'even' : 'odd'}">
+						<img src="${pageContext.request.contextPath}/${imagePath}"
+							alt="선수 이미지" />
+					</div>
+				</c:forEach>
 
-				<!-- Column 2 (vertical, horizontal, vertical, horizontal) -->
-				<div class="image-item even"></div>
-				<div class="image-item even"></div>
-				<div class="image-item odd"></div>
-				<div class="image-item odd"></div>
-				
-
-				<!-- Column 3 (horizontal, vertical, horizontal, vertical) -->
-				<div class="image-item even"></div>
-				<div class="image-item odd"></div>
-				<div class="image-item even"></div>
-				<div class="image-item odd"></div>
-
-				<!-- Column 4 (vertical, horizontal, vertical, horizontal) -->
-				<div class="image-item even"></div>
-				<div class="image-item even"></div>
-				<div class="image-item odd"></div>
-				<div class="image-item odd"></div>
-
-				<!-- Column 5 (horizontal, vertical, horizontal, vertical) -->
-				<div class="image-item even"></div>
-				<div class="image-item odd"></div>
-				<div class="image-item even"></div>
-				<div class="image-item odd"></div>
-
-				<!-- Column 6 (vertical, horizontal, vertical, horizontal) -->
-				<div class="image-item even"></div>
-				<div class="image-item even"></div>
-				<div class="image-item odd"></div>
 			</div>
 
 		</div>

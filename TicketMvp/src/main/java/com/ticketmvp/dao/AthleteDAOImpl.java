@@ -16,14 +16,8 @@ public class AthleteDAOImpl implements AthleteDAO{
 	 private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<AthleteVO> getAllAthletes() { // 선수 정보 가져오기
-		return null;
-	}
-
-	@Override
 	public List<String> getAthleteImagePaths() {
-		// TODO Auto-generated method stub
-		return null;
+		return mybatis.selectList("AthleteDAO.getAthleteImagePaths");
 	}
 
 }

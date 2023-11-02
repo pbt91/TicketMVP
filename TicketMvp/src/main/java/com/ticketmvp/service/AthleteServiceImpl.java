@@ -19,9 +19,5 @@ import com.ticketmvp.domain.AthleteVO;
         return athleteDAO.getAthleteImagePaths();
 	}
 
-	@Override
-	public List<AthleteVO> getAllAthletes() {
-		return null;
-	}
 
 }
