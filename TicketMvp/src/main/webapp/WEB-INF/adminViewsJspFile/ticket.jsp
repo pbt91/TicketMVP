@@ -15,9 +15,9 @@
         <link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/resources/js/scripts.js" rel="stylesheet" type="text/js">
     </head>
- <style>
-    a[href='.ticket'] {
-        background-color: #dedede; 
+<style>
+    #ticket {
+        color: red; /* 배경 색상을 빨간색으로 변경 */
     }
 </style>
     <body>
