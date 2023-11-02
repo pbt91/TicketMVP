@@ -2,8 +2,12 @@ package com.ticketmvp.dao;
 
 import java.util.Random;
 
+import javax.mail.internet.MimeMessage;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Repository;
 
 import com.ticketmvp.domain.UserVO;
@@ -13,6 +17,8 @@ public class UserDAOImpl implements UserDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
+	@Autowired
+	private JavaMailSender mailsender;
 	
 
 	// 아이디 중복체크
@@ -61,30 +67,76 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	// 비밀번호 찾기
-//	@Override
-//	public String findPw(UserVO vo) {
-//		System.out.println("===> Mybatis findPw() 호출");
-//		
-//		// 아이디와 매칭되는 이메일을 입력한 경우
-//		if(result!=null) {
-//			// 6자리 랜덤수를 뽑아 vo.temppw에 넣고 
-//			Random random = new Random();
-//			int randomNum = 0;
-//			String randomSum = "";
-//			for(int i=0; i<5; i++) {
-//				randomNum = random.nextInt(9);
-//				randomSum += Integer.toString(randomNum);
-//			}
-//			System.out.println("생성된 인증키:"+randomSum);
-//			UserVO vo = new UserVO();
-//			vo.setEmail(email);
-//			vo.setTemppw(randomSum);
-//			//디비에 update하기
-//			mybatis.update("UserDAO.updatesettemppw",vo);
-//		}
-//		
-//		return result;
-//	}
+	@Override
+	public String findPw(UserVO vo) {
+		System.out.println("===> Mybatis findPw() 호출");
+		// 아이디와 매칭되는 이메일을 입력한 경우 result에 name들어옴
+		String result = mybatis.selectOne("UserDAO.selectfindpw",vo);
+		vo.setName(result);
+		// result에 값이 있으면
+		if(result!=null) {
+			// 6자리 랜덤수를 뽑아  
+			Random random = new Random();
+			int randomNum = 0;
+			String randomSum = "";
+			for(int i=0; i<5; i++) {
+				randomNum = random.nextInt(9);
+				randomSum += Integer.toString(randomNum);
+			}
+			//System.out.println("생성된 인증키:"+randomSum);
+			// temppw에 넣고
+			vo.setTemppw(randomSum);
+			// 디비에 update하기
+			mybatis.update("UserDAO.updatesettemppw",vo);
+			//System.out.println("name:"+vo.getName()+" userid:"+vo.getUserid()+" email:"+vo.getEmail()+" 인증키:"+vo.getTemppw());
+			
+			// 메일 보내기
+			sendMail(vo);
+
+		}
+		// 매칭값이 없으면 null 값이 있으면 name 들어옴
+		System.out.println(result);
+		return result;
+	}
+
+	// 메일 보내기
+	@Override
+	public void sendMail(UserVO vo) {
+		String mailTitle = "Ticket MVP 인증 이메일 입니다";
+		String mailcontent = "<h1> Ticket MVP </h1>"
+							+ vo.getName()+"님 저희 사이트를 이용해 주셔서 감사합니다."
+							+ "<br/><br/>"
+							+ "인증번호는 <strong>["+vo.getTemppw()+"]</strong> 입니다"
+							+ "<br/>"
+							+ "해당 인증 번호를 인증번호 확인란에 기입하여 주세요";
+		try {
+			//System.out.println("sendMail 진입 완료");
+			MimeMessage message = mailsender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			
+			//System.out.println("메일 객체생성 완료");
+			
+			helper.setFrom("seoungiks@gmail.com");	//from 이메일
+			helper.setTo(vo.getEmail());			//to 이메일
+			helper.setSubject(mailTitle);			//이메일 제목
+			helper.setText(mailcontent, true);		//이메일 내용 (true를 해야 html형식으로 전송됨)
+			
+			mailsender.send(message);				//메일보내기
+			
+			//System.out.println("메일 보내기 시도 ");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	@Override
+	public Integer checkTempPw(UserVO vo) {
+		Integer result = mybatis.update("UserDAO.selecttemppw",vo);
+		return result;
+	}
+	
 	
 
 	

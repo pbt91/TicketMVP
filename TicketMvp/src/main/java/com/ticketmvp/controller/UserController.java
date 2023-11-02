@@ -60,7 +60,7 @@ public class UserController {
 	}
 	
 	// 아이디찾기폼 -> 디비확인 -> 아이디찾기폼
-	@RequestMapping(value="/findId.do", method=RequestMethod.POST)
+	@RequestMapping(value="/findId", method=RequestMethod.POST)
 	@ResponseBody
 	public String findId(@RequestParam("email") String email) {
 		String result = userservice.findId(email);
@@ -68,10 +68,22 @@ public class UserController {
 	}
 	
 	// 비밀번호찾기폼 -> 디비확인 -> 비밀번호찾기폼
-	@RequestMapping("/findId.do")
+	@RequestMapping(value="/findPw", method=RequestMethod.POST)
+	@ResponseBody
 	public String findPW(UserVO vo) {
-	//	String result = userservice.findId(vo);
-		return "redirect:findIdForm.do";
+		String result = userservice.findPw(vo);
+		return result;
 	}
 	
+	// 비밀번호찾기 인증번호 -> 디비확인 -> 비밀번호찾기 인증번호 or 비밀번호 재설정   
+	@RequestMapping(value="/checkTempPw", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer checkTempPw(UserVO vo) {
+		Integer result = userservice.checkTempPw(vo);
+		return result;
+	}
+	
+	
+	
+	//reSettingPw  - 비밀번호 다 입력하고 확인누를때
 }

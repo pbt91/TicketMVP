@@ -4,20 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
-<script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-<script src='/TicketMvp/resources/js/user/findId.js' type="text/javascript"></script>
-
+<title>비밀번호 재설정</title>
 </head>
 <body>
 
-	<h2>아이디 찾기</h2>
+<h2>비밀번호 재설정</h2>
 	
-	<form id='findidfrom' name='findidfrom' align="center">
-		<h3>이메일로 찾기</h3>
+	<form id='resettingpw' name='resettingpw' align="center">
+		<h3>변경할 비밀번호를 입력해주세요</h3>
 		<p>회원가입한 이메일 주소를 입력해 주세요</p> 
-		<input type='email' id='email' name='email' placeholder='이메일' style="width:200px;height:30px;">
+		<input type="password" name="userpw" id="userpw" placeholder="비밀번호" style="width:200px;height:30px;">
 		<br/>
+		<input type="password" name="userpw" id="userpw" placeholder="비밀번호 확인" style="width:200px;height:30px;">
 		<button type='button' id='find_id' name='find_id' style="width:210px;height:30px;">확인</button>
 		<br/>
 		<br/>
@@ -27,6 +25,7 @@
 		<a href="/TicketMvp/user/findPwForm.do"><input type='button' id='move_findpw' name='move_findpw' value='비밀번호 찾기' style="width:102px;height:30px;"/></a>
 		<a href="/TicketMvp/user/loginForm.do"><input type='button' id='move_login' name='move_login' value='로그인' style="width:102px;height:30px;"/></a>
 	</form>
+
 
 </body>
 </html>

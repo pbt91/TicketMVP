@@ -67,6 +67,7 @@
 					<div align="w">
 						<input type="submit" name="join" id="join" value="등   록" >
 						<input type="reset" name="reset" value="취   소">
+						<a href=''><input type="button" name="reset" value="첫페이지로 이동"></a>
 					</div>
 				</td>
 			</tr>

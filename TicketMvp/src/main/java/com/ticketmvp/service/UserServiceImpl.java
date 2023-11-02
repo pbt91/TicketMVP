@@ -35,5 +35,17 @@ public class UserServiceImpl implements UserService{
 		String result = userDAO.findId(email);
 		return result;
 	}
+
+	// 비밀번호 찾기
+	public String findPw(UserVO vo) {
+		String result = userDAO.findPw(vo);
+		return result;
+	}
+
+	//비밀번호 찾기에서 인증번호 확인하기
+	public Integer checkTempPw(UserVO vo) {
+		Integer result = userDAO.checkTempPw(vo);
+		return result;
+	}
 	
 }

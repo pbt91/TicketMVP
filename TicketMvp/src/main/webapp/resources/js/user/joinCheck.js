@@ -9,7 +9,7 @@ $(function () {
         alert(userinputid);						// 사용자가 입력한 아이디 확인됨.
 
         $.ajax({
-            url: '../user/userIdCheck',                  //Controller에서 요청받을 주소
+            url: '/TicketMvp/user/userIdCheck',                  //Controller에서 요청받을 주소
             type: 'post',
             dataType: 'json',
             data: { "id": userinputid },
