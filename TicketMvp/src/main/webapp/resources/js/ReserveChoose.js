@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
 
 
     //좌석 예매 리스트 active 지정
@@ -84,4 +84,4 @@ $(document).ready(function(){
         $("#reservationQuantity").text($("#ticketQuantity").val());
         $("#reservationTotal").text($("#totalAmount").text());
     }
-});
+}); ///end of document load

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,8 +83,30 @@
 					<!-- 경기장 이름, 시간  -->
 					<div class="text-center mb-4" id="matchDate" class="reserveSide">
 						<h4 id="stadiumName">${stadiumImage.stadiumname}</h4>
-                    	<p id="matchDay">경기일: ${ticketList[0].matchdate}</p>
-                    	<p id="matchTime">경기날짜: ${ticketList[0].matchtime}</p>
+                    	<p id="matchDay">
+                    		<c:choose>
+							    <c:when test="${not empty ticketList[0].matchdate}">
+							        <fmt:parseDate value="${ticketList[0].matchdate}" pattern="yyyy-MM-dd" var="parsedDate" />
+							        <fmt:formatDate value="${parsedDate}" pattern="yyyy'년' MM'월' dd'일'" var="formattedDate" />
+							        <p id="matchDay">경기일: ${formattedDate}</p>
+							    </c:when>
+							    <c:otherwise>
+							        <p id="matchDay">경기일: 0000년 00월 00일</p>
+							    </c:otherwise>
+							</c:choose>
+						</p>
+                    	<p id="matchTime">
+                    		<c:choose>
+							    <c:when test="${not empty ticketList[0].matchtime}">
+							        <fmt:parseDate value="${ticketList[0].matchtime}" pattern="HH:mm:ss" var="parsedTime" />
+							        <fmt:formatDate value="${parsedTime}" pattern="a hh'시' mm'분'" var="formattedTime" />
+							        <p id="matchTime">경기시간: ${formattedTime}</p>
+							    </c:when>
+							    <c:otherwise>
+							        <p id="matchTime">경기시간: 오전/오후 00시 00분</p>
+							    </c:otherwise>
+							</c:choose>
+                    	</p>
 					</div>
 					<!-- 경기장 이름, 시간  끝-->
 					

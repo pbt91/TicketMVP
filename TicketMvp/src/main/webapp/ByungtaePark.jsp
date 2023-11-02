@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<a href="testSession.jsp">reserve choose seat</a>
-
+<a href="reserve/ReserveChoose.do?matchid=1">reserve choose seat</a> <br/>
+<a href="billing/billingFail.do">토스 테스트2</a> <br/>
 </body>
 </html>
