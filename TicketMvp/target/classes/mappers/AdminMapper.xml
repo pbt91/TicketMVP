@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="AdminVO">
+<mapper namespace="com.javaclass.basic.admin.domain.AdminVO">
 
 
-<!-- 	<insert id="insertBoard" parameterType="AdminVO">
+<!-- 	<insert id="insertBoard" parameterType="com.javaclass.basic.admin.domain.AdminVO">
 	INSERT INTO uploadtemp
 	(
 		b_name,b_email,b_title
@@ -22,40 +22,40 @@
 
 	</insert> -->
 
-<!-- 	<select id="getBoardList" resultType="AdminVO">
+<!-- 	<select id="getBoardList" resultType="com.javaclass.basic.admin.domain.AdminVO">
 		<![CDATA[
 		SELECT * FROM uploadtemp ORDER BY b_id DESC
 		]]>
 	</select>
 	
-	<update id="updateBoard"  parameterType="AdminVO">
+	<update id="updateBoard"  parameterType="com.javaclass.basic.admin.domain.AdminVO">
 		UPDATE uploadtemp SET
 		b_title = #{b_title},
 		b_content = #{b_content}
 		WHERE b_id = #{b_id}
 	</update> -->
 	
-	<delete id="deleteUser"  parameterType="AdminVO">
+	<delete id="deleteUser"  parameterType="com.javaclass.basic.admin.domain.AdminVO">
 		DELETE FROM user
 		WHERE userid = #{userid}
 	</delete> 
 	
-	<select id="user"  parameterType="AdminVO" resultType="AdminVO">
+	<select id="user"  parameterType="com.javaclass.basic.admin.domain.AdminVO" resultType="com.javaclass.basic.admin.domain.AdminVO">
 		SELECT userid,name,email,phone
 		FROM user
 	</select>
 	
-	<select id="athleteManagement"  parameterType="AdminVO" resultType="AdminVO">
+	<select id="athleteManagement"  parameterType="com.javaclass.basic.admin.domain.AdminVO" resultType="com.javaclass.basic.admin.domain.AdminVO">
 		SELECT athletename,club,age,position,backno
 		FROM   athlete
 	</select>
-	<select id="clubManagement"  parameterType="AdminVO" resultType="AdminVO">
+	<select id="clubManagement"  parameterType="com.javaclass.basic.admin.domain.AdminVO" resultType="com.javaclass.basic.admin.domain.AdminVO">
 		SELECT a.athletename athletename , a.club club,c.league league,c.stadiumname stadiumname
 		FROM  athlete a 
 		INNER JOIN club c
 		ON a.club= c.club
 	</select>
-	<select id="ticket"  parameterType="AdminVO" resultType="AdminVO">
+	<select id="ticket"  parameterType="com.javaclass.basic.admin.domain.AdminVO" resultType="com.javaclass.basic.admin.domain.AdminVO">
 		SELECT t.ticketname ticketname,t.ticketprice ticketprice
 			  ,t.ticketall ticketall,t.ticketremain ticketremain
 			  ,t.ticketid ticketid, m.homeclub homeclub,m.awayclub awayclub,m.matchid matchid
