@@ -15,6 +15,9 @@ public class ReserveVO {
 	private int ticketremain;
 	private int ticketall;
 	
+	//티켓종료
+	private String seatid;
+	
 	//경기 정보
 	private int matchid;
 	private String homeclub;
@@ -29,5 +32,11 @@ public class ReserveVO {
 	private String stadiumimgfilefull;
 	private int stadiumimgsize;
 	
+	//예약 정보
+	private int reserveid;
+	private String userid;
+	private String reserveStatus;
+	private Date paydate;
+	private int totalpayment;
 	
 }

@@ -74,87 +74,61 @@
 	<link rel="stylesheet" href="/TicketMvp/resources/css/ReserveFinish.css"> 
 </head>
 <body>
-	<h1>결재 완료 하셨습니다.</h1>
-	<div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <img src="/TicketMvp/resources/images/reservation.png" alt="축구 티켓" class="img-fluid"> 
-            </div>
-            <div class="col-md-8">
-                <div class="card mb-4">
-                    <div class="card-header">예매 정보</div>
-                    <div class="card-body">
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">예매번호:</label>
-                            <div class="col-sm-8">
-                            	<%= jsonObject.get("orderId") %>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">상품명:</label>
-                            <div class="col-sm-8">
-                            	<%= jsonObject.get("orderName") %>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">개수:</label>
-                            <div class="col-sm-8">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">결제금액:</label>
-                            <div class="col-sm-8">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">결제일시:</label>
-                            <div class="col-sm-8">
-							    <%
-							    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
-							    SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy'년' MM'월' dd'일' a hh'시' mm'분'");
-							    String requestAt = (String) jsonObject.get("requestedAt");
-							    try {
-							        Date date = inputFormat.parse(requestAt);
-							        String formattedDate = outputFormat.format(date);
-							        out.print(formattedDate);
-							    } catch (Exception e) {
-							        e.printStackTrace();
-							    }
-							    %>
-							</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-3">
-            <button class="btn btn-primary">주문 목록</button>
-            <button class="btn btn-secondary">HOME</button>
-        </div>
-    </div> 
 	<section>
-	    <%
-	    if (isSuccess) { %>
-	        <h1>결제 성공</h1>
-	        <p>결과 데이터 : <%= jsonObject.toJSONString() %></p>
-	        <p>orderName : <%= jsonObject.get("orderName") %></p>
-	        <p>method : <%= jsonObject.get("method") %></p>
-	        <p>
-	            <% if(jsonObject.get("method").equals("카드")) { out.println(((JSONObject)jsonObject.get("card")).get("number"));} %>
-	            <% if(jsonObject.get("method").equals("가상계좌")) { out.println(((JSONObject)jsonObject.get("virtualAccount")).get("accountNumber"));} %>
-	            <% if(jsonObject.get("method").equals("계좌이체")) { out.println(((JSONObject)jsonObject.get("transfer")).get("bank"));} %>
-	            <% if(jsonObject.get("method").equals("휴대폰")) { out.println(((JSONObject)jsonObject.get("mobilePhone")).get("customerMobilePhone"));} %>
-	        
-	        </p>
-	       
-	    <%} else { %>
-	        <h1>결제 실패</h1>
-	        <p><%= jsonObject.get("message") %></p>
-	        <span>에러코드: <%= jsonObject.get("code") %></span>
-	        <%
-	    }
-	    %>
-	
+	<% if (isSuccess) { %>
+		<h1>결재 완료 하셨습니다.</h1>
+		<div class="container mt-5">
+		       <div class="row">
+		           <div class="col-md-4">
+		               <img src="/TicketMvp/resources/images/reservation.png" alt="축구 티켓" class="img-fluid"> 
+		           </div>
+		           <div class="col-md-8">
+		               <div class="card mb-4">
+		                   <div class="card-header">예매 정보</div>
+		                   <div class="card-body">
+		                       <div class="form-group row">
+		                           <label class="col-sm-4 col-form-label">예매번호:</label>
+		                           <div class="col-sm-8"><%= jsonObject.get("orderId") %></div>
+		                       </div>
+		                       <div class="form-group row">
+		                           <label class="col-sm-4 col-form-label">상품명:</label>
+		                           <div class="col-sm-8"><%= jsonObject.get("orderName") %></div>
+		                       </div>
+		                       <div class="form-group row">
+		                           <label class="col-sm-4 col-form-label">개수:</label>
+		                           <div class="col-sm-8"><%= request.getParameter("ticketQuantity") %></div>
+		                       </div>
+		                       <div class="form-group row">
+		                           <label class="col-sm-4 col-form-label">결제금액:</label> 	
+		                           <div class="col-sm-8"><%= request.getParameter("finalPrice") %>원</div>
+		                       </div>
+		                       <div class="form-group row">
+		                           <label class="col-sm-4 col-form-label">결제일시:</label>
+		                           <div class="col-sm-8"><%
+								    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+								    SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy'년' MM'월' dd'일' a hh'시' mm'분'");
+								    String requestAt = (String) jsonObject.get("requestedAt");
+								    try {
+								        Date date = inputFormat.parse(requestAt);
+								        String formattedDate = outputFormat.format(date);
+								        out.print(formattedDate);
+								    } catch (Exception e) {
+								        e.printStackTrace();
+								    }
+								    %></div>
+		                       </div>
+		                   </div>
+		               </div>
+					</div>
+				</div>
+			<div class="text-center mt-3">
+			    <button class="btn btn-primary">주문 목록</button>
+			    <button class="btn btn-secondary">HOME</button>
+			</div>
+		</div>
+	<% } else { %>
+		<c:redirect url="../billing/billingFail.do"/>	
+	<% } %>
 	</section>
 </body>
 </html>

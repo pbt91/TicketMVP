@@ -19,13 +19,30 @@
     </select>
     
     <select id="getTicketInfo" parameterType="int" resultType="com.ticketmvp.domain.ReserveVO">
-    	SELECT 
-		    t.*, 
-		    m.*,
-		    DATE_SUB(m.matchdate, INTERVAL 3 DAY) AS canceldate
-		FROM ticket AS t
-		INNER JOIN `match` AS m 
-		ON t.matchid = m.matchid
-		WHERE ticketId = #{ticketId}
-    </select>
+	    SELECT 
+	        t.*, 
+	        m.*,
+	        DATE_SUB(m.matchdate, INTERVAL 3 DAY) AS canceldate
+	    FROM ticket AS t
+	    INNER JOIN `match` AS m 
+	    ON t.matchid = m.matchid
+	    WHERE ticketId = #{ticketId}
+	</select>
+    
+    <insert id="recordReservation" parameterType="hashmap">
+    	INSERT INTO reservation (reserveid, userid, reservestatus, paydate, totalpayment)
+		VALUES (${orderId} , 'qkrqudxo91', '예약완료', now(), ${finalPrice}); <!-- qkrqudxo91값은 나중에 유저id로 변경  -->
+    </insert>
+    
+    <update id="recordSeat" parameterType="hashmap">
+	    UPDATE seat
+		SET reserveid = ${orderId}
+		WHERE ticketid = ${ticketId}
+    </update>
+    
+    <update id="deductTickets" parameterType="hashmap">
+    	UPDATE ticket
+		SET ticketremain = ticketremain - ${tickets}
+		WHERE ticketid = ${ticketId}
+    </update>
 </mapper>

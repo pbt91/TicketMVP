@@ -1,5 +1,6 @@
 package com.ticketmvp.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -30,8 +31,36 @@ public class ReserveDAOImpl implements ReserveDAO{
 
 	//예매/결재 확인 페이지에 결재할 티켓 정보 호출
 	public ReserveVO getTicketInfo(int ticketId) {
-		System.out.println("===> Mybatis getTicketInfo 호출");
-		return mybatis.selectOne("ReserveDAO.getTicketInfo",ticketId);
+		System.out.println("===> Mybatis getTicketInfo() 호출");
+		return mybatis.selectOne("ReserveDAO.getTicketInfo", ticketId);
+	}
+
+	//예매/결재 후 예약테이블에 정보 입력
+	public void recordReservation(String orderId, Integer finalPrice) {
+		System.out.println("===> Mybatis recordReservation() 호출");
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("orderId", orderId);
+	    param.put("finalPrice", finalPrice);
+		mybatis.insert("ReserveDAO.recordReservation", param);
+	}
+
+	//예약번호를 모든 해당 좌석에 정보넣기
+	public int recordSeat(String orderId, Integer ticketId) {
+		System.out.println("===> Mybatis recordSeat() 호출");
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("orderId", orderId);
+		param.put("ticketId", ticketId);
+
+		return mybatis.update("ReserveDAO.recordSeat", param);
+	}
+
+	@Override
+	public void deductTickets(int tickets, Integer ticketId) {
+		System.out.println("===> Mybatis deductTickets() 호출");
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("tickets", tickets);
+		param.put("ticketId", ticketId);
+		mybatis.update("ReserveDAO.deductTickets", param);
 	}
 	
 

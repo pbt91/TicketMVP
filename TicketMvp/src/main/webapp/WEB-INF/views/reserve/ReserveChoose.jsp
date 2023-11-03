@@ -40,10 +40,8 @@
 		                			<img src="/TicketMvp/resources/images/soccer-ticket.png" class="soccer-ticket">
 		                			<div class="ml-2">
 		                    			<h6 class="mb-0">${ticket.ticketname}</h6>
-		                    			<div class="ticket-info">
-		                       				<span price="${ticket.ticketprice}">표당 ${ticket.ticketprice}원</span>
-		                        			<br>
-		                        			<span>${ticket.ticketremain}좌석 남음</span>
+		                    			<div class="ticket-info"><span price="${ticket.ticketprice}">표당 ${ticket.ticketprice}원</span>
+		                        			<br><span>${ticket.ticketremain}좌석 남음</span>
 		                    			</div>   
 		                			</div>
 		            			</div>
@@ -53,9 +51,7 @@
 					
 					<!-- 티켓이 모두 없으면 표시되는 메시지 -->		
 					<c:if test="${ticketNone}">
-						<div id="noTickets" class="message-container">
-							해당 경기의 티켓이 없습니다.
-						</div>
+						<div id="noTickets" class="message-container">해당 경기의 티켓이 없습니다.</div>
 					</c:if>
 			    </ul>
 			</div> 
@@ -68,9 +64,7 @@
 				    <c:choose>
 				    	<c:when test="${stadiumImage.stadiumimgsize > 0}">
 				            <!-- 경기장 이미지 -->
-				        	<div class="text-center mb-4">
-				            	<img id="stadium" alt="${stadiumImage.stadiumname} 좌석 지도" src="/TicketMvp/resources/images/stadium/${stadiumImage.stadiumimgfilefull}_${stadiumImage.stadiumimgfile}" id="stadiumMap" class="reserveSide">
-				       		</div>
+				        	<div class="text-center mb-4"><img id="stadium" alt="${stadiumImage.stadiumname} 좌석 지도" src="/TicketMvp/resources/images/stadium/${stadiumImage.stadiumimgfilefull}_${stadiumImage.stadiumimgfile}" id="stadiumMap" class="reserveSide"></div>
 				        </c:when>
 				        <c:otherwise>
 				            <div id="stadiumMissing" class="message-container reserveSide">
@@ -83,8 +77,7 @@
 					<!-- 경기장 이름, 시간  -->
 					<div class="text-center mb-4" id="matchDate" class="reserveSide">
 						<h4 id="stadiumName">${stadiumImage.stadiumname}</h4>
-                    	<p id="matchDay">
-                    		<c:choose>
+                    	<p id="matchDay"><c:choose>
 							    <c:when test="${not empty ticketList[0].matchdate}">
 							        <fmt:parseDate value="${ticketList[0].matchdate}" pattern="yyyy-MM-dd" var="parsedDate" />
 							        <fmt:formatDate value="${parsedDate}" pattern="yyyy'년' MM'월' dd'일'" var="formattedDate" />
@@ -96,8 +89,7 @@
 							</c:choose>
 						</p>
                     	<p id="matchTime">
-                    		<c:choose>
-							    <c:when test="${not empty ticketList[0].matchtime}">
+                    		<c:choose><c:when test="${not empty ticketList[0].matchtime}">
 							        <fmt:parseDate value="${ticketList[0].matchtime}" pattern="HH:mm:ss" var="parsedTime" />
 							        <fmt:formatDate value="${parsedTime}" pattern="a hh'시' mm'분'" var="formattedTime" />
 							        <p id="matchTime">경기시간: ${formattedTime}</p>
@@ -143,7 +135,7 @@
 <div class="modal fade" id="reservationInfoModal" tabindex="-1" role="dialog" aria-labelledby="reservationInfoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-        	<form id="reservationForm" action="ReservePayment.do" method='post'>
+        	<form id="reservationForm" action="/TicketMvp/reserve/ReservePayment.do" method='post'>
        			<div class="modal-header bg-primary text-white">
 	                <h5 class="modal-title" id="reservationInfoModalLabel">예약정보</h5>
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">

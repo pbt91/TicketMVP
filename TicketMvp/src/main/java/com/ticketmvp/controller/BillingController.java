@@ -11,7 +11,6 @@ public class BillingController {
 	//페이지 이동
 	@RequestMapping("/{step}.do")
 	public String viewPage(@PathVariable String step) {
-		System.out.println("토스 테스트 이동");
 		return "billing/"+step;
 	}
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ticketmvp.domain.ReserveVO;
 import com.ticketmvp.service.ReserveService;
@@ -33,13 +33,14 @@ public class ReserveController {
 	//예매 페이지로 이동
 	@RequestMapping("/ReservePayment.do")
 	public void reservePayment(Integer ticketId, Integer ticketQuantityBuy, Model m) {
-	    m.addAttribute("ticketQuantityBuy", ticketQuantityBuy);
-	    m.addAttribute("ticket", reserveService.getTicketInfo(ticketId));
+		m.addAttribute("ticket", reserveService.getTicketInfo(ticketId));
+		m.addAttribute("ticketId", ticketId);
+		m.addAttribute("ticketQuantityBuy", ticketQuantityBuy); 
 	}
 	
 	//결제완료 페이지로 이동
-	@RequestMapping("/ReserveFinish.do")
-	public void reserveFinish(Model m){
-		
+	@RequestMapping(value = "/ReserveFinish.do", method = RequestMethod.GET)
+	public void reserveFinish(String orderId, Integer finalPrice, Integer ticketId, Model m){
+		reserveService.recordAll(orderId, finalPrice, ticketId);
 	}
 }

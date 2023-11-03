@@ -22,6 +22,7 @@
 </head>
 <body>
 <h1>예매 / 결재</h1>
+<input id="ticketid" type="hidden" value="${ticketId}">
 <input id="matchid" type="hidden" value="${ticket.matchid}">
 <div class="container mt-5">
 	<!-- 구마자정보 -->
@@ -66,7 +67,7 @@
 	        </div>
 	        <div class="form-group row">
 	            <label for="quantity" class="col-sm-2 col-form-label form-label">수량:</label>
-	            <div class="col-sm-10">
+	            <div id="ticketQuantity" data-ticket-quantity="${ticketQuantityBuy}" class="col-sm-10">
 	           		${ticketQuantityBuy}개
 	            </div>
 	        </div>
@@ -108,6 +109,7 @@
 	</div>
 </div>
 
+<!-- 토스 결제창 -->
 <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

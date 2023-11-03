@@ -7,8 +7,7 @@
   <meta charset="utf-8">
 </head>
 <body>
-
-<a href="reserve/ReserveChoose.do?matchid=1">reserve choose seat</a> <br/>
-<a href="billing/billingFail.do">토스 테스트2</a> <br/>
+<a href="/TicketMvp/reserve/ReserveChoose.do?matchid=1">reserve choose seat</a> <br/>
+<a href="/TicketMvp/billing/billingFail.do">토스 실패시</a> <br/>
 </body>
 </html>

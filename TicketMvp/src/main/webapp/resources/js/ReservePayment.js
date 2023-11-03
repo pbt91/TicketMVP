@@ -17,10 +17,10 @@ $(function(){
         $totalPriceDisplay.text(totalPrice.toLocaleString() + "원"); 
     }   
     
-   	//총 결제금액 표시  ** 추후 쿠폰 적용 금액 표시 개발 필요
-	$("#finalPriceDisplay").text($("#totalPriceDisplay").text());
-   
-    
+   	//총 결제금액 표시+총금액 변수 초기화  ** 추후 쿠폰 적용 금액 표시 개발 필요
+ 	let finalPrice = parseFloat($("#totalPriceDisplay").text().replace(/,/g, '').replace('원', ''));
+    $("#finalPriceDisplay").text(finalPrice.toLocaleString() + "원");
+
     //예매 확인 메시지
     $("#order").click(function() {
         // 예매 확인 클릭시
@@ -39,7 +39,7 @@ $(function(){
     
     // 예매ID생성을 위한 무작위 String 생성기
     function generateRandomString() {
-        return randomIntegerString = [...Array(20)].map(() => Math.floor(Math.random() * 10)).join('');
+	    return parseInt(Math.floor(Math.random() * 2147483648).toString().padStart(10, '0'));;
     }
 
     // 페이먼츠 위젯 초기화
@@ -49,7 +49,7 @@ $(function(){
     );
 
     // 페이먼스메서드 렌더링 + 총 결제금액 넣기
-    paymentWidget.renderPaymentMethods("div#payment-method", { value: parseFloat($("#finalPriceDisplay").text().replace(/,/g, '').replace('원', '')) });
+    paymentWidget.renderPaymentMethods("div#payment-method", { value: finalPrice });
 
     // 결제하기 클릭시 결제화면으로 
     $("button#payment-request-button").click(function() {
@@ -60,15 +60,18 @@ $(function(){
             orderName: $("#productDisplay").text(),
             //성공시 이동
             //"billing/billingSuccess.do", <== 테스트용
-            successUrl: window.location.origin + path + "reserve/ReserveFinish.do", 
+            successUrl: window.location.origin + path 
+            	+ "reserve/ReserveFinish.do?ticketQuantity="+$("#ticketQuantity").data("ticket-quantity")
+            	+ "&finalPrice="+finalPrice
+            	+ "&ticketId="+ $("input#ticketid").val(), 	
             //실패시 이동
             failUrl: window.location.origin + path + "billing/billingFail.do",
             //고객 이메일  **추후 고객이메일 넣기
             customerEmail: 'customer123@gmail.com',
             //고객 이름  **추후 고객이름 넣기
             customerName: '김토스',
-            //다름 값 넘실 수 있는지 테스트
-            test: 'test'
+			//고객 전화번호 *추후 고객번호 넣기
+			customerMobilePhone: '01011111111'
         });
     });
 }); //end of document load
