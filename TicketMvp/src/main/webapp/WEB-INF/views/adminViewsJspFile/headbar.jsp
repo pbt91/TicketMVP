@@ -55,21 +55,22 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="user" id="user" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/adminViewsJspFile/userAdmin.do" id="userAdmin" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <span>회원 관리</span>
+                    
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="ticket" id="ticket" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/adminViewsJspFile/ticket.do" id="ticket" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <span>경기 및 티켓 관리</span>
                 </a>
             </li>
             
 			<li class="nav-item">
-                <a class="nav-link collapsed" href="ticketRegister" id="ticketRegister" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/adminViewsJspFile/ticketRegister.do" id="ticketRegister" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <span>경기 및 티켓 등록</span>
                 </a>
@@ -77,28 +78,28 @@
            
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="athleteManagement" id="athleteManagement" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/adminViewsJspFile/athleteManagement.do" id="athleteManagement" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <span>선수 관리</span>
                 </a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link collapsed" href="athleteRegister" id="athleteRegister" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/adminViewsJspFile/athleteRegister.do" id="athleteRegister" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <span>선수 등록</span>
                 </a>
             </li>
             
 			<li class="nav-item">
-                <a class="nav-link collapsed" href="clubManagement" id="clubManagement" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/adminViewsJspFile/clubManagement.do" id="clubManagement" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <span>구단 관리</span>
                 </a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link collapsed" href="clubRegister" id="clubRegister" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/adminViewsJspFile/clubRegister.do" id="clubRegister" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <span>구단 등록</span>
                 </a>
@@ -145,7 +146,5 @@
                     </ul>
 
                 </nav>
-
-
 </body>
 </html>
