@@ -38,6 +38,8 @@
 	    UPDATE seat
 		SET reserveid = ${orderId}
 		WHERE ticketid = ${ticketId}
+		AND reserveid IS NULL
+		LIMIT ${ticketQuantity};
     </update>
     
     <update id="deductTickets" parameterType="hashmap">

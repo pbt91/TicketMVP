@@ -40,7 +40,7 @@ public class ReserveController {
 	
 	//결제완료 페이지로 이동
 	@RequestMapping(value = "/ReserveFinish.do", method = RequestMethod.GET)
-	public void reserveFinish(String orderId, Integer finalPrice, Integer ticketId, Model m){
-		reserveService.recordAll(orderId, finalPrice, ticketId);
+	public void reserveFinish(String orderId, Integer finalPrice, Integer ticketId, Integer ticketQuantity, Model m){
+		reserveService.recordAll(orderId, finalPrice, ticketId, ticketQuantity);
 	}
 }

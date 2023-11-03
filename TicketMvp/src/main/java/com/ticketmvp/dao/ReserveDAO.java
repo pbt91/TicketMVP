@@ -19,7 +19,7 @@ public interface ReserveDAO {
 	public void recordReservation(String orderId, Integer finalPrice);
 	
 	//예약번호를 모든 해당 좌석에 정보넣기
-	public int recordSeat(String orderId, Integer ticketId);
+	public int recordSeat(String orderId, Integer ticketId, Integer ticketQuantity);
 	
 	//결제 수량 만큼 티켓 수 없애기
 	public void deductTickets(int tickets, Integer ticketId);

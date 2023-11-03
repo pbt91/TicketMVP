@@ -45,12 +45,12 @@ public class ReserveDAOImpl implements ReserveDAO{
 	}
 
 	//예약번호를 모든 해당 좌석에 정보넣기
-	public int recordSeat(String orderId, Integer ticketId) {
+	public int recordSeat(String orderId, Integer ticketId, Integer ticketQuantity) {
 		System.out.println("===> Mybatis recordSeat() 호출");
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("orderId", orderId);
 		param.put("ticketId", ticketId);
-
+		param.put("ticketQuantity", ticketQuantity);
 		return mybatis.update("ReserveDAO.recordSeat", param);
 	}
 
