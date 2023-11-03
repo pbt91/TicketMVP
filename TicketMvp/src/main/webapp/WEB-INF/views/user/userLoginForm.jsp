@@ -44,9 +44,9 @@
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-						<a href="findIdForm.do" name="find_id" id='find_id' class="find" >아이디찾기</a>
+						<a href="userFindIdForm.do" name="find_id" id='find_id' class="find" >아이디찾기</a>
 						|<!-- 그냥 구분선 -->
-						<a href="findPwForm.do" name="find_pw" id='find_pw' class="find" >비밀번호찾기</a>
+						<a href="userFindPwForm.do" name="find_pw" id='find_pw' class="find" >비밀번호찾기</a>
 					</td>
 				</tr>
 			</table>

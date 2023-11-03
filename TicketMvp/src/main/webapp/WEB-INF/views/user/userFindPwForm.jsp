@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-<script src='/TicketMvp/resources/js/user/findPw.js' type="text/javascript"></script>
+<script src='/TicketMvp/resources/js/user/userFindPwForm.js' type="text/javascript"></script>
 </head>
 <body>
 
@@ -31,7 +31,7 @@
 		<input type='button' id='checkTempPw' name='checkTempPw' value='확인' style="width:210px;height:30px;"/>
 		<br/>
 		<br/>
-		<a href='loginForm.do'>돌아가기</a>
+		<a href='userLoginForm.do'>돌아가기</a>
 	</form>
 
 

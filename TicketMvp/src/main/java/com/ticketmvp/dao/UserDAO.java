@@ -16,6 +16,8 @@ public interface UserDAO {
 	public String findPw(UserVO vo);
 	// 비밀번호 찾기 - 인증메일 보내기
 	public void sendMail(UserVO vo);
-	// 비밀번호 찾기 인증번호 확인하기
+	// 비밀번호 찾기 - 인증번호 확인하기
 	public Integer checkTempPw(UserVO vo);
+	// 비밀번호 재설정
+	public Integer resetPw(UserVO vo);
 }

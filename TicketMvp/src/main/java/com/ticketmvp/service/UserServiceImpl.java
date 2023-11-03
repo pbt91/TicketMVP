@@ -42,9 +42,15 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
-	//비밀번호 찾기에서 인증번호 확인하기
+	// 비밀번호 찾기에서 인증번호 확인하기
 	public Integer checkTempPw(UserVO vo) {
 		Integer result = userDAO.checkTempPw(vo);
+		return result;
+	}
+
+	// 비밀번호 재설정
+	public Integer resetPw(UserVO vo) {
+		Integer result = userDAO.resetPw(vo);
 		return result;
 	}
 	

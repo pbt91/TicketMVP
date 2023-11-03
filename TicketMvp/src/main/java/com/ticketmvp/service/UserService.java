@@ -21,4 +21,7 @@ public interface UserService {
 	
 	//비밀번호 찾기 - 인증번호 확인하기
 	Integer checkTempPw(UserVO vo);
+	
+	//비밀번호 재설정
+	Integer resetPw(UserVO vo);
 }

@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 
+import org.apache.ibatis.session.ResultHandler;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -66,15 +67,16 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 	
-	// 비밀번호 찾기
+	// 비밀번호 찾기 (아이디와 이메일이 매칭되면 인증번호 생성, 인증메일 전송)
 	@Override
 	public String findPw(UserVO vo) {
 		System.out.println("===> Mybatis findPw() 호출");
-		// 아이디와 매칭되는 이메일을 입력한 경우 result에 name들어옴
-		String result = mybatis.selectOne("UserDAO.selectfindpw",vo);
-		vo.setName(result);
+		// 아이디와 매칭되는 이메일을 입력한 경우 result에 userid들어옴
+		UserVO resultvo = mybatis.selectOne("UserDAO.selectfindpw", vo);
+		//System.out.println(resultvo.toString());
+		String result = resultvo.getUserid();
 		// result에 값이 있으면
-		if(result!=null) {
+		if(resultvo!=null) {
 			// 6자리 랜덤수를 뽑아  
 			Random random = new Random();
 			int randomNum = 0;
@@ -85,17 +87,18 @@ public class UserDAOImpl implements UserDAO {
 			}
 			//System.out.println("생성된 인증키:"+randomSum);
 			// temppw에 넣고
-			vo.setTemppw(randomSum);
+			resultvo.setTemppw(randomSum);
 			// 디비에 update하기
-			mybatis.update("UserDAO.updatesettemppw",vo);
+			mybatis.update("UserDAO.updatesettemppw",resultvo);
 			//System.out.println("name:"+vo.getName()+" userid:"+vo.getUserid()+" email:"+vo.getEmail()+" 인증키:"+vo.getTemppw());
 			
 			// 메일 보내기
-			sendMail(vo);
+			//sendMail(resultvo);
 
 		}
-		// 매칭값이 없으면 null 값이 있으면 name 들어옴
-		System.out.println(result);
+		// 매칭값이 없으면 null, 값이 있으면 userid 들어옴
+		System.out.println(resultvo.toString());
+		
 		return result;
 	}
 
@@ -131,11 +134,21 @@ public class UserDAOImpl implements UserDAO {
 		
 	}
 
+	// 비밀번호 찾기 (인증번호 맞게 입력했는지 확인)
 	@Override
 	public Integer checkTempPw(UserVO vo) {
 		Integer result = mybatis.update("UserDAO.selecttemppw",vo);
 		return result;
 	}
+
+	// 비밀번호 재설정
+	@Override
+	public Integer resetPw(UserVO vo) {
+		Integer result = mybatis.update("UserDAO.updatepw",vo);
+		return result;
+	}
+	
+	
 	
 	
 

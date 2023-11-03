@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-<script src='/TicketMvp/resources/js/user/findId.js' type="text/javascript"></script>
+<script src='/TicketMvp/resources/js/user/userFindIdForm.js' type="text/javascript"></script>
 
 </head>
 <body>
@@ -24,8 +24,8 @@
 		<span id='findIdResult' name='findIdResult' style="width:200px;height:30px;">확인된 아이디가 표시됩니다</span>
 		<br/>
 		<br/>
-		<a href="/TicketMvp/user/findPwForm.do"><input type='button' id='move_findpw' name='move_findpw' value='비밀번호 찾기' style="width:102px;height:30px;"/></a>
-		<a href="/TicketMvp/user/loginForm.do"><input type='button' id='move_login' name='move_login' value='로그인' style="width:102px;height:30px;"/></a>
+		<a href="/TicketMvp/user/userFindPwForm.do"><input type='button' id='move_findpw' name='move_findpw' value='비밀번호 찾기' style="width:102px;height:30px;"/></a>
+		<a href="/TicketMvp/user/userLoginForm.do"><input type='button' id='move_login' name='move_login' value='로그인' style="width:102px;height:30px;"/></a>
 	</form>
 
 </body>

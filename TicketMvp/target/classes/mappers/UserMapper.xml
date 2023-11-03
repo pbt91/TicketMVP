@@ -25,23 +25,23 @@
 	</select>
 	
 	<!-- 비밀번호 찾기(1.입력한 아이디,이메일이 일치하는지 확인) -->
-	<select id='selectfindpw' parameterType="com.ticketmvp.domain.UserVO" resultType="String">
-		SELECT name FROM user WHERE userid=#{userid} AND email=#{email}
+	<select id='selectfindpw' parameterType="com.ticketmvp.domain.UserVO" resultType="com.ticketmvp.domain.UserVO">
+		SELECT * FROM user WHERE userid=#{userid} AND email=#{email}
 	</select>
 	
 	<!-- 비밀번호 찾기(2.temppw 설정하기) -->
 	<update id="updatesettemppw" parameterType="com.ticketmvp.domain.UserVO">
-			UPDATE user SET temppw=#{temppw} WHERE name=#{name}
+			UPDATE user SET temppw=#{temppw} WHERE userid=#{userid}
 	</update>
 	
-	<!-- 비밀번호 찾기 인증번호 (1. 맞게 입력했는지 확인하기) -->
+	<!-- 비밀번호 찾기(3.인증번호 맞게 입력했는지 확인하기) -->
 		<select id='selecttemppw' parameterType="com.ticketmvp.domain.UserVO" resultType="String">
-		SELECT userid FROM user WHERE userid=#{userid} AND email=#{email} AND temppw=#{temppw}
+		SELECT userid FROM user WHERE userid=#{userid} AND temppw=#{temppw}
 	</select>
 	
 	<!-- 비밀번호 재설정 -->
 	<update id='updatepw' parameterType="com.ticketmvp.domain.UserVO">
-		SELECT userid FROM user WHERE userid=#{userid} AND email=#{email} AND temppw=#{temppw}
+		UPDATE user SET userpw=#{userpw} where userid=#{userid}
 	</update>
 
 </mapper>
