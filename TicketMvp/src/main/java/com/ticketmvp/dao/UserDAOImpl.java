@@ -4,7 +4,6 @@ import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 
-import org.apache.ibatis.session.ResultHandler;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
