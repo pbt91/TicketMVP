@@ -36,6 +36,7 @@
     <body>
     <jsp:include page="headbar.jsp" />
                   <div class="container-fluid">
+                  				<br></br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">경기 및 티켓 관리</h1>
 

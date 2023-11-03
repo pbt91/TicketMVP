@@ -35,4 +35,5 @@ public class AdminDAOImpl {
 		System.out.println("===> Mybatis ticket() 호출");
 		return mybatis.selectList("AdminVO.ticket", vo);
 	}
+
 }

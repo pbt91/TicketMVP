@@ -35,6 +35,7 @@
     <body>
     <jsp:include page="headbar.jsp" />
     <div class="container-fluid">
+    				<br></br>
     <h1 class="h3 mb-2 text-gray-800">선수 등록</h1>
      <div class="card shadow mb-4">
      	<div class="card-header py-3">

@@ -26,6 +26,62 @@ text-align: right;
 padding:0px 78px; 	
 }
 
+#body-wrapper {
+	min-height: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#body-content {
+	margin-top: 100px;
+	padding-bottom: 100px; /* footer의 높이 조절 */
+	text-align: center;
+}
+
+.header_inner {
+	display: flex;
+	justify-content: space-between; /* 로고와 배너를 좌우로 정렬 */
+	align-items: center;
+}
+
+.logo-banner-container {
+	display: flex;
+	align-items: center;
+	flex-grow: 1; /* 배너 영역이 확장되도록 설정합니다. */
+}
+
+.logo {
+	width: 350px;
+	height: 200px;
+	background-color: transparent;
+}
+
+.footer {
+    color: #f0f0f0; /* 원하는 배경색을 지정합니다. */
+    padding: 20px;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+}
+.footer ul {
+    list-style: none; /* 목록 표시 스타일 제거 */
+    padding: 0;
+    margin: 0;
+}
+.footer ul li {
+    display: inline; /* 목록 항목을 수평으로 정렬 */
+    margin: 0 10px; /* 항목 사이의 간격 조정 */
+}
+
+.baner {
+	width: 1000px;
+	height: 300px;
+	background-color: transparent;
+}
+
  
 :root {
   --blue: #4e73df;

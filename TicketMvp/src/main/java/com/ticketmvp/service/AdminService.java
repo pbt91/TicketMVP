@@ -20,4 +20,7 @@ public interface AdminService {
 	
 	// 티켓 목록 조회
 	List<AdminVO> ticket(AdminVO vo);
+	
+		
+	
 }
