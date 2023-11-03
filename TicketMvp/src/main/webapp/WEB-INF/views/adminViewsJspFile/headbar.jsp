@@ -44,12 +44,13 @@
 
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+			<li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/adminViewsJspFile/index.do" id="index" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <span>Charts</span>
+                    
+                </a>
             </li>
-
 
 
 
