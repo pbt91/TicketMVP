@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminVO">
+
+
+<!-- 	<insert id="insertBoard" parameterType="AdminVO">
+	INSERT INTO uploadtemp
+	(
+		b_name,b_email,b_title
+	   ,b_content,b_pwd,b_date,b_count
+	   <if test="b_fname !=null">
+	   ,b_fname , b_fsize , b_realfname
+	   </if>	
+	) VALUES( #{b_name},#{b_email},#{b_title},
+			  #{b_content},#{b_pwd},now(),0
+			 <if test="b_fname !=null">
+	   		  ,#{b_fname},#{b_fsize},#{b_realfname}
+	   		</if>		  
+	
+	)
+
+	</insert> -->
+
+<!-- 	<select id="getBoardList" resultType="AdminVO">
+		<![CDATA[
+		SELECT * FROM uploadtemp ORDER BY b_id DESC
+		]]>
+	</select>
+	
+	<update id="updateBoard"  parameterType="AdminVO">
+		UPDATE uploadtemp SET
+		b_title = #{b_title},
+		b_content = #{b_content}
+		WHERE b_id = #{b_id}
+	</update> -->
+	
+	<delete id="deleteUser"  parameterType="AdminVO">
+		DELETE FROM user
+		WHERE userid = #{userid}
+	</delete> 
+	
+	<select id="user"  parameterType="AdminVO" resultType="AdminVO">
+		SELECT userid,name,email,phone
+		FROM user
+	</select>
+	
+	<select id="athleteManagement"  parameterType="AdminVO" resultType="AdminVO">
+		SELECT athletename,club,age,position,backno
+		FROM   athlete
+	</select>
+	<select id="clubManagement"  parameterType="AdminVO" resultType="AdminVO">
+		SELECT a.athletename athletename , a.club club,c.league league,c.stadiumname stadiumname
+		FROM  athlete a 
+		INNER JOIN club c
+		ON a.club= c.club
+	</select>
+	<select id="ticket"  parameterType="AdminVO" resultType="AdminVO">
+		SELECT t.ticketname ticketname,t.ticketprice ticketprice
+			  ,t.ticketall ticketall,t.ticketremain ticketremain
+			  ,t.ticketid ticketid, m.homeclub homeclub,m.awayclub awayclub,m.matchid matchid
+			  
+		FROM `match` m 
+		INNER JOIN ticket t
+		ON m.matchid = t.matchid
+	</select>	
+</mapper>

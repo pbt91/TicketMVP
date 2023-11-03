@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>메인</title>
 </head>
 <body>
-
+<a href='/TicketMvp/user/userInsertUserForm.do'> 회원가입 </a>
+<br/>
+<a href='/TicketMvp/user/userLoginForm.do'> 로그인 </a>
 </body>
 </html>

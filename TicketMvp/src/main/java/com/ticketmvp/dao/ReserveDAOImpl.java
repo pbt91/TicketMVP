@@ -17,6 +17,7 @@ public class ReserveDAOImpl implements ReserveDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
+
 	//경기 선택한 상태에서 해당 경기 예약 가능 티켓 호출
 	public List<ReserveVO> getTicketList(ReserveVO vo) {
 		System.out.println("===> Mybatis getTicketList() 호출");

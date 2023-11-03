@@ -6,10 +6,10 @@ $(function () {
 
         /* 사용자가 입력한 아이디 가져와야함 */
         var userinputid = $('#userid').val();
-        //alert(userinputid);						// 사용자가 입력한 아이디 확인됨.
+        alert(userinputid);						// 사용자가 입력한 아이디 확인됨.
 
         $.ajax({
-            url: '../user/userIdCheck',                  //Controller에서 요청받을 주소
+            url: '/TicketMvp/user/userIdCheck',                  //Controller에서 요청받을 주소
             type: 'post',
             dataType: 'json',
             data: { "id": userinputid },
@@ -19,7 +19,7 @@ $(function () {
                 }else{
                     $('#idCheckResult').text("사용중인 아이디 입니다");
                 }
-                if(userinputid.equals("")){
+                if(userinputid.equals()==""){
                     $('#idCheckResult').text("아이디를 입력해주세요");
                 }
             },

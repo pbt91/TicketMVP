@@ -24,5 +24,34 @@ public class UserServiceImpl implements UserService{
 		userDAO.insertUser(vo);
 	}
 	
+	// 로그인 체크
+	public String loginCheck(String id, String pw) {
+		String result = (String) userDAO.loginCheck(id, pw);
+		return result;
+	}
 
+	// 아이디 찾기
+	public String findId(String email) {
+		String result = userDAO.findId(email);
+		return result;
+	}
+
+	// 비밀번호 찾기
+	public String findPw(UserVO vo) {
+		String result = userDAO.findPw(vo);
+		return result;
+	}
+
+	// 비밀번호 찾기에서 인증번호 확인하기
+	public Integer checkTempPw(UserVO vo) {
+		Integer result = userDAO.checkTempPw(vo);
+		return result;
+	}
+
+	// 비밀번호 재설정
+	public Integer resetPw(UserVO vo) {
+		Integer result = userDAO.resetPw(vo);
+		return result;
+	}
+	
 }

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>회원가입 폼</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-<script src='../resources/js/joinCheck.js' type="text/javascript"></script>
+<script src='/TicketMvp/resources/js/user/userInsertUserForm.js' type="text/javascript"></script>
 </head>
 <body>
 
@@ -64,9 +64,10 @@
 			</tr>
 			<tr>
 				<td colspan="4" class="normal">
-					<div align="w">
+					<div align="">
 						<input type="submit" name="join" id="join" value="등   록" >
 						<input type="reset" name="reset" value="취   소">
+						<a href=''><input type="button" name="reset" value="첫페이지로 이동"></a>
 					</div>
 				</td>
 			</tr>

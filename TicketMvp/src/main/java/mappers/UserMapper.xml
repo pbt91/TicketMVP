@@ -13,5 +13,35 @@
 		INSERT INTO user ( userid, userpw, email, joinstatus, name, admin, phone )
 		VALUES( #{userid},  #{userpw}, #{email}, true, #{name}, false, #{phone} )
 	</insert>
+	
+	<!-- 회원정보 확인(로그인가능한지) -->
+	<select id="selectlogincheck" parameterType="com.ticketmvp.domain.UserVO" resultType="String">
+		SELECT name FROM user WHERE userid=#{userid} AND userpw=#{userpw}
+	</select>
+
+	<!-- 아이디 찾기(이메일이 일치하는게 있는지 확인) -->
+	<select id='selectfindid' parameterType="String" resultType="String">
+		SELECT userid FROM user WHERE email=#{email}
+	</select>
+	
+	<!-- 비밀번호 찾기(1.입력한 아이디,이메일이 일치하는지 확인) -->
+	<select id='selectfindpw' parameterType="com.ticketmvp.domain.UserVO" resultType="com.ticketmvp.domain.UserVO">
+		SELECT * FROM user WHERE userid=#{userid} AND email=#{email}
+	</select>
+	
+	<!-- 비밀번호 찾기(2.temppw 설정하기) -->
+	<update id="updatesettemppw" parameterType="com.ticketmvp.domain.UserVO">
+			UPDATE user SET temppw=#{temppw} WHERE userid=#{userid}
+	</update>
+	
+	<!-- 비밀번호 찾기(3.인증번호 맞게 입력했는지 확인하기) -->
+		<select id='selecttemppw' parameterType="com.ticketmvp.domain.UserVO" resultType="String">
+		SELECT userid FROM user WHERE userid=#{userid} AND temppw=#{temppw}
+	</select>
+	
+	<!-- 비밀번호 재설정 -->
+	<update id='updatepw' parameterType="com.ticketmvp.domain.UserVO">
+		UPDATE user SET userpw=#{userpw} where userid=#{userid}
+	</update>
 
 </mapper>
