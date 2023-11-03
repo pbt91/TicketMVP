@@ -30,14 +30,14 @@
 </head>
  <style>
     #athleteManagement {
-        color: red; /* 배경 색상을 빨간색으로 변경 */
+        background-color: #c2d3fa; /* 배경 색상을 빨간색으로 변경 */
     }
 </style>
     <body>
     <jsp:include page="headbar.jsp" />
 	<div class="container-fluid">
 	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">선수관리</h1>
+	<h1 class="h3 mb-2 text-gray-800">선수 관리</h1>
 	                    <div class="card shadow mb-4">
 	                        <div class="card-header py-3">
 	                            <h6 class="m-0 font-weight-bold text-primary">선수 리스트</h6>
@@ -76,9 +76,9 @@
                                 </table>
 		<div id="actionButtons" style="display: block; ">
         <!-- 선택된 항목이 있을 때만 표시될 버튼들 -->        
-        		<a href="athleteRegister" class="athleteRegister">선수 등록</a>
-				<a href="athleteModify" class="athleteModify">선수 수정</a>
-				<a href="athleteManagement" class="athleteManagement3">선수 삭제</a>
+        		<a href="${pageContext.request.contextPath}/adminViewsJspFile/athleteRegister.do" class="athleteRegister">선수 등록</a>
+				<a href="${pageContext.request.contextPath}/adminViewsJspFile/athleteModify.do" class="athleteModify">선수 수정</a>
+				<a href="${pageContext.request.contextPath}/adminViewsJspFile/athleteManagement.do" class="athleteManagement3">선수 삭제</a>
         
     	</div>
                             </div>
