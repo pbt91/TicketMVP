@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<jsp:include page ="adminViewsJspFile/headbar.jsp"></jsp:include>
 	<div id="body-wrapper">
 		<div id="body-content">
 			<header class='header_menu'>
