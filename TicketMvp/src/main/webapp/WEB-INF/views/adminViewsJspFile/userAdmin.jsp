@@ -37,6 +37,7 @@
 <jsp:include page="headbar.jsp" />
                 <div class="container-fluid">
                     <!-- Page Heading -->
+                    				<br></br>
                     <h1 class="h3 mb-2 text-gray-800">회원 관리</h1>
 
                     <!-- DataTales Example -->

@@ -15,4 +15,5 @@ public interface AdminDAO {
 	public List<AdminVO> selectClub(AdminVO vo) ;
 	
 	public List<AdminVO> selectTicket(AdminVO vo) ;
+	
 }

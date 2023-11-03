@@ -25,6 +25,7 @@
  			<jsp:include page="sidebar.jsp" />
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
+            				<br></br>
                 <!-- Top navigation-->
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                     <div class="container-fluid">

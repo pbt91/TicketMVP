@@ -8,7 +8,7 @@
 <jsp:include page="headbar.jsp" />
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+				<br></br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">회원관리</h1>
 

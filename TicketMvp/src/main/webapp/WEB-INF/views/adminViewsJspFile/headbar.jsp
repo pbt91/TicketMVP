@@ -26,6 +26,32 @@
 </head>
 
 <body id="page-top">
+			<header class="header_inner">
+				<div class="logo-banner-container">
+					<div class="logo">
+						<img src="${pageContext.request.contextPath}/resources/images/member_images/rogo.png" 
+							width="350" height="200">
+					</div>
+					<div class="baner">
+						<img src="${pageContext.request.contextPath}/resources/images/member_images/baner.png"
+							width="1000" height="300">
+					</div>
+				</div>
+							<div class="header_util">
+								<div class="header_util_inner">
+									<div class="header_util_right">
+										<ul class="header_util_list">
+											<li class="header_util_item"><a href="j#" id="loginBtn"
+												class="header_util_link" style="display: block;">로그인</a></li>
+											<li class="header_util_item"><a href="#" id="joinBtn"
+												class="header_ut il_link" style="display: block;">회원가입</a> <a
+												href="#" id="LogoutBtn" class="header_util_link"
+												style="display: none;">로그아웃</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+			</header>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -33,13 +59,6 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin </div>
-            </a>
 
 
             <!-- Nav Item - Charts -->
@@ -113,7 +132,6 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <form class="form-inline">
