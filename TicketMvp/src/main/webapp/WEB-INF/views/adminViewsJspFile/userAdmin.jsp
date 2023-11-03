@@ -29,15 +29,15 @@
 
 </head>
 <style>
-    a#user {
-        color: red; /* 배경 색상을 빨간색으로 변경 */
+    #userAdmin {
+        background-color: #c2d3fa; /* 배경 색상을 빨간색으로 변경 */
     }
 </style>
     <body>
 <jsp:include page="headbar.jsp" />
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">회원관리</h1>
+                    <h1 class="h3 mb-2 text-gray-800">회원 관리</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">

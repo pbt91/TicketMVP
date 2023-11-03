@@ -15,8 +15,8 @@
         <link href="${pageContext.request.contextPath}/resources/js/scripts.js" rel="stylesheet" type="text/js">
     </head>
  <style>
-    a[href='clubModify'] {
-        background-color: #dedede; /* 배경 색상을 빨간색으로 변경 */
+    #clubModify {
+        background-color: #c2d3fa;; /* 배경 색상을 빨간색으로 변경 */
     }
 </style>
     <body>
