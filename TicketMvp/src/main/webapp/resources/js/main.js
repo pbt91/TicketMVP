@@ -1,5 +1,5 @@
-  $(document).ready(function() {
-            var numRows = 2; // 그리드의 총 행 수
+ /* $(document).ready(function() {
+            var numRows = 4; // 그리드의 총 행 수
             var itemsPerRow = 4; // 각 행당 이미지 아이템 수
             var totalItems = numRows * itemsPerRow;
 
@@ -23,3 +23,19 @@
                 }
             });
         });
+        */
+        
+
+$(document).ready(function() {
+    var $grid = $('#image-grid').masonry({
+        itemSelector: '.image-item',
+        columnWidth: 200, // 열의 폭
+        gutter: 10, // 이미지 간격
+    });
+
+    $grid.imagesLoaded().progress(function() {
+        $grid.masonry('layout');
+    });
+});
+
+        

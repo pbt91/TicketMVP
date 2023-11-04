@@ -1,3 +1,6 @@
+/* 스타일 파일 (styles.css) */
+
+/* 전체 페이지 스타일 */
 body {
 	margin: 0;
 	font-size: 1rem;
@@ -9,201 +12,161 @@ body {
 }
 
 #body-wrapper {
-    min-height: 100%;
-    position: relative;
+	flex-grow: 1; /* 푸터 위의 콘텐츠가 화면을 채울 수 있도록 설정 */
+	display: flex;
+	flex-direction: column;
 }
 
 #body-content {
-    margin-top: 100px;
-    padding-bottom: 916px; /* footer의 높이 */
+	text-align: center;
+	padding-bottom: 100px; /* footer의 높이 조절 */
+	padding: 100px; /* 푸터와 콘텐츠 사이 여백 조절 */
 }
 
-.header_inner {
+/* 상단 헤더 스타일 */
+.top-header {
+	background-color: #333;
+	color: white;
+	text-align: right;
+	padding: 10px;
+}
+
+.top-header .header-links {
+	float: right;
+}
+
+.top-header .header-links a {
+	color: white;
+	text-decoration: none;
+	margin: 0 10px;
+}
+
+/* 로고 및 배너 스타일 */
+.header {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	padding: 20px;
 }
 
-.logo {
-	margin-left: 10%;
-	width: 100%;
-	max-width: 350px;
+.header .logo img {
+	width: 150px;
 	height: auto;
-}
-
-.header_menu {
-	display: flex;
-	align-items: center;
-	margin-left: auto;
-}
-
-.header_util {
-	background: white;
-	margin-left: auto;
-	padding-right: 20px;
-	display: flex;
-	align-items: center;
-}
-
-.header_util_right {
-	display: flex;
-	align-items: center;
-	margin-left: auto;
 	margin-right: 20px;
 }
 
-.header_util_item {
-	display: inline-block;
-	position: relative;
-	margin-left: 20px;
+.header .banner img {
+	width: 100%;
+	height: auto;
 }
 
-.header_util_list {
-	list-style: none;
-	padding: 0;
+.login-header {
+	background-color: #333;
+	color: white;
+	text-align: right;
+	padding: 30px;
+}
+
+.login-header .header-links {
+	float: right;
+}
+
+.login-header .header-links a {
+	color: white;
+	text-decoration: none;
+	margin: 0 10px;
+}
+
+.logo-banner-header {
+	display: flex;
+	align-items: center;
+	padding: 20px;
+	background-color: #fff;
+}
+
+/* 로고와 배너 크기 및 가운데 정렬 */
+.logo {
+	width: 150px; /* 수정된 크기 */
+	height: auto;
+	margin-right: 10px;
+}
+
+.banner {
+	width: 150%; /* 배너 너비 100% */
+	height: auto;
+	display: flex;
+	justify-content: center; /* 가운데 정렬 */
+	align-items: center; /* 세로 가운데 정렬 */
+}
+
+/* 메인 콘텐츠 스타일 */
+.main-content {
 	display: flex;
 }
 
-h1 {
-	font-size: 35px;
+/* 좌측 메뉴 스타일 */
+.sidebar {
+	background-color: #333;
+	color: white;
+	width: 250px;
+	padding: 20px;
 }
 
-.main.pop {
-    min-height: calc(100vh - 131px);
-    margin-bottom: 50px; /* 푸터의 높이만큼 bottom margin 추가 */
+.sidebar .menu {
+	list-style: none;
+	padding: 0;
 }
 
-.dfFullBox {
-	display: inline-block;
-	float: left;
-	width: 100%;
+.sidebar .menu li {
+	margin-bottom: 10px;
 }
 
-.sideMenuBx {
-	display: contents;
-	position: relative;
+.sidebar .menu a {
+	color: white;
+	text-decoration: none;
 }
 
-.dfSidBox.brdrR1_gry, .dfSidBox.brdrL1_gry {
-	min-height: 100%;
-}
-
-.dfSidBox {
-	display: inline-flex;
-	justify-content: center;
-	float: left;
-	width: calc(100%/ 4);
-	max-width: 480px;
-	box-sizing: border-box;
-}
-
-.dfCntntBox {
-	display: inline-block;
-	float: left;
-	width: calc(( 100%/ 4)* 3);
-}
-
-#image-grid-container {
-	display: grid;
-	gap: 10px;
-}
-
-#image-grid {
-	display: grid;
-	grid-template-columns: repeat(8, 1fr); /* 8개의 열로 그리드 설정 */
-	gap: 10px;
-}
-
-.image-item {
-	min-width: 100px;
-	min-height: 100px;
-}
-
-.image-item img {
-	width: 100%;
-	height: 100%;
-	max-width: 100%;
-	max-height: 100%;
-	display: block;
-}
-
-.even {
-	grid-column: span 2;
-	grid-row: span 2;
-	min-width: 200px;
-	min-height: 200px;
-}
-
-.odd {
-	grid-column: span 2;
-	grid-row: span 1;
-	min-width: 200px;
-	min-height: 100px;
-}
-
-.image-item:hover img {
-	transform: scale(1.05);
+/* 쇼핑몰 화면 스타일 */
+.shopping-area {
+	flex: 1;
+	padding: 20px;
+	background-color: #fff;
 }
 
 /* Footer Styles */
 .footer {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100px;
+	width: 100%;
+	background-color: #333;
+	color: white;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	bottom: 0; left: 0;
+	height: 100px;
 }
 
 .footer_inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .footer_links ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    margin-right: 20px; /* 이전에 있던 마진을 여기로 이동 */
+	list-style: none;
+	padding: 0;
+	display: flex;
+	margin-right: 20px; /* 이전에 있던 마진을 여기로 이동 */
 }
 
 .footer_links li {
-    margin-right: 20px;
+	margin-right: 20px;
 }
 
 .footer a {
-    color: white;
+	color: white;
 }
 
 .footer_logo {
-    font-weight: bold;
-    font-size: 24px;
-}
-@media ( max-width : 768px) {
-	.image-grid {
-		grid-template-columns: repeat(4, 1fr);
-		gap: 5px;
-	}
-	.image-item {
-		min-width: 200px;
-		min-height: 200px;
-	}
-	.even, .odd {
-		min-width: 200px;
-		min-height: 200px;
-	}
-	#image-grid-container {
-		width: 100%;
-	}
-}
-	#image-grid {
-		/* 이미지 그리드의 스타일링을 작은 화면에 맞게 조정합니다 */
-		
-	}
+	font-weight: bold;
+	font-size: 24px;
 }
