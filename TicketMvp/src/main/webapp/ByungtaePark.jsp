@@ -11,17 +11,17 @@
 <a href="/TicketMvp/reserve/ReserveChoose.do?matchid=1">reserve choose seat</a> <br/>
 <a href="/TicketMvp/billing/billingFail.do">토스 실패시</a> <br/>
 <c:if test="${sessionScope.userid != null}">
-
-${sessionScope.name}님 환영합니다 
-
-<a href='logout.do'><input type="button" id='move_logout' name='move_logout' value='로그아웃'/></a>
-
+	${sessionScope.name}님 환영합니다 <br/>
+	<c:forEach var="entry" items="${sessionScope}">
+	      <li>${entry.key}: ${entry.value}</li>
+	</c:forEach>
+	<a href='user/logout.do'><input type="button" id='move_logout' name='move_logout' value='로그아웃'/></a>
 </c:if>
 
 <c:if test="${sessionScope.userid == null}">
 
 
-로그인을 해주세요 <a href='userLoginForm.do'><input type="button" id='move_login' name='move_login' value='로그인'/></a>
+로그인을 해주세요 <a href='user/userLoginForm.do'><input type="button" id='move_login' name='move_login' value='로그인'/></a>
 
 </c:if>
 

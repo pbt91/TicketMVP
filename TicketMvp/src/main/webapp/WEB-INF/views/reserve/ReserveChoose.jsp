@@ -163,5 +163,14 @@
     </div>
 </div>
 
+<!-- 로그인 확인 -->
+<c:choose>
+    <c:when test="${sessionScope.userid != null}">
+        <input type="hidden" id="userLoggedIn" value="true" />
+    </c:when>
+    <c:otherwise>
+        <input type="hidden" id="userLoggedIn" value="false" />
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

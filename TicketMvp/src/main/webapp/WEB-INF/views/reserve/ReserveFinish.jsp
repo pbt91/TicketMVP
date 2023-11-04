@@ -18,6 +18,9 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<!--  지울대상 -->
+<%@ page import="java.util.Enumeration" %>
 <!-- 결제 데이터 호출 -->
 <%
   String orderId = request.getParameter("orderId");
@@ -96,11 +99,11 @@
 		                       </div>
 		                       <div class="form-group row">
 		                           <label class="col-sm-4 col-form-label">개수:</label>
-		                           <div class="col-sm-8"><%= request.getParameter("ticketQuantity") %></div>
+		                           <div class="col-sm-8"><%= request.getParameter("ticketQuantity") %>장</div>
 		                       </div>
 		                       <div class="form-group row">
 		                           <label class="col-sm-4 col-form-label">결제금액:</label> 	
-		                           <div class="col-sm-8"><%= request.getParameter("finalPrice") %>원</div>
+		                           <div class="col-sm-8"><%= request.getParameter("amount") %>원</div>
 		                       </div>
 		                       <div class="form-group row">
 		                           <label class="col-sm-4 col-form-label">결제일시:</label>

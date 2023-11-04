@@ -18,6 +18,11 @@
 		WHERE m.matchid = #{matchid}
     </select>
     
+    <select id="getUserInfo" parameterType="String" resultType="com.ticketmvp.domain.UserVO">
+    	SELECT * FROM user 
+    	WHERE userid=#{userid}
+    </select>
+    
     <select id="getTicketInfo" parameterType="int" resultType="com.ticketmvp.domain.ReserveVO">
 	    SELECT 
 	        t.*, 
@@ -31,7 +36,7 @@
     
     <insert id="recordReservation" parameterType="hashmap">
     	INSERT INTO reservation (reserveid, userid, reservestatus, paydate, totalpayment)
-		VALUES (${orderId} , 'qkrqudxo91', '예약완료', now(), ${finalPrice}); <!-- qkrqudxo91값은 나중에 유저id로 변경  -->
+		VALUES (${orderId} , '${userId}', '예약완료', now(), ${totalAmount})
     </insert>
     
     <update id="recordSeat" parameterType="hashmap">
@@ -47,4 +52,6 @@
 		SET ticketremain = ticketremain - ${tickets}
 		WHERE ticketid = ${ticketId}
     </update>
+    
+	
 </mapper>

@@ -5,6 +5,24 @@ $(function(){
 	//경기Id 가져오기
 	let matchId = $("input#matchid").val();
     
+    //전화번호 포멧 함수
+    function formatPhoneNumber(phoneNumber) {
+	    // 전화번호 11자리이면
+	    if (phoneNumber && phoneNumber.length === 11) {
+	        return phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+	    } 
+	    // 전화번호 10자리이면
+	    else if (phoneNumber && phoneNumber.length === 10){
+	        return phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");;
+   		} else {
+   			return phoneNumber;
+   		}
+	}
+    
+    // 전화번호 포멧 후 다시 표기  
+    var currentPhoneNumber = $("span#userPhone").text().trim();
+    $("span#userPhone").text(formatPhoneNumber(currentPhoneNumber));
+    
     //총 상품가격 계산 후 표시
     calculateTotalPrice();
 	
@@ -19,7 +37,7 @@ $(function(){
     
    	//총 결제금액 표시+총금액 변수 초기화  ** 추후 쿠폰 적용 금액 표시 개발 필요
  	let finalPrice = parseFloat($("#totalPriceDisplay").text().replace(/,/g, '').replace('원', ''));
-    $("#finalPriceDisplay").text(finalPrice.toLocaleString() + "원");
+    $("div#finalPriceDisplay").text(finalPrice.toLocaleString() + "원");
 
     //예매 확인 메시지
     $("#order").click(function() {
@@ -59,19 +77,19 @@ $(function(){
             //티켓명
             orderName: $("#productDisplay").text(),
             //성공시 이동
-            //"billing/billingSuccess.do", <== 테스트용
             successUrl: window.location.origin + path 
             	+ "reserve/ReserveFinish.do?ticketQuantity="+$("#ticketQuantity").data("ticket-quantity")
-            	+ "&finalPrice="+finalPrice
-            	+ "&ticketId="+ $("input#ticketid").val(), 	
+            	+ "&ticketId="+$("input#ticketid").val()
+            	+ "&userId="+$("input#userId").val(), 	
             //실패시 이동
-            failUrl: window.location.origin + path + "billing/billingFail.do",
-            //고객 이메일  **추후 고객이메일 넣기
-            customerEmail: 'customer123@gmail.com',
-            //고객 이름  **추후 고객이름 넣기
-            customerName: '김토스',
-			//고객 전화번호 *추후 고객번호 넣기
-			customerMobilePhone: '01011111111'
+            failUrl: window.location.origin + path + "error/billingFail.do",
+            //고객 이메일 
+            customerEmail: $("div#userEmail").text(),
+            //고객 이름  
+            customerName: $("div#userName").text(),
+			//고객 전화번호 
+			customerMobilePhone: $("span#userPhone").data("phone")
         });
-    });
+    }); 
+   
 }); //end of document load

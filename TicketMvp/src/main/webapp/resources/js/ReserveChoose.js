@@ -1,6 +1,4 @@
 $(function(){
-
-
     //좌석 예매 리스트 active 지정
     $(".list-group-item").click(function(event){
         $(".hidden-input").removeClass("hidden-input");
@@ -47,6 +45,13 @@ $(function(){
 	//예매버튼 클릭에 넘어가기 전 확인 메시지
 	$("button#purchase").click(function(event){ 
 		event.preventDefault(); 
+
+		//로그인 되어 있으면 예매 불가
+ 		if ($("#userLoggedIn").val() === 'false') {
+            alert("로그인을 해야 예매하실 수 있습니다. 로그인 해주세요.");
+            return; 
+        }
+		
 
 	    // 티켓이 선택 되어있는지 확인
 	    let ticketId = $("#ticketId").val();

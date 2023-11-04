@@ -3,12 +3,15 @@ package com.ticketmvp.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
 import com.ticketmvp.domain.ReserveVO;
+import com.ticketmvp.domain.UserVO;
 
 
 
@@ -30,6 +33,12 @@ public class ReserveDAOImpl implements ReserveDAO{
 		return mybatis.selectOne("ReserveDAO.getImageFile", vo);
 	}
 
+	//유저정보 호출
+	public UserVO getUserInfo(String userId, UserVO vo) {
+		System.out.println("===> Mybatis getUserInfo() 호출");
+		return mybatis.selectOne("ReserveDAO.getUserInfo", userId);
+	}
+	
 	//예매/결재 확인 페이지에 결재할 티켓 정보 호출
 	public ReserveVO getTicketInfo(int ticketId) {
 		System.out.println("===> Mybatis getTicketInfo() 호출");
@@ -37,11 +46,12 @@ public class ReserveDAOImpl implements ReserveDAO{
 	}
 
 	//예매/결재 후 예약테이블에 정보 입력
-	public void recordReservation(String orderId, Integer finalPrice) {
+	public void recordReservation(String orderId, Integer totalAmount, String userId) {
 		System.out.println("===> Mybatis recordReservation() 호출");
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("orderId", orderId);
-	    param.put("finalPrice", finalPrice);
+	    param.put("totalAmount", totalAmount);
+	    param.put("userId", userId);
 		mybatis.insert("ReserveDAO.recordReservation", param);
 	}
 
@@ -55,7 +65,7 @@ public class ReserveDAOImpl implements ReserveDAO{
 		return mybatis.update("ReserveDAO.recordSeat", param);
 	}
 
-	@Override
+	//결제 수량 만큼 티켓 수 없애기
 	public void deductTickets(int tickets, Integer ticketId) {
 		System.out.println("===> Mybatis deductTickets() 호출");
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -63,6 +73,6 @@ public class ReserveDAOImpl implements ReserveDAO{
 		param.put("ticketId", ticketId);
 		mybatis.update("ReserveDAO.deductTickets", param);
 	}
-	
+
 
 }
