@@ -24,4 +24,7 @@ public interface UserService {
 	
 	//비밀번호 재설정
 	Integer resetPw(UserVO vo);
+	
+	//현재비밀번호 확인
+	String checkPw(UserVO vo);
 }

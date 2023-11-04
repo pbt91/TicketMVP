@@ -146,6 +146,13 @@ public class UserDAOImpl implements UserDAO {
 		Integer result = mybatis.update("UserDAO.updatepw",vo);
 		return result;
 	}
+
+	// 현재비밀번호 확인
+	@Override
+	public String checkPw(UserVO vo) {
+		String resutl = mybatis.selectOne("UserDAO.selectpw",vo);
+		return resutl;
+	}
 	
 	
 	

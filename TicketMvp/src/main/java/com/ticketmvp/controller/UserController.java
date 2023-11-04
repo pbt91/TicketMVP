@@ -105,4 +105,19 @@ public class UserController {
 		System.out.println("resetPw 컨트롤러 결과: "+result);
 		return result;
 	}
+	
+	@RequestMapping("/userMymodify.do")
+	public String checkPw(UserVO vo, HttpSession session) {
+		String userid = (String) session.getAttribute("id");
+		vo.setUserid(userid);
+		System.out.println("checkPw 컨트롤러 진입: "+ vo.toString());
+		String result = userservice.checkPw(vo);
+		if(result!=null) {
+			return "";
+		}else {
+			return "redirect:userMyModify.do";
+		}
+
+	}
+	
 }

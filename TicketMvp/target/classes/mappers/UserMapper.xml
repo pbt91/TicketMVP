@@ -44,4 +44,13 @@
 		UPDATE user SET userpw=#{userpw} where userid=#{userid}
 	</update>
 
+	<!-- 현재비밀번호 확인 -->
+	<select id="selectpw" parameterType="com.ticketmvp.domain.UserVO" resultType="String">
+		SELECT userid FROM user WHERE userid=#{userid} AND userpw=#{userpw}
+	</select>
+	
+	
+	
+	
+
 </mapper>

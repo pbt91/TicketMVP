@@ -20,4 +20,9 @@ public interface UserDAO {
 	public Integer checkTempPw(UserVO vo);
 	// 비밀번호 재설정
 	public Integer resetPw(UserVO vo);
+	// 회원정보수정 - 현재비밀번호 확인하기 
+	public String checkPw(UserVO vo);
+	
+	
+
 }

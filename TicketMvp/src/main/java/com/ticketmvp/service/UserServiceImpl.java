@@ -54,4 +54,10 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 	
+	// 현재비밀번호 확인
+	public String checkPw(UserVO vo) {
+		String result = userDAO.checkPw(vo);
+		return result;
+	}
+	
 }
