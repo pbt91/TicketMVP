@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	// 로그인 체크
-	public String loginCheck(String id, String pw) {
-		String result = (String) userDAO.loginCheck(id, pw);
+	public UserVO loginCheck(String id, String pw) {
+		UserVO result =  userDAO.loginCheck(id, pw);
 		return result;
 	}
 
@@ -55,8 +55,8 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	// 현재비밀번호 확인
-	public String checkPw(UserVO vo) {
-		String result = userDAO.checkPw(vo);
+	public UserVO checkPw(UserVO vo) {
+		UserVO result = userDAO.checkPw(vo);
 		return result;
 	}
 	

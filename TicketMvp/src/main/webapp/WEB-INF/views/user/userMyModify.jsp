@@ -8,8 +8,7 @@
 <title>회원정보수정</title>
 </head>
 <body>
-
-	<form action='userMyModify.do' id='mymodify' name='mymodify' method='post' align='center'>
+	<form action='checkPw.do' id='mymodify' name='mymodify' method='post' align='center'>
 		<table id='tbmymodify' name='tbmymodify'>
 			<tr>
 				<td>현재 비밀번호</td>
@@ -19,9 +18,6 @@
 		</table>
 	</form>
 
-<%-- <c:if test="${sessionScope.ok!=null}">
-
-</c:if> --%>
 
 </body>
 </html>

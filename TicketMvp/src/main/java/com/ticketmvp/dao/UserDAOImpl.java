@@ -45,13 +45,13 @@ public class UserDAOImpl implements UserDAO {
 
 	// 로그인 체크
 	@Override
-	public String loginCheck(String id, String pw) {
+	public UserVO loginCheck(String id, String pw) {
 		System.out.println("===> Mybatis loginCheck() 호출");
 		System.out.println("로그인 시도 id:"+id+" pw:"+pw);
 		UserVO vo = new UserVO();
 		vo.setUserid(id);
 		vo.setUserpw(pw);
-		String result = mybatis.selectOne("UserDAO.selectlogincheck", vo);
+		UserVO result = mybatis.selectOne("UserDAO.selectlogincheck", vo);
 		
 		return result;
 	}
@@ -149,8 +149,8 @@ public class UserDAOImpl implements UserDAO {
 
 	// 현재비밀번호 확인
 	@Override
-	public String checkPw(UserVO vo) {
-		String resutl = mybatis.selectOne("UserDAO.selectpw",vo);
+	public UserVO checkPw(UserVO vo) {
+		UserVO resutl = mybatis.selectOne("UserDAO.selectpw",vo);
 		return resutl;
 	}
 	

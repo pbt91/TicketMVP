@@ -130,6 +130,7 @@ $(function () {
         const name = userinputForm.name;
         const email = userinputForm.email;
         const phone = userinputForm.phone;
+        var num_check=/^[0-9]*$/;
         if (name.value == "" || email.value == "" || phone.value == "") {
             alert("이름 이메일 연락처 필수로 입력해야 합니다");
             return false;
@@ -140,6 +141,13 @@ $(function () {
             alert("이름 이메일 연락처에 공백을 포함 할 수 없습니다");
             return false;
         }
+
+		if(num_check.test(phone)){
+			
+		
+		}else{
+			alert("-을 제외하고 숫자만 입력 가능합니다");
+		}
 
         return true;
 

@@ -21,11 +21,11 @@
 <a href='/TicketMvp/user/'>Q&A</a>
 
 </c:if>
-<c:if test="${sessionScope.userid == null}">
+<%-- <c:if test="${sessionScope.userid == null}">
 
-<a href='/TicketMvp/user/userLoginStatus'>Q&A</a>
+<a href='/TicketMvp/user/userLoginStatus'>안보여야함</a>
 
-</c:if>
+</c:if> --%>
 
 
 </body>

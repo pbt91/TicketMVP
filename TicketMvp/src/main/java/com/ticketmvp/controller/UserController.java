@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,15 +48,18 @@ public class UserController {
 	// 로그인폼 -> 디비확인 -> 로그인 결과페이지
 	@RequestMapping("/loginCheck.do")
 	public String login(String userid, String userpw, HttpSession session) {
-		String result = userservice.loginCheck(userid, userpw);
-		System.out.println(result);
-		if(result == null) {
+		UserVO result = userservice.loginCheck(userid, userpw);
+		System.out.println(result.toString());
+		if(result.getUserid() == null) {
 			// 회원정보 안맞으면 DB검색된 값 없음 -> 로그인 폼 그대로 있음. (비밀번호 틀렸다는 값 넘겨줘야 됨)
 			return "redirect:userLoginForm.do";
 		}else {
 			// 검색된 회원정보 있으면 로그인한 사용자 이름 세션에 저장해야함
-			session.setAttribute("userid", userid);
-			session.setAttribute("name", result);
+			session.setAttribute("userid", result.getUserid());
+			session.setAttribute("name", result.getName());
+			session.setAttribute("email", result.getEmail());
+			session.setAttribute("phone", result.getPhone());
+			
 			//세션시간 1시간
 			//session.setMaxInactiveInterval(60*60);
 			return "redirect:userLoginStatus.do";
@@ -106,14 +110,17 @@ public class UserController {
 		return result;
 	}
 	
-	@RequestMapping("/userMymodify.do")
-	public String checkPw(UserVO vo, HttpSession session) {
-		String userid = (String) session.getAttribute("id");
+	@RequestMapping("/checkPw.do")
+	public String checkPw(UserVO vo, HttpSession session, Model model) {
+		String userid = (String) session.getAttribute("userid");
 		vo.setUserid(userid);
 		System.out.println("checkPw 컨트롤러 진입: "+ vo.toString());
-		String result = userservice.checkPw(vo);
+		UserVO result = userservice.checkPw(vo);
 		if(result!=null) {
-			return "";
+			
+			System.out.println("result : "+ result.toString());
+			
+			return "redirect:userMyModifyForm.do";
 		}else {
 			return "redirect:userMyModify.do";
 		}

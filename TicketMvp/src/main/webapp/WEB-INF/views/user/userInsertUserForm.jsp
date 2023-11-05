@@ -74,7 +74,7 @@
 						<div align="center">연락처</div>
 					</td>
 					<td colspan="3" height="23" class="normal"><input type="tel"
-						name="phone" id="phone" class='userinput' placeholder="필수입력">
+						name="phone" id="phone" class='userinput' pattern="[0-9]+" placeholder="-를 제외하고 입력해주세요">
 					</td>
 				</tr>
 				<tr>
