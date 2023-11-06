@@ -153,6 +153,17 @@ public class UserDAOImpl implements UserDAO {
 		UserVO resutl = mybatis.selectOne("UserDAO.selectpw",vo);
 		return resutl;
 	}
+
+	// 회원정보수정
+	@Override
+	public Integer userModify(UserVO vo, boolean exceptpw) {
+		
+		if(exceptpw) {// true면 userpw는 제외하고 나머지 정보 변경
+			return mybatis.update("UserDAO.updatemodify_exceptpw", vo);
+		}else {	// false면 모든 정보 변경	
+			return mybatis.update("UserDAO.updatemodify_all", vo);			
+		}
+	}
 	
 	
 	

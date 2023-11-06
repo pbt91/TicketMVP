@@ -49,8 +49,7 @@ public class UserController {
 	@RequestMapping("/loginCheck.do")
 	public String login(String userid, String userpw, HttpSession session) {
 		UserVO result = userservice.loginCheck(userid, userpw);
-		System.out.println(result.toString());
-		if(result.getUserid() == null) {
+		if(result.equals(null)) {
 			// 회원정보 안맞으면 DB검색된 값 없음 -> 로그인 폼 그대로 있음. (비밀번호 틀렸다는 값 넘겨줘야 됨)
 			return "redirect:userLoginForm.do";
 		}else {
@@ -59,6 +58,13 @@ public class UserController {
 			session.setAttribute("name", result.getName());
 			session.setAttribute("email", result.getEmail());
 			session.setAttribute("phone", result.getPhone());
+			int asplit = result.getEmail().indexOf("@");
+			String emailid = result.getEmail().substring(0,asplit);
+			int emaillength = result.getEmail().length();
+			String mailslc = result.getEmail().substring(asplit+1,emaillength);
+			session.setAttribute("emailid", emailid);
+			session.setAttribute("mailslc", mailslc);
+			
 			
 			//세션시간 1시간
 			//session.setMaxInactiveInterval(60*60);
@@ -100,7 +106,7 @@ public class UserController {
 		return result;
 	}
 	
-	// 비밀번호 재설정 
+	// 비밀번호 찾기에서 비밀번호 재설정 
 	@RequestMapping(value="/resetPw", method=RequestMethod.POST)
 	@ResponseBody
 	public String resetPw(UserVO vo) {
@@ -110,6 +116,7 @@ public class UserController {
 		return result;
 	}
 	
+	// 회원정보수정 비밀번호 확인
 	@RequestMapping("/checkPw.do")
 	public String checkPw(UserVO vo, HttpSession session, Model model) {
 		String userid = (String) session.getAttribute("userid");
@@ -126,5 +133,26 @@ public class UserController {
 		}
 
 	}
+	
+	// 회원정보수정 -> 디비변경
+	@RequestMapping(value="/userModify", method=RequestMethod.POST)
+	@ResponseBody								//exceptpw - 비밀번호포함여부 true면 제외 false면 포함
+	public Integer userModify(UserVO vo, boolean exceptpw, HttpSession session) { 
+		System.out.println("userModify 진입 : " + vo.toString() + " 비밀번호포함 : "+exceptpw);
+		Integer result = userservice.userModify(vo,exceptpw);
+		session.setAttribute("userid", vo.getUserid());
+		session.setAttribute("name", vo.getName());
+		session.setAttribute("email", vo.getEmail());
+		session.setAttribute("phone", vo.getPhone());
+		int asplit = vo.getEmail().indexOf("@");
+		String emailid = vo.getEmail().substring(0,asplit);
+		int emaillength = vo.getEmail().length();
+		String mailslc = vo.getEmail().substring(asplit+1,emaillength);
+		session.setAttribute("emailid", emailid);
+		session.setAttribute("mailslc", mailslc);
+		return result;
+	}
+	
+	
 	
 }

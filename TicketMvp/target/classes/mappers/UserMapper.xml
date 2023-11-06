@@ -49,8 +49,15 @@
 		SELECT * FROM user WHERE userid=#{userid} AND userpw=#{userpw}
 	</select>
 	
+	<!-- 회원정보수정 비밀번호 제외 -->
+	<update id="updatemodify_exceptpw" parameterType="com.ticketmvp.domain.UserVO">
+		UPDATE user SET name=#{name}, email=#{email}, phone=#{phone} WHERE userid=#{userid}
+	</update>
 	
-	
+	<!-- 회원정보수정 비밀번호 포함 -->
+	<update id="updatemodify_all" parameterType="com.ticketmvp.domain.UserVO">
+		UPDATE user SET name=#{name}, userpw=#{userpw}, email=#{email}, phone=#{phone} WHERE userid=#{userid}
+	</update>
 	
 
 </mapper>

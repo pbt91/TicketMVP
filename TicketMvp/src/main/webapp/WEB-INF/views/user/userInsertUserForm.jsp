@@ -19,7 +19,7 @@
 
 		<form method="post" action="insertUser.do" name="userinput"
 			id="userinput">
-			<table class='table2' align="center" id='tbuserinput'>
+			<table class='tbuserinput' align="center" id='tbuserinput'>
 				<tr>
 					<td class="normalbold tb_ttl">
 						<div align="center">아이디</div>
@@ -62,7 +62,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class=''>
+					<td class='normalbold tb_ttl'>
 						<div align="center">이메일</div>
 					</td>
 					<td colspan="3" height="23" class="normal"><input type="email"
@@ -70,7 +70,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class=''>
+					<td class='normalbold tb_ttl'>
 						<div align="center">연락처</div>
 					</td>
 					<td colspan="3" height="23" class="normal"><input type="tel"

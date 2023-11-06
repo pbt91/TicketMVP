@@ -27,4 +27,7 @@ public interface UserService {
 	
 	//현재비밀번호 확인
 	UserVO checkPw(UserVO vo);
+	
+	//회원정보수정
+	Integer userModify(UserVO vo, boolean exceptpw);
 }

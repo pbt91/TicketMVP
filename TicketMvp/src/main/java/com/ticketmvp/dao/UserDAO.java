@@ -22,7 +22,8 @@ public interface UserDAO {
 	public Integer resetPw(UserVO vo);
 	// 회원정보수정 - 현재비밀번호 확인하기 
 	public UserVO checkPw(UserVO vo);
-	
+	// 회원정보수정
+	public Integer userModify(UserVO vo, boolean exceptpw);
 	
 
 }

@@ -59,5 +59,10 @@ public class UserServiceImpl implements UserService{
 		UserVO result = userDAO.checkPw(vo);
 		return result;
 	}
+
+	// 회원정보 수정
+	public Integer userModify(UserVO vo, boolean exceptpw) {	
+		return userDAO.userModify(vo, exceptpw);
+	}
 	
 }
