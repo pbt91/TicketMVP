@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>결재 오류 발생</title>
+    <title>오류 발생</title>
     <style>
         .error-container {
             text-align: center;
@@ -14,8 +14,8 @@
 </head>
 <body>
     <div class="error-container">
-        <h1>결재 오류 발생</h1>
-        <p>죄송합니다. 요청하신 결재는 잘못된 요청입니다.</p>
+        <h1>오류 발생</h1>
+        <p>죄송합니다. 요청하신 페이지에 접근할 수 없습니다.</p>
     </div>
 </body>
 </html>

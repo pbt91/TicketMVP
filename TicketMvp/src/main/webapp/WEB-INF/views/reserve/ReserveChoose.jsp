@@ -135,7 +135,7 @@
 <div class="modal fade" id="reservationInfoModal" tabindex="-1" role="dialog" aria-labelledby="reservationInfoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-        	<form id="reservationForm" action="/TicketMvp/reserve/ReservePayment.do" method='post'>
+        	<form id="reservationForm" action="/TicketMvp/reserve/ReserveConfirm.do" method='post'>
        			<div class="modal-header bg-primary text-white">
 	                <h5 class="modal-title" id="reservationInfoModalLabel">예약정보</h5>
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -155,7 +155,7 @@
 	                <p>이대로 예매하시겠습니까?</p>
 	            </div>
 	            <div class="modal-footer">
-	                <button id="purchaseConfirm" class="btn btn-primary">예매확인</button>
+	                <button id="purchaseConfirm" class="btn btn-primary ajaxlink">예매확인</button>
 	                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
 	            </div>
         	</form>

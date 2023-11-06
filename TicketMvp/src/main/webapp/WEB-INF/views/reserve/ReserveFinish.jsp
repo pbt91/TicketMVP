@@ -19,8 +19,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<!--  지울대상 -->
-<%@ page import="java.util.Enumeration" %>
 <!-- 결제 데이터 호출 -->
 <%
   String orderId = request.getParameter("orderId");
@@ -63,7 +61,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>결재 완료</title>
      <!-- Jquery 호출 -->
@@ -74,7 +71,7 @@
     <!-- js코드 호출 -->
 	<script src="/TicketMvp/resources/js/ReserveFinish.js"></script>
 	<!-- css 호출 -->
-	<link rel="stylesheet" href="/TicketMvp/resources/css/ReserveFinish.css"> 
+	<link rel="stylesheet" href="/TicketMvp/resources/css/ReserveFinish.css">
 </head>
 <body>
 	<section>

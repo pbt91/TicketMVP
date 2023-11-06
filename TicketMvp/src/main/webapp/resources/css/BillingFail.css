@@ -1,18 +1,1 @@
 @charset "UTF-8";
-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.text-center {
-    margin-top: 20px;
-}
