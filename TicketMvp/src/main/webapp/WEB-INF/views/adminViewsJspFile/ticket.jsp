@@ -39,7 +39,9 @@
                   				<br></br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">경기 및 티켓 관리</h1>
-
+    <c:if test="${not empty updateResult}">
+        <div class="alert alert-success">${updateResult}</div>
+    </c:if>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
 	                        <div class="card-header py-3">
@@ -57,31 +59,46 @@
                                             <th>남은수량</th>
                                             <th>티켓번호</th>
                                             <th>경기번호</th>
+                                            <th>경기시간</th>
+                                            <th>경기날짜</th>
+                                            
                                             <th>
 												<input type="checkbox" id="selectAll" onchange="selectAllCheckboxes(this)">
 					   						</th>
 										</tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${ticketList}" var="ticket">
-                                        <tr>
-											<td>${ticket.homeclub}vs${ticket.awayclub}</td>
-											<td>${ticket.ticketname}</td>
-											<td>${ticket.ticketprice}원</td>
-											<td>${ticket.ticketall}개</td>
-											<td>${ticket.ticketremain}개</td>
-											<td>${ticket.ticketid}</td>
-											<td>${ticket.matchid}</td>			
-											<td>
-								        		<input type="checkbox" name="selectedUser" value="${ticket.ticketid}" />
-								      		</td>
-                                        </tr>
-                                        </c:forEach>
-                                    </tbody>
+									  <c:forEach items="${ticketList}" var="ticket">
+									    <tr>
+									        <td>${ticket.homeclub}vs${ticket.awayclub}</td>
+									        <td>${ticket.ticketname}</td>
+									        <td>${ticket.ticketprice}원</td>
+									        <td>${ticket.ticketall}개</td>
+									        <td>${ticket.ticketremain}개</td>
+									        <td>
+									            <a href="ticketModify.do?ticketid=${ticket.ticketid}">${ticket.ticketid}</a>
+									        </td>
+									        <td>
+									            <c:choose>
+									                <c:when test="${not empty ticket.ticketid}">
+									                    ${ticket.matchid}
+									                </c:when>
+									                <c:otherwise>
+									                    <a href="ticketModify.do?matchid=${ticket.matchid}">${ticket.matchid}</a>
+									                </c:otherwise>
+									            </c:choose>
+									        </td>
+									        <td>${ticket.matchdate}</td>
+									        <td>${ticket.matchtime}</td>
+									        <td>
+									            <input type="checkbox" name="selectedUser" value="${ticket.ticketid}" />
+									        </td>
+									    </tr>
+									</c:forEach>
+                                  </tbody>
                                 </table>
 								<div id="actionButtons" style="display: block;">
 								<a href="${pageContext.request.contextPath}/adminViewsJspFile/ticketRegister.do" class="ticketRegister">경기 및 티켓등록</a>
-								<a href="${pageContext.request.contextPath}/adminViewsJspFile/ticketModify.do" class="ticketModify">경기 및 티켓 수정</a>
 								<a href="${pageContext.request.contextPath}/adminViewsJspFile/ticket.do" class="ticketdeleteC">경기 및 티켓 삭제</a>
 								</div>
                             </div>
@@ -93,6 +110,7 @@
 												checkboxes[i].checked = checkbox.checked;
 											}
 										}
+
 									</script>
                 </div>
                     </div>

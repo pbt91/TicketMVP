@@ -1,8 +1,8 @@
 package com.ticketmvp.controller;
 
+import java.io.IOException;
 import java.util.List;
 
-import javax.xml.crypto.Data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ticketmvp.domain.AdminVO;
 import com.ticketmvp.service.AdminService;
@@ -18,89 +17,130 @@ import com.ticketmvp.service.AdminService;
 @Controller
 @RequestMapping("/adminViewsJspFile")
 public class AdminController {
-	
+
 	@Autowired
 	private AdminService AdminService;
-	
+
 	@RequestMapping("/{step}.do")
 	public String viewPage(@PathVariable String step) {
 		return step;
 	}
-	
+
+	// 회원 리스트 출력
 	@RequestMapping("/userAdmin.do")
-	public void user(AdminVO vo , Model model) {
+	public void user(AdminVO vo, Model model) {
 		List<AdminVO> result = AdminService.user(vo);
-		model.addAttribute("userList",result);
-		
+		model.addAttribute("userList", result);
+
 	}
+
 	@RequestMapping("/adminHome.do")
 	public void adminMain() {
-		
+
 	}
+
 	@RequestMapping("/athleteRegister.do")
 	public void athleteRegister() {
-		
+
 	}
-	
+
 	@RequestMapping("/athleteModify.do")
 	public void athleteModify() {
-		
+
 	}
+
+	// 선수 리스트 출력
 	@RequestMapping("/athleteManagement.do")
-	public void athleteManagement(AdminVO vo , Model model) {
+	public void athleteManagement(AdminVO vo, Model model) {
 		List<AdminVO> result = AdminService.athleteManagement(vo);
-		
-		model.addAttribute("athleteList",result);
+
+		model.addAttribute("athleteList", result);
 	}
-	
-		
+
 	@PostMapping("/deleteUser/{uid}")
 	public int deleteUser(@PathVariable String uid) {
 		return AdminService.deleteUser(uid);
-		
+
 	}
-	
+
+	// 경기 및 티켓 리스트 출력
 	@RequestMapping("/ticket.do")
-	public void ticket(AdminVO vo , Model model) {
+	public void ticket(AdminVO vo, Model model) {
 		List<AdminVO> result = AdminService.ticket(vo);
-		
-		model.addAttribute("ticketList",result);
+
+		model.addAttribute("ticketList", result);
 		System.out.println("ticket.do");
 	}
+
 	
+	  // 경기 등록
+	@RequestMapping(value= "/saveMatchList.do") 
+	public String insertMatch(AdminVO vo) throws IOException {
+	AdminService.insertMatch(vo);
+	System.out.println(vo);
+	return "redirect:ticket.do"; 
+	}
+	
+	  // 티켓 등록
+	@RequestMapping(value= "/saveTicketList.do") 
+	public String insertTicket(AdminVO vo) throws IOException {
+	System.out.println(vo);
+	AdminService.insertTicket(vo);
+	System.out.println(vo);
+	return "redirect:ticket.do"; 
+	}
+	
+	// 티켓 등록 페이지 그 자체
 	@RequestMapping("/ticketRegister.do")
 	public void ticketRegister() {
-		
-	}
-	
-	@RequestMapping("/ticketModify.do")
-	public void ticketModify() {
-		
-	}
-	
-	@RequestMapping("/clubRegister.do")
-	public void clubRegister() {
-		
+
 	}
 	
 
+
+	// 티켓 수정
+	@RequestMapping("/updateTiket.do")
+	public String updateTiket(AdminVO vo, Model m) throws IOException {
+		AdminService.updateTiket(vo) ; 
+		m.addAttribute("updateResult");
+		return "redirect:ticket.do";
+	}
+	
+	// 경기 수정
+	
+	// 티켓 수정 조회
+	@RequestMapping("/ticketModify.do")
+	public void ticketModify(AdminVO vo ,Model m) {
+		AdminVO av = AdminService.ticketModify(vo);
+		System.out.println(av);
+		m.addAttribute("ticketmo",av);
+		System.out.println(av);
+	}
+
+	// 클럽 등록
+	@RequestMapping("/clubRegister.do")
+	public void clubRegister() {
+
+	}
+
+	// 클럽 수정
 	@RequestMapping("/clubModify.do")
 	public void clubModify() {
-		
+
 	}
-	
+
+	// 클럽 리스트 출력
 	@RequestMapping("/clubManagement.do")
-	public void clubManagement(AdminVO vo , Model model) {
+	public void clubManagement(AdminVO vo, Model model) {
 		List<AdminVO> result = AdminService.clubManagement(vo);
-		
-		model.addAttribute("clubList",result);
+
+		model.addAttribute("clubList", result);
 	}
 	
+	// 차트 목록
 	@RequestMapping("/index.do")
 	public void index() {
-		
+
 	}
-	
-	
-	
+
 }

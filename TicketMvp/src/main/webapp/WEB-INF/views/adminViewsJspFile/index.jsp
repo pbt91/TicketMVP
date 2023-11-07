@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +45,7 @@
         var options = {
           title : 'Monthly Coffee Production by Country',
           vAxis: {title: 'Cups'},
-          hAxis: {title: 'Month'},
+          hAxis: {title: '구단명'},
           seriesType: 'bars',
           series: {5: {type: 'line'}}
         };
@@ -70,14 +71,10 @@
 			<h6 class="m-0 font-weight-bold text-primary">관리자 차트</h6>
 		</div>
 		<div id="chart_div" style="width: 900px; height: 500px;"></div>
+	
 	 </div>
    </div>
-   <div class="d-flex" id="wrapper">
-            <!-- Sidebar-->
-            <div id="page-content-wrapper">
-                <!-- Page content-->
-            </div>
-   </div>
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

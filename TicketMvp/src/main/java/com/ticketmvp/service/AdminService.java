@@ -21,6 +21,13 @@ public interface AdminService {
 	// 티켓 목록 조회
 	List<AdminVO> ticket(AdminVO vo);
 	
-		
+	// 티켓 등록
+	 void insertMatch(AdminVO vo); 
+	 void insertTicket(AdminVO vo); 
+	 
+	// 티켓 및 경기 상세 리스트 
+	AdminVO ticketModify(AdminVO vo); 
 	
+	// 티켓 및 경기 수정 
+	void updateTiket(AdminVO vo);
 }

@@ -32,6 +32,7 @@
     #athleteManagement {
         background-color: #c2d3fa; /* 배경 색상을 빨간색으로 변경 */
     }
+    
 </style>
     <body>
     <jsp:include page="headbar.jsp" />

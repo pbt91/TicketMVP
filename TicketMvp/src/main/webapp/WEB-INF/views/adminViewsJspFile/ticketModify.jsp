@@ -28,7 +28,7 @@
 
 </head>
  <style>
-  #ticketRegister {
+  #ticketModify  {
 		background-color: #c2d3fa; /* 배경 색상을 빨간색으로 변경 */
     }
   #ticketstyle{
@@ -36,6 +36,7 @@
   }
   .container{
   	text-align: center;
+
   }
 </style>
     <body>
@@ -49,11 +50,11 @@
 		</div>
 		   <th:block layout:fragment="content">
         <div class="content">
-                <form action="saveMatchList.do"  method="post">
+                <form action="updateTiket.do"  method="get">
 
 
                     <!--/* 서버로 전달할 공지글 여부 */-->
-                    <input type="hidden" id="noticeYn" name="noticeYn" />
+                    <input type="hidden" id="matchid" name="matchid" value="${ticketmo.matchid}"/>
                     <table class="tb tb_row">
                         <colgroup>
                             <col style="width:15%;" /><col style="width:35%;" /><col style="width:15%;" /><col style="width:35%;" />
@@ -66,29 +67,24 @@
 							                            
                             <tr>
                                 <th>홈구단 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="homeclub" name="homeclub"  placeholder="홈구단 입력해 주세요." /></td>
+                                <td colspan="3"><input type="text" id="homeclub" name="homeclub" value="${ticketmo.homeclub}" placeholder="홈구단 입력해 주세요." /></td>
                             </tr>
                             <tr>
                                 <th>원정 구단<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="awayclub" name="awayclub"  placeholder="원정 구단 입력해 주세요." /></td>
+                                <td colspan="3"><input type="text" id="awayclub" name="awayclub" value="${ticketmo.awayclub}"  placeholder="원정 구단 입력해 주세요." /></td>
                             </tr>
 							
 							<tr>
                                 <th>경기 날짜<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="date" id="matchdate" name="matchdate"  placeholder="경기 날짜 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="date" id="matchdate" name="matchdate" value="${ticketmo.matchdate}"  placeholder="경기 날짜 입력해 주세요."  /></td>
                             </tr>
                             
                             <tr>
                                 <th>경기 시간<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="time" id="matchtime" name="matchtime"  placeholder="경기 시간 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="time" id="matchtime" name="matchtime" value="${ticketmo.matchtime}"  placeholder="경기 시간 입력해 주세요."  /></td>
                             </tr>
-							
-							<tr>
-								<td colspan="2" align="center"><input type="submit"	value=" 경기 등록 " /></td>
-							</tr>
                         </tbody>
                     </table>
-                </form>                  	
         </div> <!--/* .content */-->
     </th:block>
      </div>
@@ -99,45 +95,40 @@
 		</div>   
 		   <th:block layout:fragment="content">
         <div class="content">
-		          <section> 
-		            <form action="saveTicketList.do" id="saveForm" method="post" autocomplete="off" enctype="multipart/form-data">
-		            	<table class="tb tb_row">	
+				<input name="ticketid" type="hidden" value="${ticketmo.ticketid}" />
+		            	<table class="tb tb_row">
+		            	<colgroup>
+                            <col style="width:15%;" /><col style="width:35%;" /><col style="width:15%;" /><col style="width:35%;" />
+                        </colgroup>	
 		            	  <tbody>    	
                             <tr>
                                 <th>경기 번호 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="matchid" name="matchid"  placeholder="경기 번호 입력해 주세요." /></td>
+                                <td colspan="3"><input type="number" id="matchid" name="matchid" value="${ticketmo.matchid}" readonly /></td>
                             </tr>
                             <tr>
                                 <th>티켓명 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="ticketname" name="ticketname"  placeholder="티켓명 입력해 주세요." /></td>
+                                <td colspan="3"><input type="text" id="ticketname" name="ticketname" value="${ticketmo.ticketname}"  placeholder="티켓명 입력해 주세요." /></td>
                             </tr>
                             
 							<tr>
                                 <th>티켓 가격<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="ticketprice" name="ticketprice"  placeholder="티켓 가격 입력해 주세요." /></td>
+                                <td colspan="3"><input type="number" id="ticketprice" name="ticketprice"value="${ticketmo.ticketprice}"  placeholder="티켓 가격 입력해 주세요." /></td>
                             </tr>
                             <tr>
                                 <th>티켓 전체 수량 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="ticketall" name="ticketall"  placeholder="티켓 전체 수량 입력해 주세요." /></td>
-                            </tr>
-                            
-                            <tr>
-                                <th>티켓 남은 수량 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="ticketremain" name="ticketremain"  placeholder="티켓 남은 수량 입력해 주세요." /></td>
+                                <td colspan="3"><input type="number" id="ticketall" name="ticketall" value="${ticketmo.ticketall}"  placeholder="티켓 전체 수량 입력해 주세요." /></td>
                             </tr>
                             
 							<tr>
-								<td colspan="2" align="center"><input type="submit"	value=" 티켓 등록 " /></td>
+							
+								<td colspan="2" align="center"><input type="submit"	value=" 티켓 수정 " /></td>
+								<td colspan="2" align="center"><input type="submit"	value=" 경기 수정 " /></td>
 							</tr>
-                            
-                            <tr>
-                                <th>선수명 <span class="es">필수 입력</span></th>
+							<th>선수명 <span class="es">필수 입력</span></th>
                                 <td colspan="3"><textarea id="content" name="content" cols="50" rows="10" placeholder="내용을 입력해 주세요."></textarea></td>
-                            </tr>
                            </tbody>
                           </table> 
                     </form> 
-				</section>
                    </div> <!--/* .content */-->
     	</th:block>     
        </div>
@@ -146,40 +137,6 @@
                     <a href="${pageContext.request.contextPath}/adminViewsJspFile/ticket.do" class="btns btn_bdr3 btn_mid">경기 및 티켓 관리로 돌아가기</a>
                 </p> --%>
 
-    <th:block layout:fragment="script">
-        <script th:inline="javascript">
-        /*<![CDATA[*/
-
-            window.onload = () => {
-                initCreatedDate();
-            }
-
-
-            // 등록일 초기화
-            function initCreatedDate() {
-                document.getElementById('createdDate').value = dayjs().format('YYYY-MM-DD');
-            }
-
-
-            // 게시글 저장(수정)
-            function savePost() {
-                const form = document.getElementById('saveForm');
-                const fields = [form.title, form.writer, form.content];
-                const fieldNames = ['제목', '이름', '내용'];
-
-                for (let i = 0, len = fields.length; i < len; i++) {
-                    isValid(fields[i], fieldNames[i]);
-                }
-
-                document.getElementById('saveBtn').disabled = true;
-                form.noticeYn.value = form.isNotice.checked;
-                form.action = [[ ${post == null} ]] ? '/post/save.do' : '/post/update.do';
-                form.submit();
-            }
-
-        /*]]>*/
-        </script>
-    </th:block>
      
      
      </div>
