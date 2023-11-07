@@ -39,4 +39,12 @@ public class ReserveVO {
 	private Date paydate;
 	private int totalpayment;
 	
+	//쿠폰 정보
+	private String couponid;
+	private int discount;
+	private Date issuedate;
+	private Date expiredate;
+	private String usestatus;
+	private Date usedate;
+	
 }

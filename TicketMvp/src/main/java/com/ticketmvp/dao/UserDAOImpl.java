@@ -130,8 +130,6 @@ public class UserDAOImpl implements UserDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 	// 비밀번호 찾기 (인증번호 맞게 입력했는지 확인)
