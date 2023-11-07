@@ -7,36 +7,6 @@
 <head>
 <title></title>
 <meta charset="utf-8">
-<style>
-#container {
-	display: flex;
-	height: 1000px;
-	background-color: #f8f9fa;
-}
-
-#container>#sidebar {
-	flex: 1;
-	/* padding: 10px; */
-	background-color:#333;
-	min-width: 180px;
-	/* border: 1px solid #ccc; */
-	max-height: 1000px;
-	overflow: auto;
-}
-
-#container>#content {
-	flex: 9;
-	padding-top: 15px;
-/* 	border: 1px solid #ccc; */
-	height: 100%;
-}
-
-iframe {
-	width: 100%;
-	height: 100%;
-	border: none;
-}
-</style>
 
 <title>회원정보 수정 폼</title>
 
@@ -44,14 +14,18 @@ iframe {
 
 <!-- js코드 호출 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <!-- css파일 연결 -->
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/user/userMyModifyForm.css">
-<link rel="stylesheet" href="/TicketMvp/resources/css/main/main.css">
+<link rel="stylesheet" href="/TicketMvp/resources/css/main/templates.css">
 <!-- js파일 연결 -->
 <script src="/TicketMvp/resources/js/user/userMyModifyForm.js"
 	type="text/javascript"></script>
-
+<!-- 모달창 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 <body>
 
@@ -121,6 +95,19 @@ iframe {
 						<a href="/TicketMvp/user/userMyMain.do"><!-- 마이페이지 메인으로 -->
 						<input class="but3" type="button" value="돌아가기" ></a>
 						<input class="but4" type="button" id="modify" value="수정하기">
+						<a href="#modal" rel="modal:open"> <input class="but5" type="button" id="elimination" value="탈퇴하기"></a>
+						<section id="modal" class="modal modal-section type-confirm">
+				            <div class="enroll_box" align="center">
+				                <h5 class="menu_msg">정말 탈퇴하시겠습니까?</h5>
+				                <h5 class="menu_msg">탈퇴후에는 되돌릴 수 없고 <br/>아이디에 저장된 정보를 확인할 수 없습니다 </h5>				                
+				            </div>
+				            <div class="enroll_btn" align="center">
+				                <button class="btn gray_btn modal_close" id="elimination_no">취소</button>
+				                <button class="btn pink_btn btn_ok" id="elimination_yes" style="color:red;">탈퇴</button>
+				            </div>
+						</section>
+						
+	
 					</div>
 				</div>
 			</form>
