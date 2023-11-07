@@ -11,7 +11,7 @@ public interface UserService {
 	void insertUser(UserVO vo);
 	
 	//로그인 체크
-	UserVO loginCheck(String id, String pw);
+	String loginCheck(String id, String pw);
 	
 	//아이디 찾기 - 이메일 확인하기
 	String findId(String email);
@@ -24,10 +24,4 @@ public interface UserService {
 	
 	//비밀번호 재설정
 	Integer resetPw(UserVO vo);
-	
-	//현재비밀번호 확인
-	UserVO checkPw(UserVO vo);
-	
-	//회원정보수정
-	Integer userModify(UserVO vo, boolean exceptpw);
 }

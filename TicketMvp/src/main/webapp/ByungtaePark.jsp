@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<% session.setAttribute("matchId", 1); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,14 +11,14 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<a href="/TicketMvp/reserve/ReserveChoose.do?matchid=1">Reserve Choose Seat</a><br/>
-<a href="/TicketMvp/error/billingFail.do" class="ajaxlink">토스 실패시</a> <br/>
-<a href="/TicketMvp/error/NoLogin.do" class="ajaxlink">로그인 실패시</a> <br/>
+<a href="/TicketMvp/reserve/ReserveChoose.do?matchid=${sessionScope.matchId}">Reserve Choose Seat</a><br/>
+<a href="/TicketMvp/error/billingFail.do">토스 실패시</a> <br/>
+<a href="/TicketMvp/error/Error.do">에러페이지</a> <br/>
 <c:if test="${sessionScope.userid != null}">
 
 ${sessionScope.name}님 환영합니다 
 
-<a href='logout.do'><input type="button" id='move_logout' name='move_logout' value='로그아웃'/></a>
+<a href='user/logout.do'><input type="button" id='move_logout' name='move_logout' value='로그아웃'/></a>
 
 </c:if>
 

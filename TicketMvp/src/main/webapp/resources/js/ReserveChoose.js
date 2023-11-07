@@ -49,6 +49,7 @@ $(function(){
 		//로그인 되어 있으면 예매 불가
  		if ($("#userLoggedIn").val() === 'false') {
             alert("로그인을 해야 예매하실 수 있습니다. 로그인 해주세요.");
+            window.location.href = "/TicketMvp/user/userLoginForm.do";
             return; 
         }
 		

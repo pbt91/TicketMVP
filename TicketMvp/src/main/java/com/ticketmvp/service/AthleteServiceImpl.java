@@ -9,18 +9,15 @@ import com.ticketmvp.dao.AthleteDAO;
 import com.ticketmvp.domain.AthleteVO;
 
 @Service("athleteService")
-public class AthleteServiceImpl implements AthleteService {
+ public class AthleteServiceImpl implements AthleteService {
+	
+	@Autowired
+	private AthleteDAO athleteDAO;
 
-    @Autowired
-    private AthleteDAO athleteDAO;
-
-    @Override
-    public List<AthleteVO> getAthleteImagePaths() {
+	@Override
+	public List<String> getAthleteImagePaths() {
         return athleteDAO.getAthleteImagePaths();
-    }
+	}
 
-    @Override
-    public AthleteVO getAthleteInformation(String athleteName) {
-        return athleteDAO.getAthleteInformation(athleteName);
-    }
+
 }

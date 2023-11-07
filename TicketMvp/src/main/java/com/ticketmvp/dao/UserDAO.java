@@ -9,7 +9,7 @@ public interface UserDAO {
 	// 회원가입 
 	public void insertUser(UserVO vo);				
 	// 로그인 체크 
-	public UserVO loginCheck(String id, String pw);
+	public String loginCheck(String id, String pw);
 	// 아이디 찾기 - 이메일 확인하기
 	public String findId(String email);
 	// 비밀번호 찾기 - 이름,이메일 확인하기
@@ -20,10 +20,4 @@ public interface UserDAO {
 	public Integer checkTempPw(UserVO vo);
 	// 비밀번호 재설정
 	public Integer resetPw(UserVO vo);
-	// 회원정보수정 - 현재비밀번호 확인하기 
-	public UserVO checkPw(UserVO vo);
-	// 회원정보수정
-	public Integer userModify(UserVO vo, boolean exceptpw);
-	
-
 }

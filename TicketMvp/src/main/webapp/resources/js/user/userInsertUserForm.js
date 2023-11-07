@@ -6,21 +6,7 @@ $(function () {
 
         /* 사용자가 입력한 아이디 가져와야함 */
         var userinputid = $('#userid').val();
-
-		// 아이디 입력을 안했을 때
-        if(userinputid==""){
-            $('#idCheckResult').text("아이디를 입력해주세요");
-            return false;
-        }
-        var userinputForm = document.userinput;     // 회원가입 jsp안에 form 태그
-        var userid = userinputForm.userid;
-        // 아이디 글자 수 5이상 12이하
-        if (userid.value.length <= 5 || userid.value.length >= 12) {
-            alert("아이디는 5자리 이상 12자리 이하로 작성되어야 합니다");
-            //idCheckResult.text("아이디는 5자리 이상 12자리 이하로 작성되어야 합니다");
-            userid.focus();
-            return false;
-        }
+        alert(userinputid);						// 사용자가 입력한 아이디 확인됨.
 
         $.ajax({
             url: '/TicketMvp/user/userIdCheck',                  //Controller에서 요청받을 주소
@@ -32,6 +18,9 @@ $(function () {
                     $('#idCheckResult').text("사용가능한 아이디 입니다");
                 }else{
                     $('#idCheckResult').text("사용중인 아이디 입니다");
+                }
+                if(userinputid.equals()==""){
+                    $('#idCheckResult').text("아이디를 입력해주세요");
                 }
             },
             error: function (error) {
@@ -45,7 +34,7 @@ $(function () {
 
     $('#join').click(function () {
 
-        var userinputForm = document.userinput;     // 회원가입 jsp안에 form 태그
+        const userinputForm = document.userinput;     // 회원가입 jsp안에 form 태그
         
         // 1 아이디 유효성 검사
         // 1-1 입력을 안했을 때
@@ -95,9 +84,9 @@ $(function () {
         }
 
         // 글자 수 8이상
-        if (userpw.value.length < 8 || userpw.value.length > 16) {
-            alert("비밀번호는 8자리 이상이여야 합니다");
-            //pwcheckResult.text("8자리 이상 15자리 이하여야 합니다");
+        if (userpw.value.length < 8) {
+            alert("8자리 이상이여야 합니다");
+            //pwcheckResult.text("8자리 이상이여야 합니다");
             userpw.focus();
             return false;
         }
@@ -106,7 +95,7 @@ $(function () {
         let reg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~?!@#$%^&*_-]).{8,}$/;   // 정규식
         let reg2 = /(\w)\1\1\1/ //같은문자 4번이상
         if (!reg.test(userpw.value) || reg2.test(userpw.value)) {
-            alert("비밀번호는 소문자, 숫자, 특수문자를 모두 포함해야 합니다");
+            alert("소문자, 숫자, 특수문자를 모두 포함해야 합니다");
             //pwcheckResult.text("소문자, 숫자, 특수문자를 모두 포함해야 합니다");
             userpw.focus();
             return false;
@@ -114,7 +103,7 @@ $(function () {
 
         // 같은문자 4번이상 연속 
         if(reg2.test(userpw.value)){
-            alert("비밀번호는 같은 문자가 4번이상 연속될 수 없습니다");
+            alert("같은 문자가 4번이상 연속될 수 없습니다");
             //pwcheckResult.text("같은 문자가 4번이상 연속될 수 없습니다");
             userpw.focus();
             return false;
@@ -141,7 +130,6 @@ $(function () {
         const name = userinputForm.name;
         const email = userinputForm.email;
         const phone = userinputForm.phone;
-        var num_check=/^[0-9]*$/;
         if (name.value == "" || email.value == "" || phone.value == "") {
             alert("이름 이메일 연락처 필수로 입력해야 합니다");
             return false;
@@ -152,14 +140,6 @@ $(function () {
             alert("이름 이메일 연락처에 공백을 포함 할 수 없습니다");
             return false;
         }
-
-		// 전화번호에 숫자 말고 다른거 넣었을 때
-		if(num_check.test(phone)){
-			
-		
-		}else{
-			alert("연락처는 '-'을 제외하고 숫자만 입력해주세요");
-		}
 
         return true;
 

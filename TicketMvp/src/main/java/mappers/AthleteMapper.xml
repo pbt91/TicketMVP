@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ticketmvp.dao.AthleteDAO">
+<mapper namespace="AthleteDAO">
 
-  <select id="getAthleteImagePaths" resultType="com.ticketmvp.domain.AthleteVO">
-        SELECT athletename, athleteimgfile
+  <select id="getAthleteImagePaths" resultType="string">
+        SELECT athleteimgfilefull
         FROM athlete
     </select>
 
-  <select id="getAthleteInformation" resultType="com.ticketmvp.domain.AthleteVO">
-    SELECT athletename, info, career, athleteimgfile
-    FROM athlete
-    WHERE athletename = #{athletename}
-  </select>
+
 
 </mapper>

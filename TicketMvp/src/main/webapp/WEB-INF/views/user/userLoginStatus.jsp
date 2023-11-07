@@ -15,11 +15,6 @@ ${sessionScope.name}님 환영합니다
 
 <a href='logout.do'><input type="button" id='move_logout' name='move_logout' value='로그아웃'/></a>
 
-<a href='userMyMain.do'><input type='button' id='mypagemain' name='mypagemain' value='마이페이지'/></a>
-
-<a href='userMyModify.do'><input type='button' id='mypagemodify' name='mypagemodify' value='회원정보수정'/></a>
-
-
 </c:if>
 
 <c:if test="${sessionScope.userid == null}">

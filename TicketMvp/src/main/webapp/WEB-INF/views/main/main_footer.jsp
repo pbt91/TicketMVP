@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메인</title>
-<link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/main/main.css">
+<link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/main.css">
 </head>
 <body>
 	<footer class="footer">

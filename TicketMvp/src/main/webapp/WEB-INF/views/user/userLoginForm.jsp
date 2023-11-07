@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<link rel="stylesheet" href="/TicketMvp/resources/css/user/userLoginPage.css">
+<link rel="stylesheet" href="/TicketMvp/resources/css/login-page.css">
 <!-- <script defer src="/TicketMvp/resources/js/login.js"></script> -->
 
 <%-- ${sessionScope.temppw } --%>
@@ -47,8 +47,6 @@
 						<a href="userFindIdForm.do" name="find_id" id='find_id' class="find" >아이디찾기</a>
 						|<!-- 그냥 구분선 -->
 						<a href="userFindPwForm.do" name="find_pw" id='find_pw' class="find" >비밀번호찾기</a>
-						|<!-- 그냥 구분선 -->
-						<a href="userInsertUserForm.do" name="sign_in" id='sign_in' class="find" >회원가입</a>
 					</td>
 				</tr>
 			</table>

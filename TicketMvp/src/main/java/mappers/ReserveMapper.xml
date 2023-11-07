@@ -23,6 +23,12 @@
     	WHERE userid=#{userid}
     </select>
     
+    <select id="selectCoupons" parameterType="String" resultType="com.ticketmvp.domain.ReserveVO">
+    	SELECT * FROM coupon 
+    	WHERE userid=#{userid}
+    	AND (usestatus != 1 OR usestatus IS NULL)
+    </select>
+    
     <select id="getTicketInfo" parameterType="int" resultType="com.ticketmvp.domain.ReserveVO">
 	    SELECT 
 	        t.*, 
@@ -51,7 +57,20 @@
     	UPDATE ticket
 		SET ticketremain = ticketremain - ${tickets}
 		WHERE ticketid = ${ticketId}
-    </update>
+    </update> 
     
+	<update id="updateCoupon" parameterType="hashmap">
+    	UPDATE coupon
+		SET 	reserveid = ${orderId}
+				, usestatus = 1
+				, usedate = now()
+		WHERE couponid = '${couponId}'
+    </update>  
+	
+	<select id="checkOrderId" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM reservation
+		WHERE reserveid = #{orderId}
+	</select>
 	
 </mapper>
