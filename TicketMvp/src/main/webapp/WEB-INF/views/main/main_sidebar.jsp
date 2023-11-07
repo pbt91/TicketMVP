@@ -4,21 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- <link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/main/main.css"> -->
+<title>사이드바</title>
 <style type="text/css">
-
-body {
-	width:100%;
-	higth:100%;
-}	
-
-aside {
-	width:200px;
-	higth:800px;
-
-}
-
 </style>
 </head>
 <body>

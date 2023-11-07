@@ -38,5 +38,5 @@ public interface UserService {
 /* ********************************************* */
 	
 	//내 주문목록
-	UserOrderVO userMyOrderList(UserOrderVO ordervo);
+	UserOrderVO userMyOrderList(String userid);
 }
