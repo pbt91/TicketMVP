@@ -1,7 +1,5 @@
 package com.ticketmvp.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ticketmvp.domain.ReserveVO;
 import com.ticketmvp.domain.UserVO;
@@ -32,9 +29,7 @@ public class ReserveController {
 	
 	//좌석 예약으로 이동 + 티켓 리스트 불러오기 + 경기장 이미지 호출
 	@RequestMapping("/ReserveChoose.do")
-	public void reserveChoose(Model m, HttpSession session ) {
-		ReserveVO vo = new ReserveVO();
-		vo.setMatchid((int)session.getAttribute("matchId"));
+	public void reserveChoose(ReserveVO vo, Model m, HttpSession session ) {
 		m.addAttribute("ticketList", reserveService.getTicketList(vo));
 		m.addAttribute("stadiumImage", reserveService.getImageFile(vo));
 		session.setAttribute("paymentInProgress", true);
@@ -59,15 +54,15 @@ public class ReserveController {
 		Integer ticketId = (Integer) session.getAttribute("ticketId");
 		Integer ticketQuantityBuy = (Integer) session.getAttribute("ticketQuantityBuy");
 		
-		//로그인 안했으면 로그인 페이지로 강제이동
+		//로그인 안했으면 에러페이지로 강제이동
 		if (userId == null || userId.trim().isEmpty()) {
-	        mv.setViewName("redirect:/user/userLoginForm.do");
+	        mv.setViewName("redirect:/error/NoLogin.do");
 	        return mv;
 	    }
 		
 		//좌석예매 페이지에서 정보 넘겨 받지 못하면 다시 돌아가기
 		if (ticketId == null || ticketId == 0|| ticketQuantityBuy == null || ticketQuantityBuy == 0) {
-	        mv.setViewName("redirect:/reserve/ReserveChoose.do?matchid="+(String)session.getAttribute("matchId")); 
+	        mv.setViewName("redirect:/reserve/ReserveChoose.do?matchid=1");
 	        return mv;
 	    }
 		
@@ -88,18 +83,10 @@ public class ReserveController {
 		
 		return mv;
 	}
-	
-	//쿠폰 불러오기
-	@ResponseBody
-	@RequestMapping("/ReserveCoupon.do")
-	public List<ReserveVO> reserveCoupon(HttpSession session) {
-		String userId = (String) session.getAttribute("userid");
-		return reserveService.selectCoupons(userId);
-	}
 		
 	//결제완료 페이지로 이동
 	@RequestMapping(value = "/ReserveFinish.do", method = RequestMethod.GET)
-	public ModelAndView reserveFinish(String orderId, String couponId, Integer amount, HttpSession session, Model m){
+	public ModelAndView reserveFinish(String orderId, Integer amount, HttpSession session, Model m){
 		ModelAndView mv = new ModelAndView();
 		Boolean paymentInProgress = (Boolean) session.getAttribute("paymentInProgress");
 		String userId = (String) session.getAttribute("userid");
@@ -113,7 +100,7 @@ public class ReserveController {
 	    }
 		
 	    //결재작업
-		reserveService.recordAll(orderId, amount, ticketId, ticketQuantityBuy, userId, couponId);
+		reserveService.recordAll(orderId, amount, ticketId, ticketQuantityBuy, userId);
 		
 		//결재완료에 따라 session에 업데이트
 		session.setAttribute("paymentInProgress", false);
@@ -122,26 +109,5 @@ public class ReserveController {
 		mv.setViewName("/reserve/ReserveFinish");
 		return mv;
 	}
-
-	//예매id 중복 체크
-	@ResponseBody
-	@RequestMapping("/ReserveIdCheck.do")
-	public String reserveIdCheck(String orderIdStr) {
-		if (orderIdStr == null) {
-	        return "nul"; 
-	    }
-		
-		//0이면 중복 없음, 그 이상이면 중복 있음
-		try {
-		        int orderId = Integer.parseInt(orderIdStr);
-		        // 0이면 중복 없음, 그 이상이면 중복 있음
-		        if (reserveService.checkOrderId(orderId) == 0) {
-		            return "success";
-		        } else {
-		            return "failure";
-		        }
-		    } catch (NumberFormatException e) {
-		        return "null";
-		    }
-	}
+	
 }

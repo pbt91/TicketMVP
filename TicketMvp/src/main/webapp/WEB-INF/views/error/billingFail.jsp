@@ -11,9 +11,6 @@
             margin-top: 50px;
         }
     </style>
-    <!-- Jquery 호출 -->
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/TicketMvp/resources/js/error.js"></script>
 </head>
 <body>
     <div class="error-container">

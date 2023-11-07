@@ -3,6 +3,8 @@ package com.ticketmvp.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,8 @@ import com.ticketmvp.domain.UserVO;
 public class ReserveDAOImpl implements ReserveDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
+
+
 	//경기 선택한 상태에서 해당 경기 예약 가능 티켓 호출
 	public List<ReserveVO> getTicketList(ReserveVO vo) {
 		System.out.println("===> Mybatis getTicketList() 호출");
@@ -34,26 +38,20 @@ public class ReserveDAOImpl implements ReserveDAO{
 		System.out.println("===> Mybatis getUserInfo() 호출");
 		return mybatis.selectOne("ReserveDAO.getUserInfo", userId);
 	}
-
+	
 	//예매/결재 확인 페이지에 결재할 티켓 정보 호출
 	public ReserveVO getTicketInfo(int ticketId) {
 		System.out.println("===> Mybatis getTicketInfo() 호출");
 		return mybatis.selectOne("ReserveDAO.getTicketInfo", ticketId);
 	}
 
-	//유저가 소유한 쿠폰 목록 불러오기
-	public List<ReserveVO> selectCoupons(String userId) {
-		System.out.println("===> Mybatis selectCoupons() 호출");
-		return mybatis.selectList("ReserveDAO.selectCoupons", userId);
-	}
-	
 	//예매/결재 후 예약테이블에 정보 입력
 	public void recordReservation(String orderId, Integer totalAmount, String userId) {
 		System.out.println("===> Mybatis recordReservation() 호출");
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("orderId", orderId);
-		param.put("totalAmount", totalAmount);
-		param.put("userId", userId);
+	    param.put("totalAmount", totalAmount);
+	    param.put("userId", userId);
 		mybatis.insert("ReserveDAO.recordReservation", param);
 	}
 
@@ -76,19 +74,5 @@ public class ReserveDAOImpl implements ReserveDAO{
 		mybatis.update("ReserveDAO.deductTickets", param);
 	}
 
-	//쿠폰 사용시 쿠폰 테이블 정보 업데이트
-	public void updateCoupon(String couponId, String orderId) {
-		System.out.println("===> Mybatis updateCoupon() 호출");
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("couponId", couponId);
-		param.put("orderId", orderId);
-		mybatis.update("ReserveDAO.updateCoupon", param);
-	}
-
-	//예매id 중복체크
-	public int checkOrderId(int orderId) {
-		System.out.println("===> Mybatis checkOrderId() 호출");
-		return mybatis.selectOne("ReserveDAO.checkOrderId", orderId);
-	}
 
 }

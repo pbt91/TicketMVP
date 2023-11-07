@@ -122,10 +122,8 @@
 					</div>
 				</div>
 			<div class="text-center mt-3">
-			    <div class="text-center mt-3">
-			    	<button class="btn btn-primary">주문 목록</button>
-				    <a href="/TicketMvp/athlete/main_page.do" class="btn btn-secondary">HOME</a>
-				</div>
+			    <button class="btn btn-primary">주문 목록</button>
+			    <button class="btn btn-secondary">HOME</button>
 			</div>
 		</div>
 	<% } else { %>
