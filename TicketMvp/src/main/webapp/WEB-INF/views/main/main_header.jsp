@@ -16,7 +16,7 @@
 		
 		<c:if test="${sessionScope.name != null }">
 			<div class="header-links">
-				${sessionScope.name}님 환영합니다 <a href="logout.do" class="logout-link" style="margin-right:40px;">로그아웃</a> 
+				${sessionScope.name}님 환영합니다 <a href="logout.do" class="logout-link">로그아웃</a> 
 			</div>
 		</c:if>
 		<c:if test="${sessionScope.name == null }">
@@ -29,16 +29,15 @@
 	</header>
 	<header class="logo-banner-header">
 		<div class="logo">
-		
-		<img alt="" src="/TicketMvp/resources/images/main/rogo_banner.png" style="min-width:600px;" >	
-		
+			<img alt="" src="/TicketMvp/resources/images/main/rogo_new.png" >	
+		</div>
 <!-- 			<img src="/TicketMvp/resources/images/main/rogo.png" alt="쇼핑몰 로고"
 				width="300" style="margin-left: 200px;">
 		</div>
 		<div class="banner">
 			<img src="/TicketMvp/resources/images/main/baner.png" alt="배너 이미지"
 				width="800"> -->
-		</div>
+		
 	</header>
 
 

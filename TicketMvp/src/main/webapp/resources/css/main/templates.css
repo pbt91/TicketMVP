@@ -1,0 +1,225 @@
+/* 헤더, 푸터, 사이드 바 관련 css*/
+
+/* 리더님 css */
+#container {
+	display: flex;
+	height: 1000px;
+	background-color: #f8f9fa;
+}
+
+#container>#sidebar {
+	flex: 1;
+   	background-color:#333;
+	max-height: 1000px;
+	min-width: 200px;
+/* 	overflow: auto; */
+/* 	padding: 10px; */
+/* 	border: 1px solid #ccc; */
+}
+
+#container>#content {
+	flex: 9;
+	height: 100%;
+	padding : 15px;
+/* 	padding: 10px; */
+/* 	border: 1px solid #ccc; */
+}
+
+
+iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+
+/*메인페이지에 있는 전체 <div>코드입니다. 혹시 몰라서 넣었어요!*/
+body {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #858796;
+	text-align: left;
+	background-color: #fff;
+	border : none;
+}
+
+#body-wrapper {
+	flex-grow: 1; /* 푸터 위의 콘텐츠가 화면을 채울 수 있도록 설정 */
+	display: flex;
+	flex-direction: column;
+}
+
+#body-content {
+	text-align: center;
+	padding-bottom: 100px; /* footer의 높이 조절 */
+	padding: 100px; /* 푸터와 콘텐츠 사이 여백 조절 */
+}
+
+#header, .login-header, #footer {
+    width: 100%; /* 헤더, 푸터는 화면 너비에 맞게 설정 */
+    max-width: 100%; /* 너비가 100%를 넘지 않도록 설정 */
+}
+
+
+
+/* 헤더 */
+
+.top-header {
+	background-color: #333;
+	color: white;
+	text-align: right;
+	height: 100px;
+	position : relative;
+/* 	padding: 10px; */
+}
+
+.top-header .header-links {
+	position: absolute;
+	top : 50%;
+	right : 2%;
+	font-size : 16px;
+/* 	float: right; */	
+}
+
+.top-header .header-links a {
+	color: white;
+	text-decoration: none;
+	margin: 0 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+/* 로고, 배너 스타일 */
+
+/* .header .banner img {
+    max-width: 100%;
+} */
+
+/* .header .banner img, */
+.header .logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* .header .logo img {
+    max-width: 150px;
+} */
+
+ /* 배너 크기를 제한 */
+/* .header .logo img {
+    max-width: 150px;
+} */
+
+.login-header {
+	background-color: #333;
+	color: white;
+	text-align: right;
+/* 	padding: 30px; */
+}
+
+/* .login-header .header-links {
+	float: right;
+}
+ */
+.login-header .header-links a {
+	color: white;
+	text-decoration: none;
+	margin: 0 10px;
+}
+
+.logo-banner-header {
+	display: flex;
+	align-items: center;
+	background-color: black;
+/* 	padding: 20px; */
+}
+
+/* 로고와 배너 크기 및 가운데 정렬 */
+.logo {
+	width : 100%;
+	height: auto;
+/* 	width: 150px;  수정된 크기  */
+/* 	margin-right: 10px; */
+}
+
+.banner {
+	width: 150%; /* 배너 너비 100% */
+	height: auto;
+	display: flex;
+	justify-content: center; /* 가운데 정렬 */
+	align-items: center; /* 세로 가운데 정렬 */
+}
+
+
+/*사이드 바 */
+
+.sidebar {
+	background-color: #333;
+	color: white;
+	width: 150px;
+	padding: 20px;
+}
+
+.sidebar .menu {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar .menu li {
+	margin-bottom: 10px;
+}
+
+.sidebar .menu a {
+	color: white;
+	text-decoration: none;
+}
+
+/* 푸터 스타일 */
+
+.footer {
+	width: 100%;
+	background-color: #333;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	bottom: 0; left: 0;
+	height: 150px;
+/* 	padding: 20px; */
+}
+
+.footer_inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.footer_links ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	margin-right: 20px; /* 이전에 있던 마진을 여기로 이동 */
+}
+
+.footer_links li {
+	margin-right: 20px;
+}
+
+.footer a {
+	color: white;
+}
+
+.footer_logo {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+
+
