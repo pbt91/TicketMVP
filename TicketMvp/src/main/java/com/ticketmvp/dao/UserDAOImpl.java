@@ -4,7 +4,6 @@ import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 
-import org.apache.ibatis.session.ResultHandler;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -46,13 +45,13 @@ public class UserDAOImpl implements UserDAO {
 
 	// 로그인 체크
 	@Override
-	public String loginCheck(String id, String pw) {
+	public UserVO loginCheck(String id, String pw) {
 		System.out.println("===> Mybatis loginCheck() 호출");
 		System.out.println("로그인 시도 id:"+id+" pw:"+pw);
 		UserVO vo = new UserVO();
 		vo.setUserid(id);
 		vo.setUserpw(pw);
-		String result = mybatis.selectOne("UserDAO.selectlogincheck", vo);
+		UserVO result = mybatis.selectOne("UserDAO.selectlogincheck", vo);
 		
 		return result;
 	}
@@ -144,6 +143,24 @@ public class UserDAOImpl implements UserDAO {
 	public Integer resetPw(UserVO vo) {
 		Integer result = mybatis.update("UserDAO.updatepw",vo);
 		return result;
+	}
+
+	// 현재비밀번호 확인
+	@Override
+	public UserVO checkPw(UserVO vo) {
+		UserVO resutl = mybatis.selectOne("UserDAO.selectpw",vo);
+		return resutl;
+	}
+
+	// 회원정보수정
+	@Override
+	public Integer userModify(UserVO vo, boolean exceptpw) {
+		
+		if(exceptpw) {// true면 userpw는 제외하고 나머지 정보 변경
+			return mybatis.update("UserDAO.updatemodify_exceptpw", vo);
+		}else {	// false면 모든 정보 변경	
+			return mybatis.update("UserDAO.updatemodify_all", vo);			
+		}
 	}
 	
 	
