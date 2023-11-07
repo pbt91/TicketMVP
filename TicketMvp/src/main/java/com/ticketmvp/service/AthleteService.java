@@ -5,7 +5,7 @@ import java.util.List;
 import com.ticketmvp.domain.AthleteVO;
 
 public interface AthleteService {
-
-	List<String> getAthleteImagePaths();
-
+    List<AthleteVO> getAthleteImagePaths();
+    
+    AthleteVO getAthleteInformation(String athleteName);
 }

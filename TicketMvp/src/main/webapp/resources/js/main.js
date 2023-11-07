@@ -1,41 +1,9 @@
- /* $(document).ready(function() {
-            var numRows = 4; // 그리드의 총 행 수
-            var itemsPerRow = 4; // 각 행당 이미지 아이템 수
-            var totalItems = numRows * itemsPerRow;
+ $(document).ready(function() {
+            $('.image-item').click(function() {
+                var athleteName = $(this).data('athlete-name');
+                athleteName = encodeURIComponent(athleteName); // 선수명을 URL로 인코딩
 
-            $(".image-item").each(function(index) {
-                var rowNumber = Math.floor(index / itemsPerRow) + 1; // 현재 아이템의 행 번호
-                var columnNumber = (index % itemsPerRow) + 1; // 현재 아이템의 열 번호
-
-                // 각 행당 "even" 또는 "odd" 클래스 할당
-                if (rowNumber % 2 === 1) { // 홀수 행
-                    if (columnNumber % 2 === 1) {
-                        $(this).addClass("odd");
-                    } else {
-                        $(this).addClass("even");
-                    }
-                } else { // 짝수 행
-                    if (columnNumber % 2 === 1) {
-                        $(this).addClass("even");
-                    } else {
-                        $(this).addClass("odd");
-                    }
-                }
+                // 선수 정보 페이지로 이동
+                window.location.href = '${pageContext.request.contextPath}/athlete/athlete_information.do?athletename=' + athleteName;
             });
         });
-        */
-        
-
-$(document).ready(function() {
-    var $grid = $('#image-grid').masonry({
-        itemSelector: '.image-item',
-        columnWidth: 200, // 열의 폭
-        gutter: 10, // 이미지 간격
-    });
-
-    $grid.imagesLoaded().progress(function() {
-        $grid.masonry('layout');
-    });
-});
-
-        
