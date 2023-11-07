@@ -41,7 +41,7 @@ public class UserController {
 	
 	// 회원가입폼 -> 디비저장 -> 회원가입완료페이지
 	@RequestMapping("/insertUser.do")
-	public void insertUser(UserVO vo) {
+	public void userInsertUser(UserVO vo) {
 		userservice.insertUser(vo);
 	}
 	
