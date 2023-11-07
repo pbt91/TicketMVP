@@ -5,8 +5,8 @@ public class AdminVO {
 	
 	private String  homeclub ; 
 	private String	awayclub ;
-	private Integer	matchdate;
-	private Integer	matchtime;
+	private String	matchdate;
+	private String	matchtime;
 	
 	
 	public String getHomeclub() {
@@ -21,16 +21,16 @@ public class AdminVO {
 	public void setAwayclub(String awayclub) {
 		this.awayclub = awayclub;
 	}
-	public Integer getMatchdate() {
+	public String getMatchdate() {
 		return matchdate;
 	}
-	public void setMatchdate(Integer matchdate) {
+	public void setMatchdate(String matchdate) {
 		this.matchdate = matchdate;
 	}
-	public Integer getMatchtime() {
+	public String getMatchtime() {
 		return matchtime;
 	}
-	public void setMatchtime(Integer matchtime) {
+	public void setMatchtime(String matchtime) {
 		this.matchtime = matchtime;
 	}
 
@@ -93,8 +93,29 @@ public class AdminVO {
 	private String clubimgfile ; 
 	private String clubimgfilefull ; 
 	private Integer clubimgsize ; 
+	private String	areaimgfile;
+	private String	stadiumimgfilefull;
+	private Integer	stadiumimgsize;
 	
 	
+	public String getAreaimgfile() {
+		return areaimgfile;
+	}
+	public void setAreaimgfile(String areaimgfile) {
+		this.areaimgfile = areaimgfile;
+	}
+	public String getStadiumimgfilefull() {
+		return stadiumimgfilefull;
+	}
+	public void setStadiumimgfilefull(String stadiumimgfilefull) {
+		this.stadiumimgfilefull = stadiumimgfilefull;
+	}
+	public Integer getStadiumimgsize() {
+		return stadiumimgsize;
+	}
+	public void setStadiumimgsize(Integer stadiumimgsize) {
+		this.stadiumimgsize = stadiumimgsize;
+	}
 	public String getLeague() {
 		return league;
 	}
@@ -220,12 +241,13 @@ public class AdminVO {
 				+ ", ticketremain=" + ticketremain + ", ticketall=" + ticketall + ", ticketname=" + ticketname
 				+ ", ticketdesc=" + ticketdesc + ", league=" + league + ", stadiumname=" + stadiumname
 				+ ", clubimgfile=" + clubimgfile + ", clubimgfilefull=" + clubimgfilefull + ", clubimgsize="
-				+ clubimgsize + ", athletename=" + athletename + ", club=" + club + ", age=" + age + ", career="
-				+ career + ", position=" + position + ", backno=" + backno + ", info=" + info + ", athleteimgfile="
-				+ athleteimgfile + ", athleteimgfilefull=" + athleteimgfilefull + ", athleteimgsize=" + athleteimgsize
-				+ ", userid=" + userid + ", temppw=" + temppw + ", userpw=" + userpw + ", email=" + email
-				+ ", joinstatus=" + joinstatus + ", depositno=" + depositno + ", name=" + name + ", phone=" + phone
-				+ "]";
+				+ clubimgsize + ", areaimgfile=" + areaimgfile + ", stadiumimgfilefull=" + stadiumimgfilefull
+				+ ", stadiumimgsize=" + stadiumimgsize + ", athletename=" + athletename + ", club=" + club + ", age="
+				+ age + ", career=" + career + ", position=" + position + ", backno=" + backno + ", info=" + info
+				+ ", athleteimgfile=" + athleteimgfile + ", athleteimgfilefull=" + athleteimgfilefull
+				+ ", athleteimgsize=" + athleteimgsize + ", userid=" + userid + ", temppw=" + temppw + ", userpw="
+				+ userpw + ", email=" + email + ", joinstatus=" + joinstatus + ", depositno=" + depositno + ", name="
+				+ name + ", phone=" + phone + "]";
 	}
 	public String getUserid() {
 		return userid;

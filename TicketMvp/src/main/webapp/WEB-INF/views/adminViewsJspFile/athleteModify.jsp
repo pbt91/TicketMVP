@@ -22,7 +22,6 @@
     <body>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
- 			<jsp:include page="sidebar.jsp" />
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
             				<br></br>

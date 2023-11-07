@@ -23,7 +23,10 @@
 
     <!-- Custom styles for this page -->
     <link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-
+	<link href="${pageContext.request.contextPath}/resources/css1/default.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css1/content.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css1/common.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css1/button.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="page-top">

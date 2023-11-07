@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="AdminVO">
+<mapper namespace="AdminDAO">
 	
 	<delete id="deleteUser"  parameterType="com.ticketmvp.domain.AdminVO">
 		DELETE FROM user
@@ -27,11 +27,44 @@
 		SELECT t.ticketname ticketname,t.ticketprice ticketprice
 			  ,t.ticketall ticketall,t.ticketremain ticketremain
 			  ,t.ticketid ticketid, m.homeclub homeclub,m.awayclub awayclub,m.matchid matchid
-			  
+			  ,m.matchdate matchdate , m.matchtime matchtime,t.ticketid ticketid
 		FROM `match` m 
-		INNER JOIN ticket t
+		LEFT OUTER JOIN ticket t
 		ON m.matchid = t.matchid
 	</select>	
 
+
+<insert id="insertMatch" parameterType="com.ticketmvp.domain.AdminVO" useGeneratedKeys="true" keyProperty="matchid" >
+    INSERT INTO `match` (homeclub, awayclub, matchdate, matchtime)
+    VALUES (#{homeclub}, #{awayclub}, #{matchdate}, #{matchtime})
+</insert>
+
+<insert id="insertTicket" parameterType="com.ticketmvp.domain.AdminVO" >
+    INSERT INTO `ticket` (ticketname, ticketprice, ticketall, ticketremain, matchid)
+    VALUES (#{ticketname}, #{ticketprice}, #{ticketall},#{ticketremain}, #{matchid})
+</insert>
+
+<select id="ticketModify" parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
+    SELECT t.ticketname ticketname, t.ticketprice ticketprice
+          ,t.ticketall ticketall, t.ticketremain ticketremain
+          ,t.ticketid ticketid, m.homeclub homeclub, m.awayclub awayclub, m.matchid matchid
+          ,m.matchdate matchdate, m.matchtime matchtime
+    FROM `match` m 
+    LEFT OUTER JOIN ticket t
+    ON m.matchid = t.matchid
+    WHERE t.ticketid = #{ticketid} or m.matchid = #{matchid}
+</select>
+
+<update id="updateTiket" parameterType="com.ticketmvp.domain.AdminVO">
+  UPDATE `match` m,`ticket` t SET
+  m.matchdate = #{matchdate}
+  ,m.matchtime = #{matchtime}
+  ,m.homeclub  = #{homeclub}
+  ,m.awayclub  = #{awayclub}
+  ,t.ticketname = #{ticketname}
+  ,t.ticketprice = #{ticketprice}
+  ,t.ticketall  = #{ticketall}
+ WHERE t.ticketid = #{ticketid}
+</update>
 	
 </mapper>

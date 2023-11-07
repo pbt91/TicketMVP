@@ -33,5 +33,23 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.ticket(vo);
 	}
 	
+	// 티켓,경기 입력
+	public void insertTicket(AdminVO vo) {
+		adminDAO.insertTicket(vo); 
+		}
+	public void insertMatch(AdminVO vo) {
+		adminDAO.insertMatch(vo); 
+		}
+
+	// 티켓 및 경기 수정
+	public AdminVO ticketModify(AdminVO vo) {
+		System.out.println(vo);
+		return adminDAO.ticketModify(vo);
+	}
+	public void updateTiket(AdminVO vo) {
+		System.out.println(vo);
+		adminDAO.updateTiket(vo); 
+		}
 	
+	 
 }
