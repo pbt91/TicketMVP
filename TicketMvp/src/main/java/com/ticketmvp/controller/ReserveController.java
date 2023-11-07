@@ -119,6 +119,7 @@ public class ReserveController {
 		session.setAttribute("paymentInProgress", false);
 		session.setAttribute("ticketId", 0);
 		session.setAttribute("ticketQuantityBuy", 0);
+		session.setAttribute("matchId", null);
 		mv.setViewName("/reserve/ReserveFinish");
 		return mv;
 	}

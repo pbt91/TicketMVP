@@ -7,13 +7,12 @@
 <head>
     <title>메인 페이지</title>
     <meta charset="utf-8">
-    <!-- js코드 호출 -->
+    <!-- jquery코드 호출 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <a href="/TicketMvp/reserve/ReserveChoose.do?matchid=${sessionScope.matchId}">Reserve Choose Seat</a><br/>
-<a href="/TicketMvp/error/billingFail.do">토스 실패시</a> <br/>
-<a href="/TicketMvp/error/Error.do">에러페이지</a> <br/>
+<a href="/TicketMvp/main/main_sidebar.do">사이드바 확인</a> <br/>
 <c:if test="${sessionScope.userid != null}">
 
 ${sessionScope.name}님 환영합니다 
