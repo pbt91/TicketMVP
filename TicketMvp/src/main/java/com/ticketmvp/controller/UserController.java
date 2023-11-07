@@ -21,7 +21,6 @@ public class UserController {
 	@Autowired
 	private UserService userservice;
 	
-	
 	// 메인 -> 회원가입폼
 	// 메인 -> 로그인폼
 	@RequestMapping("/{step}.do")
@@ -152,6 +151,39 @@ public class UserController {
 		session.setAttribute("mailslc", mailslc);
 		return result;
 	}
+	
+	// 회원탈퇴 -> 디비변경
+	@RequestMapping(value="/userMyElimination", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer userMyElimination(String userid,HttpSession session) {
+		System.out.println("controller 진입 : "+ userid);
+		session.invalidate();
+		return userservice.userMyElimination(userid);
+	}
+	
+	/* ***************************************************************************** */
+	
+	// 내 주문목록 값 가져오기 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -130,7 +130,7 @@ $(function () {
                                 type : 'post',
                                 dataType : 'json',
                                 data : { "userid" : userid,
-                                		 "name" : name,
+                                	 "name" : name,
                                          "email" : emailfull,
                                          "phone" : phone,
                                          "userpw" : userpw,
@@ -150,7 +150,28 @@ $(function () {
 
         }) // end of $('#modify').click
         
-        
+        $('#elimination_no').click(function(e) {
+                location.href("/TicketMvp/user/userMyModifyForm.do");
+        });
+        $('#elimination_yes').click(function(e) {
+                var userid = $('#userid').val();
+                
+                $.ajax({
+                        url : "/TicketMvp/user/userMyElimination",
+                        type : "post",
+                        dataType : "json",
+                        data : { "userid" : userid },
+                        success : function(result){
+                                alert(userid+"님 탈퇴되었습니다\n 로그아웃되며 메인창으로 돌아갑니다");
+                                /*$('#modal').off();*/
+                                location.replace("/TicketMvp/user/userLoginStatus.do");
+                        },
+                        error : function(err){
+                                alert("오류 : " + err);
+                        }
 
+                }) //end of ajax
+
+        }); // end of $('#elimination_no').click
 })
 
