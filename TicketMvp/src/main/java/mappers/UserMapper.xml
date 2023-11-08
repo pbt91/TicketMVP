@@ -67,13 +67,21 @@
 <!-- UserOrderVO 사용 -->
 
 	<!-- 내 주문목록 -->
-<!-- 	<select id="selectmyorder" parameterType="com.ticketmvp.domain.UserOrderVO" resultType="com.ticketmvp.domain.UserOrderVO">
-		SELECT 
-	</select> -->
+
 	
 	<!-- 내 문의글 -->
 	<select id="selectmyInquiry" parameterType="String" resultType="com.ticketmvp.domain.UserInquiryVO" >
-		SELECT helptitle, helptext, helpproduct, helpdate, replytext, replydate FROM help WHERE	userid=#{userid}
+		SELECT helptitle, helptext, helpproduct, helpdate, replytext, replydate, userid FROM help WHERE	userid=#{userid}
 	</select>
+
+
+
+
+
+
+
+
+
+
 
 </mapper>

@@ -187,8 +187,7 @@ public class UserController {
 			System.out.println(item.getHelptitle());
 		}*/
 		m.addAttribute("inquiryList", inquiryList);
-		
-		/*return "redirect:userMyInpuiry.do";*/
+		System.out.println("문의하기 컨드롤러 진입");
 	}
 
 	
