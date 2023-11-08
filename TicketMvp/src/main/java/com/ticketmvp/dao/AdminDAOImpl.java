@@ -42,17 +42,35 @@ public class AdminDAOImpl {
 	  mybatis.insert("AdminDAO.ticketRegister1", vo); 
 	  }
 	
-	public void insertMatch(AdminVO vo) {
-	  System.out.println("===> Mybatis insertMatch() 호출");
+	public void saveMatchTicket(AdminVO vo) {
+	  System.out.println("===> Mybatis saveMatchTicket() 호출");
 	  System.out.println(vo);
-	  mybatis.insert("AdminDAO.insertMatch", vo); 
-	  }
+	  if(vo.getTicketname() == null) {
+		  mybatis.insert("AdminDAO.insertMatch", vo);
+	  }else {
+	  mybatis.insert("AdminDAO.insertMatch", vo);
+	  System.out.println(vo);
+	  Integer lastMatchId = mybatis.selectOne("AdminDAO.getLastMatchId");
+	  System.out.println("마지막 경기 아이디"+lastMatchId);
+      if (lastMatchId != null) { 
+    	  System.out.println("널 아님 들어옴");
+          vo.setMatchid(lastMatchId);
+          System.out.println(vo);
+          mybatis.insert("AdminDAO.saveMatchTicket", vo);
+      } else {
+          System.out.println("Last match ID is null.");
+      
+      }
+  }
+	  
+	}
+	 
 	
-	public void insertTicket(AdminVO vo) {
-		  System.out.println("===> Mybatis insertTicket() 호출");
-		  System.out.println(vo);
-		  mybatis.insert("AdminDAO.insertTicket", vo); 
-		  }
+//	public void insertTicket(AdminVO vo) {
+//		  System.out.println("===> Mybatis insertTicket() 호출");
+//		  System.out.println(vo);
+//		  mybatis.insert("AdminDAO.insertTicket", vo);
+//		}
 	
 	public AdminVO ticketModify(AdminVO vo) {
 		  System.out.println("===> Mybatis ticketModify() 호출");
@@ -60,11 +78,27 @@ public class AdminDAOImpl {
 		  return (AdminVO) mybatis.selectOne("AdminDAO.ticketModify",vo);
 		  }
 	
-	public void updateTiket(AdminVO vo) {
-		  System.out.println("===> Mybatis updateTiket() 호출");
+	public void updateMatchfrm(AdminVO vo) {
+		  System.out.println("===> Mybatis updateMatchfrm() 호출");
 		  System.out.println(vo);
-		  mybatis.update("AdminDAO.updateTiket", vo); 
-		  }
+		  if(vo.getTicketid() == null  ) {
+			  mybatis.insert("AdminDAO.onlyInsertTiket", vo);
+			    
+		  }else {
+			  mybatis.update("AdminDAO.updateMatchfrm", vo); 
+		  } 
+		  
+		} 
+//	public void onlyInsertTiket(AdminVO vo) {
+//		mybatis.insert("AdminDAO.onlyInsertTiket",vo);
+//	}
+		  
+	public int deleteTicket(Integer ticketId) {
+		System.out.println(ticketId);
+		return mybatis.delete("AdminDAO.deleteTicket",ticketId);
+	}
+	
+	}
 	
 	
-}
+

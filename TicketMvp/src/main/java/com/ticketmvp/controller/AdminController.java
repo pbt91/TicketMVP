@@ -3,13 +3,15 @@ package com.ticketmvp.controller;
 import java.io.IOException;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ticketmvp.domain.AdminVO;
 import com.ticketmvp.service.AdminService;
@@ -56,11 +58,21 @@ public class AdminController {
 
 		model.addAttribute("athleteList", result);
 	}
-
+	// 유저 탈퇴
 	@PostMapping("/deleteUser/{uid}")
 	public int deleteUser(@PathVariable String uid) {
 		return AdminService.deleteUser(uid);
 
+	}
+	
+	// 티켓 삭제 
+	@PostMapping("/deleteTicket.do")
+	@ResponseBody
+	public Integer deleteTicket(@RequestParam Integer ticketId) {
+		System.out.println(ticketId);
+		Integer result = AdminService.deleteTicket(ticketId);
+		System.out.println(result);
+		return result ; 
 	}
 
 	// 경기 및 티켓 리스트 출력
@@ -74,21 +86,21 @@ public class AdminController {
 
 	
 	  // 경기 등록
-	@RequestMapping(value= "/saveMatchList.do") 
-	public String insertMatch(AdminVO vo) throws IOException {
-	AdminService.insertMatch(vo);
+	@RequestMapping(value= "/saveMatchTicket.do") 
+	public String saveMatchTicket(AdminVO vo) throws IOException {
+	AdminService.saveMatchTicket(vo);
 	System.out.println(vo);
 	return "redirect:ticket.do"; 
 	}
 	
-	  // 티켓 등록
-	@RequestMapping(value= "/saveTicketList.do") 
-	public String insertTicket(AdminVO vo) throws IOException {
-	System.out.println(vo);
-	AdminService.insertTicket(vo);
-	System.out.println(vo);
-	return "redirect:ticket.do"; 
-	}
+	/*
+	 * // 티켓 등록
+	 * 
+	 * @RequestMapping(value= "/saveTicketList.do") public String
+	 * insertTicket(AdminVO vo) throws IOException { System.out.println(vo);
+	 * AdminService.insertTicket(vo); System.out.println(vo); return
+	 * "redirect:ticket.do"; }
+	 */
 	
 	// 티켓 등록 페이지 그 자체
 	@RequestMapping("/ticketRegister.do")
@@ -96,19 +108,26 @@ public class AdminController {
 
 	}
 	
-
-
 	// 티켓 수정
-	@RequestMapping("/updateTiket.do")
-	public String updateTiket(AdminVO vo, Model m) throws IOException {
-		AdminService.updateTiket(vo) ; 
+
+	// 경기 수정 버튼 서브 밋
+	@RequestMapping("/updateMatchfrm.do")
+	public String updateMatchfrm(AdminVO vo, Model m) throws IOException {
+		AdminService.updateMatchfrm(vo) ; 
 		m.addAttribute("updateResult");
 		return "redirect:ticket.do";
 	}
 	
-	// 경기 수정
+	// 티켓 수정 버튼 서브밋
+//	@RequestMapping("/onlyInsertTiket.do")
+//	public String onlyInsertTiket(AdminVO vo, Model m) throws IOException{
+//		AdminService.onlyInsertTiket(vo) ; 
+//		m.addAttribute("updateResult");
+//		return "redirect:ticket.do";
+//	}
 	
-	// 티켓 수정 조회
+	
+	// 경기 및 티켓 수정 조회
 	@RequestMapping("/ticketModify.do")
 	public void ticketModify(AdminVO vo ,Model m) {
 		AdminVO av = AdminService.ticketModify(vo);

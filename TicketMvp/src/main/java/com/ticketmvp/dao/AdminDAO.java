@@ -19,13 +19,19 @@ public interface AdminDAO {
 	public List<AdminVO> selectClub(AdminVO vo) ;
 	
 	// 티켓 및 경기 입력
-	public void insertTicket(AdminVO vo) ;
+	//public void insertTicket(AdminVO vo) ;
 	
-	public void insertMatch(AdminVO vo) ;
+	public void saveMatchTicket(AdminVO vo) ;
 	
-	//티켓 및 경기 수정
+	//티켓 및 경기 수정 리스트
 	public AdminVO ticketModify(AdminVO vo);
 	
-	public void updateTiket(AdminVO vo) ;
+	// 경기 수정
+	public void updateMatchfrm(AdminVO vo) ;
 	
+	// 티켓 수정
+	//public void updateTiket(AdminVO vo) ;
+	
+	public int deleteTicket(Integer ticketId) ; 
+		
 }

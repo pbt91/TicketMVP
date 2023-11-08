@@ -41,6 +41,7 @@
     <body>
     <jsp:include page="headbar.jsp" />
     <div class="container-fluid">
+    	<form action="saveMatchTicket.do"  method="post">
     				<br></br>
     <h1 class="h3 mb-2 text-gray-800">경기 및 티켓 등록</h1>
      <div class="card shadow mb-4">
@@ -49,7 +50,6 @@
 		</div>
 		   <th:block layout:fragment="content">
         <div class="content">
-                <form action="saveMatchList.do"  method="post">
 
 
                     <!--/* 서버로 전달할 공지글 여부 */-->
@@ -88,7 +88,7 @@
 							</tr>
                         </tbody>
                     </table>
-                </form>                  	
+                                  	
         </div> <!--/* .content */-->
     </th:block>
      </div>
@@ -97,16 +97,10 @@
      	<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">티켓 등록</h6>
 		</div>   
-		   <th:block layout:fragment="content">
         <div class="content">
 		          <section> 
-		            <form action="saveTicketList.do" id="saveForm" method="post" autocomplete="off" enctype="multipart/form-data">
-		            	<table class="tb tb_row">	
+    	<table class="tb tb_row">	
 		            	  <tbody>    	
-                            <tr>
-                                <th>경기 번호 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="matchid" name="matchid"  placeholder="경기 번호 입력해 주세요." /></td>
-                            </tr>
                             <tr>
                                 <th>티켓명 <span class="es">필수 입력</span></th>
                                 <td colspan="3"><input type="text" id="ticketname" name="ticketname"  placeholder="티켓명 입력해 주세요." /></td>
@@ -127,7 +121,7 @@
                             </tr>
                             
 							<tr>
-								<td colspan="2" align="center"><input type="submit"	value=" 티켓 등록 " /></td>
+								<td colspan="2" align="center"><input type="submit" id="ticketsubmit"	value=" 티켓 등록 " /></td>
 							</tr>
                             
                             <tr>
@@ -136,10 +130,8 @@
                             </tr>
                            </tbody>
                           </table> 
-                    </form> 
 				</section>
                    </div> <!--/* .content */-->
-    	</th:block>     
        </div>
 <%--                 <p class="btn_set">
                     <button type="button" id="saveBtn" onclick="ticketRegister();" class="btns btn_st3 btn_mid">경기 및 티켓 등록</button>
@@ -161,27 +153,12 @@
             }
 
 
-            // 게시글 저장(수정)
-            function savePost() {
-                const form = document.getElementById('saveForm');
-                const fields = [form.title, form.writer, form.content];
-                const fieldNames = ['제목', '이름', '내용'];
-
-                for (let i = 0, len = fields.length; i < len; i++) {
-                    isValid(fields[i], fieldNames[i]);
-                }
-
-                document.getElementById('saveBtn').disabled = true;
-                form.noticeYn.value = form.isNotice.checked;
-                form.action = [[ ${post == null} ]] ? '/post/save.do' : '/post/update.do';
-                form.submit();
-            }
 
         /*]]>*/
         </script>
     </th:block>
      
-     
+      </form>
      </div>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
@@ -193,6 +170,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
         <!-- Core theme JS-->
+        <script src="${pageContext.request.contextPath}/resources/js/admin/adminTicketadd.js"></script>
     </body>
   <jsp:include page="footer.jsp" />    
 </html>

@@ -44,13 +44,13 @@
     <div class="container-fluid">
     				<br></br>
     <h1 class="h3 mb-2 text-gray-800">경기 및 티켓 등록</h1>
+                <form action="updateMatchfrm.do"  method="get">
      <div class="card shadow mb-4">
      	<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">경기 등록</h6>
 		</div>
 		   <th:block layout:fragment="content">
         <div class="content">
-                <form action="updateTiket.do"  method="get">
 
 
                     <!--/* 서버로 전달할 공지글 여부 */-->
@@ -83,6 +83,8 @@
                                 <th>경기 시간<span class="es">필수 입력</span></th>
                                 <td colspan="3"><input type="time" id="matchtime" name="matchtime" value="${ticketmo.matchtime}"  placeholder="경기 시간 입력해 주세요."  /></td>
                             </tr>
+							<td colspan="2" align="center"><input type="submit"	value=" 경기 수정 " />
+							</td>	                        
                         </tbody>
                     </table>
         </div> <!--/* .content */-->
@@ -118,17 +120,21 @@
                                 <th>티켓 전체 수량 <span class="es">필수 입력</span></th>
                                 <td colspan="3"><input type="number" id="ticketall" name="ticketall" value="${ticketmo.ticketall}"  placeholder="티켓 전체 수량 입력해 주세요." /></td>
                             </tr>
+							 <tr>
+                                <th>티켓 남은 수량 <span class="es">필수 입력</span></th>
+                                <td colspan="3"><input type="number" id="ticketremain" name="ticketremain" value="${ticketmo.ticketremain}"  placeholder="티켓 남은 수량 입력해 주세요." /></td>
+                            </tr>
                             
 							<tr>
-							
 								<td colspan="2" align="center"><input type="submit"	value=" 티켓 수정 " /></td>
-								<td colspan="2" align="center"><input type="submit"	value=" 경기 수정 " /></td>
+								<td colspan="2" align="center"><input type="button" id="addTicket"	value=" 티켓 추가 " />
+							</td>
+								
 							</tr>
 							<th>선수명 <span class="es">필수 입력</span></th>
                                 <td colspan="3"><textarea id="content" name="content" cols="50" rows="10" placeholder="내용을 입력해 주세요."></textarea></td>
                            </tbody>
                           </table> 
-                    </form> 
                    </div> <!--/* .content */-->
     	</th:block>     
        </div>
@@ -139,6 +145,7 @@
 
      
      
+                    </form> 
      </div>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
@@ -150,6 +157,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
         <!-- Core theme JS-->
+         <script src="${pageContext.request.contextPath}/resources/js/admin/adminTicketadd.js"></script>
     </body>
   <jsp:include page="footer.jsp" />    
 </html>

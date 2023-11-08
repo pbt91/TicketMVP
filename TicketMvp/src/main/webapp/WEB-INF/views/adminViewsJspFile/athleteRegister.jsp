@@ -35,24 +35,72 @@
     <body>
     <jsp:include page="headbar.jsp" />
     <div class="container-fluid">
+    <form action="athleteManage"  method="post">
     				<br></br>
     <h1 class="h3 mb-2 text-gray-800">선수 등록</h1>
      <div class="card shadow mb-4">
      	<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">선수 등록</h6>
 		</div>
-     
-     
-     
-     
-     
-     
-     
-     
-     
+     	 <div class="content">
+
+
+                    <!--/* 서버로 전달할 공지글 여부 */-->
+                    <input type="hidden" id="noticeYn" name="noticeYn" />
+                    <table class="tb tb_row">
+                        <colgroup>
+                            <col style="width:15%;" /><col style="width:35%;" /><col style="width:15%;" /><col style="width:35%;" />
+                        </colgroup>
+                        <tbody>                          
+                            <tr>
+                               <td>이미지</td>
+			                        <td>
+			                            <input type="text" name="p_img"  value={formData.p_img} onChange={onChange}/> 
+			                        </td>
+							<th>선수명 <span class="es">필수 입력</span></th>
+                                <td colspan="3"><input type="text" id="athletename" name="homeclub"  placeholder="선수명 입력해 주세요." /></td>
+                            </tr>
+                            <tr>
+                                <th>선수 구단<span class="es">필수 입력</span></th>
+                                <td colspan="3"><input type="text" id="club" name="awayclub"  placeholder="선수 구단 입력해 주세요." /></td>
+                            </tr>
+							
+							<tr>
+                                <th>선수 나이<span class="es">필수 입력</span></th>
+                                <td colspan="3"><input type="number" id="age" name="matchdate"  placeholder="선수 나이 입력해 주세요."  /></td>
+                            </tr>
+                            
+                            <tr>
+                                <th>포지션<span class="es">필수 입력</span></th>
+                                <td colspan="3"><input type="text" id="position" name="matchtime"  placeholder="포지션 입력해 주세요."  /></td>
+                            </tr>
+							
+							<tr>
+                                <th>선수 등번호<span class="es">필수 입력</span></th>
+                                <td colspan="3"><input type="number" id="backno" name="matchtime"  placeholder="선수 등번호 입력해 주세요."  /></td>
+                            </tr>
+                            
+                            <tr>
+                                <th>선수 정보<span class="es">필수 입력</span></th>
+                                <td colspan="3"><input type="text" id="info" name="matchtime"  placeholder="선수 정보 입력해 주세요."  /></td>
+                            </tr>
+                            
+                            <tr>
+                                <th>선수 경력<span class="es">필수 입력</span></th>
+                                <td colspan="3"><input type="text" id="career" name="matchtime"  placeholder="선수 경력 입력해 주세요."  /></td>
+                            </tr>
+							
+							<tr>
+								<td colspan="2" align="center"><input type="submit"	value=" 선수 등록 " /></td>
+							</tr>
+                        </tbody>
+                    </table>
+                                  	
+        </div> <!--/* .content */-->
      
      
      </div>
+     </form>
      </div>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
