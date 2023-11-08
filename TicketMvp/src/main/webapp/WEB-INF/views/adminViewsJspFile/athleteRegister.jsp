@@ -48,15 +48,18 @@
                     <!--/* 서버로 전달할 공지글 여부 */-->
                     <input type="hidden" id="noticeYn" name="noticeYn" />
                     <table class="tb tb_row">
-                        <colgroup>
+                          <colgroup>
                             <col style="width:15%;" /><col style="width:35%;" /><col style="width:15%;" /><col style="width:35%;" />
                         </colgroup>
-                        <tbody>                          
+                        <tbody>
                             <tr>
-                               <td>이미지</td>
-			                        <td>
-			                            <input type="text" name="p_img"  value={formData.p_img} onChange={onChange}/> 
-			                        </td>
+                                <th>선수 이미지<span class="es">필수 입력</span></th>
+                                <td>
+                                    <input type="file" id="fileInput" accept="image/*" onchange="displaySelectedImage(this)">
+                                </td>
+                            </tr>                 
+							
+							<tr>
 							<th>선수명 <span class="es">필수 입력</span></th>
                                 <td colspan="3"><input type="text" id="athletename" name="homeclub"  placeholder="선수명 입력해 주세요." /></td>
                             </tr>
