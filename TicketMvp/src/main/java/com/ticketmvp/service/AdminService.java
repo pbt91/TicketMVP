@@ -22,12 +22,19 @@ public interface AdminService {
 	List<AdminVO> ticket(AdminVO vo);
 	
 	// 티켓 등록
-	 void insertMatch(AdminVO vo); 
-	 void insertTicket(AdminVO vo); 
+	 void saveMatchTicket(AdminVO vo); 
+	// void insertTicket(AdminVO vo); 
 	 
 	// 티켓 및 경기 상세 리스트 
 	AdminVO ticketModify(AdminVO vo); 
 	
-	// 티켓 및 경기 수정 
-	void updateTiket(AdminVO vo);
+	//  경기 수정 
+	void updateMatchfrm(AdminVO vo);
+	
+	//  티켓 수정 
+	//void onlyInsertTiket(AdminVO vo);
+	
+	// 티켓 삭제 
+	Integer deleteTicket (Integer ticketId) ; 
+	
 }

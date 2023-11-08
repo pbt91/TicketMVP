@@ -34,22 +34,34 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	// 티켓,경기 입력
-	public void insertTicket(AdminVO vo) {
-		adminDAO.insertTicket(vo); 
-		}
-	public void insertMatch(AdminVO vo) {
-		adminDAO.insertMatch(vo); 
+//	public void insertTicket(AdminVO vo) {
+//		adminDAO.insertTicket(vo); 
+//		}
+	public void saveMatchTicket(AdminVO vo) {
+		adminDAO.saveMatchTicket(vo); 
 		}
 
-	// 티켓 및 경기 수정
+	// 티켓 및 경기 수정 리스트
 	public AdminVO ticketModify(AdminVO vo) {
 		System.out.println(vo);
 		return adminDAO.ticketModify(vo);
 	}
-	public void updateTiket(AdminVO vo) {
+	
+	// 매치 수정 서브 밋
+	public void updateMatchfrm(AdminVO vo) {
 		System.out.println(vo);
-		adminDAO.updateTiket(vo); 
+		adminDAO.updateMatchfrm(vo); 
 		}
 	
-	 
+//	public void onlyInsertTiket(AdminVO vo) {
+//		System.out.println(vo);
+//		adminDAO.onlyInsertTiket(vo); 
+//		}
+	
+	public Integer deleteTicket(Integer ticketId) {
+		System.out.println(ticketId);
+		return adminDAO.deleteTicket(ticketId );
+	} 
+	
+	
 }

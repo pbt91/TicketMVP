@@ -54,45 +54,32 @@
                                             <th>나이</th>
                                             <th>포지션</th>
                                             <th>등번호</th>
-                                            
-											<th><input type="checkbox" id="selectAll"
-												onchange="selectAllCheckboxes(this)">
-											</th>
+											<th>삭제</th>
 										</tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${athleteList}" var="athleteManagement">
                                         <tr>
-											<td>${athleteManagement.athletename}</td>
+                                        	<td>
+                                			<a href="athleteModify.do?athletename=${athleteManagement.athletename}">${athleteManagement.athletename}</a>
+                            				</td>
 											<td>${athleteManagement.club}</td>
 											<td>${athleteManagement.age}</td>
 											<td>${athleteManagement.position}</td>
 											<td>${athleteManagement.backno}</td>
-											
 											<td>
-								        		<input type="checkbox" name="selectedUser" value="${athleteManagement.athletename}" />
-								      		</td>
+                                				<button class="btn btn-danger" id="deleteTicket" >삭제</button>
+                            				</td>
+											
                                         </tr>
                                         </c:forEach>
                                     </tbody>
                                 </table>
-		<div id="actionButtons" style="display: block; ">
-        <!-- 선택된 항목이 있을 때만 표시될 버튼들 -->        
-        		<a href="${pageContext.request.contextPath}/adminViewsJspFile/athleteRegister.do" class="athleteRegister">선수 등록</a>
-				<a href="${pageContext.request.contextPath}/adminViewsJspFile/athleteModify.do" class="athleteModify">선수 수정</a>
-				<a href="${pageContext.request.contextPath}/adminViewsJspFile/athleteManagement.do" class="athleteManagement3">선수 삭제</a>
-        
-    	</div>
+								<div id="actionButtons" style="display: block; ">
+						        		<a href="${pageContext.request.contextPath}/adminViewsJspFile/athleteRegister.do" class="athleteRegister">선수 등록</a>
+						    	</div>
                             </div>
                         </div>
-									<script>
-										function selectAllCheckboxes(checkbox) {
-											var checkboxes = document.getElementsByName("selectedUser");
-											for (var i = 0; i < checkboxes.length; i++) {
-												checkboxes[i].checked = checkbox.checked;
-											}
-										}
-									</script>
                 </div>
                 </div>
     

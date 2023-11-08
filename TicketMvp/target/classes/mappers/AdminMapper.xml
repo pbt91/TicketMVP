@@ -40,9 +40,17 @@
     VALUES (#{homeclub}, #{awayclub}, #{matchdate}, #{matchtime})
 </insert>
 
-<insert id="insertTicket" parameterType="com.ticketmvp.domain.AdminVO" >
-    INSERT INTO `ticket` (ticketname, ticketprice, ticketall, ticketremain, matchid)
-    VALUES (#{ticketname}, #{ticketprice}, #{ticketall},#{ticketremain}, #{matchid})
+<insert id="saveMatchTicket" parameterType="com.ticketmvp.domain.AdminVO">
+  INSERT INTO `ticket` (ticketname, ticketprice, ticketall, ticketremain,matchid)
+  VALUES (#{ticketname}, #{ticketprice}, #{ticketall}, #{ticketremain},#{matchid})
+</insert>
+
+<select id="getLastMatchId" resultType="Integer">
+  SELECT MAX(matchid) FROM `match`
+</select>
+
+<insert id="addTicket" parameterType="com.ticketmvp.domain.AdminVO">
+	
 </insert>
 
 <select id="ticketModify" parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
@@ -56,7 +64,7 @@
     WHERE t.ticketid = #{ticketid} or m.matchid = #{matchid}
 </select>
 
-<update id="updateTiket" parameterType="com.ticketmvp.domain.AdminVO">
+<update id="updateMatchfrm" parameterType="com.ticketmvp.domain.AdminVO">
   UPDATE `match` m,`ticket` t SET
   m.matchdate = #{matchdate}
   ,m.matchtime = #{matchtime}
@@ -65,7 +73,36 @@
   ,t.ticketname = #{ticketname}
   ,t.ticketprice = #{ticketprice}
   ,t.ticketall  = #{ticketall}
+  ,t.ticketremain =#{ticketremain}
  WHERE t.ticketid = #{ticketid}
 </update>
+
+<insert id="onlyInsertTiket"  parameterType="com.ticketmvp.domain.AdminVO">
+INSERT INTO `ticket`(ticketname,ticketprice,ticketall,ticketremain,matchid)
+VALUES(#{ticketname}, #{ticketprice}, #{ticketall},#{ticketremain},#{matchid})
+
+</insert>
+
+<update id="update" parameterType="com.ticketmvp.domain.AdminVO">
+  UPDATE `match` m,`ticket` t SET
+  m.matchdate = #{matchdate}
+  ,m.matchtime = #{matchtime}
+  ,m.homeclub  = #{homeclub}
+  ,m.awayclub  = #{awayclub}
+  ,t.ticketname = #{ticketname}
+  ,t.ticketprice = #{ticketprice}
+  ,t.ticketall  = #{ticketall}
+  ,t.ticketremain =#{ticketremain}
+ WHERE t.ticketid = #{ticketid}
+</update>
+
+<!--  티켓 디비에서 삭제 -->
+<delete id= "deleteTicket" parameterType="com.ticketmvp.domain.AdminVO">
+DELETE FROM `ticket`
+WHERE ticketid=#{ticketid}
+
+</delete>
+
+
 	
 </mapper>
