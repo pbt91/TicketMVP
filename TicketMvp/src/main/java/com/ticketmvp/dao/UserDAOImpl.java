@@ -1,5 +1,6 @@
 package com.ticketmvp.dao;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -10,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Repository;
 
+import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -176,6 +178,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public UserOrderVO userMyOrderList(String userid) {
 		return null;
+	}
+
+	// 내 문의글
+	@Override
+	public List<UserInquiryVO> userMyInquiry(String userid) {
+		return mybatis.selectList("UserDAO.selectmyInquiry", userid);
 	}
 	
 	
