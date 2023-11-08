@@ -1,9 +1,12 @@
 package com.ticketmvp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ticketmvp.dao.UserDAO;
+import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -76,6 +79,11 @@ public class UserServiceImpl implements UserService{
 	// 내 주문목록
 	public UserOrderVO userMyOrderList(String userid) {
 		return userDAO.userMyOrderList(userid);
+	}
+
+	// 문의하기
+	public List<UserInquiryVO> userMyInquiry(String userid) {
+		return userDAO.userMyInquiry(userid);
 	}
 	
 }

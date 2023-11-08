@@ -1,5 +1,8 @@
 package com.ticketmvp.service;
 
+import java.util.List;
+
+import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -39,4 +42,7 @@ public interface UserService {
 	
 	//내 주문목록
 	UserOrderVO userMyOrderList(String userid);
+	
+	//내 문의글
+	List<UserInquiryVO> userMyInquiry(String us);
 }

@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -15,11 +17,20 @@
 <p>마이페이지</p>
 
 <a href='/TicketMvp/user/userMyModify.do'>회원정보 수정</a>
-<a href='/TicketMvp/user/userMyOrderList'>주문내역</a>
-<a href='/TicketMvp/user/'>찜목록</a>
-<a href='/TicketMvp/user/'>내쿠폰</a>
-<a href='/TicketMvp/user/'>Q&A</a>
-
+<a href='/TicketMvp/user/userMyOrderList.do'>주문내역</a>
+<a href='/TicketMvp/user/user'>찜목록</a>
+<a href='/TicketMvp/user/user'>내쿠폰</a>
+<a href='/TicketMvp/user/userMyInquiry.do'>Q&A</a>
+<!-- <script>
+$(function(){
+	$('#qna').click(function(){
+		$.ajax({
+			url:"/TicketMvp"
+		})
+	})
+})
+</script>
+ -->
 </c:if>
 <c:if test="${sessionScope.userid == null}">
 <p>로그아웃되어있는 상태</p>
