@@ -15,7 +15,7 @@
 <p>마이페이지</p>
 
 <a href='/TicketMvp/user/userMyModify.do'>회원정보 수정</a>
-<a href='/TicketMvp/user/userMyOrderList'>주문내역</a>
+<a href='/TicketMvp/user/userMyOrderList.do'>주문내역</a>
 <a href='/TicketMvp/user/'>찜목록</a>
 <a href='/TicketMvp/user/'>내쿠폰</a>
 <a href='/TicketMvp/user/'>Q&A</a>

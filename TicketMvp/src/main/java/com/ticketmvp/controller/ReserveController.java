@@ -1,5 +1,6 @@
 package com.ticketmvp.controller;
 
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -99,13 +100,16 @@ public class ReserveController {
 		
 	//결제완료 페이지로 이동
 	@RequestMapping(value = "/ReserveFinish.do", method = RequestMethod.GET)
-	public ModelAndView reserveFinish(String orderId, String couponId, Integer amount, HttpSession session, Model m){
+	public ModelAndView reserveFinish(String orderId, String couponId, Integer amount, Integer ticketPrice, HttpSession session, Model m){
 		ModelAndView mv = new ModelAndView();
 		Boolean paymentInProgress = (Boolean) session.getAttribute("paymentInProgress");
 		String userId = (String) session.getAttribute("userid");
 		Integer ticketId = (Integer) session.getAttribute("ticketId");
 		Integer ticketQuantityBuy = (Integer) session.getAttribute("ticketQuantityBuy");
+		String orderName = (String) session.getAttribute("orderName");
 		
+		System.out.println("스트링 컨트롤러: "+ ticketPrice);
+	
 		// 만약 제대로된 결재 경로가 아니면 좌석화면으로 강제이동
 	    if (paymentInProgress == null || !paymentInProgress) {
 	    	mv.setViewName("redirect:/athlete/main_page.do");
@@ -113,7 +117,7 @@ public class ReserveController {
 	    }
 		
 	    //결재작업
-		reserveService.recordAll(orderId, amount, ticketId, ticketQuantityBuy, userId, couponId);
+		reserveService.recordAll(orderId, amount, ticketId, ticketQuantityBuy, userId, couponId, orderName, ticketPrice);
 		
 		//결재완료에 따라 session에 업데이트
 		session.setAttribute("paymentInProgress", false);
@@ -129,7 +133,7 @@ public class ReserveController {
 	@RequestMapping("/ReserveIdCheck.do")
 	public String reserveIdCheck(String orderIdStr) {
 		if (orderIdStr == null) {
-	        return "nul"; 
+	        return "null"; 
 	    }
 		
 		//0이면 중복 없음, 그 이상이면 중복 있음

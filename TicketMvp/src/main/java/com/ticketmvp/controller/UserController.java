@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.protobuf.Service;
-import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 import com.ticketmvp.service.UserService;
 
@@ -167,13 +165,21 @@ public class UserController {
 	
 	// 내 주문목록 값 가져오기 
 	@RequestMapping("/userMyOrderList.do")
-	public /*UserOrderVO*/ void userMyOrderList(HttpSession session, Model m) {
+	public void userMyOrderList(HttpSession session, Model m) {
 		String userid = (String) session.getAttribute("userid");
-		/*UserOrderVO ordervo = userservice.userMyOrderList(userid);
-		m.addAttribute();*/
-
+		m.addAttribute("order", userservice.userMyOrderList(userid));
 	}
 	
+	// 내 주문목록에서 예매 취소하기
+	@ResponseBody
+	@RequestMapping("/userMyOrderCancel")
+	public String userMyOrderCancel(String orderId, String totalSeat, String ticketName){
+		if(userservice.cancelOrder(orderId, totalSeat, ticketName)>0) {
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
 	
 	
 	

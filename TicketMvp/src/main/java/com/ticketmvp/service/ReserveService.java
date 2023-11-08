@@ -22,7 +22,7 @@ public interface ReserveService {
 	public List<ReserveVO> selectCoupons(String userId);
 	
 	//예매/결재 후 예약테이블에 정보 입력 + 예약번호를 모든 해당 좌석에 정보넣기+결제 수량 만큼 티켓 수 없애기
-	public void recordAll(String orderId, Integer totalAmount, Integer ticketId, Integer ticketQuantity, String userId, String couponId);
+	public void recordAll(String orderId, Integer totalAmount, Integer ticketId, Integer ticketQuantity, String userId, String couponId, String orderName, Integer ticketPrice);
 	
 	//유저정보 호출
 	public UserVO getUserInfo(String userId, UserVO vo);

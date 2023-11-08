@@ -16,7 +16,7 @@
 	<!-- 토스결제 호출 -->
 	<script src="https://js.tosspayments.com/v1/payment-widget"></script>
 	<!-- js코드 호출 -->
-	<script src="/TicketMvp/resources/js/ReservePayment.js"></script>
+	<script src="/TicketMvp/resources/js/reserve/ReservePayment.js"></script>
 	<!-- css 호출 -->
 	<link rel="stylesheet" href="/TicketMvp/resources/css/ReservePayment.css"> 
 </head>

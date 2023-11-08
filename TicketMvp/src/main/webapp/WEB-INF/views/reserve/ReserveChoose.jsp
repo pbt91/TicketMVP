@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 	<!-- js코드 호출 -->
-	<script src="/TicketMvp/resources/js/ReserveChoose.js"></script>
+	<script src="/TicketMvp/resources/js/reserve/ReserveChoose.js"></script>
 	<!-- css 호출 -->
 	<link rel="stylesheet" href="/TicketMvp/resources/css/ReserveChoose.css">
 </head>

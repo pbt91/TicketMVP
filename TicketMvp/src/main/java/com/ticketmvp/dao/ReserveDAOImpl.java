@@ -48,12 +48,15 @@ public class ReserveDAOImpl implements ReserveDAO{
 	}
 	
 	//예매/결재 후 예약테이블에 정보 입력
-	public void recordReservation(String orderId, Integer totalAmount, String userId) {
+	public void recordReservation(String orderId, Integer totalAmount, String userId, Integer ticketQuantity, String orderName,Integer ticketPrice) {
 		System.out.println("===> Mybatis recordReservation() 호출");
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("orderId", orderId);
 		param.put("totalAmount", totalAmount);
 		param.put("userId", userId);
+		param.put("totalSeat", ticketQuantity);
+		param.put("orderName", orderName);
+		param.put("ticketPrice", ticketPrice);
 		mybatis.insert("ReserveDAO.recordReservation", param);
 	}
 
@@ -83,6 +86,12 @@ public class ReserveDAOImpl implements ReserveDAO{
 		param.put("couponId", couponId);
 		param.put("orderId", orderId);
 		mybatis.update("ReserveDAO.updateCoupon", param);
+	}
+	
+	//쿠폰 테이블 정보 업데이트 후 예약테이블에 할인율 저장
+	public void updateReservationDiscount(String orderId) {
+		System.out.println("===> Mybatis updateReservationDiscount() 호출");
+		mybatis.update("ReserveDAO.updateReservationDiscount", orderId);
 	}
 
 	//예매id 중복체크

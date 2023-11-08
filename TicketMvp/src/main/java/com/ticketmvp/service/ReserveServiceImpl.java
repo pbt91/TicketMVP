@@ -2,8 +2,6 @@ package com.ticketmvp.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,14 +43,15 @@ public class ReserveServiceImpl implements ReserveService {
 		return reserveDAO.getUserInfo(userId, vo);
 	}
 		
-	//예매/결재 후 예약테이블에 정보 입력 + 예약번호를 모든 해당 좌석에 정보넣기+결제 수량 만큼 티켓 수 없애기
+	//예매/결재 후 예약테이블에 정보 입력 + 예약번호를 모든 해당 좌석에 정보넣기+결제 수량 만큼 티켓 수 없애기+ 쿠폰사용(쿠폰 적용시)
 	@Transactional
-	public void recordAll(String orderId, Integer totalAmount, Integer ticketId, Integer ticketQuantity, String userId, String couponId) {
-		reserveDAO.recordReservation(orderId, totalAmount, userId);
+	public void recordAll(String orderId, Integer totalAmount, Integer ticketId, Integer ticketQuantity, String userId, String couponId, String orderName, Integer ticketPrice) {
+		reserveDAO.recordReservation(orderId, totalAmount, userId, ticketQuantity, orderName, ticketPrice);
 		int tickets = reserveDAO.recordSeat(orderId, ticketId, ticketQuantity);
 		reserveDAO.deductTickets(tickets, ticketId);
 		if (couponId != null && !couponId.isEmpty() && !couponId.equals("undefined")){
 			reserveDAO.updateCoupon(couponId, orderId);
+			reserveDAO.updateReservationDiscount(orderId);
 		};
 	}
 

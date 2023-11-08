@@ -1,5 +1,7 @@
 package com.ticketmvp.dao;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -172,13 +174,40 @@ public class UserDAOImpl implements UserDAO {
 
 	// 내 주문목록
 	@Override
-	public UserOrderVO userMyOrderList(String userid) {
-		return null;
+	public List<UserOrderVO> userMyOrderList(String userid) {
+		return mybatis.selectList("UserDAO.selectmyorder", userid);
+	}
+
+	// 내 주문목록에서 예매 취소 - 쿠폰 회수
+	@Override
+	public void cancelOrderCoupon(String orderid) {
+		mybatis.update("UserDAO.cancelordercoupon", orderid);
+	}
+
+	// 내 주문목록에서 예매 취소
+	@Override
+	public void cancelOrderSeat(String orderid) {
+		mybatis.update("UserDAO.cancelorderseat", orderid);
+		
+	}
+
+	// 주문취소 후 티켓 남은 수량 다시 회복
+	@Override
+	public void updateTicket(String totalSeat, String ticketName) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("totalseat", totalSeat);
+		param.put("ticketname", ticketName);
+		mybatis.update("UserDAO.updateticket", param);
 	}
 	
-	
-	
-	
+	// 내 주문목록에서 예매 취소
+	@Override
+	public int cancelOrderReservation(String orderid) {
+		return mybatis.update("UserDAO.cancelorderreservation", orderid);
+	}
 
+	
+	
+	
 	
 }

@@ -41,8 +41,8 @@
 	</select>
     
     <insert id="recordReservation" parameterType="hashmap">
-    	INSERT INTO reservation (reserveid, userid, reservestatus, paydate, totalpayment)
-		VALUES (${orderId} , '${userId}', '예약완료', now(), ${totalAmount})
+    	INSERT INTO reservation (reserveid, userid, reservestatus, paydate, totalpayment, totalseat, ticketname, ticketprice)
+		VALUES (${orderId} , '${userId}', '예약완료', now(), ${totalAmount}, ${totalSeat}, '${orderName}', ${ticketPrice})
     </insert>
     
     <update id="recordSeat" parameterType="hashmap">
@@ -64,7 +64,17 @@
 		SET 	reserveid = ${orderId}
 				, usestatus = 1
 				, usedate = now()
-		WHERE couponid = '${couponId}'
+		WHERE 	couponid = '${couponId}'
+    </update>  
+    
+   	<update id="updateReservationDiscount" parameterType="String">
+    	UPDATE reservation r
+		SET discount = (
+		    SELECT c.discount
+		    FROM coupon c
+		    WHERE c.reserveid = r.reserveid
+		)
+		WHERE reserveid = #{orderId}
     </update>  
 	
 	<select id="checkOrderId" parameterType="int" resultType="int">

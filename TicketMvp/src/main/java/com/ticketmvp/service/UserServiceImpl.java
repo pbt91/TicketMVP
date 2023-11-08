@@ -1,7 +1,10 @@
 package com.ticketmvp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ticketmvp.dao.UserDAO;
 import com.ticketmvp.domain.UserOrderVO;
@@ -74,8 +77,16 @@ public class UserServiceImpl implements UserService{
 /* *********************************************************** */
 	
 	// 내 주문목록
-	public UserOrderVO userMyOrderList(String userid) {
+	public List<UserOrderVO> userMyOrderList(String userid) {
 		return userDAO.userMyOrderList(userid);
 	}
 	
+	// 내 주문목록에서 예매 취소
+	@Transactional
+	public int cancelOrder(String orderid, String totalSeat, String ticketName) {
+		userDAO.cancelOrderCoupon(orderid);
+		userDAO.cancelOrderSeat(orderid);
+		userDAO.updateTicket(totalSeat, ticketName);
+		return userDAO.cancelOrderReservation(orderid);
+	}
 }

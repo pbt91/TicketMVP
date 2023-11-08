@@ -25,7 +25,7 @@ public interface ReserveDAO {
 	public UserVO getUserInfo(String userId, UserVO vo);
 	
 	//예매/결재 후 예약테이블에 정보 입력
-	public void recordReservation(String orderId, Integer finalPrice, String userId);
+	public void recordReservation(String orderId, Integer finalPrice, String userId, Integer ticketQuantity, String orderName, Integer ticketPrice);
 	
 	//예약번호를 모든 해당 좌석에 정보넣기
 	public int recordSeat(String orderId, Integer ticketId, Integer totalAmount);
@@ -38,4 +38,7 @@ public interface ReserveDAO {
 	
 	//예매id 중복체크
 	public int checkOrderId(int orderId);
+	
+	//쿠폰 테이블 정보 업데이트 후 예약테이블에 할인율 저장
+	public void updateReservationDiscount(String orderId);
 }

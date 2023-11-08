@@ -79,7 +79,6 @@ $(function(){
 	        $("#userPhoneInput").hide();
 	        $(this).hide();
 	    } else {
-	        // If the phone number is invalid, alert the user
 	        alert('유효한 번호를 입력해주세요.');
 	    }
     });
@@ -120,6 +119,8 @@ $(function(){
     // 결제하기 클릭시 결제화면으로 
     $("button#payment-request-button").click(function() {
     	
+    	parseInt($("#totalPriceDisplay").data("ticket-price"));
+    	
     	// 페이먼스메서드 렌더링 + 총 결제금액 넣기
     	paymentWidget.renderPaymentMethods("div#payment-method", { value: parseFloat($("#finalPriceDisplay").text().replace(/,/g, '').replace('원', '')) });	
 		
@@ -135,7 +136,9 @@ $(function(){
 		    			"/TicketMvp/reserve/ReserveFinish.do?ticketQuantity=" + $("#ticketQuantity").data("ticket-quantity") 
 		    			+ "&ticketId=" + $("#ticketid").val() 
 		    			+ "&userId=" + $("#userId").val()
-		    			+ "&couponId=" + $("#couponId").val(), 	
+		    			+ "&couponId=" + $("#couponId").val()
+		    			+ "&orderName=" + $("#productDisplay").text()
+		    			+ "&ticketPrice="+ parseInt($("#totalPriceDisplay").data("ticket-price")),
 		    //실패시 이동
 		    failUrl: window.location.origin + "/TicketMvp/reserve/ReserveFinish.do",
 		    //고객 이메일 
