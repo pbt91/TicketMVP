@@ -31,6 +31,6 @@ public interface UserDAO {
 /* *********************************************************** */
 	
 	// 내 주문목록
-	public UserOrderVO userMyOrderList(UserOrderVO ordervo);
+	public UserOrderVO userMyOrderList(String userid);
 	
 }

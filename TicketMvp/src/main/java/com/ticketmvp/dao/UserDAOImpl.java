@@ -174,7 +174,7 @@ public class UserDAOImpl implements UserDAO {
 
 	// 내 주문목록
 	@Override
-	public UserOrderVO userMyOrderList(UserOrderVO ordervo) {
+	public UserOrderVO userMyOrderList(String userid) {
 		return null;
 	}
 	

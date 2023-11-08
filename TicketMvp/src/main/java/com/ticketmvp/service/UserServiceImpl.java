@@ -74,8 +74,8 @@ public class UserServiceImpl implements UserService{
 /* *********************************************************** */
 	
 	// 내 주문목록
-	public UserOrderVO userMyOrderList(UserOrderVO ordervo) {
-		return userDAO.userMyOrderList(ordervo);
+	public UserOrderVO userMyOrderList(String userid) {
+		return userDAO.userMyOrderList(userid);
 	}
 	
 }
