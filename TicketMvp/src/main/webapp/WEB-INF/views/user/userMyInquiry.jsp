@@ -16,11 +16,9 @@
 <!-- js 코드 호출 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- css 파일 연결 - main -->
-<link rel="stylesheet"
-	href="/TicketMvp/resources/css/main/templates.css">
+<link rel="stylesheet" href="/TicketMvp/resources/css/main/templates.css">
 <!-- css 파일 연결 - page -->
-<link rel="stylesheet"
-	href="/TicketMvp/resources/css/user/userMyInquiry.css">
+<link rel="stylesheet" href="/TicketMvp/resources/css/user/userMyInquiry.css">
 <!-- js파일 연결 -->
 <!-- <script src="/TicketMvp/resources/js/user/.js" type="text/javascript"></script> -->
 
@@ -55,12 +53,13 @@
 						<!-- 번호 -->
 						<col width="*">
 						<!-- 제목 -->
-						<col width="100">
+						<col width="120">
 						<!-- 날짜 -->
 						<col width="65">
 						<!-- 답글 유무 -->
 					</colgroup>
-					<thead>
+					
+					<thead class='thead_iquiry'>
 						<tr>
 							<th scope="row">
 								<div class="tb-center">번호</div>
@@ -76,7 +75,7 @@
 							</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class='tbody_iquiry'>
 						<c:forEach var="inquiry" items="${inquiryList}">
 							<c:choose>
 								<c:when test="${not empty inquiry}">
@@ -98,24 +97,6 @@
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
-						<%-- <c:forEach var="inquiry" items="${inquirtList }">
-							<c:if test="${not empty inquiryList}"> <!-- controller에서 넘어온 model에 값이 있으면 -->
-								<tr>
-									<td><%= ++num %></td>
-									<td>${inquiryList.helptitle }</td>
-									<td>${inquiryList.helpdate }</td>
-									<td><c:if test="${not empty inquiryList.replydate }">완료</c:if>
-										<c:if test="${empty inquiryList.replydate }">대기</c:if></td>								
-								</tr>
-							</c:if>
-							<c:if test="${empty inquiryList}"> <!-- controller에서 넘어온 model에 값이 있으면 -->
-								<tr>
-									<td colspan="3">
-										<span class="tb-center">아직 작성된 글이 없습니다</span>
-									</td>
-								</tr>
-							</c:if>
-						</c:forEach> --%>
 					</tbody>
 				</table>
 			</div>

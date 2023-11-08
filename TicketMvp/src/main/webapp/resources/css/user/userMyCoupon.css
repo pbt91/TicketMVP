@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 table {
 	border: 1px #a39485 solid;
 	font-size: .9em;
@@ -68,47 +67,3 @@ a {
 		border-bottom: 1px solid #e5e5e5;
 	}
 }
-/* 테이블 스타일
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-캡션 스타일
-caption {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-열 스타일
-colgroup col {
-    border: 1px solid #ccc;
-}
-
-테이블 헤더 스타일
-thead tr {
-    background-color: #f0f0f0;
-}
-
-thead th {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-}
-
-테이블 내용 스타일
-tbody tr:nth-child(even) {
-    background-color: #f7f7f7;
-}
-
-tbody td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-}
-
-중앙 정렬 클래스
-.tb-center {
-    text-align: center;
-}
- */
