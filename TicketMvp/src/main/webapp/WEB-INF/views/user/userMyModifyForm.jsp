@@ -103,7 +103,7 @@
 				            </div>
 				            <div class="enroll_btn" align="center">
 				                <button class="btn gray_btn modal_close" id="elimination_no">취소</button>
-				                <button class="btn pink_btn btn_ok" id="elimination_yes" style="color:red;">탈퇴</button>
+				                <a rel="modal:close"><button class="btn pink_btn btn_ok" id="elimination_yes" style="color:red;">탈퇴</button></a>
 				            </div>
 						</section>
 						

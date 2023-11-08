@@ -59,5 +59,16 @@
 		UPDATE user SET name=#{name}, userpw=#{userpw}, email=#{email}, phone=#{phone} WHERE userid=#{userid}
 	</update>
 	
+	<!-- 회원탈퇴 -->
+	<update id="updateelimination" parameterType="String">
+		UPDATE user SET joinstatus=false WHERE userid=#{userid}
+	</update>	
+
+<!-- UserOrderVO 사용 -->
+
+	<!-- 내 주문목록 -->
+	<select id="selectmyorder" parameterType="com.ticketmvp.domain.UserOrderVO" resultType="com.ticketmvp.domain.UserOrderVO">
+		SELECT 
+	</select>
 
 </mapper>

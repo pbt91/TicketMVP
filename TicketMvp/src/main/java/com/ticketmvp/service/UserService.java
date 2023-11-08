@@ -1,5 +1,6 @@
 package com.ticketmvp.service;
 
+import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
 public interface UserService {
@@ -30,4 +31,12 @@ public interface UserService {
 	
 	//회원정보수정
 	Integer userModify(UserVO vo, boolean exceptpw);
+	
+	//회원탈퇴
+	Integer userMyElimination(String userid);
+	
+/* ********************************************* */
+	
+	//내 주문목록
+	UserOrderVO userMyOrderList(String userid);
 }

@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Repository;
 
+import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
 @Repository("userDAO")
@@ -161,6 +162,18 @@ public class UserDAOImpl implements UserDAO {
 		}else {	// false면 모든 정보 변경	
 			return mybatis.update("UserDAO.updatemodify_all", vo);			
 		}
+	}
+
+	// 회원탈퇴
+	@Override
+	public Integer userMyElimination(String userid) {
+		return mybatis.update("UserDAO.updateelimination",userid);
+	}
+
+	// 내 주문목록
+	@Override
+	public UserOrderVO userMyOrderList(String userid) {
+		return null;
 	}
 	
 	

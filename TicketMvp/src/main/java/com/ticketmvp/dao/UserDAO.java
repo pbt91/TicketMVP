@@ -1,5 +1,6 @@
 package com.ticketmvp.dao;
 
+import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
 public interface UserDAO {
@@ -24,6 +25,12 @@ public interface UserDAO {
 	public UserVO checkPw(UserVO vo);
 	// 회원정보수정
 	public Integer userModify(UserVO vo, boolean exceptpw);
+	// 회원탈퇴
+	public Integer userMyElimination(String userid);
 	
-
+/* *********************************************************** */
+	
+	// 내 주문목록
+	public UserOrderVO userMyOrderList(String userid);
+	
 }

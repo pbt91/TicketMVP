@@ -1,9 +1,11 @@
-/* 헤더, 푸터, 사이드 바 관련 css*/
+/* 템플릿 css */
 
-/* 리더님 css */
+/* 헤더, 푸터, 사이드 바 전체 윤곽 */
 #container {
 	display: flex;
-	height: 1000px;
+	height: auto;									/* 변경 */
+	min-height: 750px;								/* 추가 */
+	min-width: 500px;								/* 추가 */
 	background-color: #f8f9fa;
 }
 
@@ -12,19 +14,13 @@
    	background-color:#333;
 	max-height: 1000px;
 	min-width: 200px;
-/* 	overflow: auto; */
-/* 	padding: 10px; */
-/* 	border: 1px solid #ccc; */
 }
 
 #container>#content {
 	flex: 9;
 	height: 100%;
 	padding : 15px;
-/* 	padding: 10px; */
-/* 	border: 1px solid #ccc; */
 }
-
 
 iframe {
 	width: 100%;
@@ -34,6 +30,13 @@ iframe {
 
 
 /*메인페이지에 있는 전체 <div>코드입니다. 혹시 몰라서 넣었어요!*/
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+}
+
 body {
 	margin: 0;
 	font-size: 1rem;
@@ -64,99 +67,41 @@ body {
 
 
 
-/* 헤더 */
+/* 헤더 login status */
 
 .top-header {
+	height: 80px;
 	background-color: #333;
-	color: white;
-	text-align: right;
-	height: 100px;
 	position : relative;
-/* 	padding: 10px; */
 }
 
 .top-header .header-links {
 	position: absolute;
 	top : 50%;
 	right : 2%;
-	font-size : 16px;
-/* 	float: right; */	
+	font-size : 20px;
+	color: white;
 }
 
 .top-header .header-links a {
 	color: white;
 	text-decoration: none;
-	margin: 0 10px;
+	margin: 15px;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    justify-content: space-between;
-}
+/* 헤더 logo-banner-header */
 
-/* 로고, 배너 스타일 */
-
-/* .header .banner img {
-    max-width: 100%;
-} */
-
-/* .header .banner img, */
-.header .logo img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* .header .logo img {
-    max-width: 150px;
-} */
-
- /* 배너 크기를 제한 */
-/* .header .logo img {
-    max-width: 150px;
-} */
-
-.login-header {
-	background-color: #333;
-	color: white;
-	text-align: right;
-/* 	padding: 30px; */
-}
-
-/* .login-header .header-links {
-	float: right;
-}
- */
-.login-header .header-links a {
-	color: white;
-	text-decoration: none;
-	margin: 0 10px;
-}
 
 .logo-banner-header {
 	display: flex;
 	align-items: center;
 	background-color: black;
-/* 	padding: 20px; */
 }
 
-/* 로고와 배너 크기 및 가운데 정렬 */
-.logo {
-	width : 100%;
-	height: auto;
-/* 	width: 150px;  수정된 크기  */
-/* 	margin-right: 10px; */
+.logo-banner-header.logo img {
+    max-width: 100%;
+    height: auto;
 }
-
-.banner {
-	width: 150%; /* 배너 너비 100% */
-	height: auto;
-	display: flex;
-	justify-content: center; /* 가운데 정렬 */
-	align-items: center; /* 세로 가운데 정렬 */
-}
-
 
 /*사이드 바 */
 
@@ -168,8 +113,9 @@ body {
 }
 
 .sidebar .menu {
+	padding-bottom: 10px;
+	padding-top: 10px;
 	list-style: none;
-	padding: 0;
 }
 
 .sidebar .menu li {
@@ -192,7 +138,6 @@ body {
 	align-items: center;
 	bottom: 0; left: 0;
 	height: 150px;
-/* 	padding: 20px; */
 }
 
 .footer_inner {
@@ -205,7 +150,7 @@ body {
 	list-style: none;
 	padding: 0;
 	display: flex;
-	margin-right: 20px; /* 이전에 있던 마진을 여기로 이동 */
+	margin-right: 20px; 
 }
 
 .footer_links li {
@@ -214,11 +159,20 @@ body {
 
 .footer a {
 	color: white;
+	text-decoration: none;
 }
 
 .footer_logo {
 	font-weight: bold;
 	font-size: 24px;
+}
+
+.footer_inner .footer_team7 {
+	position : right;
+}
+
+.footer_inner .footer_team7 p {
+	margin:2px;
 }
 
 

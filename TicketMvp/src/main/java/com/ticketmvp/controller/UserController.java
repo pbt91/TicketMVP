@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.protobuf.Service;
+import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 import com.ticketmvp.service.UserService;
 
@@ -20,7 +22,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userservice;
-	
 	
 	// 메인 -> 회원가입폼
 	// 메인 -> 로그인폼
@@ -41,7 +42,7 @@ public class UserController {
 	
 	// 회원가입폼 -> 디비저장 -> 회원가입완료페이지
 	@RequestMapping("/insertUser.do")
-	public void insertUser(UserVO vo) {
+	public void userInsertUser(UserVO vo) {
 		userservice.insertUser(vo);
 	}
 	
@@ -152,6 +153,45 @@ public class UserController {
 		session.setAttribute("mailslc", mailslc);
 		return result;
 	}
+	
+	// 회원탈퇴 -> 디비변경
+	@RequestMapping(value="/userMyElimination", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer userMyElimination(String userid,HttpSession session) {
+		System.out.println("controller 진입 : "+ userid);
+		session.invalidate();
+		return userservice.userMyElimination(userid);
+	}
+	
+	/* ***************************************************************************** */
+	
+	// 내 주문목록 값 가져오기 
+	@RequestMapping("/userMyOrderList.do")
+	public /*UserOrderVO*/ void userMyOrderList(HttpSession session, Model m) {
+		String userid = (String) session.getAttribute("userid");
+		/*UserOrderVO ordervo = userservice.userMyOrderList(userid);
+		m.addAttribute();*/
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

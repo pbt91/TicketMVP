@@ -154,12 +154,12 @@ $(function () {
         }
 
 		// 전화번호에 숫자 말고 다른거 넣었을 때
-		if(num_check.test(phone)){
+		/*if(num_check.test(phone)){
 			
 		
 		}else{
 			alert("연락처는 '-'을 제외하고 숫자만 입력해주세요");
-		}
+		}*/
 
         return true;
 
