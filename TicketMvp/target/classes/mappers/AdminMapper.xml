@@ -31,7 +31,8 @@
 			  ,m.matchdate matchdate , m.matchtime matchtime,t.ticketid ticketid
 		FROM `match` m 
 		LEFT OUTER JOIN ticket t
-		ON m.matchid = t.matchid
+		ON m.matchid = t.matchid 
+		ORDER BY t.ticketid 
 	</select>	
 
 
