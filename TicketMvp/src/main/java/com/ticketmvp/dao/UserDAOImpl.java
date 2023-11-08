@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Repository;
 
+import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -198,6 +199,12 @@ public class UserDAOImpl implements UserDAO {
 		param.put("totalseat", totalSeat);
 		param.put("ticketname", ticketName);
 		mybatis.update("UserDAO.updateticket", param);
+	}
+
+	// 내 문의글
+	@Override
+	public List<UserInquiryVO> userMyInquiry(String userid) {
+		return mybatis.selectList("UserDAO.selectmyInquiry", userid);
 	}
 	
 	// 내 주문목록에서 예매 취소

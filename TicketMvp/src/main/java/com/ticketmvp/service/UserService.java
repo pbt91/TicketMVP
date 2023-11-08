@@ -2,6 +2,7 @@ package com.ticketmvp.service;
 
 import java.util.List;
 
+import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -44,4 +45,7 @@ public interface UserService {
 	
 	//내 주문목록에서 예매취소
 	int cancelOrder(String orderid, String totalSeat, String ticketName);
+	
+	//내 문의글
+	List<UserInquiryVO> userMyInquiry(String us);
 }

@@ -71,7 +71,7 @@
 		SELECT * 
 		FROM reservation 
 		ORDER BY 	paydate DESC
-					, totalpayment DESC; 
+					,totalpayment DESC; 
 	</select>
 	
 	<!-- 주문목록에서 예매 취소 -->
@@ -108,6 +108,9 @@
 		WHERE reserveid = #{orderid}
 	</update>
 	
-
+	<!-- 내 문의글 -->
+	<select id="selectmyInquiry" parameterType="String" resultType="com.ticketmvp.domain.UserInquiryVO" >
+		SELECT helptitle, helptext, helpproduct, helpdate, replytext, replydate FROM help WHERE	userid=#{userid}
+	</select>
 	
 </mapper>

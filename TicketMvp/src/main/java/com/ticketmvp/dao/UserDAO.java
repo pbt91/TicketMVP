@@ -2,6 +2,8 @@ package com.ticketmvp.dao;
 
 import java.util.List;
 
+
+import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -46,6 +48,8 @@ public interface UserDAO {
 	
 	// 내 주문목록에서 예매 취소 - 예매
 	public int cancelOrderReservation(String orderid);
-	
 
+	// 내 문의글
+	public List<UserInquiryVO> userMyInquiry(String userid);
+	
 }

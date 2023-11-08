@@ -1,5 +1,8 @@
 package com.ticketmvp.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserVO;
 import com.ticketmvp.service.UserService;
 
@@ -48,10 +53,7 @@ public class UserController {
 	@RequestMapping("/loginCheck.do")
 	public String login(String userid, String userpw, HttpSession session) {
 		UserVO result = userservice.loginCheck(userid, userpw);
-		if(result.equals(null)) {
-			// 회원정보 안맞으면 DB검색된 값 없음 -> 로그인 폼 그대로 있음. (비밀번호 틀렸다는 값 넘겨줘야 됨)
-			return "redirect:userLoginForm.do";
-		}else {
+		if(result != null && result.isJoinstatus() == true) {
 			// 검색된 회원정보 있으면 로그인한 사용자 이름 세션에 저장해야함
 			session.setAttribute("userid", result.getUserid());
 			session.setAttribute("name", result.getName());
@@ -63,11 +65,15 @@ public class UserController {
 			String mailslc = result.getEmail().substring(asplit+1,emaillength);
 			session.setAttribute("emailid", emailid);
 			session.setAttribute("mailslc", mailslc);
-			
-			
+				
 			//세션시간 1시간
 			//session.setMaxInactiveInterval(60*60);
 			return "redirect:userLoginStatus.do";
+		
+		}
+		else {	
+			// 회원정보 안맞으면 DB검색된 값 없음 -> 로그인 폼 그대로 있음. (비밀번호 틀렸다는 값 넘겨줘야 됨)
+			return "redirect:userLoginForm.do";
 		}
 	}
 	
@@ -181,24 +187,20 @@ public class UserController {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// 내 문의글
+	@RequestMapping("/userMyInquiry.do")
+	public void userMyInquiry(HttpSession session, Model m) {
+		String userid = (String) session.getAttribute("userid");		
+		List<UserInquiryVO> inquiryList = new ArrayList<UserInquiryVO>(); 
+		inquiryList = userservice.userMyInquiry(userid);
+		/*for(UserInquiryVO item : inquiryList) {
+			System.out.println(item.getHelptitle());
+		}*/
+		m.addAttribute("inquiryList", inquiryList);
+		
+		/*return "redirect:userMyInpuiry.do";*/
+	}
+
+
 	
 }
