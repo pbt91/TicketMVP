@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -7,7 +8,8 @@
 <title>Insert title here</title>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/athlete_information.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src='../resources/js/athlete.js' type="text/javascript"></script>
 <script
@@ -36,7 +38,7 @@
 	flex: 9;
 	padding-top: 15px;
 	/*    border: 1px solid #ccc; */
-	height: 100%;
+	height: auto;
 }
 
 iframe {
@@ -61,32 +63,38 @@ iframe {
 
 				<div id="content">
 					<main class="athlete-information">
-						<div class="athlete-information-gird">
-							<!-- 선수 이미지가 들어가는 부분의 박스 -->
-							<div class="image-layer">
-								<img id="athlete-image"
-									src="${pageContext.request.contextPath}/resources/images/member_images/${athlete.athleteimgfile}"
-									alt="선수 이미지" />
+						<div class="athlete-top">
+							<div class="gird-left">
+								<!-- 선수 이미지가 들어가는 부분의 박스 -->
+								<div class="image-layer">
+									<img id="athlete-image"
+										src="${pageContext.request.contextPath}/resources/images/member_images/${athlete.athleteimgfile}"
+										alt="선수 이미지" />
+								</div>
 							</div>
 							<!-- 선수 정보가 들어가는 부분 -->
-							<div class="text-layer">
-								<h1 id="athlete-name">${athlete.athletename}</h1>
-								<p id="athlete-info">${athlete.info}</p>
-								<p id="athlete-career">경력: ${athlete.career}</p>
+							<div class="gird-right">
+								<div class="text-layer">
+									<h1 id="athlete-name">${athlete.athletename}</h1>
+									<p id="athlete-info">${athlete.info}</p>
+									<p id="athlete-career">경력: ${athlete.career}</p>
+								</div>
 							</div>
 						</div>
+
+						<div class="athlete-schedule">
+							<h2>경기 일정</h2>
+							<ul id="match-schedule">
+								<c:forEach var="match" items="${matches}">
+									<li>
+										<p>${match.homeclub} vs ${match.awayclub}</p>
+										<p>일자: ${match.matchdate}</p>
+										<p>시간: ${match.matchtime}</p>
+									</li>
+								</c:forEach>
+							</ul>
+						</div>
 					</main>
-
-					<div class="athlete-schedule">
-						<!-- 선수의 경기 일정 리스트가 여기에 들어갈 수 있음 -->
-						<h2>경기 일정</h2>
-						<ul>
-							<li>경기 1 - 날짜 및 정보</li>
-							<li>경기 2 - 날짜 및 정보</li>
-							<!-- 다른 경기 리스트 항목 추가 -->
-						</ul>
-					</div>
-
 				</div>
 			</div>
 			<div id="footer">
