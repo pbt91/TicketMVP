@@ -3,15 +3,35 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ticketmvp.dao.AthleteDAO">
 
-  <select id="getAthleteImagePaths" resultType="com.ticketmvp.domain.AthleteVO">
-        SELECT athletename, athleteimgfile
-        FROM athlete
-    </select>
+	<select id="getAthleteImagePaths"
+		resultType="com.ticketmvp.domain.AthleteVO">
+		SELECT athletename, athleteimgfile
+		FROM athlete
+	</select>
 
-  <select id="getAthleteInformation" resultType="com.ticketmvp.domain.AthleteVO">
-    SELECT athletename, info, career, athleteimgfile
-    FROM athlete
-    WHERE athletename = #{athletename}
-  </select>
+	<select id="getAthleteInformation"
+		resultType="com.ticketmvp.domain.AthleteVO">
+		SELECT athletename, info, career, athleteimgfile
+		FROM athlete
+		WHERE athletename = #{athletename}
+	</select> <!-- 건드리지 말기 -->
+
+	<select id="getMatchesAthleteClub" resultType = "String" parameterType="String">
+	SELECT club FROM athlete WHERE athletename=#{athletename}
+	</select>
+
+	<select id="getMatchesForClub"
+	parameterType="String"
+		resultType="com.ticketmvp.domain.MatchVO">
+		SELECT matchid, homeclub, awayclub, matchdate, matchtime
+		FROM `match`
+		WHERE homeclub = #{club} OR awayclub = #{club}
+	</select>
+	
+
+
+
+
 
 </mapper>
+
