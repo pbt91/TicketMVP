@@ -17,5 +17,9 @@ public interface AthleteDAO {
 
     List<MatchVO> getMatchesForClub(String club);
 
+    void addLike(@Param("userId") String userId, @Param("matchId") Integer matchId);
+
+    void removeLike(@Param("userId") String userId, @Param("matchId") Integer matchId);
+    
 
 }

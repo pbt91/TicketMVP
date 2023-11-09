@@ -4,4 +4,4 @@
 <%
 	response.sendRedirect("athlete/main_page.do");
 	//response.sendRedirect("test.do");
-%>
+%> 

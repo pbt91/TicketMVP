@@ -13,9 +13,12 @@ public interface AthleteService {
 	/* List<MatchVO> getAthleteMatches(String club); */
     
     List<MatchVO> getMatchesForClub(String club);
-
-
-
     
+    
+    void addLike(String userId, Integer matchId);
+
+    void removeLike(String userId, Integer matchId);
+
+
     
 }

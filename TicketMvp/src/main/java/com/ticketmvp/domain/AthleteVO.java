@@ -34,7 +34,7 @@ public class AthleteVO {
 		this.athleteimgfilefull = athleteimgfilefull;
 		this.athleteimgsize = athleteimgsize;
 	}
-	
+
 	
 	//setter
 	public void setAthletename(String athletename) {

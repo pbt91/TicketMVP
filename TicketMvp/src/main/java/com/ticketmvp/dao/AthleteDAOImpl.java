@@ -36,9 +36,33 @@ public class AthleteDAOImpl implements AthleteDAO {
 		return result;
 	}
 
-	/*
-	 * @Override public List<MatchVO> getAthleteMatches(String club) { return
-	 * mybatis.selectList("com.ticketmvp.dao.AthleteDAO.getAthleteMatches", club); }
-	 */
+	@Override
+    public void addLike(String userId, Integer matchId) {
+        mybatis.insert("com.ticketmvp.dao.AthleteDAO.addLike", new LikeDTO(userId, matchId));
+    }
+
+    @Override
+    public void removeLike(String userId, Integer matchId) {
+        mybatis.delete("com.ticketmvp.dao.AthleteDAO.removeLike", new LikeDTO(userId, matchId));
+    }
+
+    // LikeDTO 클래스 추가
+    private static class LikeDTO {
+        private String userId;
+        private Integer matchId;
+
+        public LikeDTO(String userId, Integer matchId) {
+            this.userId = userId;
+            this.matchId = matchId;
+        }
+
+        public String getUserId() {
+            return userId;
+        }
+
+        public Integer getMatchId() {
+            return matchId;
+        }
+    }
 
 }
