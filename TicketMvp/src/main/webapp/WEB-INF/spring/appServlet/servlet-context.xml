@@ -25,7 +25,6 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
 
 	<!-- 사용 패키지 -->
 	<context:component-scan base-package="com.ticketmvp" />

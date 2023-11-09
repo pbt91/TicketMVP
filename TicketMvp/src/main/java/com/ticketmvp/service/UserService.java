@@ -51,4 +51,5 @@ public interface UserService {
 	
 	//문의하기 작성
 	Integer userMyInquiryInsert(UserInquiryVO vo);
+
 }

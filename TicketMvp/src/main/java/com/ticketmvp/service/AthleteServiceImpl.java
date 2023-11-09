@@ -27,8 +27,17 @@ public class AthleteServiceImpl implements AthleteService {
 
 	@Override
 	public List<MatchVO> getMatchesForClub(String athleteName) {
-	    return athleteDAO.getMatchesForClub(athleteName);
+		return athleteDAO.getMatchesForClub(athleteName);
 	}
 
+	@Override
+	public void addLike(String userId, Integer matchId) {
+		athleteDAO.addLike(userId, matchId);
+	}
+
+	@Override
+	public void removeLike(String userId, Integer matchId) {
+		athleteDAO.removeLike(userId, matchId);
+	}
 
 }

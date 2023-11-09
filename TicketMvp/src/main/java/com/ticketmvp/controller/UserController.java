@@ -212,5 +212,6 @@ public class UserController {
 		Integer result = userservice.userMyInquiryInsert(vo);
 		return result;
 	}
+
 	
 }

@@ -12,36 +12,50 @@ body {
 
 main.athlete-information {
     display: grid;
-    gap: 20px; /* 열 사이의 간격 설정 */
+    gap: 120px; /* 열 사이의 간격 설정 */
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px; /* 그리드 전체의 padding 조정 */
     max-width: 100%; /* 최대 너비 설정 */
+    max-height: 100%;
 }
 
 .athlete-top {
     display: grid;
-    grid-template-columns: auto auto; /* 2개의 열로 나눔 */
-    align-items: flex-start; /* 이미지 상단 정렬 */
+    grid-template-columns: 1fr 1fr; /* 2개의 열로 나눔 */
+    align-items: center; /* 이미지 상단 정렬 */
 }
 
 .image-layer {
-    max-height: 300px; /* 이미지 최대 높이 설정 */
-    text-align: center; /* 이미지 중앙 정렬 */
+    width: 50%; /* 이미지의 가로 크기를 화면 너비의 절반으로 설정합니다. */
+    max-height: 300px; /* 이미지의 최대 높이 설정 */
+    text-align: center;
 }
 
 .image-layer img {
-    max-width: 100%; /* 이미지 최대 너비 설정 */
-    height: auto; /* 가로 비율 유지 */
+    /* max-width: 100%; 이미지 최대 너비 설정
+    max-height: 100%; 이미지를 그리드에 맞게 확장합니다.
+    height: auto; 가로 비율 유지 */
+    
+    max-width: 100%; /* 이미지를 최대 너비로 설정하여 가로 비율을 유지합니다. */
+    height: auto; /* 이미지 높이를 자동으로 조절하여 세로 비율을 유지합니다. */
+    display: inline-block; /* 인라인 블록 요소로 설정하여 수직 가운데 정렬을 쉽게 할 수 있습니다. */
+    vertical-align: middle; /* 수직 가운데 정렬을 활성화합니다. */
 }
 
 .text-layer {
-    padding: 20px;
+/*     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
-    text-align: left; /* 선수 정보를 왼쪽 정렬 */
-    height: 300px; /* 선수 정보 박스의 높이를 이미지와 동일하게 설정합니다. */
+    text-align: left; 선수 정보를 왼쪽 정렬
+    height: 300px; 선수 정보 박스의 높이를 이미지와 동일하게 설정합니다. */
+    
+     padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: left; /* 선수 정보를 가운데 정렬로 변경 */
+    height: auto; /* 선수 정보 박스의 높이를 이미지와 동일하게 설정합니다. */
 }
 
 h1 {
@@ -73,4 +87,35 @@ p {
 .athlete-schedule li {
     font-size: 16px;
     margin: 5px 0;
+}
+
+/* 경기 일정 양식 */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+}
+
+.grid-item {
+    padding: 20px; /* 그리드 아이템의 패딩을 늘립니다. */
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.match-info {
+    font-size: 18px; /* 글꼴 크기를 더 크게 설정합니다. */
+    margin: 0;
+}
+
+.payment-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* 결제 버튼의 글꼴 크기를 설정합니다. */
+    margin-left: 60px; /* 버튼을 오른쪽으로 이동시키려면 왼쪽에 간격을 추가합니다. */
 }

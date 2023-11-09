@@ -87,10 +87,6 @@ public class UserServiceImpl implements UserService{
 		return userDAO.userMyInquiry(userid);
 	}
 
-	// 문의하기 작성
-	public Integer userMyInquiryInsert(UserInquiryVO vo) {
-		return userDAO.userMyInquiryInsert(vo);
-	}
 	
 	// 내 주문목록에서 예매 취소
 	@Transactional
@@ -99,5 +95,11 @@ public class UserServiceImpl implements UserService{
 		userDAO.cancelOrderSeat(orderid);
 		userDAO.updateTicket(totalSeat, ticketName);
 		return userDAO.cancelOrderReservation(orderid);
+	}
+
+	@Override
+	public Integer userMyInquiryInsert(UserInquiryVO vo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

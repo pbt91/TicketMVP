@@ -49,11 +49,11 @@ public interface UserDAO {
 	// 내 주문목록에서 예매 취소 - 예매
 	public int cancelOrderReservation(String orderid);
 
-	// 내 문의글
 	// 문의하기 리스트
 	public List<UserInquiryVO> userMyInquiry(String userid);
 	
 	// 문의하기 작성
 	Integer userMyInquiryInsert(UserInquiryVO vo);
+
 
 }

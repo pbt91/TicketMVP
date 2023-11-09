@@ -29,7 +29,13 @@
 	</select>
 	
 
+	<insert id="addLike" parameterType="map">
+        INSERT INTO `like` (userid, matchid) VALUES (#{userId}, #{matchId})
+    </insert>
 
+    <delete id="removeLike" parameterType="map">
+        DELETE FROM `like` WHERE userid = #{userId} AND matchid = #{matchId}
+    </delete>
 
 
 

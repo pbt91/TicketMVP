@@ -11,10 +11,12 @@
 <link rel="stylesheet" type="text/css"
 	href="../resources/css/athlete_information.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src='../resources/js/athlete.js' type="text/javascript"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src='/TicketMvp/resources/js/athlete.js' type="text/javascript"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+
 
 
 <style>
@@ -83,16 +85,23 @@ iframe {
 						</div>
 
 						<div class="athlete-schedule">
-							<h2>경기 일정</h2>
-							<ul id="match-schedule">
+							<h1>경기 일정</h1>
+							<div class="grid-container">
 								<c:forEach var="match" items="${matches}">
-									<li>
-										<p>${match.homeclub} vs ${match.awayclub}</p>
-										<p>일자: ${match.matchdate}</p>
-										<p>시간: ${match.matchtime}</p>
-									</li>
+									<div class="gird-item">
+										<p class="match-info">
+										<input type = "hidden" value="${match.matchid}">
+										<!-- 하트 이모티콘 삽입 -->
+										   <button class="heart-button" data-matchid="${match.matchid}">&#x2661;</button>
+											${match.homeclub} vs ${match.awayclub} 
+											일자: ${match.matchdate} 
+											시간: ${match.matchtime}
+										
+										 <button class ="payment-button" data-matchid="${match.matchid}">예매</button>
+										 </p>
+									</div> 
 								</c:forEach>
-							</ul>
+							</div>
 						</div>
 					</main>
 				</div>
@@ -104,3 +113,5 @@ iframe {
 	</div>
 </body>
 </html>
+
+<!-- /TicketMvp/reserve/ReserveChoose.do -->

@@ -66,7 +66,7 @@ iframe {
 										<a
 											href="${pageContext.request.contextPath}/athlete/athlete_information.do?athletename=${athlete.athletename}">
 											<img
-											src="${pageContext.request.contextPath}/resources/images/member_images/${athlete.athleteimgfile}"
+											src="/TicketMvp/resources/images/member_images/${athlete.athleteimgfile}"
 											alt="선수 이미지" />
 										</a>
 									</div>
