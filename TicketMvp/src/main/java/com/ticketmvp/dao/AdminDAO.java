@@ -8,16 +8,13 @@ import com.ticketmvp.domain.UserInquiryVO;
 public interface AdminDAO {
 	
 	// 유저 목록
-	public List<AdminVO> selectUser(AdminVO vo) ;
-	
-	
-	public void deleteUser(String uid);
+	public List<AdminVO> user(AdminVO vo) ;
 	
 	// 선수 목록
-	public List<AdminVO> selectAthlete(AdminVO vo) ;
+	public List<AdminVO> athleteManagement(AdminVO vo) ;
 	
 	// 클럽 목록
-	public List<AdminVO> selectClub(AdminVO vo) ;
+	public List<AdminVO> clubManagement(AdminVO vo) ;
 	
 	// 티켓 및 경기 입력
 	//public void insertTicket(AdminVO vo) ;
@@ -38,8 +35,12 @@ public interface AdminDAO {
 	public void athleteManage(AdminVO vo);
 	
 	// 선수 삭제
-	public int deleteAthlete(String deleteAthlete);
+	public int deleteAthletename(String deleteAthlete);
+	
+	// 유저 삭제
+	public int deleteUserid(String userid);
 	
 	//관리자 페이지에서 문의내용 불러오기
 	public List<UserInquiryVO> handleInquiry();
+
 }

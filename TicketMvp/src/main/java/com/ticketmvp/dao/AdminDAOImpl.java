@@ -10,17 +10,14 @@ import com.ticketmvp.domain.UserInquiryVO;
 
 
 @Repository("adminDAO")
-public class AdminDAOImpl {
+public class AdminDAOImpl implements AdminDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	// 유저 목록 호출
 	public List<AdminVO> user(AdminVO vo) {
 		System.out.println("===> Mybatis user() 호출");
 		return mybatis.selectList("AdminDAO.user", vo);
-	}
-	public int deleteUser(String uid) {
-		System.out.println("===> Mybatis deleteUser() 호출");
-		return mybatis.delete("AdminDAO.deleteUser", uid);
 	}
 	
 	public List<AdminVO> athleteManagement(AdminVO vo) {
@@ -112,15 +109,24 @@ public class AdminDAOImpl {
 	// 선수 삭제
 	public int deleteAthletename(String athletename) {
 		System.out.println(athletename);
-		return mybatis.delete("AdminDAO.deleteAthlete",athletename);
+		return mybatis.delete("AdminDAO.deleteAthletename",athletename);
 	}
 	
+	// 유저 삭제
+	public int deleteUserid(String userid) {
+		System.out.println(userid);
+		return mybatis.delete("AdminDAO.deleteUserid",userid);
+	}
+	
+
 	//관리자 페이지에서 문의 내용 불러오기
 	public List<UserInquiryVO> handleInquiry(){
 		System.out.println("===> Mybatis handleInquiry() 호출");
 		return mybatis.selectList("AdminDAO.handleInquiry");
-	};
+	}
 }
+
+	
 	
 	
 

@@ -18,9 +18,6 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.user(vo);
 	}
 	
-	public int deleteUser(String uid) {
-		return adminDAO.deleteUser(uid);
-	}
 	public List<AdminVO> athleteManagement(AdminVO vo) {
 		return adminDAO.athleteManagement(vo);
 	}
@@ -64,15 +61,21 @@ public class AdminServiceImpl implements AdminService {
 //		adminDAO.onlyInsertTiket(vo); 
 //		}
 	
+	// 티켓 삭제
 	public Integer deleteTicket(Integer ticketId) {
 		System.out.println(ticketId);
 		return adminDAO.deleteTicket(ticketId );
 	} 
 	
-	public int deleteAthletename(String athletename) {
+	// 선수 삭제
+	public Integer deleteAthletename(String athletename) {
 		System.out.println(athletename);
 		return adminDAO.deleteAthletename(athletename );
 	}
 	
-	
+	// 유저 삭제
+	public Integer deleteUserid(String userid) {
+		System.out.println(userid);
+		return adminDAO.deleteUserid(userid );
+	}
 }

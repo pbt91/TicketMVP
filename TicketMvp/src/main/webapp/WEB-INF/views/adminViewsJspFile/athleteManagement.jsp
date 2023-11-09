@@ -6,7 +6,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/resources/js/admin/adminTicketadd.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/admin/admin.js" type="text/javascript"></script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -89,6 +89,6 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-    </body>
     <jsp:include page="footer.jsp" />
+    </body>
 </html>

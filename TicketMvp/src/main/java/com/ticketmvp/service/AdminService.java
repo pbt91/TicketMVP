@@ -9,8 +9,6 @@ public interface AdminService {
 	// 회원 목록 조회
 	List<AdminVO> user(AdminVO vo);
 	
-	//회원 목록 삭제
-	int deleteUser(String uid);
 	
 	// 선수 목록 조회
 	List<AdminVO> athleteManagement(AdminVO vo);
@@ -37,9 +35,12 @@ public interface AdminService {
 	// 티켓 삭제 
 	Integer deleteTicket (Integer ticketId) ; 
 	
-	int deleteAthletename(String athletename);
+	// 선수삭제
+	Integer deleteAthletename(String athletename);
 	
 	// 선수 등록
 	void athleteManage(AdminVO vo) ; 
 	
+	// 유저 삭제
+	Integer deleteUserid(String userid);
 }
