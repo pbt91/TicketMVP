@@ -40,9 +40,6 @@ public interface UserDAO {
 	// 내 주문목록에서 예매 취소 - 쿠폰 회수
 	public void cancelOrderCoupon(String orderid);
 	
-<<<<<<< HEAD
-	// 문의하기 리스트
-=======
 	// 내 주문목록에서 예매 취소 - 좌석
 	public void cancelOrderSeat(String orderid);
 	
@@ -53,15 +50,5 @@ public interface UserDAO {
 	public int cancelOrderReservation(String orderid);
 
 	// 내 문의글
->>>>>>> refs/remotes/origin/master
 	public List<UserInquiryVO> userMyInquiry(String userid);
-<<<<<<< HEAD
-	
-	// 문의하기 작성
-	Integer userMyInquiryInsert(UserInquiryVO vo);
-	
-	
-=======
-	
->>>>>>> refs/remotes/origin/master
 }

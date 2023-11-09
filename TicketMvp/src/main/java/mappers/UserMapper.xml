@@ -110,7 +110,6 @@
 	
 	<!-- 문의하기 리스트 -->
 	<select id="selectmyInquiry" parameterType="String" resultType="com.ticketmvp.domain.UserInquiryVO" >
-<<<<<<< HEAD
 		SELECT helptitle, helptext, helpproduct, helpdate, replytext, replydate, userid FROM help
 	</select>
 
@@ -122,16 +121,4 @@
 		VALUES (userid=#{userid}, helptitle=#{helptitle}, helptext=#{helptext}, helpproduct=#{helpproduct}, now() )
 	</insert>
 
-
-
-
-
-
-
-
-
-=======
-		SELECT helptitle, helptext, helpproduct, helpdate, replytext, replydate, userid FROM help WHERE	userid=#{userid}
-	</select>
->>>>>>> refs/remotes/origin/master
 </mapper>

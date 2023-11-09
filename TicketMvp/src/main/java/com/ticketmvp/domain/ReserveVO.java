@@ -46,5 +46,168 @@ public class ReserveVO {
 	private Date expiredate;				//쿠폰만료일
 	private String usestatus;				//사용상태
 	private Date usedate;					//사용일
+	public int getTicketid() {
+		return ticketid;
+	}
+	public void setTicketid(int ticketid) {
+		this.ticketid = ticketid;
+	}
+	public String getTicketname() {
+		return ticketname;
+	}
+	public void setTicketname(String ticketname) {
+		this.ticketname = ticketname;
+	}
+	public int getTicketprice() {
+		return ticketprice;
+	}
+	public void setTicketprice(int ticketprice) {
+		this.ticketprice = ticketprice;
+	}
+	public int getTicketremain() {
+		return ticketremain;
+	}
+	public void setTicketremain(int ticketremain) {
+		this.ticketremain = ticketremain;
+	}
+	public int getTicketall() {
+		return ticketall;
+	}
+	public void setTicketall(int ticketall) {
+		this.ticketall = ticketall;
+	}
+	public String getSeatid() {
+		return seatid;
+	}
+	public void setSeatid(String seatid) {
+		this.seatid = seatid;
+	}
+	public int getMatchid() {
+		return matchid;
+	}
+	public void setMatchid(int matchid) {
+		this.matchid = matchid;
+	}
+	public String getHomeclub() {
+		return homeclub;
+	}
+	public void setHomeclub(String homeclub) {
+		this.homeclub = homeclub;
+	}
+	public String getAwayclub() {
+		return awayclub;
+	}
+	public void setAwayclub(String awayclub) {
+		this.awayclub = awayclub;
+	}
+	public Date getMatchdate() {
+		return matchdate;
+	}
+	public void setMatchdate(Date matchdate) {
+		this.matchdate = matchdate;
+	}
+	public Time getMatchtime() {
+		return matchtime;
+	}
+	public void setMatchtime(Time matchtime) {
+		this.matchtime = matchtime;
+	}
+	public Date getCanceldate() {
+		return canceldate;
+	}
+	public void setCanceldate(Date canceldate) {
+		this.canceldate = canceldate;
+	}
+	public String getStadiumname() {
+		return stadiumname;
+	}
+	public void setStadiumname(String stadiumname) {
+		this.stadiumname = stadiumname;
+	}
+	public String getStadiumimgfile() {
+		return stadiumimgfile;
+	}
+	public void setStadiumimgfile(String stadiumimgfile) {
+		this.stadiumimgfile = stadiumimgfile;
+	}
+	public String getStadiumimgfilefull() {
+		return stadiumimgfilefull;
+	}
+	public void setStadiumimgfilefull(String stadiumimgfilefull) {
+		this.stadiumimgfilefull = stadiumimgfilefull;
+	}
+	public int getStadiumimgsize() {
+		return stadiumimgsize;
+	}
+	public void setStadiumimgsize(int stadiumimgsize) {
+		this.stadiumimgsize = stadiumimgsize;
+	}
+	public int getReserveid() {
+		return reserveid;
+	}
+	public void setReserveid(int reserveid) {
+		this.reserveid = reserveid;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public String getReserveStatus() {
+		return reserveStatus;
+	}
+	public void setReserveStatus(String reserveStatus) {
+		this.reserveStatus = reserveStatus;
+	}
+	public Date getPaydate() {
+		return paydate;
+	}
+	public void setPaydate(Date paydate) {
+		this.paydate = paydate;
+	}
+	public int getTotalpayment() {
+		return totalpayment;
+	}
+	public void setTotalpayment(int totalpayment) {
+		this.totalpayment = totalpayment;
+	}
+	public String getCouponid() {
+		return couponid;
+	}
+	public void setCouponid(String couponid) {
+		this.couponid = couponid;
+	}
+	public int getDiscount() {
+		return discount;
+	}
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
+	public Date getIssuedate() {
+		return issuedate;
+	}
+	public void setIssuedate(Date issuedate) {
+		this.issuedate = issuedate;
+	}
+	public Date getExpiredate() {
+		return expiredate;
+	}
+	public void setExpiredate(Date expiredate) {
+		this.expiredate = expiredate;
+	}
+	public String getUsestatus() {
+		return usestatus;
+	}
+	public void setUsestatus(String usestatus) {
+		this.usestatus = usestatus;
+	}
+	public Date getUsedate() {
+		return usedate;
+	}
+	public void setUsedate(Date usedate) {
+		this.usedate = usedate;
+	}
+	
 	
 }
