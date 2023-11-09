@@ -41,86 +41,100 @@
 			<jsp:include page="/WEB-INF/views/main/main_sidebar.jsp" />
 		</div>
 		<div id="content">
-			<div class="myinquiry_board">
-				<h2 class="boardname">내 문의글 보기</h2>
-			</div>
-			<div class="conut_board">
-				<p>총 게시글 ${fn:length(inquirtList)} 건</p>
-			</div>
-			<div class="table">
-				<table>
-					<caption>문의글 리스트</caption>
-					<colgroup>
-						<col width="65">
-						<!-- 번호 -->
-						<col width="*">
-						<!-- 제목 -->
-						<col width="100">
-						<!-- 날짜 -->
-						<col width="65">
-						<!-- 답글 유무 -->
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="row">
-								<div class="tb-center">번호</div>
-							</th>
-							<th scope="row">
-								<div class="tb-center">제목</div>
-							</th>
-							<th scope="row">
-								<div class="tb-center">날짜</div>
-							</th>
-							<th scope="row">
-								<div class="tb-center">답글</div>
-							</th>
-						</tr>
-					</thead>
-					<tbody>
+			<div class="board_wrap">
+				<div class="board_title">
+					<strong>문의사항</strong>
+					<p>문의주신 내용에 빠르게 안내드리겠습니다</p>
+				</div>
+				<div class="board_list_wrap">
+					<div class="board_list">
+						<div class="top">
+							<div class="num">번호</div>
+							<div class="title">제목</div>
+							<div class="writer">글쓴이</div>
+							<div class="date">작성일</div>
+							<div class="reply">답글</div>
+						</div>
 						<c:forEach var="inquiry" items="${inquiryList}">
 							<c:choose>
 								<c:when test="${not empty inquiry}">
-									<tr>
-										<td><%=++num%></td>
-										<td>${inquiry.helptitle}</td>
-										<td>${inquiry.helpdate}</td>
-										<td><c:choose>
+									<div>
+										<div class="num"><%=++num%></div>
+										<div class="title">
+											<a href="view.html">${inquiry.helptitle}</a>
+										</div>
+										<div class="writer">${inquriy.userid}</div>
+										<div class="date">${inquiry.helpdate}</div>
+										<div class="reply">
+											<c:choose>
 												<c:when test="${not empty inquiry.replydate}">완료</c:when>
 												<c:otherwise>대기</c:otherwise>
-											</c:choose></td>
-									</tr>
+											</c:choose>
+										</div>
+									</div>
 								</c:when>
 								<c:otherwise>
-									<tr>
-										<td colspan="3"><span class="tb-center">아직 작성된 글이
-												없습니다</span></td>
-									</tr>
+									<span class="tb-center"
+										style="font-size: 20px; position: absolute;">아직 작성된 글이
+										없습니다</span>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
-						<%-- <c:forEach var="inquiry" items="${inquirtList }">
-							<c:if test="${not empty inquiryList}"> <!-- controller에서 넘어온 model에 값이 있으면 -->
-								<tr>
-									<td><%= ++num %></td>
-									<td>${inquiryList.helptitle }</td>
-									<td>${inquiryList.helpdate }</td>
-									<td><c:if test="${not empty inquiryList.replydate }">완료</c:if>
-										<c:if test="${empty inquiryList.replydate }">대기</c:if></td>								
-								</tr>
-							</c:if>
-							<c:if test="${empty inquiryList}"> <!-- controller에서 넘어온 model에 값이 있으면 -->
-								<tr>
-									<td colspan="3">
-										<span class="tb-center">아직 작성된 글이 없습니다</span>
-									</td>
-								</tr>
-							</c:if>
-						</c:forEach> --%>
-					</tbody>
-				</table>
+					</div>
+					<div class="board_page">
+						<a href="#" class="bt first"><<</a> <a href="#" class="bt prev"><</a>
+						<a href="#" class="num on">1</a> <a href="#" class="num">2</a> <a
+							href="#" class="num">3</a> <a href="#" class="num">4</a> <a
+							href="#" class="num">5</a> <a href="#" class="bt next">></a> <a
+							href="#" class="bt last">>></a>
+					</div>
+					<div class="bt_wrap">
+						<a href="write.html" class="on">등록</a>
+						<!--<a href="#">수정</a>-->
+					</div>
+				</div>
 			</div>
-			<!-- class="table" -->
 
+
+			<!-- 글쓰기 -->
+			<div class="board_wrap">
+				<div class="board_title">
+					<strong>공지사항</strong>
+					<p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+				</div>
+				<div class="board_write_wrap">
+					<div class="board_write">
+						<div class="title">
+							<dl>
+								<dt>제목</dt>
+								<dd>
+									<input type="text" placeholder="제목 입력">
+								</dd>
+							</dl>
+						</div>
+						<div class="info">
+							<dl>
+								<dt>글쓴이</dt>
+								<dd>
+									<input type="text" placeholder="글쓴이 입력">
+								</dd>
+							</dl>
+							<dl>
+								<dt>비밀번호</dt>
+								<dd>
+									<input type="password" placeholder="비밀번호 입력">
+								</dd>
+							</dl>
+						</div>
+						<div class="cont">
+							<textarea placeholder="내용 입력"></textarea>
+						</div>
+					</div>
+					<div class="bt_wrap">
+						<a href="view.html" class="on">등록</a> <a href="list.html">취소</a>
+					</div>
+				</div>
+			</div>
 
 
 		</div>
@@ -133,8 +147,9 @@
 		<jsp:include page="/WEB-INF/views/main/main_footer.jsp" />
 	</div>
 
-
-
-
 </body>
 </html>
+
+
+
+

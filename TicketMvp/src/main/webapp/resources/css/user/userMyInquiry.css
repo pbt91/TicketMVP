@@ -1,14 +1,2 @@
-@charset "UTF-8";
-
-
-/* .myinquiry_board{
-	position:absolute;
-}  */
-.boarname{
-	position: relative;
-    padding: 85px 0 55px 0;
-    font-size: 23px;
-    font-weight: 600;
-    text-align: center;
-    color: #474852;
-} 
+@import url(userMyInquiryStyle.css);
+@import url(userMyInquiryMedia.css);

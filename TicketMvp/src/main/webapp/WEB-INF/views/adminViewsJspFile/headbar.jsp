@@ -126,6 +126,13 @@
                     <span>구단 등록</span>
                 </a>
             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/adminViewsJspFile/handleInquiry.do" id="handleInquiry" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <span>문의 관리하기</span>
+                </a>
+            </li>
         </ul>
 
         <!-- Content Wrapper -->

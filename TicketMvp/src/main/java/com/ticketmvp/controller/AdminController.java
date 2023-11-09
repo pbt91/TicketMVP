@@ -25,7 +25,7 @@ public class AdminController {
 
 	@RequestMapping("/{step}.do")
 	public String viewPage(@PathVariable String step) {
-		return step;
+		return "adminViewsJspFile/"+step;
 	}
 
 	// 회원 리스트 출력

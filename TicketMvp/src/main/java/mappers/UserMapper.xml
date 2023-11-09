@@ -110,7 +110,6 @@
 	
 	<!-- 내 문의글 -->
 	<select id="selectmyInquiry" parameterType="String" resultType="com.ticketmvp.domain.UserInquiryVO" >
-		SELECT helptitle, helptext, helpproduct, helpdate, replytext, replydate FROM help WHERE	userid=#{userid}
+		SELECT helptitle, helptext, helpproduct, helpdate, replytext, replydate, userid FROM help WHERE	userid=#{userid}
 	</select>
-	
 </mapper>
