@@ -137,5 +137,19 @@ WHERE userid = #{userid}
 	SELECT * FROM help
 	ORDER BY helpid ASC;
 </select>
+
+<!-- 문의 제목 클릭 후 해당 글 내용 가져오기 -->
+<select id="replyToInquiryForm" parameterType="int" resultType="com.ticketmvp.domain.UserInquiryVO">
+	SELECT * FROM help
+	WHERE helpid = #{helpid}; 
+</select>
+	
+<!-- 문의 내용에 관리자 답변 등록 -->	
+<update id="replyToInquiry" parameterType="hashmap">
+	UPDATE help
+	SET replytext = '${replytext}'
+		,replydate = now()
+	WHERE helpid = ${helpid}
+</update>
 	
 </mapper>

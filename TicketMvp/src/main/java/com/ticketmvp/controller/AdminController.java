@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ticketmvp.domain.AdminVO;
+import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.service.AdminService;
 
 @Controller
@@ -206,7 +207,25 @@ public class AdminController {
 	
 	// 문의 목록
 	@RequestMapping("/handleInquiry.do")
-	public void handleInquiry(){
-		
+	public void handleInquiry(Model model){
+		List<UserInquiryVO> list = AdminService.handleInquiry();
+		model.addAttribute("inquiryList", list);
+	}
+	
+	// 문의글 선택 후 답변 창 불러오기
+	@RequestMapping("/replyToInquiryForm.do")
+	public void replyToInquiryForm(Integer helpid, Model model){
+		model.addAttribute("inquiry", AdminService.replyToInquiryForm(helpid));
+	}
+	
+	// 문의글에 답변 등록
+	@RequestMapping("/replyToInquiry.do")
+	@ResponseBody
+	public String replyToInquiryForm(Integer helpid, String replytext){
+		if(AdminService.replyToInquiry(helpid, replytext) > 0) {
+			return "success";
+		} else {
+			return "failure";
+		}
 	}
 }

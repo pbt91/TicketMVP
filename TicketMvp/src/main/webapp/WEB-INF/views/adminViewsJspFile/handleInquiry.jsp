@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,10 +27,18 @@
     <link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 
 	<!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jquery 연결 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- js코드 연결 -->
+    <script src="/TicketMvp/resources/js/admin/handleInquiry.js"></script>
 </head>
 <body>
 <jsp:include page="headbar.jsp" />
+
+	<!-- 문의 리스트 -->
 	<div class="container-fluid"><br></br>
 		<h1 class="h3 mb-2 text-gray-800">문의 관리</h1>
 		<div class="card shadow mb-4">
@@ -55,12 +63,16 @@
 									<c:when test="${not empty inquiry}">
 										<tr>
 											<td>${inquiry.helpid}</td>
-											<td>${inquiry.helptitle}</td>
+											<td class="helptitle">${inquiry.helptitle}</td>
 											<td>${inquriy.userid}</td>
 											<td>${inquiry.helpdate}</td>
 											<c:choose>
-												<c:when test="${not empty inquiry.replydate}">완료</c:when>
-												<c:otherwise>대기</c:otherwise>
+												<c:when test="${not empty inquiry.replydate}">
+													<td>완료</td>
+												</c:when>
+												<c:otherwise>
+													<td>대기</td>
+												</c:otherwise>
 											</c:choose>
 			                        	</tr>
 									</c:when>
@@ -75,7 +87,7 @@
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>  <!-- 문의 리스트 끝-->
 <jsp:include page="footer.jsp" />
 </body>
 

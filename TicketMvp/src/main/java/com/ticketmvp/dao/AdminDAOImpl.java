@@ -1,4 +1,5 @@
 package com.ticketmvp.dao;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -46,24 +47,21 @@ public class AdminDAOImpl implements AdminDAO{
 	  if(vo.getTicketname() == null) {
 		  mybatis.insert("AdminDAO.insertMatch", vo);
 	  }else {
-	  mybatis.insert("AdminDAO.insertMatch", vo);
-	  System.out.println(vo);
-	  Integer lastMatchId = mybatis.selectOne("AdminDAO.getLastMatchId");
-	  System.out.println("마지막 경기 아이디"+lastMatchId);
-      if (lastMatchId != null) { 
-    	  System.out.println("널 아님 들어옴");
-          vo.setMatchid(lastMatchId);
-          System.out.println(vo);
-          mybatis.insert("AdminDAO.saveMatchTicket", vo);
-      } else {
-          System.out.println("Last match ID is null.");
-      
-      }
-  }
+		  mybatis.insert("AdminDAO.insertMatch", vo);
+		  System.out.println(vo);
+		  Integer lastMatchId = mybatis.selectOne("AdminDAO.getLastMatchId");
+		  System.out.println("마지막 경기 아이디"+lastMatchId);
+	      if (lastMatchId != null) { 
+	    	  System.out.println("널 아님 들어옴");
+	          vo.setMatchid(lastMatchId);
+	          System.out.println(vo);
+	          mybatis.insert("AdminDAO.saveMatchTicket", vo);
+	      } else {
+	          System.out.println("Last match ID is null.");
+	      }
+	  }
 	  
 	}
-	
-	
 	
 	// 선수 등록
 	public void athleteManage(AdminVO vo ) {
@@ -72,7 +70,6 @@ public class AdminDAOImpl implements AdminDAO{
 		mybatis.insert("AdminDAO.athleteManage", vo);
 	}
 	 
-	
 //	public void insertTicket(AdminVO vo) {
 //		  System.out.println("===> Mybatis insertTicket() 호출");
 //		  System.out.println(vo);
@@ -86,16 +83,15 @@ public class AdminDAOImpl implements AdminDAO{
 		  }
 	
 	public void updateMatchfrm(AdminVO vo) {
-		  System.out.println("===> Mybatis updateMatchfrm() 호출");
-		  System.out.println(vo);
-		  if(vo.getTicketid() == null  ) {
-			  mybatis.insert("AdminDAO.onlyInsertTiket", vo);
-			    
-		  }else {
-			  mybatis.update("AdminDAO.updateMatchfrm", vo); 
-		  } 
-		  
-		} 
+	  System.out.println("===> Mybatis updateMatchfrm() 호출");
+	  System.out.println(vo);
+	  if(vo.getTicketid() == null  ) {
+		  mybatis.insert("AdminDAO.onlyInsertTiket", vo);
+		    
+	  }else {
+		  mybatis.update("AdminDAO.updateMatchfrm", vo); 
+	  } 	  
+	} 
 //	public void onlyInsertTiket(AdminVO vo) {
 //		mybatis.insert("AdminDAO.onlyInsertTiket",vo);
 //	}
@@ -118,12 +114,26 @@ public class AdminDAOImpl implements AdminDAO{
 		return mybatis.delete("AdminDAO.deleteUserid",userid);
 	}
 	
-
 	//관리자 페이지에서 문의 내용 불러오기
 	public List<UserInquiryVO> handleInquiry(){
 		System.out.println("===> Mybatis handleInquiry() 호출");
 		return mybatis.selectList("AdminDAO.handleInquiry");
 	}
+
+	//문의 제목 클리하면 내용 가져오기
+	public UserInquiryVO replyToInquiryForm(Integer helpid) {
+		System.out.println("===> Mybatis replyToInquiryForm 호출");
+		return mybatis.selectOne("AdminDAO.replyToInquiryForm", helpid);
+	}
+	
+	//문의 내용에 관리자 답변 등록
+	public int replyToInquiry(Integer helpid, String replytext) {
+		System.out.println("===> Mybatis replyToInquiry 호출");
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("helpid", helpid);
+		param.put("replytext", replytext);
+		return mybatis.update("AdminDAO.replyToInquiry", param);
+	};
 }
 
 	

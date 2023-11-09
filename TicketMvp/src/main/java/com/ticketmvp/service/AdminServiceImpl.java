@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ticketmvp.dao.AdminDAOImpl;
 import com.ticketmvp.domain.AdminVO;
+import com.ticketmvp.domain.UserInquiryVO;
 
 
 @Service("adminservice")
@@ -77,5 +78,20 @@ public class AdminServiceImpl implements AdminService {
 	public Integer deleteUserid(String userid) {
 		System.out.println(userid);
 		return adminDAO.deleteUserid(userid );
+	}
+
+	//관리자 페이지에서 문의 내용 불러오기
+	public List<UserInquiryVO> handleInquiry() {
+		return adminDAO.handleInquiry();
+	}
+
+	//문의 제목 클리하면 내용 가져오기
+	public UserInquiryVO replyToInquiryForm(Integer helpid) {
+		return adminDAO.replyToInquiryForm(helpid);
+	}
+	
+	//문의 내용에 관리자 답변 등록
+	public int replyToInquiry(Integer helpid, String replytext) {
+		return adminDAO.replyToInquiry(helpid, replytext);
 	}
 }
