@@ -36,7 +36,11 @@ public interface UserDAO {
 	// 내 주문목록
 	public UserOrderVO userMyOrderList(String userid);
 	
-	// 내 문의글
+	// 문의하기 리스트
 	public List<UserInquiryVO> userMyInquiry(String userid);
+	
+	// 문의하기 작성
+	Integer userMyInquiryInsert(UserInquiryVO vo);
+	
 	
 }

@@ -81,9 +81,14 @@ public class UserServiceImpl implements UserService{
 		return userDAO.userMyOrderList(userid);
 	}
 
-	// 문의하기
+	// 문의하기 리스트
 	public List<UserInquiryVO> userMyInquiry(String userid) {
 		return userDAO.userMyInquiry(userid);
+	}
+
+	// 문의하기 작성
+	public Integer userMyInquiryInsert(UserInquiryVO vo) {
+		return userDAO.userMyInquiryInsert(vo);
 	}
 	
 }
