@@ -53,11 +53,11 @@
 							<div class="title">제목</div>
 							<div class="writer">글쓴이</div>
 							<div class="date">작성일</div>
-							<div class="count">답글</div>
+							<div class="reply">답글</div>
 						</div>
-						<c:choose>
-							<c:when test="${not empty inquiry}">
-								<c:forEach var="inquiry" items="${inquiryList}">
+						<c:forEach var="inquiry" items="${inquiryList}">
+							<c:choose>
+								<c:when test="${not empty inquiry}">
 									<div>
 										<div class="num"><%=++num%></div>
 										<div class="title">
@@ -72,12 +72,14 @@
 											</c:choose>
 										</div>
 									</div>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-								<span class="tb-center" style="font-size:20px; position:absolute;">아직 작성된 글이 없습니다</span>
-							</c:otherwise>
-						</c:choose>
+								</c:when>
+								<c:otherwise>
+									<span class="tb-center"
+										style="font-size: 20px; position: absolute;">아직 작성된 글이
+										없습니다</span>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 					</div>
 					<div class="board_page">
 						<a href="#" class="bt first"><<</a> <a href="#" class="bt prev"><</a>
@@ -93,6 +95,46 @@
 				</div>
 			</div>
 
+
+			<!-- 글쓰기 -->
+			<div class="board_wrap">
+				<div class="board_title">
+					<strong>공지사항</strong>
+					<p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+				</div>
+				<div class="board_write_wrap">
+					<div class="board_write">
+						<div class="title">
+							<dl>
+								<dt>제목</dt>
+								<dd>
+									<input type="text" placeholder="제목 입력">
+								</dd>
+							</dl>
+						</div>
+						<div class="info">
+							<dl>
+								<dt>글쓴이</dt>
+								<dd>
+									<input type="text" placeholder="글쓴이 입력">
+								</dd>
+							</dl>
+							<dl>
+								<dt>비밀번호</dt>
+								<dd>
+									<input type="password" placeholder="비밀번호 입력">
+								</dd>
+							</dl>
+						</div>
+						<div class="cont">
+							<textarea placeholder="내용 입력"></textarea>
+						</div>
+					</div>
+					<div class="bt_wrap">
+						<a href="view.html" class="on">등록</a> <a href="list.html">취소</a>
+					</div>
+				</div>
+			</div>
 
 
 		</div>
