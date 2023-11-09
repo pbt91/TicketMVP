@@ -12,7 +12,9 @@
 </head>
 <body>
 <a href="/TicketMvp/reserve/ReserveChoose.do?matchid=${sessionScope.matchId}">Reserve Choose Seat</a><br/>
-<a href="/TicketMvp/main/main_sidebar.do">사이드바 확인</a> <br/>
+<a href="/TicketMvp/adminMain.jsp">관리자</a> <br/>
+<a href="/TicketMvp/seoungik.jsp">마이페이지</a><br/>
+<a href="/TicketMvp/yubin.jsp">메인페이지</a><br/>
 <c:if test="${sessionScope.userid != null}">
 
 ${sessionScope.name}님 환영합니다 
