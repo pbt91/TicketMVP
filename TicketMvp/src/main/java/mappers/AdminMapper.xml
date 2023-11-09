@@ -103,8 +103,19 @@ WHERE ticketid=#{ticketid}
 
 </delete>
 
+<!--  선수 이름 기준으로 삭제 -->
+<delete id="deleteAthletename" parameterType="com.ticketmvp.domain.AdminVO">
+DELETE FROM `athlete`
+WHERE athletename = #{athletename}
+</delete>
 
+<!--  유저 아이디 기준으로 유저 정보 삭제 -->
+<delete id="deleteUserid" parameterType="com.ticketmvp.domain.AdminVO">
+DELETE FROM `user`
+WHERE userid = #{userid}
+</delete>
 
+<!--  선수 이미지 부터 싹다 등록 -->
 <insert id="athleteManage" parameterType="com.ticketmvp.domain.AdminVO">
 		INSERT INTO `athlete`
 	(

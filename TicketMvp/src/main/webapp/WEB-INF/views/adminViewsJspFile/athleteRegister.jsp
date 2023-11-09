@@ -96,7 +96,11 @@
                             
                             <tr>
                                 <th>선수 경력<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="career" name="career"  placeholder="선수 경력 입력해 주세요."  /></td>
+                                <td colspan="3">
+                                <input type="text" id="career" name="career"  placeholder="선수 경력 입력해 주세요."  />
+                               <textarea id="career" name="career" cols="50" rows="10" placeholder="선수 경력 입력해 주세요."></textarea>
+                                
+                                </td>
                             </tr>
 							
 							<tr>

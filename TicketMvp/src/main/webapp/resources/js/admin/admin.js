@@ -49,31 +49,57 @@ $('button#deleteTicket').click(function() {
         });
     }
 });
-
-	});
 	
 $('button#deleteAthlete').click(function() {
     var athletename = $(this).closest('tr').find('a').attr('href').split('=')[1];
     var url = "deleteAthletename.do"; // Spring 컨트롤러의 URL 경로
-    console.log(athletename);
-    console.log(url);
-    
-    
+
     if (confirm("선택한 티켓을 삭제하시겠습니까?")) {
         $.ajax({
-            type: "POST", // POST 요청
+            type: "POST",
             url: url,
-            data: { athletename: athletename }, // 요청 매개변수로 athletename를 전달
+            data: { athletename: athletename },
+            dataType: "json", // JSON 데이터 타입으로 요청
             success: function (response) {
-                location.reload(); 
+                if (response.result === "success") {
+                    location.reload();
+                } else {
+                    alert("삭제에 실패했습니다.");
+                }
             },
             error: function(err) {
-                alert('err');
+                alert("오류가 발생했습니다.");
                 console.log(err);
             }
         });
     }
+});
+
+
+$('button#deleteUser').click(function() {
+    var userid = $(this).closest('tr').find('td:first').text();
+    var url = "deleteUserid.do"; // Spring 컨트롤러의 URL 경로
+
+    if (confirm("선택한 티켓을 삭제하시겠습니까?")) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { userid: userid },
+            dataType: "json", // JSON 데이터 타입으로 요청
+            success: function (response) {
+                if (response.result === "success") {
+                    location.reload();
+                } else {
+                    alert("삭제에 실패했습니다.");
+                }
+            },
+            error: function(err) {
+                alert("오류가 발생했습니다.");
+                console.log(err);
+            }
+        });
+    }
+});
 
 
 	});
-

@@ -1,7 +1,9 @@
 package com.ticketmvp.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -59,21 +60,42 @@ public class AdminController {
 
 		model.addAttribute("athleteList", result);
 	}
-	// 유저 탈퇴
-	@PostMapping("/deleteUser/{uid}")
-	public int deleteUser(@PathVariable String uid) {
-		return AdminService.deleteUser(uid);
+	// 유저 정보 삭제= 탈퇴
+	@PostMapping("/deleteUserid.do")
+	@ResponseBody
+	public Map<String, String> deleteUserid(@RequestParam String userid) {
+	    System.out.println(userid);
+	    Integer result = AdminService.deleteUserid(userid);
+	    System.out.println(result);
 
+	    Map<String, String> response = new HashMap<>();
+	    
+	    if (result != null && result > 0) {
+	        response.put("result", "success");
+	    } else {
+	        response.put("result", "fail");
+	    }
+
+	    return response;
 	}
 	
 	// 선수 이름 기준으로 삭제 
 	@PostMapping("/deleteAthletename.do")
 	@ResponseBody
-	public String deleteAthletename(@RequestParam String athletename) {
-		System.out.println(athletename);
-		String result = AdminService.deleteAthletename(athletename);
-		System.out.println(result);
-		return result ; 
+	public Map<String, String> deleteAthletename(@RequestParam String athletename) {
+	    System.out.println(athletename);
+	    Integer result = AdminService.deleteAthletename(athletename);
+	    System.out.println(result);
+
+	    Map<String, String> response = new HashMap<>();
+	    
+	    if (result != null && result > 0) {
+	        response.put("result", "success");
+	    } else {
+	        response.put("result", "fail");
+	    }
+
+	    return response;
 	}
 	// 티켓 삭제 
 	@PostMapping("/deleteTicket.do")
