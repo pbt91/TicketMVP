@@ -30,6 +30,12 @@ public class AthleteServiceImpl implements AthleteService {
 		return athleteDAO.getMatchesForClub(athleteName);
 	}
 
+	//모든 경기 불러오기
+	@Override
+	public List<MatchVO> getAllMatches() {
+		return athleteDAO.getAllMatches();
+	}
+	
 	@Override
 	public void addLike(String userId, Integer matchId) {
 		athleteDAO.addLike(userId, matchId);
@@ -39,5 +45,6 @@ public class AthleteServiceImpl implements AthleteService {
 	public void removeLike(String userId, Integer matchId) {
 		athleteDAO.removeLike(userId, matchId);
 	}
+
 
 }

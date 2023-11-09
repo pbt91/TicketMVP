@@ -14,6 +14,8 @@ public interface AthleteService {
     
     List<MatchVO> getMatchesForClub(String club);
     
+    //모든 경기 불러오기
+    public List<MatchVO> getAllMatches();
     
     void addLike(String userId, Integer matchId);
 

@@ -15,6 +15,7 @@
 <a href="/TicketMvp/adminMain.jsp">관리자</a> <br/>
 <a href="/TicketMvp/seoungik.jsp">마이페이지</a><br/>
 <a href="/TicketMvp/yubin.jsp">메인페이지</a><br/>
+<a href="/TicketMvp/athlete/athlete_matches.do">모든경기</a><br/>
 <c:if test="${sessionScope.userid != null}">
 
 ${sessionScope.name}님 환영합니다 

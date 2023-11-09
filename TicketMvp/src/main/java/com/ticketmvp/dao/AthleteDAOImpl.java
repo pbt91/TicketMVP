@@ -36,6 +36,13 @@ public class AthleteDAOImpl implements AthleteDAO {
 		return result;
 	}
 
+	//모든 경기 불러오기
+	@Override
+	public List<MatchVO> getAllMatches() {
+		System.out.println("===> Mybatis getAllMatches() 호출");
+		return mybatis.selectList("com.ticketmvp.dao.AthleteDAO.getAllMatches");
+	}
+	
 	@Override
     public void addLike(String userId, Integer matchId) {
         mybatis.insert("com.ticketmvp.dao.AthleteDAO.addLike", new LikeDTO(userId, matchId));
@@ -64,5 +71,6 @@ public class AthleteDAOImpl implements AthleteDAO {
             return matchId;
         }
     }
+
 
 }

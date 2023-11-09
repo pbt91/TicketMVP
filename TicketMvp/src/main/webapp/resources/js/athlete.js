@@ -15,7 +15,7 @@ $(function(){
         console.log("매치아이디" + matchId);
 
         // 페이지 이동하면서 matchId를 URL 파라미터로 전송
-        window.location.href = "/TicketMvp/athlete/ReserveChoose.do?matchId=" + matchId;
+        window.location.href = "/TicketMvp/reserve/ReserveChoose.do?matchId=" + matchId;
         console.log("성공");
     });
     

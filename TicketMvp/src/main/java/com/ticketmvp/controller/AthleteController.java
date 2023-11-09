@@ -1,8 +1,10 @@
 package com.ticketmvp.controller;
 
-import java.util.HashMap;
+import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,12 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import javax.servlet.http.HttpSession;
-
 import com.ticketmvp.domain.AthleteVO;
 import com.ticketmvp.domain.MatchVO;
 import com.ticketmvp.service.AthleteService;
@@ -27,7 +28,13 @@ public class AthleteController {
 	@Autowired
 	private AthleteService athleteService;
 
-// 메인페이지에서 선수 정보 띄우기
+	//페이지 이동
+	@RequestMapping("/{step}.do")
+	public String viewPage(@PathVariable String step) {
+		return "athlete/"+step;
+	}
+	
+	// 메인페이지에서 선수 정보 띄우기
 	@RequestMapping("main_page.do")
 	public String showMain(Model model) {
 		List<AthleteVO> athletes = athleteService.getAthleteImagePaths();
@@ -51,7 +58,37 @@ public class AthleteController {
 
 		return "athlete/athlete_information";
 	}
-	// ***************************************************** //
+	// athlete_matches 페이지에서 모든 경기 일정 띄우기
+	@RequestMapping("athlete_matches.do")
+	public String showMatchesInformation(Model model) {
+		// 오늘 날짜 가져오기
+		LocalDate currentDate = LocalDate.now();
+		
+		// 모든 경기 일정 가져오기
+		List<MatchVO> allMatches = athleteService.getAllMatches();
+		
+		// 오늘 날짜 이전 경기 없애기
+		List<MatchVO> matches = allMatches.stream()
+	            .filter(match -> {
+	                LocalDate matchDate = LocalDate.parse(match.getMatchdate());
+	                return !matchDate.isBefore(currentDate);
+	            })
+	            .collect(Collectors.toList());
+		
+		model.addAttribute("matches", matches);
+		
+		// 클럽, 경기장 저장
+		Set<String> uniqueClubs = new HashSet<>();
+	    Set<String> uniqueStadiums = new HashSet<>();
+	    for (MatchVO match : matches) {
+	        uniqueClubs.add(match.getHomeclub());
+	        uniqueClubs.add(match.getAwayclub());
+	        uniqueStadiums.add(match.getStadiumname());
+	    }
+	    model.addAttribute("uniqueClubs", uniqueClubs);
+	    model.addAttribute("uniqueStadiums", uniqueStadiums);
+		return "athlete/athlete_matches";
+	}
 
 	// 예매 버튼 클릭 시 matchId를 세션에 저장하고 ReserveChoose 페이지로 리다이렉트
 	@RequestMapping(value = "/storeMatchIdInSession", method = RequestMethod.POST)

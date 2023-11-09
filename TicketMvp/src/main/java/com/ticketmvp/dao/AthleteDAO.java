@@ -15,11 +15,14 @@ public interface AthleteDAO {
 
 	/* List<MatchVO> getAthleteMatches(String club); */
 
+    //모든 경기 불러오기
+    List<MatchVO> getAllMatches();
+    
     List<MatchVO> getMatchesForClub(String club);
 
     void addLike(@Param("userId") String userId, @Param("matchId") Integer matchId);
 
     void removeLike(@Param("userId") String userId, @Param("matchId") Integer matchId);
     
-
+    
 }

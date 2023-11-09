@@ -1,6 +1,5 @@
 package com.ticketmvp.controller;
 
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -33,7 +32,9 @@ public class ReserveController {
 	
 	//좌석 예약으로 이동 + 티켓 리스트 불러오기 + 경기장 이미지 호출
 	@RequestMapping("/ReserveChoose.do")
-	public void reserveChoose(Model m, HttpSession session ) {
+	public void reserveChoose(Integer matchid, Model m, HttpSession session ) {
+		session.setAttribute("matchId", matchid);
+		System.out.println("reserve/RserveChoose.do matchId:" + session.getAttribute("matchId"));
 		ReserveVO vo = new ReserveVO();
 		vo.setMatchid((int)session.getAttribute("matchId"));
 		m.addAttribute("ticketList", reserveService.getTicketList(vo));

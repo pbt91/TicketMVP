@@ -28,6 +28,13 @@
 		WHERE homeclub = #{club} OR awayclub = #{club}
 	</select>
 	
+	<!-- 모든 경기 불러오기 -->
+	<select id="getAllMatches" resultType = "com.ticketmvp.domain.MatchVO">
+		SELECT m.*, c.stadiumname
+		FROM `match` m
+		JOIN `club` c ON m.homeclub = c.club
+		ORDER BY m.matchdate ASC, m.matchtime ASC;
+	</select>
 
 	<insert id="addLike" parameterType="map">
         INSERT INTO `like` (userid, matchid) VALUES (#{userId}, #{matchId})
