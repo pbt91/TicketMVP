@@ -29,13 +29,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="C:/Users/ICT03-05/Desktop/jar/json-simple-1.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/ICT03-05/Desktop/jar/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ICT03-05/Desktop/jar/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ICT03-05/Desktop/jar/lombok.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

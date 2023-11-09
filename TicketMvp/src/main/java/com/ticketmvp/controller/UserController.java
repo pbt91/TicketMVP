@@ -176,7 +176,6 @@ public class UserController {
 		m.addAttribute("order", userservice.userMyOrderList(userid));
 	}
 	
-
 	// 내 주문목록에서 예매 취소하기
 	@ResponseBody
 	@RequestMapping("/userMyOrderCancel")
@@ -189,6 +188,7 @@ public class UserController {
 	}
 	
 	// 내 문의글
+	// 문의하기 리스트
 	@RequestMapping("/userMyInquiry.do")
 	public void userMyInquiry(HttpSession session, Model m) {
 		String userid = (String) session.getAttribute("userid");		
@@ -199,6 +199,18 @@ public class UserController {
 		}*/
 		m.addAttribute("inquiryList", inquiryList);
 
+	}
+
+	// 문의하기 작성
+	@RequestMapping(value="/userMyInquiryInsert.do", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer userMyInquiryInsert(HttpSession session, UserInquiryVO vo) {
+		String userid = (String) session.getAttribute("userid");
+		System.out.println(userid);
+		vo.setUserid(userid);
+		System.out.println(vo.toString());
+		Integer result = userservice.userMyInquiryInsert(vo);
+		return result;
 	}
 
 	
