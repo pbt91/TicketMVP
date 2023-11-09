@@ -196,8 +196,9 @@ public class UserController {
 	public Integer userMyInquiryInsert(HttpSession session, UserInquiryVO vo) {
 		String userid = (String) session.getAttribute("userid");
 		System.out.println(userid);
+		
 		vo.setUserid(userid);
-		System.out.println(vo.toString());
+
 		Integer result = userservice.userMyInquiryInsert(vo);
 		return result;
 	}

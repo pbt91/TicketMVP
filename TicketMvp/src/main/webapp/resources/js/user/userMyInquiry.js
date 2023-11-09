@@ -26,9 +26,10 @@ $(function(){
             return false;
         }
 
-        alert(title+"/"+product+"/"+text);
+        //alert(title+"/"+product+"/"+text);
+
         $.ajax({
-            url : "/TicketMvp/user/userMyinquiryInsert.do",
+            url : "/TicketMvp/user/userMyInquiryInsert.do",
             type : "post",
             dataType : "json",
             data : {    "helptitle"     : title,
@@ -36,25 +37,32 @@ $(function(){
                         "helpproduct"   : product
             },
             success : function(result){
-                if(result!=null){
+                if(result==1){
                     alert("등록이 완료되었습니다");
                     $("#inputtitle").val("");
                     $("#inputproduct").val("");
                     $("#inputtext").val("");
-                    $('#input').hide();
-                    $('#list').show();      /* 일단 리스트 화면 보여줌 */
+                    //$('#input').hide();
+                    //$('#list').show();      /* 일단 리스트 화면 보여줌 */
+					location.reload(true);		
+                    
                 }else{
-                    alert("컨트롤러에서 오류나서 insert 안됨");
-                }
-                
-                
+                    alert("잠시 후 시도해주세요");
+                }  
             },
             error : function(err){
                 alert("오류");
-            }  
+            }
+              
         });
 
+        //location.reload(true);
+
     })
+
+//    $('a.title').click(function(){
+//        $(this)
+//    });
 
 
 })

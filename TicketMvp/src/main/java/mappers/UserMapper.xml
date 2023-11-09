@@ -64,22 +64,20 @@
 		UPDATE user SET joinstatus=false WHERE userid=#{userid}
 	</update>	
 
-<!-- UserOrderVO 사용 -->
-
 	<!-- 내 주문목록 -->
 
 	
 	<!-- 문의하기 리스트 -->
 	<select id="selectmyInquiry" parameterType="String" resultType="com.ticketmvp.domain.UserInquiryVO" >
-		SELECT helptitle, helptext, helpproduct, helpdate, replytext, replydate, userid FROM help
+		SELECT helpid, helptitle, helptext, helpproduct, helpdate, replytext, replydate, userid FROM help ORDER BY helpid DESC;
 	</select>
 
 	<!-- 문의하기 리스트 내거만-->
 
 	<!-- 문의하기 작성 -->
 	<insert id="insertinquiryinsert" parameterType="com.ticketmvp.domain.UserInquiryVO" >
-		INSERT INTO help(userid, helptitle, helptext, helpproduct, helpdate ) 
-		VALUES (userid=#{userid}, helptitle=#{helptitle}, helptext=#{helptext}, helpproduct=#{helpproduct}, now() )
+		INSERT INTO `help`(userid, helptitle, helptext, helpproduct, helpdate ) 
+		VALUES ( #{userid}, #{helptitle}, #{helptext}, #{helpproduct}, now() )
 	</insert>
 
 
