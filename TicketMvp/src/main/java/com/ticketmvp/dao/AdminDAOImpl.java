@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ticketmvp.domain.AdminVO;
+import com.ticketmvp.domain.UserInquiryVO;
 
 
 @Repository("adminDAO")
@@ -114,7 +115,12 @@ public class AdminDAOImpl {
 		return mybatis.delete("AdminDAO.deleteAthlete",athletename);
 	}
 	
-	}
+	//관리자 페이지에서 문의 내용 불러오기
+	public List<UserInquiryVO> handleInquiry(){
+		System.out.println("===> Mybatis handleInquiry() 호출");
+		return mybatis.selectList("AdminDAO.handleInquiry");
+	};
+}
 	
 	
 

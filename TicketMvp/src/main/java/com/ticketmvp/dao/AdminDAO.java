@@ -2,6 +2,7 @@ package com.ticketmvp.dao;
 import java.util.List;
 
 import com.ticketmvp.domain.AdminVO;
+import com.ticketmvp.domain.UserInquiryVO;
 
 
 public interface AdminDAO {
@@ -38,4 +39,7 @@ public interface AdminDAO {
 	
 	// 선수 삭제
 	public int deleteAthlete(String deleteAthlete);
+	
+	//관리자 페이지에서 문의내용 불러오기
+	public List<UserInquiryVO> handleInquiry();
 }

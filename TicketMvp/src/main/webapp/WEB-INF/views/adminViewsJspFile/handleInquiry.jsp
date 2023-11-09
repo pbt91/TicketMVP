@@ -32,7 +32,7 @@
 <body>
 <jsp:include page="headbar.jsp" />
 	<div class="container-fluid"><br></br>
-		<h1 class="h3 mb-2 text-gray-800">회원 관리</h1>
+		<h1 class="h3 mb-2 text-gray-800">문의 관리</h1>
 		<div class="card shadow mb-4">
         	<div class="card-header py-3">
          		<h6 class="m-0 font-weight-bold text-primary">문의 리스트</h6>
@@ -42,29 +42,36 @@
                 	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     	<thead>
               				<tr>
-                        		<th>회원ID</th>
-                        		<th>이름</th>
-                        		<th>Email</th>
-                       			<th>전화번호</th>
-								<th><input type="checkbox" id="selectAll"onchange="selectAllCheckboxes(this)"></th>
+                        		<th>번호</th>
+                        		<th>제목</th>
+                        		<th>회원</th>
+                       			<th>작성일</th>
+								<th>답글</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${userList}" var="user">
-								<tr>
-								<td>${user.userid}</td>
-								<td>${user.name}</td>
-								<td>${user.email}</td>
-								<td>${user.phone}</td>
-								<td><input type="checkbox" name="selectedUser" value="${user.userid}" /></td>
-                        		</tr>
+							<c:forEach items="${inquiryList}" var="inquiry">
+								<c:choose>
+									<c:when test="${not empty inquiry}">
+										<tr>
+											<td>${inquiry.helpid}</td>
+											<td>${inquiry.helptitle}</td>
+											<td>${inquriy.userid}</td>
+											<td>${inquiry.helpdate}</td>
+											<c:choose>
+												<c:when test="${not empty inquiry.replydate}">완료</c:when>
+												<c:otherwise>대기</c:otherwise>
+											</c:choose>
+			                        	</tr>
+									</c:when>
+									<c:otherwise>
+										<span>불러올 문의글이 없습니다</span>
+									</c:otherwise>
+								</c:choose>
+				
                         	</c:forEach>
 						</tbody>
 					</table>
-					<div id="actionButtons" style="display: block; ">
-     					<button  id="deleteUser">선택한 회원 탈퇴</button>
-      					<button  id="stopUser">선택한 회원 정지</button>
-  					</div> 
 				</div>
 			</div>
 		</div>

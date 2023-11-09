@@ -120,5 +120,11 @@ WHERE ticketid=#{ticketid}
 	
 	)
 </insert>
+
+<!-- 관리자 페이지에서 문의 내용 불러오기 -->
+<select id="handleInquiry" resultType="com.ticketmvp.domain.UserInquiryVO">
+	SELECT * FROM help
+	ORDER BY helpid ASC;
+</select>
 	
 </mapper>

@@ -99,5 +99,4 @@ public class ReserveDAOImpl implements ReserveDAO{
 		System.out.println("===> Mybatis checkOrderId() 호출");
 		return mybatis.selectOne("ReserveDAO.checkOrderId", orderId);
 	}
-
 }
