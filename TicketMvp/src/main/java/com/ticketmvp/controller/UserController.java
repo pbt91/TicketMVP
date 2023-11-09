@@ -177,20 +177,31 @@ public class UserController {
 
 	}
 	
-	// 내 문의글
+	// 문의하기 리스트
 	@RequestMapping("/userMyInquiry.do")
 	public void userMyInquiry(HttpSession session, Model m) {
 		String userid = (String) session.getAttribute("userid");		
 		List<UserInquiryVO> inquiryList = new ArrayList<UserInquiryVO>(); 
 		inquiryList = userservice.userMyInquiry(userid);
 		/*for(UserInquiryVO item : inquiryList) {
-			System.out.println(item.getHelptitle());
+			System.out.println(item.getUserid());
 		}*/
 		m.addAttribute("inquiryList", inquiryList);
-		System.out.println("문의하기 컨드롤러 진입");
+
 	}
 
-	
+	// 문의하기 작성
+	@RequestMapping(value="/userMyInquiryInsert.do", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer userMyInquiryInsert(HttpSession session, UserInquiryVO vo) {
+		String userid = (String) session.getAttribute("userid");
+		System.out.println(userid);
+		
+		vo.setUserid(userid);
+
+		Integer result = userservice.userMyInquiryInsert(vo);
+		return result;
+	}
 	
 	
 	
