@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../resources/css/main.css">
+<title>사이드바</title>
+<style type="text/css">
+</style>
 </head>
 <body>
-
+	<div>
 	<section class="main-content">
 		<aside class="sidebar">
 			<ul class="menu">
@@ -20,5 +21,6 @@
 			</ul>
 		</aside>
 	</section>
+	</div>
 </body>
 </html>

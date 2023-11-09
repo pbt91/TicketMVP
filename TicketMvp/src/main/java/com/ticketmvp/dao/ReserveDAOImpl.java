@@ -16,8 +16,6 @@ public class ReserveDAOImpl implements ReserveDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-
-
 	@Override
 	public List<ReserveVO> getTicketList(ReserveVO vo) {
 		System.out.println("===> Mybatis getTicketList() 호출");

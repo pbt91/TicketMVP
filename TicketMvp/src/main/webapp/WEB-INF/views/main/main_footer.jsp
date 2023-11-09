@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
-<link rel="stylesheet" type="text/css" href="../resources/css/main.css">
+<title>푸터</title>
 </head>
 <body>
 	<footer class="footer">
@@ -20,6 +19,12 @@
 			<div class="footer_logo">
 				<a href="#" class="logo_black">Ticket MVP</a>
 			</div>
+<!-- 			<div class="footer_team7">
+				<p>run by</p>
+				<p>coded by</p>
+				<p>design by</p>
+				<p>designed by Team 7</p>
+			</div> -->
 		</div>
 	</footer>
 </body>
