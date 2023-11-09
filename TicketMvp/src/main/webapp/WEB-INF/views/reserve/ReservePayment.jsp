@@ -113,7 +113,7 @@
 	                </button>
 	            </div>
 	            <div class="modal-body">
-	                <!-- The coupons will be displayed here -->
+	                <!-- 여기 쿠폰 표시 -->
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>

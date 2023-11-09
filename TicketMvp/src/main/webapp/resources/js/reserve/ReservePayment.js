@@ -178,7 +178,7 @@ $(function(){
 	                var tableBody = $('<tbody></tbody>');
 	                $.each(data, function (index, coupon) {
 	                    var row = '<tr>' +
-	                        '<td>' + coupon.couponid + '</td>' +
+	                        '<td>' + coupon.couponname + '</td>' +
 	                        '<td>' + coupon.discount + '%</td>' +
 	                       	'<td>' + formatDate(coupon.issuedate) + '</td>' +
         					'<td>' + formatDate(coupon.expiredate) + '</td>' +

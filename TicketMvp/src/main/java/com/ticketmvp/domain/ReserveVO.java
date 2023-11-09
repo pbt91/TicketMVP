@@ -41,6 +41,7 @@ public class ReserveVO {
 	
 	//쿠폰 정보
 	private String couponid;				//쿠폰아이디
+	private String couponname;				//쿠폰이름
 	private int discount;					//할일
 	private Date issuedate;					//쿠폰발행일
 	private Date expiredate;				//쿠폰만료일
