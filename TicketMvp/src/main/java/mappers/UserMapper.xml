@@ -68,24 +68,49 @@
 
 	
 	<!-- 문의하기 리스트 -->
-	<select id="selectmyInquiry" parameterType="String" resultType="com.ticketmvp.domain.UserInquiryVO" >
+	<select id="selectInquiry" parameterType="String" resultType="com.ticketmvp.domain.UserInquiryVO" >
 		SELECT helpid, helptitle, helptext, helpproduct, helpdate, replytext, replydate, userid FROM help ORDER BY helpid DESC;
 	</select>
 
 	<!-- 문의하기 리스트 내거만-->
-
+	<select id="selectmyInquiry" parameterType="String" resultType="com.ticketmvp.domain.UserInquiryVO" >
+		SELECT helpid, helptitle, helptext, helpproduct, helpdate, replytext, replydate, userid FROM help WHERE userid="userid" ORDER BY helpid DESC;
+	</select>
+	
 	<!-- 문의하기 작성 -->
 	<insert id="insertinquiryinsert" parameterType="com.ticketmvp.domain.UserInquiryVO" >
 		INSERT INTO `help`(userid, helptitle, helptext, helpproduct, helpdate ) 
 		VALUES ( #{userid}, #{helptitle}, #{helptext}, #{helpproduct}, now() )
 	</insert>
 
+	<!-- 문의하기 글 상세 -->
+	<select id="selectmyInquiry" parameterType="integer" resultType="com.ticketmvp.domain.UserInquiryVO" >
+		SELECT helpid, userid, helptitle, helptext, helpproduct, helpdate, replytext, replydate FROM help WHERE helpid=#{helpid}
+	</select>
 
+	<!-- 문의하기 글삭제 -->
+	<delete id="deleteInquiry" parameterType="integer">
+		DELETE FROM help WHERE helpid=#{helpid}
+	</delete>
 
+	<!-- 찜목록 리스트 -->
+	<select id="selectmylike" parameterType="String" resultType="com.ticketmvp.domain.UserLikeVO">
+		SELECT l.userid as 'userid', l.matchid as 'matchid', homeclub, awayclub, matchdate, matchtime
+		FROM `like` l JOIN `match` m 
+		ON l.matchid = m.matchid
+		WHERE l.userid = #{userid};
+	</select> 
 
+	<!-- 내쿠폰 리스트 -->
+	<select id="selectmycoupon" parameterType="String" resultType="com.ticketmvp.domain.UserCouponVO">
+		SELECT couponid, userid, reserveid, couponname, discount, issuedate, expiredate, usestatus, usedate
+		FROM coupon
+		WHERE userid=#{userid}
+	</select>
 
-
-
-
+	<!-- 쿠폰 소유자 등록하기 -->
+	<update id="updatemycoupon" parameterType="com.ticketmvp.domain.UserCouponVO">\
+		UPDATE coupon SET userid=#{userid} WHERE couponid=#{couponid}
+	</update>
 
 </mapper>

@@ -11,7 +11,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Repository;
 
+import com.ticketmvp.domain.UserCouponVO;
 import com.ticketmvp.domain.UserInquiryVO;
+import com.ticketmvp.domain.UserLikeVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -181,19 +183,48 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	// 문의하기 리스트
-	@Override
 	public List<UserInquiryVO> userMyInquiry(String userid) {
-		return mybatis.selectList("UserDAO.selectmyInquiry", userid);
+		return mybatis.selectList("UserDAO.selectInquiry", userid);
+	}
+	
+	//문의하기 리스트 내꺼
+	public List<UserInquiryVO> userMyInquiryMine(String userid) {
+		return mybatis.selectList("UserDAO.selectMyInquiry", userid);
 	}
 
 	// 문의하기 작성
 	public Integer userMyInquiryInsert(UserInquiryVO vo) {
 		return mybatis.insert("UserDAO.insertinquiryinsert", vo);
 	}
-	
-	
-	
-	
 
+	// 문의하기 글 상세
+	public UserInquiryVO userMyInquiryView(String stringhelpid) {
+		Integer helpid = Integer.parseInt(stringhelpid);
+		return mybatis.selectOne("UserDAO.selectInquiryview", helpid);
+	}
+	
+	// 문의하기 글 삭제 
+	public Integer userMyInquiryDelete(String stringhelpid) {
+		Integer helpid = Integer.parseInt(stringhelpid);
+		return mybatis.delete("UserDAO.deleteInquiry", helpid);
+	}
+	
+	// 찜목록 
+	public List<UserLikeVO> userMyLike(String userid){
+		return mybatis.selectList("UserDAO.selectmylike", userid);
+	}
+
+	// 쿠폰목록
+	public List<UserCouponVO> userMyCoupon(String userid){
+		return mybatis.selectList("UserDAO.selectmycoupon", userid);
+	}
+	
+	// 쿠폰 사용자 등록
+	public Integer userMyCouponInsert(String userid, String couponid) {
+		UserCouponVO vo = new  UserCouponVO();
+		vo.setUserid(userid);
+		vo.setCouponid(couponid);
+		return mybatis.update("UserDAO.updatemycoupon", vo);
+	}
 	
 }

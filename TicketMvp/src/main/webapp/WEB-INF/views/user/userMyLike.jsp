@@ -37,30 +37,37 @@
 		</div>
 		<div id="content">
 			<h2>찜 목록</h2>
-		<div>
-			<table>
-				<thead>
-					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Phone</th>
-						<th>Email</th>
-						<th>Date of Birth</th>
+			<form action="/TicketMvp/user/userMyLikeDelete.do">
+				<div>
+					<table>
+						<thead>
+							<tr>
+								<th>선택</th>
+								<th>경기번호</th>
+								<th>홈구단</th>
+								<th>원정구단</th>
+								<th>경기일</th>
+								<th>경기시간</th>
 
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>James</td>
-						<td>Matman</td>
-						<td>(713) 123-8965</td>
-						<td><a href="mailto:jmatman@stewart.com">jmatman@stewart.com</a></td>
-						<td>01/13/1979</td>
-					</tr>
-					
-				</tbody>
-			</table>
-		</div>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="like" items="${likeList}">
+								<tr>
+									<td><input type="checkbox" name="likes"
+										value="${like.likeId}" /></td>
+									<td>${likeList.matchid}</td>
+									<td>${likeList.homeclub}</td>
+									<td>${likeList.awayclub}</td>
+									<td>${likeList.matchdate}</td>
+									<td>${likeList.matchtime}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				<div align="right"><input type="submit" value="삭제"></div>
+			</form>
 		</div>
 		<!-- end of div#content -->
 	</div>

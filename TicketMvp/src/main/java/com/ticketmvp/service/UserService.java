@@ -2,7 +2,9 @@ package com.ticketmvp.service;
 
 import java.util.List;
 
+import com.ticketmvp.domain.UserCouponVO;
 import com.ticketmvp.domain.UserInquiryVO;
+import com.ticketmvp.domain.UserLikeVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -46,6 +48,24 @@ public interface UserService {
 	//문의하기 리스트
 	List<UserInquiryVO> userMyInquiry(String us);
 	
+	//문의하기 리스트 내거만
+	List<UserInquiryVO> userMyInquiryMine(String userid);
+	
 	//문의하기 작성
 	Integer userMyInquiryInsert(UserInquiryVO vo);
+	
+	//문의하기 글 상세
+	UserInquiryVO userMyInquiryView(String helpid);
+	
+	//문의하기 글삭제
+	Integer userMyInquiryDelete(String helpid);
+	
+	//찜목록
+	List<UserLikeVO> userMyLike(String userid);
+	
+	//내쿠폰 
+	List<UserCouponVO> userMyCoupon(String userid);
+	
+	//내쿠폰 등록
+	Integer userMyCouponInsert(String userid, String couponid);
 }

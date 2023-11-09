@@ -64,7 +64,7 @@
 										<div>
 											<div class="num">${inquiry.helpid}</div>
 											<div class="title">
-												<a href="view.html">${inquiry.helptitle}</a>
+												<a> ${inquiry.helptitle} </a>
 											</div>
 											<div class="writer">${inquiry.userid}</div>
 											<div class="date">${inquiry.helpdate}</div>
@@ -105,7 +105,7 @@
 				<div id="input">
 					<!-- 글쓰기 -->
 					<div class="board_title">
-						<strong>상세보기</strong>
+						<strong>문의글 작성</strong>
 						<p>문의주신 내용에 빠르게 안내드리겠습니다</p>
 					</div>
 					<div class="board_write_wrap">
@@ -141,38 +141,50 @@
 
 
 
-				<div id="view"><!-- 보드 뷰 -->
+				<div id="view">
+					<!-- 보드 뷰 -->
 					<div class="board_wrap">
 						<div class="board_title">
-							<strong>문의글 작성</strong>
+							<strong>문의사항</strong>
 							<p>문의주신 내용에 빠르게 안내드리겠습니다</p>
 						</div>
 						<div class="board_view_wrap">
 							<div class="board_view">
-								<div class="title">글 제목이 들어갑니다.</div>
+								<div class="title"></div>
 								<div class="info">
 									<dl>
 										<dt>번호</dt>
-										<dd>1</dd>
+										<dd></dd>
 									</dl>
 									<dl>
 										<dt>글쓴이</dt>
-										<dd>김이름</dd>
+										<dd></dd>
 									</dl>
 									<dl>
 										<dt>작성일</dt>
-										<dd>2021.1.16</dd>
+										<dd></dd>
 									</dl>
 									<dl>
-										<dt>조회</dt>
-										<dd>33</dd>
+										<dt>상품명</dt>
+										<dd></dd>
 									</dl>
 								</div>
 								<div class="cont">
-									글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br>
-									글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br> 글 내용이 들어갑니다<br>
-									글 내용이 들어갑니다<br> 글 내용이 들어갑니다
+									
 								</div>
+								
+								
+								<div class="info" id="reply_view">
+									<dl>
+										<dt>답글 작성일</dt>
+										<dd></dd>
+									</dl>
+									<div class="cont">
+								
+									</div>
+								</div>
+								
+								
 							</div>
 							<div class="bt_wrap">
 								<a href="list.html" class="on">목록</a> <a href="edit.html">수정</a>
