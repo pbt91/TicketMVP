@@ -37,4 +37,9 @@ public interface AdminService {
 	// 티켓 삭제 
 	Integer deleteTicket (Integer ticketId) ; 
 	
+	int deleteAthletename(String athletename);
+	
+	// 선수 등록
+	void athleteManage(AdminVO vo) ; 
+	
 }

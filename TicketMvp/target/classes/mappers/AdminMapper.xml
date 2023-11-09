@@ -105,5 +105,20 @@ WHERE ticketid=#{ticketid}
 </delete>
 
 
+
+<insert id="athleteManage" parameterType="com.ticketmvp.domain.AdminVO">
+		INSERT INTO `athlete`
+	(
+	athletename,club,age,career,position,backno,info
+	   <if test="athleteimgfile !=null">
+	   ,athleteimgfilefull ,athleteimgsize ,athleteimgfile
+	   </if>	
+	) VALUES( #{athletename},#{club},#{age},#{career},#{position},#{backno},#{info}
+			 <if test="athleteimgfile !=null">
+	   		  ,#{athleteimgfilefull},#{athleteimgsize},#{athleteimgfile}
+	   		</if>		  
+	
+	)
+</insert>
 	
 </mapper>

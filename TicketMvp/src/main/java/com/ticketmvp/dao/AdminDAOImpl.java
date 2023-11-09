@@ -64,6 +64,15 @@ public class AdminDAOImpl {
   }
 	  
 	}
+	
+	
+	
+	// 선수 등록
+	public void athleteManage(AdminVO vo ) {
+		  System.out.println("===> Mybatis athleteManage() 호출");
+		  System.out.println(vo);
+		mybatis.insert("AdminDAO.athleteManage", vo);
+	}
 	 
 	
 //	public void insertTicket(AdminVO vo) {
@@ -93,9 +102,16 @@ public class AdminDAOImpl {
 //		mybatis.insert("AdminDAO.onlyInsertTiket",vo);
 //	}
 		  
+	// 티켓 삭제
 	public int deleteTicket(Integer ticketId) {
 		System.out.println(ticketId);
 		return mybatis.delete("AdminDAO.deleteTicket",ticketId);
+	}
+	
+	// 선수 삭제
+	public int deleteAthletename(String athletename) {
+		System.out.println(athletename);
+		return mybatis.delete("AdminDAO.deleteAthlete",athletename);
 	}
 	
 	}

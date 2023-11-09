@@ -41,6 +41,7 @@ public class AdminController {
 
 	}
 
+	// 선수 등록 조회
 	@RequestMapping("/athleteRegister.do")
 	public void athleteRegister() {
 
@@ -65,6 +66,14 @@ public class AdminController {
 
 	}
 	
+	// 선수 이름 기준으로 삭제 
+	@PostMapping("/deleteAthletename.do")
+	@ResponseBody
+	public void deleteAthletename(@RequestParam String athletename) {
+		System.out.println(athletename);
+		int result = AdminService.deleteAthletename(athletename);
+		System.out.println(result);
+	}
 	// 티켓 삭제 
 	@PostMapping("/deleteTicket.do")
 	@ResponseBody
@@ -107,6 +116,16 @@ public class AdminController {
 	public void ticketRegister() {
 
 	}
+	
+	// 선수 등록
+	@RequestMapping("/athleteManage.do")
+	public String athleteManage(AdminVO vo) {
+		System.out.println(vo);
+		AdminService.athleteManage(vo);
+		return "redirect:athleteManagement.do"; 
+	}
+	// 선수 삭제 
+	
 	
 	// 티켓 수정
 
