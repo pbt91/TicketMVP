@@ -201,10 +201,15 @@ public class UserDAOImpl implements UserDAO {
 		mybatis.update("UserDAO.updateticket", param);
 	}
 
-	// 내 문의글
+	// 문의하기 리스트
 	@Override
 	public List<UserInquiryVO> userMyInquiry(String userid) {
 		return mybatis.selectList("UserDAO.selectmyInquiry", userid);
+	}
+
+	// 문의하기 작성
+	public Integer userMyInquiryInsert(UserInquiryVO vo) {
+		return mybatis.insert("UserDAO.insertinquiryinsert", vo);
 	}
 	
 	// 내 주문목록에서 예매 취소

@@ -50,6 +50,10 @@ public interface UserDAO {
 	public int cancelOrderReservation(String orderid);
 
 	// 내 문의글
+	// 문의하기 리스트
 	public List<UserInquiryVO> userMyInquiry(String userid);
 	
+	// 문의하기 작성
+	Integer userMyInquiryInsert(UserInquiryVO vo);
+
 }
