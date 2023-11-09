@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminDAO">
+	<delete id="deleteUser"  parameterType="com.ticketmvp.domain.AdminVO">
+		DELETE FROM user
+		WHERE userid = #{userid}
+	</delete> 
+
+	<select id="user"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
+		SELECT userid,name,email,phone
+		FROM user
+	</select>
+	
+	<select id="athleteManagement"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
+		SELECT athletename,club,age,position,backno
+		FROM   athlete
+	</select>
+
+	<select id="clubManagement"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
+		SELECT a.athletename athletename , a.club club,c.league league,c.stadiumname stadiumname
+		FROM  athlete a 
+		INNER JOIN club c
+		ON a.club= c.club
+	</select>
+	
+	<select id="ticket"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
+		SELECT t.ticketname ticketname,t.ticketprice ticketprice
+			  ,t.ticketall ticketall,t.ticketremain ticketremain
+			  ,t.ticketid ticketid, m.homeclub homeclub,m.awayclub awayclub,m.matchid matchid
+			  ,m.matchdate matchdate , m.matchtime matchtime,t.ticketid ticketid
+		FROM `match` m 
+		LEFT OUTER JOIN ticket t
+		ON m.matchid = t.matchid 
+		ORDER BY t.ticketid 
+	</select>	
+
+
+<insert id="insertMatch" parameterType="com.ticketmvp.domain.AdminVO" useGeneratedKeys="true" keyProperty="matchid" >
+    INSERT INTO `match` (homeclub, awayclub, matchdate, matchtime)
+    VALUES (#{homeclub}, #{awayclub}, #{matchdate}, #{matchtime})
+</insert>
+
+<insert id="saveMatchTicket" parameterType="com.ticketmvp.domain.AdminVO">
+  INSERT INTO `ticket` (ticketname, ticketprice, ticketall, ticketremain,matchid)
+  VALUES (#{ticketname}, #{ticketprice}, #{ticketall}, #{ticketremain},#{matchid})
+</insert>
+
+<select id="getLastMatchId" resultType="Integer">
+  SELECT MAX(matchid) FROM `match`
+</select>
+
+<insert id="addTicket" parameterType="com.ticketmvp.domain.AdminVO">
+	
+</insert>
+
+<select id="ticketModify" parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
+    SELECT t.ticketname ticketname, t.ticketprice ticketprice
+          ,t.ticketall ticketall, t.ticketremain ticketremain
+          ,t.ticketid ticketid, m.homeclub homeclub, m.awayclub awayclub, m.matchid matchid
+          ,m.matchdate matchdate, m.matchtime matchtime
+    FROM `match` m 
+    LEFT OUTER JOIN ticket t
+    ON m.matchid = t.matchid
+    WHERE t.ticketid = #{ticketid} or m.matchid = #{matchid}
+</select>
+
+<update id="updateMatchfrm" parameterType="com.ticketmvp.domain.AdminVO">
+  UPDATE `match` m,`ticket` t SET
+  m.matchdate = #{matchdate}
+  ,m.matchtime = #{matchtime}
+  ,m.homeclub  = #{homeclub}
+  ,m.awayclub  = #{awayclub}
+  ,t.ticketname = #{ticketname}
+  ,t.ticketprice = #{ticketprice}
+  ,t.ticketall  = #{ticketall}
+  ,t.ticketremain =#{ticketremain}
+ WHERE t.ticketid = #{ticketid}
+</update>
+
+<insert id="onlyInsertTiket"  parameterType="com.ticketmvp.domain.AdminVO">
+INSERT INTO `ticket`(ticketname,ticketprice,ticketall,ticketremain,matchid)
+VALUES(#{ticketname}, #{ticketprice}, #{ticketall},#{ticketremain},#{matchid})
+
+</insert>
+
+<update id="update" parameterType="com.ticketmvp.domain.AdminVO">
+  UPDATE `match` m,`ticket` t SET
+  m.matchdate = #{matchdate}
+  ,m.matchtime = #{matchtime}
+  ,m.homeclub  = #{homeclub}
+  ,m.awayclub  = #{awayclub}
+  ,t.ticketname = #{ticketname}
+  ,t.ticketprice = #{ticketprice}
+  ,t.ticketall  = #{ticketall}
+  ,t.ticketremain =#{ticketremain}
+ WHERE t.ticketid = #{ticketid}
+</update>
+
+<!--  티켓 디비에서 삭제 -->
+<delete id= "deleteTicket" parameterType="com.ticketmvp.domain.AdminVO">
+DELETE FROM `ticket`
+WHERE ticketid=#{ticketid}
+
+</delete>
+
+<!--  선수 이름 기준으로 삭제 -->
+<delete id="deleteAthletename" parameterType="com.ticketmvp.domain.AdminVO">
+DELETE FROM `athlete`
+WHERE athletename = #{athletename}
+</delete>
+
+<!--  유저 아이디 기준으로 유저 정보 삭제 -->
+<delete id="deleteUserid" parameterType="com.ticketmvp.domain.AdminVO">
+DELETE FROM `user`
+WHERE userid = #{userid}
+</delete>
+
+<!--  선수 이미지 부터 싹다 등록 -->
+<insert id="athleteManage" parameterType="com.ticketmvp.domain.AdminVO">
+		INSERT INTO `athlete`
+	(
+	athletename,club,age,career,position,backno,info
+	   <if test="athleteimgfile !=null">
+	   ,athleteimgfilefull ,athleteimgsize ,athleteimgfile
+	   </if>	
+	) VALUES( #{athletename},#{club},#{age},#{career},#{position},#{backno},#{info}
+			 <if test="athleteimgfile !=null">
+	   		  ,#{athleteimgfilefull},#{athleteimgsize},#{athleteimgfile}
+	   		</if>		  
+	
+	)
+</insert>
+
+<!-- 관리자 페이지에서 문의 내용 불러오기 -->
+<select id="handleInquiry" resultType="com.ticketmvp.domain.UserInquiryVO">
+	SELECT * FROM help
+	ORDER BY helpid ASC;
+</select>
+
+<!-- 문의 제목 클릭 후 해당 글 내용 가져오기 -->
+<select id="replyToInquiryForm" parameterType="int" resultType="com.ticketmvp.domain.UserInquiryVO">
+	SELECT * FROM help
+	WHERE helpid = #{helpid}; 
+</select>
+	
+<!-- 문의 내용에 관리자 답변 등록 -->	
+<update id="replyToInquiry" parameterType="hashmap">
+	UPDATE help
+	SET replytext = '${replytext}'
+		,replydate = now()
+	WHERE helpid = ${helpid}
+</update>
+	
+</mapper>

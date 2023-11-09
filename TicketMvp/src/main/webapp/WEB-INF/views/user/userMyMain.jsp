@@ -24,8 +24,6 @@
 
 </head>
 <body>
-
-
 	<div id="header">
 		<jsp:include page="/WEB-INF/views/main/main_header.jsp" />
 	</div>

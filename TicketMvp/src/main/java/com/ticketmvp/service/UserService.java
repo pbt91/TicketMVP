@@ -41,11 +41,19 @@ public interface UserService {
 /* ********************************************* */
 	
 	//내 주문목록
-	UserOrderVO userMyOrderList(String userid);
+	List<UserOrderVO> userMyOrderList(String userid);
 	
+	//내 주문목록에서 예매취소
+	int cancelOrder(String orderid, String totalSeat, String ticketName);
+	
+<<<<<<< HEAD
 	//문의하기 리스트
 	List<UserInquiryVO> userMyInquiry(String us);
 	
 	//문의하기 작성
 	Integer userMyInquiryInsert(UserInquiryVO vo);
+=======
+	//내 문의글
+	List<UserInquiryVO> userMyInquiry(String us);
+>>>>>>> refs/remotes/origin/master
 }

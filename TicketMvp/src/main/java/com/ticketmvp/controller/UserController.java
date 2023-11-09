@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserVO;
 import com.ticketmvp.service.UserService;
@@ -170,14 +171,27 @@ public class UserController {
 	
 	// 내 주문목록 값 가져오기 
 	@RequestMapping("/userMyOrderList.do")
-	public /*UserOrderVO*/ void userMyOrderList(HttpSession session, Model m) {
+	public void userMyOrderList(HttpSession session, Model m) {
 		String userid = (String) session.getAttribute("userid");
-		/*UserOrderVO ordervo = userservice.userMyOrderList(userid);
-		m.addAttribute();*/
-
+		m.addAttribute("order", userservice.userMyOrderList(userid));
 	}
 	
+<<<<<<< HEAD
 	// 문의하기 리스트
+=======
+	// 내 주문목록에서 예매 취소하기
+	@ResponseBody
+	@RequestMapping("/userMyOrderCancel")
+	public String userMyOrderCancel(String orderId, String totalSeat, String ticketName){
+		if(userservice.cancelOrder(orderId, totalSeat, ticketName)>0) {
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+	
+	// 내 문의글
+>>>>>>> refs/remotes/origin/master
 	@RequestMapping("/userMyInquiry.do")
 	public void userMyInquiry(HttpSession session, Model m) {
 		String userid = (String) session.getAttribute("userid");		
@@ -190,6 +204,7 @@ public class UserController {
 
 	}
 
+<<<<<<< HEAD
 	// 문의하기 작성
 	@RequestMapping(value="/userMyInquiryInsert.do", method=RequestMethod.POST)
 	@ResponseBody
@@ -218,5 +233,8 @@ public class UserController {
 	
 	
 	
+=======
+
+>>>>>>> refs/remotes/origin/master
 	
 }

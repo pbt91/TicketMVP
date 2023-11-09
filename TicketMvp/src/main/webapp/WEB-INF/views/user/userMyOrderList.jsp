@@ -8,16 +8,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- js 코드 호출 -->
+<!-- jquergy 코드 호출 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- js코드 연결 -->
+<script src='/TicketMvp/resources/js/user/userMyOrderList.js' type="text/javascript"></script>
 <!-- css 파일 연결 - main -->
-<link rel="stylesheet"
-	href="/TicketMvp/resources/css/main/templates.css">
+<link rel="stylesheet" href="/TicketMvp/resources/css/main/templates.css">
 <!-- css 파일 연결 - page -->
-<link rel="stylesheet"
-	href="/TicketMvp/resources/css/user/userMyOrderList.css">
-
-
+<link rel="stylesheet" href="/TicketMvp/resources/css/user/userMyOrderList.css">
 <title>나의 주문목록</title>
 </head>
 <body>
@@ -40,42 +38,29 @@
 								<th>상품명</th>
 								<th>가격</th>
 								<th>개수</th>
-								<th>할인</th>
+								<th>할인율</th>
 								<th>결제금액</th>
 								<th>결제일</th>
 								<th>상태</th>
+								<th>예약 취소하기</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>2</td>
-								<td>2</td>
-								<td>2</td>
-								<td>2</td>
-								<td>2</td>
-								<td>2</td>
-							</tr>
-							<%-- <c:forEach items="${orderList}" var="list">
-					<tr>
-						<td>${UserOrder.ticketname}</td>	<!-- 상품명 -->
-						<td>${UserOrder.ticketname}</td>	<!-- 개당가격 -->
-						<td>${UserOrder.ticketname}</td>	<!-- 개수 -->
-						<td>${UserOrder.ticketname}</td>	<!-- 할인정보 -->
-						<td>${UserOrder.ticketname}</td>	<!-- 결제금액 -->
-						<td>${UserOrder.ticketname}</td>	<!-- 결제일 -->
-						<td>${UserOrder.ticketname}</td>	<!-- 주문상태 -->
-					</tr>
-				</c:forEach> --%>
+						    <c:forEach items="${order}" var="order">
+						        <tr>
+						            <td>${order.ticketname}</td>
+						            <td>${order.ticketprice}</td>
+						            <td>${order.totalseat}</td>
+						            <td>${order.discount}%</td>
+						            <td>${order.totalpayment}</td>
+						            <td>${order.paydate}</td>
+						            <td>${order.reservestatus}</td>
+						            <c:if test="${!order.reservestatus.equals('예약취소')}">
+                                        <td><button class="cancel">취소</button></td>
+                                    </c:if>
+                                    <td><input type="hidden" value="${order.reserveid}"></td>
+						        </tr>
+						    </c:forEach>
 						</tbody>
 					</table>
 				</form>
