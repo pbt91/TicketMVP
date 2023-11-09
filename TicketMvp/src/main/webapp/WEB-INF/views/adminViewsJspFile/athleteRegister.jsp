@@ -35,7 +35,8 @@
     <body>
     <jsp:include page="headbar.jsp" />
     <div class="container-fluid">
-    <form action="athleteManage"  method="post">
+    <form action="athleteManage.do" method="post" enctype="multipart/form-data">
+
     				<br></br>
     <h1 class="h3 mb-2 text-gray-800">선수 등록</h1>
      <div class="card shadow mb-4">
@@ -55,42 +56,47 @@
                             <tr>
                                 <th>선수 이미지<span class="es">필수 입력</span></th>
                                 <td>
-                                    <input type="file" id="fileInput" accept="image/*" onchange="displaySelectedImage(this)">
+                                    <input type="file" id="athleteImg" name="athleteImg"  onchange="displaySelectedImage(this)">
                                 </td>
-                            </tr>                 
+                            </tr> 
+                            <tr>
+							    <td colspan="2">
+							        <img id="selectedImage" src="" style="max-width: 300px; max-height: 300px;" alt="선수 이미지">
+							    </td>
+							</tr>                
 							
 							<tr>
 							<th>선수명 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="athletename" name="homeclub"  placeholder="선수명 입력해 주세요." /></td>
+                                <td colspan="3"><input type="text" id="athletename" name="athletename"  placeholder="선수명 입력해 주세요." /></td>
                             </tr>
                             <tr>
                                 <th>선수 구단<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="club" name="awayclub"  placeholder="선수 구단 입력해 주세요." /></td>
+                                <td colspan="3"><input type="text" id="club" name="club"  placeholder="선수 구단 입력해 주세요." /></td>
                             </tr>
 							
 							<tr>
                                 <th>선수 나이<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="age" name="matchdate"  placeholder="선수 나이 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="number" id="age" name="age"  placeholder="선수 나이 입력해 주세요."  /></td>
                             </tr>
                             
                             <tr>
                                 <th>포지션<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="position" name="matchtime"  placeholder="포지션 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="text" id="position" name="position"  placeholder="포지션 입력해 주세요."  /></td>
                             </tr>
 							
 							<tr>
                                 <th>선수 등번호<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="backno" name="matchtime"  placeholder="선수 등번호 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="number" id="backno" name="backno"  placeholder="선수 등번호 입력해 주세요."  /></td>
                             </tr>
                             
                             <tr>
                                 <th>선수 정보<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="info" name="matchtime"  placeholder="선수 정보 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="text" id="info" name="info"  placeholder="선수 정보 입력해 주세요."  /></td>
                             </tr>
                             
                             <tr>
                                 <th>선수 경력<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="career" name="matchtime"  placeholder="선수 경력 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="text" id="career" name="career"  placeholder="선수 경력 입력해 주세요."  /></td>
                             </tr>
 							
 							<tr>
@@ -113,6 +119,20 @@
         </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script>
+    function displaySelectedImage(input) {
+        var selectedImage = document.getElementById("selectedImage");
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                selectedImage.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            selectedImage.src = "";
+        }
+    }
+    </script>
     </body>
     <jsp:include page="footer.jsp" />
 </html>

@@ -33,6 +33,12 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.ticket(vo);
 	}
 	
+	//선수 등록 
+	public void athleteManage(AdminVO vo) {
+		System.out.println(vo);
+		adminDAO.athleteManage(vo);
+	}
+	
 	// 티켓,경기 입력
 //	public void insertTicket(AdminVO vo) {
 //		adminDAO.insertTicket(vo); 
@@ -62,6 +68,11 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println(ticketId);
 		return adminDAO.deleteTicket(ticketId );
 	} 
+	
+	public String deleteAthletename(String athletename) {
+		System.out.println(athletename);
+		return adminDAO.deleteAthletename(athletename );
+	}
 	
 	
 }

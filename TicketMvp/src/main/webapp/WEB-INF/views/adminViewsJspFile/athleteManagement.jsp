@@ -5,6 +5,9 @@
 <html lang="en">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/admin/adminTicketadd.js" type="text/javascript"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -68,7 +71,7 @@
 											<td>${athleteManagement.position}</td>
 											<td>${athleteManagement.backno}</td>
 											<td>
-                                				<button class="btn btn-danger" id="deleteTicket" >삭제</button>
+                                				<button class="btn btn-danger" id="deleteAthlete" >삭제</button>
                             				</td>
 											
                                         </tr>

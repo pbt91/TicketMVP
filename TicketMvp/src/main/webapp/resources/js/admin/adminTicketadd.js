@@ -51,3 +51,29 @@ $('button#deleteTicket').click(function() {
 });
 
 	});
+	
+$('button#deleteAthlete').click(function() {
+    var athletename = $(this).closest('tr').find('a').attr('href').split('=')[1];
+    var url = "deleteAthletename.do"; // Spring 컨트롤러의 URL 경로
+    console.log(athletename);
+    console.log(url);
+    
+    
+    if (confirm("선택한 티켓을 삭제하시겠습니까?")) {
+        $.ajax({
+            type: "POST", // POST 요청
+            url: url,
+            data: { athletename: athletename }, // 요청 매개변수로 athletename를 전달
+            success: function (response) {
+                location.reload(); 
+            },
+            error: function(err) {
+                alert('err');
+                console.log(err);
+            }
+        });
+    }
+
+
+	});
+

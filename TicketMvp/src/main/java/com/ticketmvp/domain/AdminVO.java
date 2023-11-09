@@ -1,12 +1,129 @@
 package com.ticketmvp.domain;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class AdminVO {
 	
+	private String athleteimgfilefull ; // 선수 전체 파일명
+	private long athleteimgsize ;		// 선수 파일 사이즈
+	private String athleteimgfile ;		// 선수 파일명
+	private String clubimgfile ;		// 클럽 파일명
+	private String clubimgfilefull ;	// 클럽 전체 파일명
+	private long clubimgsize ;			// 클럽 파일 사이즈
+	private String stadiumimgfile ;		// 경기장 이미지 파일명
+	private String stadiumimgfilefull ; // 경기장 전체 파일명
+	private long stadiumimgsize ;		// 경기장 이미지 사이즈 
+	
+	MultipartFile athleteImg ; // input 태그에 type='file' name과 동일
+	public MultipartFile getAthleteImg() {
+		return athleteImg ;
+	}
+	
+	public void setAthleteImg(MultipartFile athleteImg) {
+		this.athleteImg = athleteImg ;
+		//업로드 파일이 있는 경우
+		if( !athleteImg.isEmpty() ) {
+			this.athleteimgfile = athleteImg.getOriginalFilename();
+			this.athleteimgsize = athleteImg.getSize();
+			
+			// 실제 저장된 파일명 만들기 
+			UUID uuid = UUID.randomUUID();
+			this.athleteimgfilefull = uuid.toString() ;
+			
+			// 실제파일 저장 
+			// 추후에 웹서버 경로를 찾아서 수정 작업
+			File f = new File("C:\\Users\\ICT03-20\\git\\TicketMVP\\TicketMvp\\src\\main\\webapp\\resources\\images\\member_images\\" + athleteimgfilefull+"_"+athleteimgfile);
+			
+			try {
+				athleteImg.transferTo(f);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+		
+	
+	
+	public long getAthleteimgsize() {
+		return athleteimgsize;
+	}
+	public void setAthleteimgsize(long athleteimgsize) {
+		this.athleteimgsize = athleteimgsize;
+	}
+	public long getClubimgsize() {
+		return clubimgsize;
+	}
+	public void setClubimgsize(long clubimgsize) {
+		this.clubimgsize = clubimgsize;
+	}
+	public long getStadiumimgsize() {
+		return stadiumimgsize;
+	}
+	public void setStadiumimgsize(long stadiumimgsize) {
+		this.stadiumimgsize = stadiumimgsize;
+	}
+
+
+	public String getAthleteimgfilefull() {
+		return athleteimgfilefull;
+	}
+
+	public void setAthleteimgfilefull(String athleteimgfilefull) {
+		this.athleteimgfilefull = athleteimgfilefull;
+	}
+
+	public String getAthleteimgfile() {
+		return athleteimgfile;
+	}
+
+	public void setAthleteimgfile(String athleteimgfile) {
+		this.athleteimgfile = athleteimgfile;
+	}
+
+	public String getClubimgfile() {
+		return clubimgfile;
+	}
+
+	public void setClubimgfile(String clubimgfile) {
+		this.clubimgfile = clubimgfile;
+	}
+
+	public String getClubimgfilefull() {
+		return clubimgfilefull;
+	}
+
+	public void setClubimgfilefull(String clubimgfilefull) {
+		this.clubimgfilefull = clubimgfilefull;
+	}
+
+	public String getStadiumimgfile() {
+		return stadiumimgfile;
+	}
+
+	public void setStadiumimgfile(String stadiumimgfile) {
+		this.stadiumimgfile = stadiumimgfile;
+	}
+
+	public String getStadiumimgfilefull() {
+		return stadiumimgfilefull;
+	}
+
+	public void setStadiumimgfilefull(String stadiumimgfilefull) {
+		this.stadiumimgfilefull = stadiumimgfilefull;
+	}
+
+
 	private String  homeclub ; 
 	private String	awayclub ;
 	private String	matchdate;
 	private String	matchtime;
+	
 	
 	
 	public String getHomeclub() {
@@ -90,32 +207,12 @@ public class AdminVO {
 
 	private String league ; 
 	private String stadiumname ; 
-	private String clubimgfile ; 
-	private String clubimgfilefull ; 
-	private Integer clubimgsize ; 
-	private String	areaimgfile;
-	private String	stadiumimgfilefull;
-	private Integer	stadiumimgsize;
+
 	
 	
-	public String getAreaimgfile() {
-		return areaimgfile;
-	}
-	public void setAreaimgfile(String areaimgfile) {
-		this.areaimgfile = areaimgfile;
-	}
-	public String getStadiumimgfilefull() {
-		return stadiumimgfilefull;
-	}
-	public void setStadiumimgfilefull(String stadiumimgfilefull) {
-		this.stadiumimgfilefull = stadiumimgfilefull;
-	}
-	public Integer getStadiumimgsize() {
-		return stadiumimgsize;
-	}
-	public void setStadiumimgsize(Integer stadiumimgsize) {
-		this.stadiumimgsize = stadiumimgsize;
-	}
+
+
+
 	public String getLeague() {
 		return league;
 	}
@@ -128,24 +225,7 @@ public class AdminVO {
 	public void setStadiumname(String stadiumname) {
 		this.stadiumname = stadiumname;
 	}
-	public String getClubimgfile() {
-		return clubimgfile;
-	}
-	public void setClubimgfile(String clubimgfile) {
-		this.clubimgfile = clubimgfile;
-	}
-	public String getClubimgfilefull() {
-		return clubimgfilefull;
-	}
-	public void setClubimgfilefull(String clubimgfilefull) {
-		this.clubimgfilefull = clubimgfilefull;
-	}
-	public Integer getClubimgsize() {
-		return clubimgsize;
-	}
-	public void setClubimgsize(Integer clubimgsize) {
-		this.clubimgsize = clubimgsize;
-	}
+
 
 
 	private String  athletename;
@@ -155,10 +235,7 @@ public class AdminVO {
 	private String  position;
 	private Integer backno;
 	private String  info;
-	private String  athleteimgfile;
-	private String  athleteimgfilefull;
-	private Integer athleteimgsize;
-	
+
 	public String getAthletename() {
 		return athletename;
 	}
@@ -201,24 +278,7 @@ public class AdminVO {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	public String getAthleteimgfile() {
-		return athleteimgfile;
-	}
-	public void setAthleteimgfile(String athleteimgfile) {
-		this.athleteimgfile = athleteimgfile;
-	}
-	public String getAthleteimgfilefull() {
-		return athleteimgfilefull;
-	}
-	public void setAthleteimgfilefull(String athleteimgfilefull) {
-		this.athleteimgfilefull = athleteimgfilefull;
-	}
-	public Integer getAthleteimgsize() {
-		return athleteimgsize;
-	}
-	public void setAthleteimgsize(Integer athleteimgsize) {
-		this.athleteimgsize = athleteimgsize;
-	}
+
 	public void setJoinstatus(Integer joinstatus) {
 		this.joinstatus = joinstatus;
 	}
@@ -241,7 +301,7 @@ public class AdminVO {
 				+ ", ticketremain=" + ticketremain + ", ticketall=" + ticketall + ", ticketname=" + ticketname
 				+ ", ticketdesc=" + ticketdesc + ", league=" + league + ", stadiumname=" + stadiumname
 				+ ", clubimgfile=" + clubimgfile + ", clubimgfilefull=" + clubimgfilefull + ", clubimgsize="
-				+ clubimgsize + ", areaimgfile=" + areaimgfile + ", stadiumimgfilefull=" + stadiumimgfilefull
+				+ clubimgsize + ", areaimgfile=" + stadiumimgfile + ", stadiumimgfilefull=" + stadiumimgfilefull
 				+ ", stadiumimgsize=" + stadiumimgsize + ", athletename=" + athletename + ", club=" + club + ", age="
 				+ age + ", career=" + career + ", position=" + position + ", backno=" + backno + ", info=" + info
 				+ ", athleteimgfile=" + athleteimgfile + ", athleteimgfilefull=" + athleteimgfilefull
