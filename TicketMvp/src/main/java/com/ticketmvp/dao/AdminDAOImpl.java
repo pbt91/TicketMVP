@@ -33,12 +33,7 @@ public class AdminDAOImpl implements AdminDAO{
 		return mybatis.selectList("AdminDAO.ticket", vo);
 	}
 	
-	
-	public void ticketRegister1(AdminVO vo) {
-	  System.out.println("===> Mybatis ticketRegister1() 호출");
-	  mybatis.insert("AdminDAO.ticketRegister1", vo); 
-	  }
-	
+	// 티켓 및 경기  등록
 	public void saveMatchTicket(AdminVO vo) {
 	  System.out.println("===> Mybatis saveMatchTicket() 호출");
 	  System.out.println(vo);
@@ -54,15 +49,21 @@ public class AdminDAOImpl implements AdminDAO{
           vo.setMatchid(lastMatchId);
           System.out.println(vo);
           mybatis.insert("AdminDAO.saveMatchTicket", vo);
+          Integer getLastTickId = mybatis.selectOne("AdminDAO.getLastTickId");
+          vo.setTicketid(getLastTickId);
+          System.out.println(getLastTickId);
+          System.out.println( vo.getTicketall() ) ;
+          for (int i = 0; i < vo.getTicketall(); i++) {
+        	  mybatis.insert("AdminDAO.insertSeat", vo);
+        	  System.out.println(getLastTickId);
+          }
       } else {
           System.out.println("Last match ID is null.");
       
       }
-  }
-	  
+      
+	  }
 	}
-	
-	
 	
 	// 선수 등록
 	public void athleteManage(AdminVO vo ) {
@@ -78,12 +79,14 @@ public class AdminDAOImpl implements AdminDAO{
 //		  mybatis.insert("AdminDAO.insertTicket", vo);
 //		}
 	
+	// 경기 및 티켓 수정페이지 조회 
 	public AdminVO ticketModify(AdminVO vo) {
 		  System.out.println("===> Mybatis ticketModify() 호출");
 		  System.out.println(vo);
 		  return (AdminVO) mybatis.selectOne("AdminDAO.ticketModify",vo);
 		  }
 	
+	// 경기 및 티켓 수정 
 	public void updateMatchfrm(AdminVO vo) {
 		  System.out.println("===> Mybatis updateMatchfrm() 호출");
 		  System.out.println(vo);
@@ -95,16 +98,40 @@ public class AdminDAOImpl implements AdminDAO{
 		  } 
 		  
 		} 
+	
+	// 선수 이미지 및 정보 수정 
+	public void athleteModifysubmit(AdminVO vo) {
+		  System.out.println("===> Mybatis athleteModifysubmit() 호출");
+		  System.out.println(vo);
+		  Integer result = mybatis.update("AdminDAO.athleteModifysubmit",vo);
+		  System.out.println(result + "줄 수정완료");
+	}
+	
+	// 선수 정보 및 이미지 수정 조회
+	public AdminVO athleteModify(AdminVO vo) {
+		System.out.println("===> Mybatis athleteModify() 호출");
+		System.out.println(vo);
+		return (AdminVO) mybatis.selectOne("AdminDAO.athleteModify",vo);
+	}
+	
 //	public void onlyInsertTiket(AdminVO vo) {
 //		mybatis.insert("AdminDAO.onlyInsertTiket",vo);
 //	}
 		  
-	// 티켓 삭제
+	// 티켓 삭제 + 해당 티켓 삭제 전 좌석 삭제
 	public int deleteTicket(Integer ticketId) {
 		System.out.println(ticketId);
+		Integer result = mybatis.delete("AdminDAO.deleteSeat",ticketId);
+		System.out.println("===> Mybatis deleteSeat() 호출");
+		System.out.println(result);
 		return mybatis.delete("AdminDAO.deleteTicket",ticketId);
 	}
 	
+	// 경기 삭제
+	public int deleteMatch(Integer matchid) {
+		System.out.println(matchid);
+		return mybatis.delete("AdminDAO.deleteMatch",matchid);
+	}
 	// 선수 삭제
 	public int deleteAthletename(String athletename) {
 		System.out.println(athletename);
@@ -116,7 +143,49 @@ public class AdminDAOImpl implements AdminDAO{
 		System.out.println(userid);
 		return mybatis.delete("AdminDAO.deleteUserid",userid);
 	}
+	
+	//클럽 등록 
+	public void clubManage(AdminVO vo) {
+		  System.out.println("===> Mybatis clubManage() 호출");
+		  System.out.println(vo);
+		mybatis.insert("AdminDAO.clubManage", vo);
 	}
+	
+	//클럽삭제
+	public int deleteClubname(String clubname) {
+		System.out.println(clubname);
+		return mybatis.delete("AdminDAO.deleteCLub",clubname);
+	}
+	
+	// 클럽 수정 클럽 이름 기준으로 조회  clubModify
+	public AdminVO clubModify(AdminVO vo) {
+		System.out.println("===> Mybatis clubModify() 호출");
+		System.out.println(vo);
+		return (AdminVO) mybatis.selectOne("AdminDAO.clubModify",vo);
+	}
+	
+	// 클럽 수정  clubManageModify
+	public void clubManageModify(AdminVO vo) {
+		  System.out.println("===> Mybatis clubManageModify() 호출");
+		  System.out.println(vo);
+		  Integer result = mybatis.update("AdminDAO.clubManageModify",vo);
+		  System.out.println(result + "줄 수정완료");
+	}
+	
+//	public List<AdminVO> athleteManagement(AdminVO vo) {
+//		System.out.println("===> Mybatis athleteManagement() 호출");
+//		return mybatis.selectList("AdminDAO.athleteManagement", vo);
+//	}
+//	
+	
+	// 차트 관련 함수
+	public List<AdminVO> chartTicketClubData(AdminVO vo) {
+		System.out.println("===> Mybatis chartTicketClubData() 호출");
+		return mybatis.selectList("AdminDAO.chartTicketClubData", vo);
+	}
+	
+	
+}
 	
 	
 

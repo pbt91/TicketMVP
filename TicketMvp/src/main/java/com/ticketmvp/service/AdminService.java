@@ -23,17 +23,17 @@ public interface AdminService {
 	 void saveMatchTicket(AdminVO vo); 
 	// void insertTicket(AdminVO vo); 
 	 
-	// 티켓 및 경기 상세 리스트 
+	// 티켓 및 경기 수정 조회
 	AdminVO ticketModify(AdminVO vo); 
 	
-	//  경기 수정 
+	//  티켓 및 경기 수정 
 	void updateMatchfrm(AdminVO vo);
-	
-	//  티켓 수정 
-	//void onlyInsertTiket(AdminVO vo);
 	
 	// 티켓 삭제 
 	Integer deleteTicket (Integer ticketId) ; 
+	
+	//경기 삭제
+	Integer deleteMatch (Integer matchid) ; 
 	
 	// 선수삭제
 	Integer deleteAthletename(String athletename);
@@ -43,4 +43,25 @@ public interface AdminService {
 	
 	// 유저 삭제
 	Integer deleteUserid(String userid);
+	
+	// 선수 수정 조회
+	AdminVO athleteModify(AdminVO vo);
+	
+	// 선수 수정  
+	void athleteModifysubmit(AdminVO vo) ;
+	
+	// 클럽 등록 
+	void clubManage(AdminVO vo); 
+	
+	// 클럽 삭제 
+	Integer deleteClubname(String clubname);
+	
+	// 클럽 수정 조회
+	AdminVO clubModify(AdminVO vo) ; 
+	
+	// 클럽 수정
+	void clubManageModify(AdminVO vo);
+	
+	// 차트 관련 
+	List<AdminVO> chartTicketClubData(AdminVO vo);
 }

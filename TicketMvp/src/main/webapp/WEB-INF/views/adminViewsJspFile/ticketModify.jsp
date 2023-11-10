@@ -131,9 +131,7 @@
 							</td>
 								
 							</tr>
-							<th>선수명 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><textarea id="content" name="content" cols="50" rows="10" placeholder="내용을 입력해 주세요."></textarea></td>
-                           </tbody>
+							</tbody>
                           </table> 
                    </div> <!--/* .content */-->
     	</th:block>     

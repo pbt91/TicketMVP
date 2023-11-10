@@ -37,35 +37,44 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	// 티켓,경기 입력
-//	public void insertTicket(AdminVO vo) {
-//		adminDAO.insertTicket(vo); 
-//		}
 	public void saveMatchTicket(AdminVO vo) {
 		adminDAO.saveMatchTicket(vo); 
 		}
 
-	// 티켓 및 경기 수정 리스트
+	// 티켓 및 경기 수정 조회
 	public AdminVO ticketModify(AdminVO vo) {
 		System.out.println(vo);
 		return adminDAO.ticketModify(vo);
 	}
 	
-	// 매치 수정 서브 밋
+	// 티켓 및 경기 수정
 	public void updateMatchfrm(AdminVO vo) {
 		System.out.println(vo);
 		adminDAO.updateMatchfrm(vo); 
 		}
+	// 선수 수정 조회
+	public AdminVO athleteModify(AdminVO vo) {
+		System.out.println(vo);
+		return adminDAO.athleteModify(vo) ; 
+	}
 	
-//	public void onlyInsertTiket(AdminVO vo) {
-//		System.out.println(vo);
-//		adminDAO.onlyInsertTiket(vo); 
-//		}
+	// 선수 수정
+	public void athleteModifysubmit(AdminVO vo) {
+		System.out.println(vo);
+		adminDAO.athleteModifysubmit(vo);
+	}
 	
 	// 티켓 삭제
 	public Integer deleteTicket(Integer ticketId) {
 		System.out.println(ticketId);
 		return adminDAO.deleteTicket(ticketId );
 	} 
+	
+	//경기 삭제
+	public Integer deleteMatch(Integer matchid) {
+		System.out.println(matchid);
+		return adminDAO.deleteMatch(matchid );
+	}
 	
 	// 선수 삭제
 	public Integer deleteAthletename(String athletename) {
@@ -78,4 +87,34 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println(userid);
 		return adminDAO.deleteUserid(userid );
 	}
+	
+	// 클럽 등록
+	public void clubManage(AdminVO vo) {
+		System.out.println(vo);
+		adminDAO.clubManage(vo);
+	}
+	
+	// 클럽 삭제
+	public Integer deleteClubname(String clubname) {
+		System.out.println(clubname);
+		return adminDAO.deleteClubname(clubname);
+	}
+	
+	// 클럽 수정 조회
+	public AdminVO clubModify(AdminVO vo) {
+		System.out.println(vo);
+		return adminDAO.clubModify(vo) ; 
+	}
+	
+	// 클럽 수정
+	public void clubManageModify(AdminVO vo) {
+		System.out.println(vo);
+		adminDAO.clubManageModify(vo);
+	}
+	
+	// 차트 관련
+	public List<AdminVO> chartTicketClubData(AdminVO vo) {
+		return adminDAO.chartTicketClubData(vo);
+	}
+	
 }

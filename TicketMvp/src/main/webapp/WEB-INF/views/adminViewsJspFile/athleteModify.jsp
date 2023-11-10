@@ -35,7 +35,7 @@
     <body>
     <jsp:include page="headbar.jsp" />
     <div class="container-fluid">
-    <form action="athleteModify" method="post" enctype="multipart/form-data">
+    <form action="athleteModifysubmit.do" method="post" enctype="multipart/form-data">
 
     				<br></br>
     <h1 class="h3 mb-2 text-gray-800">선수 수정</h1>
@@ -45,9 +45,8 @@
 		</div>
      	 <div class="content">
 
-
+					
                     <!--/* 서버로 전달할 공지글 여부 */-->
-                    <input type="hidden" id="noticeYn" name="noticeYn" />
                     <table class="tb tb_row">
                           <colgroup>
                             <col style="width:15%;" /><col style="width:35%;" /><col style="width:15%;" /><col style="width:35%;" />
@@ -56,54 +55,61 @@
                             <tr>
                                 <th>선수 이미지<span class="es">필수 입력</span></th>
                                 <td>
+                                   	<a  href='${pageContext.request.contextPath}/resources/images/member_images/${athleteM.athleteimgfilefull }_${athleteM.athleteimgfile}'  style="max-width: 300px; max-height: 300px;">
+									<img src='${pageContext.request.contextPath}/resources/images/member_images/${athleteM.athleteimgfilefull}_${athleteM.athleteimgfile}' alt="선수 이미지"  style="max-width: 300px; max-height: 300px;">
+									</a>	
+                                </td>
+								<td>
                                     <input type="file" id="athleteImg" name="athleteImg"  onchange="displaySelectedImage(this)">
                                 </td>
+                                <td colspan="2">
+							        <img id="selectedImage" name="athleteImg" src="" style="max-width: 300px; max-height: 300px;" alt="선수 이미지">
+							    </td>
                             </tr> 
                             <tr>
-							    <td colspan="2">
-							        <img id="selectedImage" src="" style="max-width: 300px; max-height: 300px;" alt="선수 이미지">
-							    </td>
 							</tr>                
 							
 							<tr>
 							<th>선수명 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="athletename" name="athletename"  placeholder="선수명 입력해 주세요." /></td>
+                                <td colspan="3"><input type="text" id="athletename" name="athletename"  value="${athleteM.athletename}"  placeholder="선수명 입력해 주세요." /></td>
                             </tr>
                             <tr>
                                 <th>선수 구단<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="club" name="club"  placeholder="선수 구단 입력해 주세요." /></td>
+                                <td colspan="3"><input type="text" id="club" name="club"  value="${athleteM.club}"  placeholder="선수 구단 입력해 주세요." /></td>
                             </tr>
 							
 							<tr>
                                 <th>선수 나이<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="age" name="age"  placeholder="선수 나이 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="number" id="age" name="age"  value="${athleteM.age}"  placeholder="선수 나이 입력해 주세요."  /></td>
                             </tr>
                             
                             <tr>
                                 <th>포지션<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="position" name="position"  placeholder="포지션 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="text" id="position" name="position"  value="${athleteM.position}"  placeholder="포지션 입력해 주세요."  /></td>
                             </tr>
 							
 							<tr>
                                 <th>선수 등번호<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="backno" name="backno"  placeholder="선수 등번호 입력해 주세요."  /></td>
+                                <td colspan="3"><input type="number" id="backno" name="backno"  value="${athleteM.backno}"  placeholder="선수 등번호 입력해 주세요."  /></td>
                             </tr>
                             
                             <tr>
                                 <th>선수 정보<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="info" name="info"  placeholder="선수 정보 입력해 주세요."  /></td>
+                                <td colspan="3">
+                           		<textarea id="info" name="info" cols="50" rows="10"  placeholder="선수 경력 입력해 주세요.">${athleteM.info}</textarea>
+                           		</td>
+                                
                             </tr>
                             
                             <tr>
                                 <th>선수 경력<span class="es">필수 입력</span></th>
                                 <td colspan="3">
-                                <input type="text" id="career" name="career"  placeholder="선수 경력 입력해 주세요."  />
-                                <textarea id="career" name="career" cols="50" rows="10" placeholder="선수 경력 입력해 주세요."></textarea>
+                                <textarea id="career" name="career" cols="50" rows="10"  placeholder="선수 경력 입력해 주세요.">${athleteM.career}</textarea>
                                 </td>
                             </tr>
 							
 							<tr>
-								<td colspan="2" align="center"><input type="submit"	value=" 선수 등록 " /></td>
+								<td colspan="2" align="center"><input type="submit"	value=" 선수 수정 " /></td>
 							</tr>
                         </tbody>
                     </table>
@@ -120,6 +126,23 @@
                 <!-- Page content-->
             </div>
         </div>
+                    <script>
+    function displaySelectedImage(input) {
+        var selectedImage = document.getElementById("selectedImage");
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                selectedImage.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            selectedImage.src = "";
+        }
+    }
+    
+    
+    </script>
+    
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
            <script src="${pageContext.request.contextPath}/resources/js/admin/admin.js"></script>

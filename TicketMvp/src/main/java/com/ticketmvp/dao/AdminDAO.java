@@ -19,7 +19,7 @@ public interface AdminDAO {
 	//public void insertTicket(AdminVO vo) ;
 	public void saveMatchTicket(AdminVO vo) ;
 	
-	//티켓 및 경기 수정 리스트
+	//티켓 및 경기 수정 조회
 	public AdminVO ticketModify(AdminVO vo);
 	
 	// 경기 수정
@@ -38,4 +38,13 @@ public interface AdminDAO {
 	
 	// 유저 삭제
 	public int deleteUserid(String userid);
+	
+	// 선수 수정 조회
+	public AdminVO athleteModify(AdminVO vo);
+	
+	public void athleteModifysubmit(AdminVO vo) ; 
+	
+	// c차트 관련
+	public List<AdminVO> chartTicketClubData(AdminVO vo) ;
+
 }

@@ -26,34 +26,44 @@
 
     <!-- Custom styles for this page -->
     <link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawVisualization);
+       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script>
+ google.charts.load('current', { 'packages': ['corechart'] });
+ google.charts.setOnLoadCallback(drawChart);
 
-      function drawVisualization() {
-        // Some raw data (not necessarily accurate)
-        var data = google.visualization.arrayToDataTable([
-          ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-          ['2004/05',  165,      938,         522,             998,           450,      614.6],
-          ['2005/06',  135,      1120,        599,             1268,          288,      682],
-          ['2006/07',  157,      1167,        587,             807,           397,      623],
-          ['2007/08',  139,      1110,        615,             968,           215,      609.4],
-          ['2008/09',  136,      691,         629,             1026,          366,      569.6]
-        ]);
+ function drawChart() {
+     // Java에서 전달한 JSON 데이터를 사용하여 차트를 그립니다.
+     $.ajax({
+         url: "chartTicketClubData.do",
+         type: "GET",
+         dataType: "json",
+         success: function(data) {
+             var jsonData = JSON.parse(data);
+             var dataArray = [['Club Name', 'Ticket Sales']];
+             for (var i = 0; i < jsonData.length; i++) {
+                 dataArray.push([jsonData[i].clubName, jsonData[i].ticketSales]);
+             }
 
-        var options = {
-          title : 'Monthly Coffee Production by Country',
-          vAxis: {title: 'Cups'},
-          hAxis: {title: '구단명'},
-          seriesType: 'bars',
-          series: {5: {type: 'line'}}
-        };
+             var data = google.visualization.arrayToDataTable(dataArray);
 
-        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
+             var options = {
+                 title : 'Monthly Ticket Sales by Club',
+                 vAxis: {title: 'Ticket Sales'},
+                 hAxis: {title: 'Club Name'},
+                 seriesType: 'bars',
+                 series: {1: {type: 'line'}}
+             };
+
+             var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+             chart.draw(data, options);
+         },
+         error: function(error) {
+             console.log(error);
+         }
+     });
+ }
+ 
+ </script>  
 </head>
  <style>
     #index {
@@ -74,14 +84,6 @@
 	
 	 </div>
    </div>
-
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <!-- 제이쿼리 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" type="text/javascript"></script>
-<!-- chart.js -->
-<div id="chart_div" style="width: 900px; height: 500px;"></div>
 
     </body>
   <jsp:include page="footer.jsp" />    
