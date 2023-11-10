@@ -70,11 +70,19 @@
 	<select id="selectmyorder" parameterType="String" resultType="com.ticketmvp.domain.UserOrderVO">
 		SELECT * 
 		FROM reservation 
+		WHERE userid = #{userid}
 		ORDER BY 	paydate DESC
-					,totalpayment DESC; 
+					,totalpayment DESC
 	</select>
 	
 	<!-- 주문목록에서 예매 취소 -->
+	<!-- 취소 여부 확인 -->
+	<select id="checkorderstatus" parameterType="String" resultType="com.ticketmvp.domain.UserOrderVO">
+		SELECT * FROM reservation
+		WHERE reserveid = #{orderid}
+		AND reservestatus = '예약취소'
+	</select>
+	
 	<!-- 쿠폰 회수 -->
 	<update id="cancelordercoupon" parameterType="String">
 		UPDATE coupon

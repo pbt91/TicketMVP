@@ -14,9 +14,9 @@ $(function(){
 
         // 수량표시란에서 티켓명 표시
         $("#matchName").text($(this).find("h6").text());
-        $("#ticketQuantity").attr("max", parseInt($(this).find(".ticket-info span:last").text()));
+        $("#ticketQuantity").attr("max", parseInt($(this).find(".ticket-info span.ticketquantityleft").text()));
         $("#ticketQuantity").val(1);
-        calculate(parseFloat($(this).find(".ticket-info span").attr("price")), 1);
+        calculate(parseFloat($(this).find("div.ticket-info span.priceperticket").attr("price")), 1);
     });
         
     //수량이 바뀌면 총 금액 재계산
@@ -25,15 +25,15 @@ $(function(){
     	var maxQuantity = parseInt($("#ticketQuantity").attr("max"));
 
     	if (quantity >= 0 && quantity <= maxQuantity) {
-        	calculate(parseFloat($(".list-group-item.active .ticket-info span").attr("price")), quantity);
+        	calculate(parseFloat($(".list-group-item.active .ticket-info span.priceperticket").attr("price")), quantity);
         	$("input#ticketQuantityBuy").val($("#ticketQuantity").val());
     	} else if ( quantity > maxQuantity) {
     		alert("최대 예매 가능 수량을 입력하셨습니다. 다시 입력해주세요")
     		$("#ticketQuantity").val(1);
-    		calculate(parseFloat($(".list-group-item.active .ticket-info span").attr("price")), 1);
+    		calculate(parseFloat($(".list-group-item.active .ticket-info span.priceperticket").attr("price")), 1);
     	} else {
     		$("#ticketQuantity").val(0);
-    		calculate(parseFloat($(".list-group-item.active .ticket-info span").attr("price")), 0);
+    		calculate(parseFloat($(".list-group-item.active .ticket-info span.priceperticket").attr("price")), 0);
     	}
 	});
     

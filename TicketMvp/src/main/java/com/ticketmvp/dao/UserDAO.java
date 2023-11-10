@@ -36,6 +36,9 @@ public interface UserDAO {
 	
 	// 내 주문목록
 	public List<UserOrderVO> userMyOrderList(String userid);
+	
+	// 예약의 취소 여부 확인
+	Integer checkOrderStatus(String orderid);
 
 	// 내 주문목록에서 예매 취소 - 쿠폰 회수
 	public void cancelOrderCoupon(String orderid);

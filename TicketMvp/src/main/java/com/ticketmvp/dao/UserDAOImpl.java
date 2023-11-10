@@ -179,6 +179,17 @@ public class UserDAOImpl implements UserDAO {
 		return mybatis.selectList("UserDAO.selectmyorder", userid);
 	}
 
+	// 예약의 취소 여부 확인
+	@Override
+	public Integer checkOrderStatus(String orderid) {
+		UserOrderVO result = mybatis.selectOne("UserDAO.checkorderstatus", orderid);
+		if (result != null) {
+	        return 1; 
+	    } else {
+	        return -1; 
+	    }
+	}
+	
 	// 내 주문목록에서 예매 취소 - 쿠폰 회수
 	@Override
 	public void cancelOrderCoupon(String orderid) {
@@ -218,8 +229,5 @@ public class UserDAOImpl implements UserDAO {
 		return mybatis.update("UserDAO.cancelorderreservation", orderid);
 	}
 
-	
-	
-	
 	
 }

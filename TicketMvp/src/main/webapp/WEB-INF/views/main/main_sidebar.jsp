@@ -18,8 +18,6 @@ aside {
 
 }
 </style>
-	<!-- jquery코드 호출 -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- js코드 호출 -->
 	<script src="/TicketMvp/resources/js/main_sidebar.js"></script>
 </head>

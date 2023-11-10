@@ -103,7 +103,6 @@ $(function(){
 	//예매하기 버튼 클릭시 확인 창
 	$("button#order").click(function() {
         if (confirm("이대로 예매하시겠습니까?")) {
- 
             $("#paymentModal").modal("show");
         }
     });

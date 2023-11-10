@@ -71,66 +71,88 @@
     <!-- js코드 호출 -->
 	<script src="/TicketMvp/resources/js/reserve/ReserveFinish.js"></script>
 	<!-- css 호출 -->
+	<link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/main/templates.css">
 	<link rel="stylesheet" href="/TicketMvp/resources/css/ReserveFinish.css">
 </head>
 <body>
-	<section>
-	<% if (isSuccess) { %>
-		<h1>결재 완료 하셨습니다.</h1>
-		<div class="container mt-5">
-		       <div class="row">
-		           <div class="col-md-4">
-		               <img src="/TicketMvp/resources/images/reservation.png" alt="축구 티켓" class="img-fluid"> 
-		           </div>
-		           <div class="col-md-8">
-		               <div class="card mb-4">
-		                   <div class="card-header">예매 정보</div>
-		                   <div class="card-body">
-		                       <div class="form-group row">
-		                           <label class="col-sm-4 col-form-label">예매번호:</label>
-		                           <div class="col-sm-8"><%= jsonObject.get("orderId") %></div>
-		                       </div>
-		                       <div class="form-group row">
-		                           <label class="col-sm-4 col-form-label">상품명:</label>
-		                           <div class="col-sm-8"><%= jsonObject.get("orderName") %></div>
-		                       </div>
-		                       <div class="form-group row">
-		                           <label class="col-sm-4 col-form-label">개수:</label>
-		                           <div class="col-sm-8"><%= request.getParameter("ticketQuantity") %>장</div>
-		                       </div>
-		                       <div class="form-group row">
-		                           <label class="col-sm-4 col-form-label">결제금액:</label> 	
-		                           <div class="col-sm-8"><%= request.getParameter("amount") %>원</div>
-		                       </div>
-		                       <div class="form-group row">
-		                           <label class="col-sm-4 col-form-label">결제일시:</label>
-		                           <div class="col-sm-8"><%
-								    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
-								    SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy'년' MM'월' dd'일' a hh'시' mm'분'");
-								    String requestAt = (String) jsonObject.get("requestedAt");
-								    try {
-								        Date date = inputFormat.parse(requestAt);
-								        String formattedDate = outputFormat.format(date);
-								        out.print(formattedDate);
-								    } catch (Exception e) {
-								        e.printStackTrace();
-								    }
-								    %></div>
-		                       </div>
-		                   </div>
-		               </div>
+<div id="body-wrapper">
+	<div id="body-content">
+		<div id="header">
+			<jsp:include page="/WEB-INF/views/main/main_header.jsp" />
+		</div>
+
+		<div id="container">
+			<div id="sidebar">
+				<jsp:include page="/WEB-INF/views/main/main_sidebar.jsp" />
+			</div>
+
+			<div id="content">
+				<section>
+				<% if (isSuccess) { %>
+					<h1>결재 완료 하셨습니다.</h1>
+					<div class="container mt-5">
+					       <div class="row">
+					           <div class="col-md-4">
+					               <img src="/TicketMvp/resources/images/reservation.png" alt="축구 티켓" class="img-fluid"> 
+					           </div>
+					           <div class="col-md-8">
+					               <div class="card mb-4">
+					                   <div class="card-header">예매 정보</div>
+					                   <div class="card-body">
+					                       <div class="form-group row">
+					                           <label class="col-sm-4 col-form-label">예매번호:</label>
+					                           <div class="col-sm-8"><%= jsonObject.get("orderId") %></div>
+					                       </div>
+					                       <div class="form-group row">
+					                           <label class="col-sm-4 col-form-label">상품명:</label>
+					                           <div class="col-sm-8"><%= jsonObject.get("orderName") %></div>
+					                       </div>
+					                       <div class="form-group row">
+					                           <label class="col-sm-4 col-form-label">개수:</label>
+					                           <div class="col-sm-8"><%= request.getParameter("ticketQuantity") %>장</div>
+					                       </div>
+					                       <div class="form-group row">
+					                           <label class="col-sm-4 col-form-label">결제금액:</label> 	
+					                           <div class="col-sm-8"><%= request.getParameter("amount") %>원</div>
+					                       </div>
+					                       <div class="form-group row">
+					                           <label class="col-sm-4 col-form-label">결제일시:</label>
+					                           <div class="col-sm-8"><%
+											    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+											    SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy'년' MM'월' dd'일' a hh'시' mm'분'");
+											    String requestAt = (String) jsonObject.get("requestedAt");
+											    try {
+											        Date date = inputFormat.parse(requestAt);
+											        String formattedDate = outputFormat.format(date);
+											        out.print(formattedDate);
+											    } catch (Exception e) {
+											        e.printStackTrace();
+											    }
+											    %></div>
+					                       </div>
+					                   </div>
+					               </div>
+								</div>
+							</div>
+						<div class="text-center mt-3">
+						    <div class="text-center mt-3">
+						    	<a href="/TicketMvp/user/userMyOrderList.do" class="btn btn-secondary">주문 목록</a>
+							    <a href="/TicketMvp/athlete/main_page.do" class="btn btn-secondary">HOME</a>
+							</div>
+						</div>
 					</div>
-				</div>
-			<div class="text-center mt-3">
-			    <div class="text-center mt-3">
-			    	<button class="btn btn-primary">주문 목록</button>
-				    <a href="/TicketMvp/athlete/main_page.do" class="btn btn-secondary">HOME</a>
-				</div>
+				<% } else { %>
+					<c:redirect url="/TicketMvp/error/billingFail.do"/>	
+				<% } %>
+				</section>
 			</div>
 		</div>
-	<% } else { %>
-		<c:redirect url="../billing/billingFail.do"/>	
-	<% } %>
-	</section>
+
+		<div id="footer">
+			<jsp:include page="/WEB-INF/views/main/main_footer.jsp" />
+		</div>
+	</div>
+</div>
+
 </body>
 </html>

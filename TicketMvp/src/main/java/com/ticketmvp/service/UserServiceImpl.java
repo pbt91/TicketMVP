@@ -91,10 +91,15 @@ public class UserServiceImpl implements UserService{
 	// 내 주문목록에서 예매 취소
 	@Transactional
 	public int cancelOrder(String orderid, String totalSeat, String ticketName) {
-		userDAO.cancelOrderCoupon(orderid);
-		userDAO.cancelOrderSeat(orderid);
-		userDAO.updateTicket(totalSeat, ticketName);
-		return userDAO.cancelOrderReservation(orderid);
+		if(userDAO.checkOrderStatus(orderid) > 0) {
+			return -1;
+		} else {
+			System.out.println("취소 진행 id: "+ orderid);
+			userDAO.cancelOrderCoupon(orderid);
+			userDAO.cancelOrderSeat(orderid);
+			userDAO.updateTicket(totalSeat, ticketName);
+			return userDAO.cancelOrderReservation(orderid);
+		}
 	}
 
 	@Override

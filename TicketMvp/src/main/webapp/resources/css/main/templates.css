@@ -12,13 +12,12 @@
 #container>#sidebar {
 	flex: 1;
    	background-color:#333;
-	max-height: 1000px;
+	max-height: 100%;
 	min-width: 200px;
 }
 
 #container>#content {
 	flex: 9;
-	height: 100%;
 	padding : 15px;
 }
 

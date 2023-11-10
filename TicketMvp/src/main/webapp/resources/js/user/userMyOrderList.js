@@ -28,6 +28,7 @@ $(function() {
                             },
                             error: function() {
                                 alert("테이블 데이터를 다시 불러오는 도중에 오류가 발생했습니다.");
+                                table.html(newTableHTML); 
                             }
                         });
 	                } else {
