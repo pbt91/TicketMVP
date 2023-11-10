@@ -47,6 +47,7 @@ ${sessionScope.name}님 환영합니다
 
 <a href='userMyModify.do'><input type='button' id='mypagemodify' name='mypagemodify' value='회원정보수정'/></a>
 
+<a href = "../views/main_page.jsp">메인</a>
 
 </c:if>
 

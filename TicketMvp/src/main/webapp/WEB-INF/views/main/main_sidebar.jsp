@@ -3,11 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 <meta charset="UTF-8">
-=======
-<meta charset="UTF-8">
->>>>>>> refs/remotes/origin/master
+
 <title>사이드바</title>
 <style type="text/css">
 body {

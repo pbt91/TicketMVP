@@ -110,27 +110,28 @@ public class AthleteController {
 	  
 	  
 	  
-	  // 하트를 눌렀을 때, 찜 추가하는 매서드
+	// 찜 추가 및 삭제 메서드에서 사용자 ID를 세션에서 가져오도록 수정
 	  @RequestMapping(value = "/addLike", method = RequestMethod.POST)
-	    @ResponseBody
-	    public ResponseEntity<String> addLike(@RequestParam("userId") String userId, @RequestParam("matchId") Integer matchId) {
-	        try {
-	            athleteService.addLike(userId, matchId);
-	            return ResponseEntity.ok("찜 추가 성공");
-	        } catch (Exception e) {
-	            return ResponseEntity.status(500).body("찜 추가 실패");
-	        }
-	    }
+	  @ResponseBody
+	  public ResponseEntity<String> addLike(@RequestParam("matchId") Integer matchId, HttpSession session) {
+	      try {
+	          String userId = (String) session.getAttribute("userid");
+	          athleteService.addLike(userId, matchId);
+	          return ResponseEntity.ok("찜 추가 성공");
+	      } catch (Exception e) {
+	          return ResponseEntity.status(500).body("찜 추가 실패");
+	      }
+	  }
 
-	    // 찜 삭제 메서드
-	    @RequestMapping(value = "/removeLike", method = RequestMethod.POST)
-	    @ResponseBody
-	    public ResponseEntity<String> removeLike(@RequestParam("userId") String userId, @RequestParam("matchId") Integer matchId) {
-	        try {
-	            athleteService.removeLike(userId, matchId);
-	            return ResponseEntity.ok("찜 삭제 성공");
-	        } catch (Exception e) {
-	            return ResponseEntity.status(500).body("찜 삭제 실패");
-	        }
-	    }
+	  @RequestMapping(value = "/removeLike", method = RequestMethod.POST)
+	  @ResponseBody
+	  public ResponseEntity<String> removeLike(@RequestParam("matchId") Integer matchId, HttpSession session) {
+	      try {
+	          String userId = (String) session.getAttribute("userid");
+	          athleteService.removeLike(userId, matchId);
+	          return ResponseEntity.ok("찜 삭제 성공");
+	      } catch (Exception e) {
+	          return ResponseEntity.status(500).body("찜 삭제 실패");
+	      }
+	  }
 	}

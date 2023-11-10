@@ -34,8 +34,8 @@ public class ReserveController {
 	@RequestMapping("/ReserveChoose.do")
 	public void reserveChoose(Integer matchid, Model m, HttpSession session ) {
 		session.setAttribute("matchId", matchid);
-		System.out.println("reserve/RserveChoose.do matchId:" + session.getAttribute("matchId"));
 		ReserveVO vo = new ReserveVO();
+		// 여기 컨트롤러로 들어오게 하기
 		vo.setMatchid((int)session.getAttribute("matchId"));
 		m.addAttribute("ticketList", reserveService.getTicketList(vo));
 		m.addAttribute("stadiumImage", reserveService.getImageFile(vo));

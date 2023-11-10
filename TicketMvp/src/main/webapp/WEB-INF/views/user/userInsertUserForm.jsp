@@ -17,7 +17,7 @@
 	<main id="main-holder">
 		<h2>회원가입</h2>
 
-		<form method="post" action="insertUser.do" name="userinput"
+		<form method="post" action="/TicketMvp/user/insertUser.do" name="userinput"
 			id="userinput">
 			<table class='tbuserinput' align="center" id='tbuserinput'>
 				<tr>

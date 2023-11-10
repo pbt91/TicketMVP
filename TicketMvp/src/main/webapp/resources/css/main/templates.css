@@ -1,4 +1,4 @@
-/* 템플릿 css */
+/* templates. css */
 
 /* 헤더, 푸터, 사이드 바 전체 윤곽 */
 #container {
@@ -30,7 +30,7 @@ iframe {
 
 
 /*메인페이지에 있는 전체 <div>코드입니다. 혹시 몰라서 넣었어요!*/
-html {
+/* html {
     height: 100%;
 }
 body {
@@ -49,16 +49,16 @@ body {
 }
 
 #body-wrapper {
-	flex-grow: 1; /* 푸터 위의 콘텐츠가 화면을 채울 수 있도록 설정 */
+	flex-grow: 1; 푸터 위의 콘텐츠가 화면을 채울 수 있도록 설정
 	display: flex;
 	flex-direction: column;
 }
 
 #body-content {
 	text-align: center;
-	padding-bottom: 100px; /* footer의 높이 조절 */
-	padding: 100px; /* 푸터와 콘텐츠 사이 여백 조절 */
-}
+	padding-bottom: 100px; footer의 높이 조절
+	padding: 100px; 푸터와 콘텐츠 사이 여백 조절
+} */
 
 #header, .login-header, #footer {
     width: 100%; /* 헤더, 푸터는 화면 너비에 맞게 설정 */
@@ -86,7 +86,7 @@ body {
 .top-header .header-links a {
 	color: white;
 	text-decoration: none;
-	margin: 15px;
+	margin: 10px;
 }
 
 /* 헤더 logo-banner-header */
@@ -126,11 +126,12 @@ body {
 .sidebar .menu a {
 	color: white;
 	text-decoration: none;
+	font-size: 17px; /* 수정된 부분 */
 	
 }
 
 .sidebar ul li a {
-	font-size: 20px;
+	font-size: 15px;
 }
 
 /* 푸터 스타일 */
