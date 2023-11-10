@@ -17,10 +17,7 @@
 <!-- css 파일 연결 - main -->
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/main/templates.css">
-<!-- css 파일 연결 - page -->
-<!-- <link rel="stylesheet" href="/TicketMvp/resources/css/user/.css"> -->
-<!-- js파일 연결 -->
-<!-- <script src="/TicketMvp/resources/js/user/.js" type="text/javascript"></script> -->
+
 
 </head>
 <body>
@@ -37,7 +34,7 @@
 		<div id="content">
 
 
-			<form action='checkPw.do' id='mymodify' name='mymodify' method='post'
+			<form action='/TicketMvp/user/checkPw.do' id='mymodify' name='mymodify' method='post'
 				align='center'>
 				<table id='tbmymodify' name='tbmymodify'>
 					<tr>

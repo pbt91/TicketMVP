@@ -7,11 +7,8 @@
 </head>
 <%  %>
 <body>
-<a href='/TicketMvp/user/userInsertUserForm.do'> 회원가입 </a>
-<br/>
-<a href='/TicketMvp/user/userLoginForm.do'> 로그인 </a>
-<br/>
-<a href='/TicketMvp/user/userLoginStatus.do'> 메인? </a>
+
+<a href='/TicketMvp/athlete/main_page.do'> 메인 </a>
 
 
 

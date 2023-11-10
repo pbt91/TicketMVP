@@ -17,10 +17,7 @@
 <!-- css 파일 연결 - main -->
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/main/templates.css">
-<!-- css 파일 연결 - page -->
-<!-- <link rel="stylesheet" href="/TicketMvp/resources/css/user/.css"> -->
-<!-- js파일 연결 -->
-<!-- <script src="/TicketMvp/resources/js/user/.js" type="text/javascript"></script> -->
+
 
 </head>
 <body>
@@ -41,24 +38,21 @@
 
 ${sessionScope.name}님 환영합니다 
 
-<a href='logout.do'><input type="button" id='move_logout' name='move_logout' value='로그아웃'/></a>
+<a href='/TicketMvp/user/logout.do'><input type="button" id='move_logout' name='move_logout' value='로그아웃'/></a>
 
-<a href='userMyMain.do'><input type='button' id='mypagemain' name='mypagemain' value='마이페이지'/></a>
+<a href='/TicketMvp/user/userMyMain.do'><input type='button' id='mypagemain' name='mypagemain' value='마이페이지'/></a>
 
-<a href='userMyModify.do'><input type='button' id='mypagemodify' name='mypagemodify' value='회원정보수정'/></a>
+<a href='/TicketMvp/user/userMyModify.do'><input type='button' id='mypagemodify' name='mypagemodify' value='회원정보수정'/></a>
 
-<a href = "../views/main_page.jsp">메인</a>
+<a href="/TicketMvp/athlete/main_page.do">메인</a>
 
 </c:if>
 
 <c:if test="${sessionScope.userid == null}">
 
-
-로그인을 해주세요 <a href='userLoginForm.do'><input type="button" id='move_login' name='move_login' value='로그인'/></a>
+로그인을 해주세요 <a href='/TicketMvp/user/userLoginForm.do'><input type="button" id='move_login' name='move_login' value='로그인'/></a>
 
 </c:if>
-
-<strong>반갑습니다</strong>
 
 		</div> <!-- end of div#content -->
 	</div> <!-- end of div#container-->

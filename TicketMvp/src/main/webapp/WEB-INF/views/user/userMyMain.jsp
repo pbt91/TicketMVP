@@ -14,13 +14,10 @@
 
 <!-- js 코드 호출 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <!-- css 파일 연결 - main -->
-<link rel="stylesheet"
-	href="/TicketMvp/resources/css/main/templates.css">
-<!-- css 파일 연결 - page -->
-<!-- <link rel="stylesheet" href="/TicketMvp/resources/css/user/.css"> -->
-<!-- js파일 연결 -->
-<!-- <script src="/TicketMvp/resources/js/user/.js" type="text/javascript"></script> -->
+<link rel="stylesheet"	href="/TicketMvp/resources/css/main/templates.css">
+
 
 </head>
 <body>
@@ -46,9 +43,11 @@
 
 			</c:if>
 			<c:if test="${sessionScope.userid == null}">
-				<p>로그아웃되어있는 상태</p>
-				<a href='/TicketMvp/user/userLoginStatus.do'>안보여야함</a>
-
+				<div align="center"><p>로그인이 필요합니다</p>
+					<a href='/TicketMvp/user/userLoginForm.do'>
+						<input type="button" id='move_login' name='move_login' value='로그인'/>
+					</a>
+				</div>
 			</c:if>
 
 		</div>
