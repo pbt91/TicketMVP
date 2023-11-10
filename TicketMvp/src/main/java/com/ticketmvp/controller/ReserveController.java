@@ -33,8 +33,10 @@ public class ReserveController {
 	
 	//좌석 예약으로 이동 + 티켓 리스트 불러오기 + 경기장 이미지 호출
 	@RequestMapping("/ReserveChoose.do")
-	public void reserveChoose(Model m, HttpSession session ) {
+	public void reserveChoose(Integer matchid, Model m, HttpSession session ) {
+		session.setAttribute("matchId", matchid);
 		ReserveVO vo = new ReserveVO();
+		// 여기 컨트롤러로 들어오게 하기
 		vo.setMatchid((int)session.getAttribute("matchId"));
 		m.addAttribute("ticketList", reserveService.getTicketList(vo));
 		m.addAttribute("stadiumImage", reserveService.getImageFile(vo));

@@ -3,15 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-<meta charset="UTF-8">
-<title>푸터</title>
-=======
-<meta charset="UTF-8">
 
+<meta charset="UTF-8">
 <title>푸터</title>
+
 <link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/main/main.css">
->>>>>>> refs/remotes/origin/master
 </head>
 <body>
 	<footer class="footer">
@@ -31,12 +27,10 @@
 				<p>coded by</p>
 				<p>design by</p>
 				<p>designed by Team 7</p>
-<<<<<<< HEAD
 			</div> -->
-=======
-			</div> -->
->>>>>>> refs/remotes/origin/master
-		</div>
+
+			</div> 
+
 	</footer>
 </body>
 </html>

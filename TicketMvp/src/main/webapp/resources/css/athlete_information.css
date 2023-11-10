@@ -31,6 +31,7 @@ main.athlete-information {
     width: 50%; /* 이미지의 가로 크기를 화면 너비의 절반으로 설정합니다. */
     max-height: 300px; /* 이미지의 최대 높이 설정 */
     text-align: center;
+    margin-left: 150px; /* 오른쪽 마진 추가 */
 }
 
 .image-layer img {
@@ -42,6 +43,7 @@ main.athlete-information {
     height: auto; /* 이미지 높이를 자동으로 조절하여 세로 비율을 유지합니다. */
     display: inline-block; /* 인라인 블록 요소로 설정하여 수직 가운데 정렬을 쉽게 할 수 있습니다. */
     vertical-align: middle; /* 수직 가운데 정렬을 활성화합니다. */
+    border-radius: 5px; /* 이미지에 라운드 모서리 추가 */
 }
 
 .text-layer {
@@ -59,15 +61,15 @@ main.athlete-information {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 30px;
     margin: 0;
     padding: 0;
 }
 
 p {
-    font-size: 16px;
+    font-size: 20px;
     margin: 0;
-    padding: 5px 0;
+    padding: 15px 0;
 }
 
 .athlete-schedule {
@@ -94,18 +96,18 @@ p {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-gap: 20px;
+    grid-gap: 40px;
 }
 
 .grid-item {
-    padding: 20px; /* 그리드 아이템의 패딩을 늘립니다. */
+    padding: 40px; /* 그리드 아이템의 패딩을 늘립니다. */
     background-color: #fff;
     border-radius: 5px;
     text-align: left;
 }
 
 .match-info {
-    font-size: 18px; /* 글꼴 크기를 더 크게 설정합니다. */
+    font-size: 22px; /* 글꼴 크기를 더 크게 설정합니다. */
     margin: 0;
 }
 
@@ -118,4 +120,15 @@ p {
     cursor: pointer;
     font-size: 16px; /* 결제 버튼의 글꼴 크기를 설정합니다. */
     margin-left: 60px; /* 버튼을 오른쪽으로 이동시키려면 왼쪽에 간격을 추가합니다. */
+}
+
+
+.bi-heart-fill{
+	color: red;
+	margin-right: 55px;
+	
+}
+
+.bi-heart{
+	margin-right: 55px;
 }

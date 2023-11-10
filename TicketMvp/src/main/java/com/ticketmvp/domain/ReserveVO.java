@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class ReserveVO {
 
+
 	//티켓 정보
 	private int ticketid;					//티켓아이디
 	private String ticketname;				//티켓명
@@ -209,5 +210,16 @@ public class ReserveVO {
 		this.usedate = usedate;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "ReserveVO [ticketid=" + ticketid + ", ticketname=" + ticketname + ", ticketprice=" + ticketprice
+				+ ", ticketremain=" + ticketremain + ", ticketall=" + ticketall + ", seatid=" + seatid + ", matchid="
+				+ matchid + ", homeclub=" + homeclub + ", awayclub=" + awayclub + ", matchdate=" + matchdate
+				+ ", matchtime=" + matchtime + ", canceldate=" + canceldate + ", stadiumname=" + stadiumname
+				+ ", stadiumimgfile=" + stadiumimgfile + ", stadiumimgfilefull=" + stadiumimgfilefull
+				+ ", stadiumimgsize=" + stadiumimgsize + ", reserveid=" + reserveid + ", userid=" + userid
+				+ ", reserveStatus=" + reserveStatus + ", paydate=" + paydate + ", totalpayment=" + totalpayment
+				+ ", couponid=" + couponid + ", discount=" + discount + ", issuedate=" + issuedate + ", expiredate="
+				+ expiredate + ", usestatus=" + usestatus + ", usedate=" + usedate + "]";
+	}
 }

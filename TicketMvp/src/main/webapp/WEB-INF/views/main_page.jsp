@@ -7,13 +7,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>메인화면</title>
-<link rel="stylesheet" type="text/css" href="../resources/css/main.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/main/main.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/main/templates.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src='../resources/js/main.js' type="text/javascript"></script>
 
-<style>
+<!-- <style>
 #container {
    display: flex;
    height: 1000px;
@@ -42,7 +43,7 @@ iframe {
    height: 100%;
    border: none;
 }
-</style>
+</style> -->
 </head>
 <body>
 	<div id="body-wrapper">
