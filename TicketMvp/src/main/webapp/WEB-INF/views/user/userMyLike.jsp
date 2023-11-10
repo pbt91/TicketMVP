@@ -55,7 +55,7 @@
 							<c:forEach var="like" items="${likeList}">
 								<tr>
 									<td>
-										<input type="checkbox" name="likes" value="굿" />
+										<input type="checkbox" name="likes" id=delete />
 									</td>
 									<td>${like.matchid}</td>
 									<td>${like.homeclub}</td>

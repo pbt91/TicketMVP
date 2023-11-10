@@ -185,12 +185,12 @@ public class UserDAOImpl implements UserDAO {
 
 	// 문의하기 리스트
 	public List<UserInquiryVO> userMyInquiry(String userid) {
-		return mybatis.selectList("UserDAO.selectInquiry", userid);
+		return mybatis.selectList("UserDAO.selectinquiry", userid);
 	}
 	
 	//문의하기 리스트 내꺼
 	public List<UserInquiryVO> userMyInquiryMine(String userid) {
-		return mybatis.selectList("UserDAO.selectMyInquiry", userid);
+		return mybatis.selectList("UserDAO.selectmyinquiry", userid);
 	}
 
 	// 문의하기 작성
@@ -207,7 +207,7 @@ public class UserDAOImpl implements UserDAO {
 	// 문의하기 글 삭제 
 	public Integer userMyInquiryDelete(String stringhelpid) {
 		Integer helpid = Integer.parseInt(stringhelpid);
-		return mybatis.delete("UserDAO.deleteInquiry", helpid);
+		return mybatis.delete("UserDAO.deleteinquiry", helpid);
 	}
 	
 	// 찜목록 
