@@ -192,6 +192,51 @@ $('button#deleteClub').click(function() {
     }
 });
 
+// 차트 관련
+   google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawVisualization);
+
+    function drawVisualization() {
+        // Ajax를 사용하여 서버에서 데이터 가져오기
+        $.ajax({
+            url: "chartTicketClubData.do",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+            	console.log('-----------------');
+            	console.log(data);
+                // 데이터를 받아와서 차트를 그리는 로직 호출
+                //drawChartFromData(data);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    }
+
+function drawChartFromData(data) {
+    var chartData = [['선수명', '티켓명', '티켓남은수량']];
+
+    for (var i = 0; i < data.length; i++) {
+        chartData.push([
+            data[i].athleteName,
+            data[i].ticketName,
+            data[i].ticketRemain
+        ]);
+    }
+
+    var options = {
+        title: '선수별 티켓 판매량',
+        vAxis: { title: '티켓 판매량' },
+        hAxis: { title: '선수명' },
+        seriesType: 'bars',
+        series: { 1: { type: 'line' } }
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    chart.draw(google.visualization.arrayToDataTable(chartData), options);
+}
+
 
 
 	});

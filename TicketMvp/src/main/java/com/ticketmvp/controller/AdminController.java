@@ -1,6 +1,7 @@
 package com.ticketmvp.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ticketmvp.domain.AdminVO;
 import com.ticketmvp.service.AdminService;
 
@@ -262,20 +261,27 @@ public class AdminController {
 	// 차트 목록
 	@RequestMapping("/index.do")
 	public void index() {
-
+		System.out.println("차트");
 	}
 	
 	// 차트 관련
     @RequestMapping("/chartTicketClubData.do")
     @ResponseBody
-    public String chartTicketClubData(AdminVO vo) throws JsonProcessingException {
+    public List<Map<String, Object>> chartTicketClubData(AdminVO vo) {
         List<AdminVO> result = AdminService.chartTicketClubData(vo);
-        
-        // 데이터를 JSON 형식으로 변환
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonData = objectMapper.writeValueAsString(result);
 
-        return jsonData;
+        List<Map<String, Object>> chartData = new ArrayList<>();
+
+        for (AdminVO data : result) {
+            Map<String, Object> rowData = new HashMap<>();
+            rowData.put("athleteName", data.getAthletename());
+            rowData.put("ticketName", data.getTicketname());
+            rowData.put("ticketRemain", data.getTicketremain());
+
+            chartData.add(rowData);
+        }
+
+        return chartData;
     }
     
     

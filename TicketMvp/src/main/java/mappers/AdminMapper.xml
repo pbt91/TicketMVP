@@ -215,12 +215,11 @@ WHERE club = #{club}
 </update>
 
 <!--  차트 관련 -->
-<select id = "chartTicketClubData" resultType="com.ticketmvp.domain.AdminVO"> 
-SELECT c.club club ,t.ticketname ticketname	,t.ticketremain ticketremain
-FROM `club` c JOIN `match` m 
-					ON c.club = m.homeclub 
-					JOIN `ticket`t 
-					ON m.matchid = t.matchid
+<select id="chartTicketClubData" resultType="com.ticketmvp.domain.AdminVO">
+SELECT a.athletename, t.ticketname, t.ticketremain
+FROM `athlete` a
+     JOIN `match` m ON a.club = m.homeclub
+     JOIN `ticket` t ON m.matchid = t.matchid
 </select>
 
 
