@@ -7,6 +7,7 @@ public class MatchVO {
 	private String 		awayclub; // 원정구단명
 	private String		matchdate;// 경기일
 	private String		matchtime;// 경기시간
+	private String		userid;
 	
 	// 생성자
 	public MatchVO() {
@@ -55,11 +56,21 @@ public class MatchVO {
 	public void setMatchtime(String matchtime) {
 		this.matchtime = matchtime;
 	}
+	
+	
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 
 	@Override
 	public String toString() {
 		return "MatchVO [matchid=" + matchid + ", homeclub=" + homeclub + ", awayclub=" + awayclub + ", matchdate="
-				+ matchdate + ", matchtime=" + matchtime + "]";
+				+ matchdate + ", matchtime=" + matchtime + ", userid=" + userid + "]";
 	}
 	
 

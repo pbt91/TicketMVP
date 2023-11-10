@@ -40,4 +40,9 @@ public class AthleteServiceImpl implements AthleteService {
 		athleteDAO.removeLike(userId, matchId);
 	}
 
+	@Override
+	public List<MatchVO> checkLikeStatus(String userId, Integer matchId) {
+		 return athleteDAO.checkLikeStatus(userId, matchId);
+	}
+
 }

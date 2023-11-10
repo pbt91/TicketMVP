@@ -19,6 +19,8 @@ public interface AthleteService {
 
     void removeLike(String userId, Integer matchId);
 
+    List<MatchVO> checkLikeStatus(String userId, Integer matchId);
+
 
     
 }

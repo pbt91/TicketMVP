@@ -67,7 +67,7 @@ public class UserController {
 			session.setAttribute("mailslc", mailslc);
 				
 			//세션시간 1시간
-			//session.setMaxInactiveInterval(60*60);
+			session.setMaxInactiveInterval(60*60);
 			return "redirect:userLoginStatus.do";
 		
 		}

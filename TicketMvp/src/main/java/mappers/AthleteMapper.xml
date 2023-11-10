@@ -12,32 +12,36 @@
 	<select id="getAthleteInformation"
 		resultType="com.ticketmvp.domain.AthleteVO">
 		SELECT athletename, info, career, athleteimgfile
-		FROM athlete
+		FROM
+		athlete
 		WHERE athletename = #{athletename}
 	</select> <!-- 건드리지 말기 -->
 
-	<select id="getMatchesAthleteClub" resultType = "String" parameterType="String">
-	SELECT club FROM athlete WHERE athletename=#{athletename}
+	<select id="getMatchesAthleteClub" resultType="String"
+		parameterType="String">
+		SELECT club FROM athlete WHERE athletename=#{athletename}
 	</select>
 
-	<select id="getMatchesForClub"
-	parameterType="String"
+	<select id="getMatchesForClub" parameterType="String"
 		resultType="com.ticketmvp.domain.MatchVO">
 		SELECT matchid, homeclub, awayclub, matchdate, matchtime
 		FROM `match`
 		WHERE homeclub = #{club} OR awayclub = #{club}
 	</select>
-	
+
 
 	<insert id="addLike" parameterType="map">
-        INSERT INTO `like` (userid, matchid) VALUES (#{userId}, #{matchId})
-    </insert>
+		INSERT INTO `like` (userid, matchid) VALUES (#{userId}, #{matchId})
+	</insert>
 
-    <delete id="removeLike" parameterType="map">
-        DELETE FROM `like` WHERE userid = #{userId} AND matchid = #{matchId}
-    </delete>
+	<delete id="removeLike" parameterType="map">
+		DELETE FROM `like` WHERE userid = #{userId} AND matchid = #{matchId}
+	</delete>
 
+
+	<select id="checkLikeStatus" resultType="com.ticketmvp.domain.MatchVO" parameterType="map">
+		SELECT COUNT(*) FROM `like` WHERE userid = #{userId}
+	</select>
 
 
 </mapper>
-

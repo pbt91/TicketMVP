@@ -65,4 +65,10 @@ public class AthleteDAOImpl implements AthleteDAO {
         }
     }
 
+    @Override
+    public List<MatchVO> checkLikeStatus(String userId, Integer matchId) {
+    	List<MatchVO> count = mybatis.selectList("com.ticketmvp.dao.AthleteDAO.checkLikeStatus", new LikeDTO(userId, matchId));
+        return count;
+    }
+
 }
