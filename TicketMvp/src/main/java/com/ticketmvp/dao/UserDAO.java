@@ -2,7 +2,9 @@ package com.ticketmvp.dao;
 
 import java.util.List;
 
+import com.ticketmvp.domain.UserCouponVO;
 import com.ticketmvp.domain.UserInquiryVO;
+import com.ticketmvp.domain.UserLikeVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -39,8 +41,24 @@ public interface UserDAO {
 	// 문의하기 리스트
 	public List<UserInquiryVO> userMyInquiry(String userid);
 	
+	//문의하기 리스트
+	List<UserInquiryVO> userMyInquiryMine(String userid);
+	
 	// 문의하기 작성
 	Integer userMyInquiryInsert(UserInquiryVO vo);
 	
+	// 문의하기 글 상세
+	UserInquiryVO userMyInquiryView(String helpid);
 	
+	// 문의하기 글 삭제
+	Integer userMyInquiryDelete(String helpid);
+	
+	// 찜목록 리스트
+	List<UserLikeVO> userMyLike(String userid);
+	
+	// 내쿠폰 리스트
+	List<UserCouponVO> userMyCoupon(String userid);
+	
+	// 쿠폰 사용자 등록
+	Integer userMyCouponInsert(String userid, String couponid);
 }

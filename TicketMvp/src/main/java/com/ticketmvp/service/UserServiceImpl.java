@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ticketmvp.dao.UserDAO;
+import com.ticketmvp.domain.UserCouponVO;
 import com.ticketmvp.domain.UserInquiryVO;
+import com.ticketmvp.domain.UserLikeVO;
 import com.ticketmvp.domain.UserOrderVO;
 import com.ticketmvp.domain.UserVO;
 
@@ -85,10 +87,41 @@ public class UserServiceImpl implements UserService{
 	public List<UserInquiryVO> userMyInquiry(String userid) {
 		return userDAO.userMyInquiry(userid);
 	}
+	
+	// 문의하기 리스트 내것만
+	public List<UserInquiryVO> userMyInquiryMine(String userid){
+		return userDAO.userMyInquiryMine(userid);
+	}
 
 	// 문의하기 작성
 	public Integer userMyInquiryInsert(UserInquiryVO vo) {
 		return userDAO.userMyInquiryInsert(vo);
 	}
+
+	// 문의하기 글 상세
+	public UserInquiryVO userMyInquiryView(String helpid) {
+		return userDAO.userMyInquiryView(helpid);
+	}
+
+	// 문의하기 글 삭제
+	public Integer userMyInquiryDelete(String helpid) {
+		return userDAO.userMyInquiryDelete(helpid);
+	}
+	
+	// 찜목록 리스트
+	public List<UserLikeVO> userMyLike(String userid) {
+		return userDAO.userMyLike(userid);
+	}
+
+	// 내쿠폰 리스트
+	public List<UserCouponVO> userMyCoupon(String userid) {
+		return userDAO.userMyCoupon(userid);
+	}
+	
+	// 내쿠폰 등록하기
+	public Integer userMyCouponInsert(String userid, String couponid) {
+		return userDAO.userMyCouponInsert(userid, couponid);
+	}
+	
 	
 }

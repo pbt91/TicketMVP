@@ -39,26 +39,36 @@
 		<div>
 			<h2>내 쿠폰</h2>
 		</div>
+		<strong style="font-size:17px;">쿠폰등록</strong>
+		<form action="/TicketMvp/user/userMyCouponIn.do">
+			<div style="padding-bottom:10px;">
+			<input id='in1' maxlength='4' pattern="[0-9]+">-<input id='in2' maxlength='4' pattern="[0-9]+">-
+			<input id='in3' maxlength='4' pattern="[0-9]+">-<input id='in4' maxlength='4' pattern="[0-9]+">
+			<input type="submit" value="등록" >
+			</div>
+		</form>
+		<strong style="font-size:17px;">보유쿠폰</strong>
 			<table>
 				<thead>
 					<tr>
-						<th>쿠폰 명칭</th>
+						<th>쿠폰명칭</th>
 						<th>할인율</th>
 						<th>발행일</th>
 						<th>유통기한</th>
-						<th>사용하기</th>
+						<th>사용여부</th>
 
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach var="coupon" items="${couponList}">
 					<tr>
-						<td>James</td>
-						<td>Matman</td>
-						<td>(713) 123-8965</td>
-						<td><a href="mailto:jmatman@stewart.com">jmatman@stewart.com</a></td>
-						<td>01/13/1979</td>
+						<td>${coupon.couponname}</td>
+						<td>${coupon.discount}</td>
+						<td>${coupon.issuedate}</td>
+						<td>${coupon.expiredate}</td>
+						<td>${coupon.usestatus}</td>
 					</tr>
-					
+				</c:forEach>	
 				</tbody>
 			</table>
 
