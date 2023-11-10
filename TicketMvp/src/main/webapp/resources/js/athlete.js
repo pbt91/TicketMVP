@@ -2,7 +2,21 @@
     // athlete.js
     
 $(function(){
-
+	
+	//로그인 확인
+	function isLoggedIn(callback) {
+	    $.ajax({
+	        url: "/TicketMvp/user/isLoggedIn",
+	        type: "GET",
+	        success: function(response) {
+	            callback(response.isLoggedIn);
+	        },
+	        error: function() {
+	            callback(false);
+	        }
+	    });
+	}	
+	
 	//예매 버튼 클릭
     $(".payment-button").on("click", function() {
         console.log("예매 버튼 클릭 성공");
@@ -23,23 +37,23 @@ $(function(){
  	// 하트 버튼 클릭 이벤트
     $(".bi-heart").on("click", function() {
         // 로그인 확인
-        if (!sessionStorage.getItem("userid") || sessionStorage.getItem("userid") === "") {
-            alert("찜하기 위해서는 로그인 필요합니다");
-            return;
-        }
-
-        var matchId = $(this).data("matchid");
-        var isFilled = $(this).hasClass("bi-heart-fill");
-
-        if (isFilled) {
-            // 빨간 하트에서 빈 하트로 변경
-            removeLike(matchId);
-        } else {
-            // 빈 하트에서 빨간 하트로 변경
-            addLike(matchId);
-        }
-        
-        $(this).toggleClass("bi-heart-fill bi-heart");
+        isLoggedIn(function(loggedIn) {
+	        if (!loggedIn) {
+	            alert("찜하기 위해서는 로그인 필요합니다");
+	            return;
+	        }
+	
+	        var matchId = heartIcon.data("matchid");
+	        var isFilled = heartIcon.hasClass("bi-heart-fill");
+	
+	        if (isFilled) {
+	            removeLike(matchId);
+	        } else {
+	            addLike(matchId);
+	        }
+	        
+	        heartIcon.toggleClass("bi-heart-fill bi-heart");
+	    });
     });
 
 	// 페이지 로딩 시 사용자가 좋아요를 눌렀는지 확인하고 하트 아이콘을 업데이트

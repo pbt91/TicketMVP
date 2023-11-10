@@ -12,7 +12,7 @@
 	<header class="top-header">
 		<c:if test="${sessionScope.name != null }">
 			<div class="header-links">
-				${sessionScope.name}님 환영합니다 <a href="logout.do" class="logout-link">로그아웃</a> 
+				${sessionScope.name}님 환영합니다 <a href="/TicketMvp/user/logout.do" class="logout-link">로그아웃</a> 
 			</div>
 		</c:if>
 		<c:if test="${sessionScope.name == null }">

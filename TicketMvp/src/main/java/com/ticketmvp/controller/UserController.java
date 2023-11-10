@@ -1,11 +1,14 @@
 package com.ticketmvp.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -303,5 +306,13 @@ public class UserController {
 		}
 	}
 	
+	//로그인 확인
+	@RequestMapping(value = "/isLoggedIn", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Map<String, Boolean>> isLoggedIn(HttpSession session) {
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("isLoggedIn", session.getAttribute("userid") != null);
+        return ResponseEntity.ok(response);
+    }
 	
 }
