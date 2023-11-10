@@ -22,11 +22,8 @@
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/user/userMyInquiry.css">
 <!-- js파일 연결 -->
-<script src="/TicketMvp/resources/js/user/userMyInquiry.js" type="text/javascript"></script>
-
-<%
-	int num = 0;
-%>
+<script src="/TicketMvp/resources/js/user/userMyInquiry.js"
+	type="text/javascript"></script>
 
 </head>
 <body>
@@ -42,7 +39,8 @@
 		</div>
 		<div id="content">
 			<div class="board_wrap">
-				<div id="list"> <!-- 글목록 -->
+				<div id="list">
+					<!-- 글목록 -->
 					<div class="board_title">
 						<strong>문의사항</strong>
 						<p>문의주신 내용에 빠르게 안내드리겠습니다</p>
@@ -60,9 +58,9 @@
 								<c:choose>
 									<c:when test="${not empty inquiry}">
 										<div>
-											<div class="num"><%=++num%></div>
+											<div class="num">${inquiry.helpid}</div>
 											<div class="title">
-												<a href="view.html">${inquiry.helptitle}</a>
+												<a> ${inquiry.helptitle} </a>
 											</div>
 											<div class="writer">${inquiry.userid}</div>
 											<div class="date">${inquiry.helpdate}</div>
@@ -94,56 +92,133 @@
 							<!--<a href="#">수정</a>-->
 						</div>
 					</div>
-				</div><!-- end of hide 할 부분 -->
+				</div>
+				<!-- end of hide 할 부분 -->
 
 
-						
-					
-				<div id="input"> <!-- 글쓰기 -->
-								<div class="board_title">
-									<strong>문의글 작성</strong>
-									<p>문의주신 내용에 빠르게 안내드리겠습니다</p>
+
+
+				<div id="input">
+					<!-- 글쓰기 -->
+					<div class="board_title">
+						<strong>문의글 작성</strong>
+						<p>문의주신 내용에 빠르게 안내드리겠습니다</p>
+					</div>
+					<div class="board_write_wrap">
+						<div class="board_write">
+							<div class="title">
+								<dl>
+									<dt>제목</dt>
+									<dd>
+										<input id="inputtitle" type="text" placeholder="제목 입력">
+									</dd>
+								</dl>
+							</div>
+							<div class="info">
+								<dl>
+									<dt>상품명</dt>
+									<dd>
+										<input id="inputproduct" type="text"
+											placeholder="상품명 입력 필수값아님">
+									</dd>
+								</dl>
+							</div>
+							<div class="cont">
+								<textarea id="inputtext" placeholder="내용 입력"></textarea>
+							</div>
+						</div>
+						<div class="bt_wrap">
+							<a id="inquiryinsert" class="on">등록</a> <a id="inquirylist">취소</a>
+						</div>
+					</div>
+				</div>
+				<!-- hide 할 부분 -->
+
+
+
+
+				<div id="view">
+					<!-- 보드 뷰 -->
+					<div class="board_wrap">
+						<div class="board_title">
+							<strong>문의사항</strong>
+							<p>문의주신 내용에 빠르게 안내드리겠습니다</p>
+						</div>
+						<div class="board_view_wrap">
+							<div class="board_view">
+								<div class="title"></div>
+								<div class="info">
+									<dl>
+										<dt>번호</dt>
+										<dd>1</dd>
+									</dl>
+									<dl>
+										<dt>글쓴이</dt>
+										<dd></dd>
+									</dl>
+									<dl>
+										<dt>작성일</dt>
+										<dd></dd>
+									</dl>
+									<dl>
+										<dt>상품명</dt>
+										<dd></dd>
+									</dl>
 								</div>
-								<div class="board_write_wrap">
-									<div class="board_write">
-										<div class="title">
-											<dl>
-												<dt>제목</dt>
-												<dd>
-													<input id="inputtitle" type="text" placeholder="제목 입력">
-												</dd>
-											</dl>
-										</div>
-										<div class="info">
-											<dl>
-												<dt>상품명</dt>
-												<dd>
-													<input id="inputproduct" type="text" placeholder="상품명 입력 필수값아님">
-												</dd>
-											</dl>
-										</div>
-										<div class="cont">
-											<textarea id="inputtext" placeholder="내용 입력"></textarea>
-										</div>
-									</div>
-									<div class="bt_wrap">
-										<a id="inquiryinsert" class="on">등록</a> <a id="inquirylist">취소</a>
+								<div class="cont">
+									
+								</div>
+								
+								
+								<div class="info" id="reply_view">
+									<dl>
+										<dt>답글 작성일</dt>
+										<dd></dd>
+									</dl>
+									<div class="cont reply">
+								
 									</div>
 								</div>
-						</div><!-- hide 할 부분 -->
-						
-						
-					
-			</div>
-		</div><!-- end of div#content -->
-	</div><!-- end of div#container-->
-				
+								
+								
+							</div>
+							<div class="bt_wrap">
+								<a href="/TicketMvp/user/userMyInquiry.do" class="on">목록</a> <a id="inquirymydelete">삭제</a>
+							</div>
+						</div>
+					</div>
 
-				<div id="footer">
-					<jsp:include page="/WEB-INF/views/main/main_footer.jsp" />
+
+
 				</div>
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</div>
+		</div>
+		<!-- end of div#content -->
+	</div>
+	<!-- end of div#container-->
+
+
+	<div id="footer">
+		<jsp:include page="/WEB-INF/views/main/main_footer.jsp" />
+	</div>
+
+
 </body>
 </html>
 
