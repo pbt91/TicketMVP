@@ -47,8 +47,8 @@ public class AthleteServiceImpl implements AthleteService {
 	}
 
 	@Override
-	public List<MatchVO> checkLikeStatus(String userId, Integer matchId) {
-		 return athleteDAO.checkLikeStatus(userId, matchId);
+	public List<MatchVO> checkLikeStatus(String userId) {
+		 return athleteDAO.checkLikeStatus(userId);
 	}
 
 }

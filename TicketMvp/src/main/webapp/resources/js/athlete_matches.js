@@ -3,6 +3,7 @@ $(function(){
 	var fromInput = $("#from");
     var toInput = $("#to");
 
+	//예매 버튼 클릭
 	$(".payment-button").on("click", function() {
         console.log("예매 버튼 클릭 성공");
 
@@ -13,7 +14,6 @@ $(function(){
         // matchId를 세션에 저장
         sessionStorage.setItem("selectedMatchId", matchId);
 
-        console.log("매치아이디= " + matchId);
 
         // 페이지 이동하면서 matchId를 URL 파라미터로 전송
         window.location.href = "/TicketMvp/reserve/ReserveChoose.do?matchid=" + matchId;
@@ -21,39 +21,64 @@ $(function(){
     });
     
     
-    //하트 버튼 클릭 이벤트
-   $(".heart-button").on("click", function(){
-        console.log("하트 버튼 클릭 성공");
-
+    // 하트 버튼 클릭 이벤트
+    $(".bi-heart").on("click", function () {
+        // 로그인 확인
+        if (!sessionStorage.getItem("userid") || sessionStorage.getItem("userid") === "") {
+            alert("찜하기 위해서는 로그인 필요합니다");
+            return;
+        }
+        
         var matchId = $(this).data("matchid");
-
-        // 하트 상태 확인
-        var isFilled = $(this).html() === "&#x2665;";
+        var isFilled = $(this).hasClass("bi-heart-fill");
 
         if (isFilled) {
             // 빨간 하트에서 빈 하트로 변경
-            $(this).html("&#x2661;");
-            // TODO: 빨간 하트에서 빈 하트로 변경 시 찜 테이블에서 해당 데이터 삭제하는 로직 추가
             removeLike(matchId);
         } else {
             // 빈 하트에서 빨간 하트로 변경
-            $(this).html("&#x2665;");
-            // TODO: 빈 하트에서 빨간 하트로 변경 시 찜 테이블에 데이터 삽입하는 로직 추가
             addLike(matchId);
         }
+        
+        $(this).toggleClass("bi-heart-fill bi-heart");
     });
+
+	// 페이지 로딩 시 사용자가 좋아요를 눌렀는지 확인하고 하트 아이콘을 업데이트
+	$(document).ready(function () {
+		checkLikeStatus();
+	});
+
+	//찜 목록 갱신 method
+    function checkLikeStatus() {
+	    $.ajax({
+	        url: "/TicketMvp/athlete/checkLikeStatus",
+	        type: "GET",
+	        dataType: "json",
+	        success: function(likedMatchIds) {
+	            console.log("Response from checkLikeStatus:", likedMatchIds);
+	            if (Array.isArray(likedMatchIds)) {
+	                $(".bi-heart").each(function() {
+	                    var matchId = parseInt($(this).data("matchid"));
+	                    if (likedMatchIds.includes(matchId)) {
+	                        $(this).addClass("bi-heart-fill").removeClass("bi-heart");
+	                    } else {
+	                        $(this).addClass("bi-heart").removeClass("bi-heart-fill");
+	                    }
+	                });
+	            }
+	        },
+	        error: function(error) {
+	            console.error("Error checking like status", error);
+	        }
+	    });
+	}
 
     // 찜 추가하는 함수
     function addLike(matchId) {
-        // 현재 로그인한 사용자의 id 가져오기
-        var userId = "${userId}"; // 여기에는 현재 로그인한 사용자의 id를 가져오는 방법을 넣어주세요.
-
-        // Ajax 요청으로 찜 추가
         $.ajax({
             url: "/TicketMvp/athlete/addLike",
             type: "POST",
             data: {
-                userId: userId,
                 matchId: matchId
             },
             success: function(response) {
@@ -67,15 +92,10 @@ $(function(){
 
     // 찜 삭제하는 함수
     function removeLike(matchId) {
-        // 현재 로그인한 사용자의 id 가져오기
-        var userId = "${userId}"; // 여기에는 현재 로그인한 사용자의 id를 가져오는 방법을 넣어주세요.
-
-        // Ajax 요청으로 찜 삭제
         $.ajax({
             url: "/TicketMvp/athlete/removeLike",
             type: "POST",
             data: {
-                userId: userId,
                 matchId: matchId
             },
             success: function(response) {

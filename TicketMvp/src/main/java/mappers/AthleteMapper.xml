@@ -47,8 +47,8 @@
 	</delete>
 
 
-	<select id="checkLikeStatus" resultType="com.ticketmvp.domain.MatchVO" parameterType="map">
-		SELECT COUNT(*) FROM `like` WHERE userid = #{userId}
+	<select id="checkLikeStatus" resultType="com.ticketmvp.domain.MatchVO" parameterType="String">
+		SELECT * FROM `like` WHERE userid = #{userId}
 	</select>
 
 
