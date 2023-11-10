@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>메인</title>
 </head>
+<%  %>
 <body>
 <a href='/TicketMvp/user/userInsertUserForm.do'> 회원가입 </a>
 <br/>

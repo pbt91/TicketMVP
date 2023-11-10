@@ -15,7 +15,7 @@ $(function () {
         var userinputForm = document.userinput;     // 회원가입 jsp안에 form 태그
         var userid = userinputForm.userid;
         // 아이디 글자 수 5이상 12이하
-        if (userid.value.length <= 5 || userid.value.length >= 12) {
+        if (userid.value.length <= 4 || userid.value.length >= 13) {
             alert("아이디는 5자리 이상 12자리 이하로 작성되어야 합니다");
             //idCheckResult.text("아이디는 5자리 이상 12자리 이하로 작성되어야 합니다");
             userid.focus();
@@ -58,7 +58,7 @@ $(function () {
         }
 
         // 1-2 글자 수 5이상 12이하
-        if (userid.value.length <= 5 || userid.value.length >= 12) {
+        if (userid.value.length <= 4 || userid.value.length >= 13) {
             alert("아이디는 5자리 이상 12자리 이하로 작성되어야 합니다");
             //idCheckResult.text("아이디는 5자리 이상 12자리 이하로 작성되어야 합니다");
             userid.focus();
@@ -153,14 +153,8 @@ $(function () {
             return false;
         }
 
-		// 전화번호에 숫자 말고 다른거 넣었을 때
-		/*if(num_check.test(phone)){
-			
-		
-		}else{
-			alert("연락처는 '-'을 제외하고 숫자만 입력해주세요");
-		}*/
 
+		alert("회원가입을 감사드립니다"+"\n 로그인창으로 이동합니다");
         return true;
 
     });

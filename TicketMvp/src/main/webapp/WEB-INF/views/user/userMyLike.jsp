@@ -54,13 +54,14 @@
 						<tbody>
 							<c:forEach var="like" items="${likeList}">
 								<tr>
-									<td><input type="checkbox" name="likes"
-										value="${like.likeId}" /></td>
-									<td>${likeList.matchid}</td>
-									<td>${likeList.homeclub}</td>
-									<td>${likeList.awayclub}</td>
-									<td>${likeList.matchdate}</td>
-									<td>${likeList.matchtime}</td>
+									<td>
+										<input type="checkbox" name="likes" value="굿" />
+									</td>
+									<td>${like.matchid}</td>
+									<td>${like.homeclub}</td>
+									<td>${like.awayclub}</td>
+									<td>${like.matchdate}</td>
+									<td>${like.matchtime}</td>
 								</tr>
 							</c:forEach>
 						</tbody>

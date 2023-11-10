@@ -25,10 +25,6 @@
 <script src="/TicketMvp/resources/js/user/userMyInquiry.js"
 	type="text/javascript"></script>
 
-<%
-	int num = 0;
-%>
-
 </head>
 <body>
 
@@ -154,7 +150,7 @@
 								<div class="info">
 									<dl>
 										<dt>번호</dt>
-										<dd></dd>
+										<dd>1</dd>
 									</dl>
 									<dl>
 										<dt>글쓴이</dt>
@@ -179,7 +175,7 @@
 										<dt>답글 작성일</dt>
 										<dd></dd>
 									</dl>
-									<div class="cont">
+									<div class="cont reply">
 								
 									</div>
 								</div>
@@ -187,7 +183,7 @@
 								
 							</div>
 							<div class="bt_wrap">
-								<a href="list.html" class="on">목록</a> <a href="edit.html">수정</a>
+								<a href="/TicketMvp/user/userMyInquiry.do" class="on">목록</a> <a id="inquirymydelete">삭제</a>
 							</div>
 						</div>
 					</div>

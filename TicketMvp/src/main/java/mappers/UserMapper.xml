@@ -84,7 +84,7 @@
 	</insert>
 
 	<!-- 문의하기 글 상세 -->
-	<select id="selectmyInquiry" parameterType="integer" resultType="com.ticketmvp.domain.UserInquiryVO" >
+	<select id="selectInquiryview" parameterType="integer" resultType="com.ticketmvp.domain.UserInquiryVO" >
 		SELECT helpid, userid, helptitle, helptext, helpproduct, helpdate, replytext, replydate FROM help WHERE helpid=#{helpid}
 	</select>
 
@@ -109,7 +109,7 @@
 	</select>
 
 	<!-- 쿠폰 소유자 등록하기 -->
-	<update id="updatemycoupon" parameterType="com.ticketmvp.domain.UserCouponVO">\
+	<update id="updatemycoupon" parameterType="com.ticketmvp.domain.UserCouponVO">
 		UPDATE coupon SET userid=#{userid} WHERE couponid=#{couponid}
 	</update>
 

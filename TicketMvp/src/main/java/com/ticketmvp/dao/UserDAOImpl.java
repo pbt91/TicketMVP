@@ -68,6 +68,7 @@ public class UserDAOImpl implements UserDAO {
 		System.out.println("아이디 찾기 시도 email:"+ email);
 		// result에 userid값 들어옴
 		String result = mybatis.selectOne("UserDAO.selectfindid",email);
+		System.out.println(result);
 		return result;
 	}
 	
@@ -97,7 +98,7 @@ public class UserDAOImpl implements UserDAO {
 			//System.out.println("name:"+vo.getName()+" userid:"+vo.getUserid()+" email:"+vo.getEmail()+" 인증키:"+vo.getTemppw());
 			
 			// 메일 보내기
-			//sendMail(resultvo);
+			sendMail(resultvo);
 
 		}
 		// 매칭값이 없으면 null, 값이 있으면 userid 들어옴

@@ -28,7 +28,7 @@ $(function(){
             },
             error : function(err){
             	console.log(err);
-                alert("오류");
+                alert("메일주소 또는 아이디가 잘못되었습니다");
             }
         });
 
@@ -51,7 +51,7 @@ $(function(){
     			if(result!=null){
     				let url = '/TicketMvp/user/userResetPw.do?userid='+userinputuserid;
     				console.log("작성된 url : "+url);
-    				alert("인증번호 맞음");
+    				alert("확인되었습니다 \n비밀번호를 재설정 합니다");
     				location.replace(url);
     			}else{
                     alert("인증번호를 다시 확인해주세요");

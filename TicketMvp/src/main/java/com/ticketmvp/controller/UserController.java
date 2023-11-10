@@ -46,8 +46,10 @@ public class UserController {
 
 	// 회원가입폼 -> 디비저장 -> 회원가입완료페이지
 	@RequestMapping("/insertUser.do")
-	public void userInsertUser(UserVO vo) {
+	public String userInsertUser(UserVO vo) {
 		userservice.insertUser(vo);
+		
+		return "redirect:userLoginForm.do";
 	}
 
 	// 로그인폼 -> 디비확인 -> 로그인 결과페이지
@@ -218,22 +220,25 @@ public class UserController {
 	@RequestMapping(value = "/userMyInquiryView.do", method = RequestMethod.POST)
 	@ResponseBody
 	public UserInquiryVO userMyInquiryView(String helpid) {
-
+		System.out.println(helpid);
 		UserInquiryVO result = userservice.userMyInquiryView(helpid);
+		System.out.println("controller:"+result.getHelptitle());
 		System.out.println(helpid);
 		return result;
 	}
 
 	// 문의하기 내 게시글 삭제
 	@RequestMapping(value = "/userMyInquiryDelete.do", method = RequestMethod.POST)
-	@ResponseBody // 삭제할 글번호랑 해당 글번호의 작성자
-	public boolean userMyInquiryDelete(String helpid, String inquiryuserid, HttpSession session) {
+	@ResponseBody 						// 삭제할 글번호랑 해당 글번호의 작성자
+	public boolean userMyInquiryDelete(String helpid, String helpuserid, HttpSession session) {
 		String userid = (String) session.getAttribute("userid");
-		if (userid.equals(inquiryuserid)) {
-			return false;
-		}else {
+		System.out.println("로그인 아이디 :"+userid+" 작성자아이디 :"+helpuserid+" 글번호: "+helpid);
+		//아이디가 같으면 삭제
+		if (userid.equals(helpuserid)) {
 			Integer result = userservice.userMyInquiryDelete(helpid);
 			return true;
+		}else {
+			return false;
 		}
 	}
 	
@@ -241,9 +246,15 @@ public class UserController {
 	@RequestMapping("/userMyLike.do")
 	public void userMyLike(HttpSession session, Model m) {
 		String userid = (String) session.getAttribute("userid");
+		//System.out.println(userid);
 		List<UserLikeVO> likeList = new ArrayList<UserLikeVO>();
 		likeList = userservice.userMyLike(userid);
-		m.addAttribute(likeList);
+		/*for(UserLikeVO item : likeList) {
+			System.out.println(item.getUserid());
+		}*/
+		//System.out.println("찜목록 컨드롤러 들어옴");
+		m.addAttribute("likeList",likeList);
+		
 	}
 	
 	// 찜목록 삭제?
@@ -255,13 +266,14 @@ public class UserController {
 		String userid = (String) session.getAttribute("userid");
 		List<UserCouponVO> coupon = new ArrayList<UserCouponVO>();
 		coupon = userservice.userMyCoupon(userid);
-		m.addAttribute(coupon);
+		m.addAttribute("couponList",coupon);
 	}
 	
 	// 쿠폰 사용자 등록
 	@RequestMapping("/userMyCouponInsert.do")
 	public String userMyCouponInsert(HttpSession session, String in1, String in2, String in3, String in4 ) {
 		String userid = (String) session.getAttribute("userid");
+		System.out.println(in1+in2+in3+in4);
 		//쿠폰 번호 가져오기
 		StringBuffer buf = new StringBuffer();
 		buf.append(in1);
