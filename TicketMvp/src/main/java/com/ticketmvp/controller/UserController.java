@@ -306,13 +306,5 @@ public class UserController {
 		}
 	}
 	
-	//로그인 확인
-	@RequestMapping(value = "/isLoggedIn", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<Map<String, Boolean>> isLoggedIn(HttpSession session) {
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("isLoggedIn", session.getAttribute("userid") != null);
-        return ResponseEntity.ok(response);
-    }
 	
 }

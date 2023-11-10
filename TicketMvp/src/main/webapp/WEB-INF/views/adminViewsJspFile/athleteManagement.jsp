@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%  
+response.setHeader("Cache-Control","no-store");  
+response.setHeader("Pragma","no-cache");  
+response.setDateHeader("Expires",0);  
+if (request.getProtocol().equals("HTTP/1.1"))        
+	response.setHeader("Cache-Control", "no-cache");
+%>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +64,7 @@
                                             <th>나이</th>
                                             <th>포지션</th>
                                             <th>등번호</th>
-											<th>삭제</th>
+											<th>선수삭제</th>
 										</tr>
                                     </thead>
                                     <tbody>
@@ -71,7 +78,7 @@
 											<td>${athleteManagement.position}</td>
 											<td>${athleteManagement.backno}</td>
 											<td>
-                                				<button class="btn btn-danger" id="deleteAthlete" >삭제</button>
+                                				<button class="btn btn-danger" id="deleteAthlete" >선수 정보 및 이미지 삭제</button>
                             				</td>
 											
                                         </tr>

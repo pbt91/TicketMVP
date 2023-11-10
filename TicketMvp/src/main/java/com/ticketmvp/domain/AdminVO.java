@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
+
 public class AdminVO {
 	
 	private String athleteimgfilefull ; // 선수 전체 파일명
@@ -18,6 +19,72 @@ public class AdminVO {
 	private String stadiumimgfilefull ; // 경기장 전체 파일명
 	private long stadiumimgsize ;		// 경기장 이미지 사이즈 
 	
+	
+	// 경기장 파일 넣기 위한 기본 설정
+	MultipartFile stadiumImg ; // input 태그에 type='file' name과 동일
+	public MultipartFile getStadiumImg() {
+		return stadiumImg ;
+	}
+	
+	public void setStadiumImg(MultipartFile stadiumImg) {
+		this.stadiumImg = stadiumImg ;
+		//업로드 파일이 있는 경우
+		if( !stadiumImg.isEmpty() ) {
+			this.stadiumimgfile = stadiumImg.getOriginalFilename();
+			this.stadiumimgsize = stadiumImg.getSize();
+			
+			// 실제 저장된 파일명 만들기 
+			UUID uuid = UUID.randomUUID();
+			this.stadiumimgfilefull = uuid.toString() ;
+			
+			// 실제파일 저장 
+			// 추후에 웹서버 경로를 찾아서 수정 작업
+			File f = new File("C:\\Users\\ICT03-20\\git\\TicketMVP\\TicketMvp\\src\\main\\webapp\\resources\\images\\stadium_images\\" + stadiumimgfilefull+"_"+stadiumimgfile);
+			
+			try {
+				stadiumImg.transferTo(f);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	// 클럽 파일 넣기 위한 기본 설정
+	MultipartFile clubImg ; // input 태그에 type='file' name과 동일
+	public MultipartFile getClubImg() {
+		return clubImg ;
+	}
+	
+	public void setClubImg(MultipartFile clubImg) {
+		this.clubImg = clubImg ;
+		//업로드 파일이 있는 경우
+		if( !clubImg.isEmpty() ) {
+			this.clubimgfile = clubImg.getOriginalFilename();
+			this.clubimgsize = clubImg.getSize();
+			
+			// 실제 저장된 파일명 만들기 
+			UUID uuid = UUID.randomUUID();
+			this.clubimgfilefull = uuid.toString() ;
+			
+			// 실제파일 저장 
+			// 추후에 웹서버 경로를 찾아서 수정 작업
+			File f = new File("C:\\Users\\ICT03-20\\git\\TicketMVP\\TicketMvp\\src\\main\\webapp\\resources\\images\\club_images\\" + clubimgfilefull+"_"+clubimgfile);
+			
+			try {
+				clubImg.transferTo(f);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	// 선수 파일 넣기 위한 기본 설정
 	MultipartFile athleteImg ; // input 태그에 type='file' name과 동일
 	public MultipartFile getAthleteImg() {
 		return athleteImg ;

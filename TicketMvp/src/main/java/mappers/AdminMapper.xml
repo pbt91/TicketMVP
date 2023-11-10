@@ -12,9 +12,10 @@
 		FROM user
 	</select>
 	
+	<!--  선수 리스트 -->
 	<select id="athleteManagement"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
 		SELECT athletename,club,age,position,backno
-		FROM   athlete
+		FROM   `athlete`
 	</select>
 
 	<select id="clubManagement"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
@@ -24,6 +25,7 @@
 		ON a.club= c.club
 	</select>
 	
+	<!--  경기 및 티켓 리스트에 조회 -->
 	<select id="ticket"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
 		SELECT t.ticketname ticketname,t.ticketprice ticketprice
 			  ,t.ticketall ticketall,t.ticketremain ticketremain
@@ -50,10 +52,20 @@
   SELECT MAX(matchid) FROM `match`
 </select>
 
+<select id ="getLastTickId" resultType="Integer">
+  SELECT MAX(ticketid) FROM `ticket`
+</select>
+
+<insert id="insertSeat"  parameterType="com.ticketmvp.domain.AdminVO">
+INSERT INTO `seat` (ticketid) 
+VALUES ( #{ticketid} )
+</insert>
+
 <insert id="addTicket" parameterType="com.ticketmvp.domain.AdminVO">
 	
 </insert>
 
+<!-- 경기 및 티켓 수정 조회 -->
 <select id="ticketModify" parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
     SELECT t.ticketname ticketname, t.ticketprice ticketprice
           ,t.ticketall ticketall, t.ticketremain ticketremain
@@ -65,6 +77,7 @@
     WHERE t.ticketid = #{ticketid} or m.matchid = #{matchid}
 </select>
 
+<!--  경기,티켓 변경 -->
 <update id="updateMatchfrm" parameterType="com.ticketmvp.domain.AdminVO">
   UPDATE `match` m,`ticket` t SET
   m.matchdate = #{matchdate}
@@ -78,29 +91,33 @@
  WHERE t.ticketid = #{ticketid}
 </update>
 
+
+<!--  티켓 등록 -->
 <insert id="onlyInsertTiket"  parameterType="com.ticketmvp.domain.AdminVO">
 INSERT INTO `ticket`(ticketname,ticketprice,ticketall,ticketremain,matchid)
 VALUES(#{ticketname}, #{ticketprice}, #{ticketall},#{ticketremain},#{matchid})
 
 </insert>
 
-<update id="update" parameterType="com.ticketmvp.domain.AdminVO">
-  UPDATE `match` m,`ticket` t SET
-  m.matchdate = #{matchdate}
-  ,m.matchtime = #{matchtime}
-  ,m.homeclub  = #{homeclub}
-  ,m.awayclub  = #{awayclub}
-  ,t.ticketname = #{ticketname}
-  ,t.ticketprice = #{ticketprice}
-  ,t.ticketall  = #{ticketall}
-  ,t.ticketremain =#{ticketremain}
- WHERE t.ticketid = #{ticketid}
-</update>
 
 <!--  티켓 디비에서 삭제 -->
 <delete id= "deleteTicket" parameterType="com.ticketmvp.domain.AdminVO">
 DELETE FROM `ticket`
 WHERE ticketid=#{ticketid}
+
+</delete>
+
+<!--  티켓 삭제 전 좌석있는 티켓들 떄문에 티켓 아이디 기준 해당 좌석 디비에서 삭제 -->
+<delete id= "deleteSeat" parameterType="Integer">
+DELETE FROM `seat`
+WHERE ticketid=#{ticketid}
+
+</delete>
+
+<!--  매치 아이디 가지고 경기 삭제 -->
+<delete id= "deleteMatch" parameterType="com.ticketmvp.domain.AdminVO">
+DELETE FROM `match`
+WHERE matchid=#{matchid}
 
 </delete>
 
@@ -151,5 +168,89 @@ WHERE userid = #{userid}
 		,replydate = now()
 	WHERE helpid = ${helpid}
 </update>
+
+<!--  선수 이미지 및 정보들 수정 페이지 조회 -->
+<select id="athleteModify" parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO" >
+ SELECT *, athleteimgfilefull as athleteimgfilefull, athleteimgsize as athleteimgsize, athleteimgfile as athleteimgfile
+ FROM `athlete`
+ WHERE athletename = #{athletename}
+</select>
+
+<!--  선수 정보 및 이미지 수정 -->
+<update id="athleteModifysubmit" parameterType="com.ticketmvp.domain.AdminVO">
+    UPDATE `athlete` SET
+    club = #{club}
+    ,age = #{age}
+    ,career = #{career}
+    ,position = #{position}
+    ,backno = #{backno}
+    ,info = #{info}
+    <if test="athleteimgfile != null">, athleteimgfilefull = #{athleteimgfilefull}</if>
+    <if test="athleteimgsize != null">, athleteimgsize = #{athleteimgsize}</if>
+    <if test="athleteimgfile != null">, athleteimgfile = #{athleteimgfile}</if>
+  
+    WHERE athletename = #{athletename}
+</update>
+
+<!--  클럽 등록  -->
+<insert id="clubManage" parameterType="com.ticketmvp.domain.AdminVO">
+		INSERT INTO `club`
+	(
+	club,league,stadiumname
+	   <if test="clubimgfile !=null">
+	   ,clubimgfilefull ,clubimgsize ,clubimgfile,stadiumimgfile,stadiumimgfilefull,stadiumimgsize
+	   </if>	
+	) VALUES( #{club},#{league},#{stadiumname}
+			 <if test="clubimgfile !=null">
+	   		  ,#{clubimgfilefull},#{clubimgsize},#{clubimgfile},#{stadiumimgfile}
+	   		  ,#{stadiumimgfilefull},#{stadiumimgsize}
+	   		</if>		  
+	
+	)
+</insert>
+
+	<!--  클럽 리스트 -->
+	<select id="clubManagement"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
+SELECT club,stadiumname,league
+FROM `club`
+	</select>
+	
+	<!--  클럽 클러명 기준으로 클럽 정보 삭제 -->
+<delete id="deleteCLub" parameterType="com.ticketmvp.domain.AdminVO">
+DELETE FROM `club`
+WHERE club = #{club}
+</delete>
+
+	<!--   -->
+<select id="clubModify" parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO" >
+ SELECT *, clubimgsize as clubimgsize, clubimgfilefull as clubimgfilefull, clubimgfile as clubimgfile
+ 			,stadiumimgfile as stadiumimgfile ,stadiumimgfilefull as stadiumimgfilefull ,stadiumimgsize as stadiumimgsize
+ FROM `club`
+ WHERE club = #{club}
+</select>
+
+<!--  선수 정보 및 이미지 수정 -->
+<update id="clubManageModify" parameterType="com.ticketmvp.domain.AdminVO">
+    UPDATE `club` SET
+    club = #{club}
+    ,stadiumname = #{stadiumname}
+    ,league = #{league}
+    <if test="clubimgfilefull != null">, clubimgfilefull = #{clubimgfilefull}</if>
+    <if test="clubimgsize != null">, clubimgsize = #{clubimgsize}</if>
+    <if test="clubimgfile != null">, clubimgfile = #{clubimgfile}</if>
+    <if test="stadiumimgfilefull != null">, stadiumimgfilefull = #{stadiumimgfilefull}</if>
+    <if test="stadiumimgfile != null">, stadiumimgfile = #{stadiumimgfile}</if>
+    <if test="stadiumimgsize != null">, stadiumimgsize = #{stadiumimgsize}</if>
+    WHERE club = #{club}
+</update>
+
+<!--  차트 관련 -->
+<select id="chartTicketClubData" resultType="com.ticketmvp.domain.AdminVO">
+SELECT a.athletename, t.ticketname, t.ticketremain
+FROM `athlete` a
+     JOIN `match` m ON a.club = m.homeclub
+     JOIN `ticket` t ON m.matchid = t.matchid
+</select>
+
 	
 </mapper>

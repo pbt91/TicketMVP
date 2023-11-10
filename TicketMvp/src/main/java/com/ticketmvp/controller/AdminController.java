@@ -1,6 +1,7 @@
 package com.ticketmvp.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,10 +50,6 @@ public class AdminController {
 
 	}
 
-	@RequestMapping("/athleteModify.do")
-	public void athleteModify() {
-
-	}
 
 	// 선수 리스트 출력
 	@RequestMapping("/athleteManagement.do")
@@ -107,6 +104,16 @@ public class AdminController {
 		System.out.println(result);
 		return result ; 
 	}
+	
+	// 경기 삭제
+	@PostMapping("/deleteMatch.do")
+	@ResponseBody
+	public Integer deleteMatch(@RequestParam Integer matchid) {
+		System.out.println(matchid);
+		Integer result = AdminService.deleteMatch(matchid);
+		System.out.println(result);	
+		return result ; 
+	}
 
 	// 경기 및 티켓 리스트 출력
 	@RequestMapping("/ticket.do")
@@ -126,14 +133,6 @@ public class AdminController {
 	return "redirect:ticket.do"; 
 	}
 	
-	/*
-	 * // 티켓 등록
-	 * 
-	 * @RequestMapping(value= "/saveTicketList.do") public String
-	 * insertTicket(AdminVO vo) throws IOException { System.out.println(vo);
-	 * AdminService.insertTicket(vo); System.out.println(vo); return
-	 * "redirect:ticket.do"; }
-	 */
 	
 	// 티켓 등록 페이지 그 자체
 	@RequestMapping("/ticketRegister.do")
@@ -148,28 +147,18 @@ public class AdminController {
 		AdminService.athleteManage(vo);
 		return "redirect:athleteManagement.do"; 
 	}
-	// 선수 삭제 
 	
 	
-	// 티켓 수정
 
 	// 경기 수정 버튼 서브 밋
 	@RequestMapping("/updateMatchfrm.do")
 	public String updateMatchfrm(AdminVO vo, Model m) throws IOException {
+		System.out.println("updateMatchfrm.do");
 		AdminService.updateMatchfrm(vo) ; 
-		m.addAttribute("updateResult");
+		//m.addAttribute("updateResult");
 		return "redirect:ticket.do";
 	}
-	
-	// 티켓 수정 버튼 서브밋
-//	@RequestMapping("/onlyInsertTiket.do")
-//	public String onlyInsertTiket(AdminVO vo, Model m) throws IOException{
-//		AdminService.onlyInsertTiket(vo) ; 
-//		m.addAttribute("updateResult");
-//		return "redirect:ticket.do";
-//	}
-	
-	
+		
 	// 경기 및 티켓 수정 조회
 	@RequestMapping("/ticketModify.do")
 	public void ticketModify(AdminVO vo ,Model m) {
@@ -179,18 +168,89 @@ public class AdminController {
 		System.out.println(av);
 	}
 
-	// 클럽 등록
+	// 선수 이미지 및 정보 수정 조회
+	@RequestMapping("/athleteModify.do")
+	public void athleteModify(AdminVO vo ,Model m) {
+		AdminVO av = AdminService.athleteModify(vo) ; 
+		System.out.println(av);
+		m.addAttribute("athleteM",av);
+		System.out.println(av);
+	}
+	
+	// 선수 정보 및 이미지 수정 
+	@RequestMapping("/athleteModifysubmit.do")
+	public String athleteModifysubmit(AdminVO vo)throws IOException, InterruptedException{
+		System.out.println("athleteModifysubmit.do");
+		AdminService.athleteModifysubmit(vo) ; 
+		//m.addAttribute("updateResult");
+		 Thread.sleep(1500);
+		return "redirect:athleteManagement.do";
+	}
+	
+	// 클럽 등록 인서트
 	@RequestMapping("/clubRegister.do")
 	public void clubRegister() {
+		
 
 	}
+	
+	// 클럽 등록 인서트
+	@RequestMapping("/clubManage.do")
+	public String clubManage(AdminVO vo) {
+		System.out.println(vo);
+		AdminService.clubManage(vo);
+		return "redirect:clubManagement.do";
 
-	// 클럽 수정
+	}
+	
+	// 클럽 이름 기준 삭제시
+	@PostMapping("/deleteClubname.do")
+	@ResponseBody
+	public Map<String, String> deleteClubname(@RequestParam String clubname) {
+	    System.out.println(clubname);
+	    Integer result = AdminService.deleteClubname(clubname);
+	    System.out.println(result);
+
+	    Map<String, String> response = new HashMap<>();
+	    
+	    if (result != null && result > 0) {
+	        response.put("result", "success");
+	    } else {
+	        response.put("result", "fail");
+	    }
+
+	    return response;
+	}
+
+
+
+	// 클럽 이미지 및 정보 수정 조회
 	@RequestMapping("/clubModify.do")
-	public void clubModify() {
-
+	public void clubModify(AdminVO vo , Model m ) {
+		AdminVO av = AdminService.clubModify(vo) ;
+		System.out.println(av);
+		m.addAttribute("clubM",av);
+		System.out.println(av);
 	}
 
+//	@RequestMapping("/athleteModifysubmit.do")
+//	public String athleteModifysubmit(AdminVO vo, Model m)throws IOException, InterruptedException{
+//		System.out.println("athleteModifysubmit.do");
+//		AdminService.athleteModifysubmit(vo) ; 
+//		//m.addAttribute("updateResult");
+//		 Thread.sleep(1500);
+//		return "redirect:athleteManagement.do";
+//	}	
+//	
+	// 클럽 이미지 및 정보 수정 
+	@RequestMapping("/clubManageModify.do")
+	public String clubManageModify(AdminVO vo) throws IOException, InterruptedException {
+		System.out.println("clubManageModify.do");
+		AdminService.clubManageModify(vo) ;
+		Thread.sleep(1500);
+		return "redirect:clubManagement.do";
+	}
+	
 	// 클럽 리스트 출력
 	@RequestMapping("/clubManagement.do")
 	public void clubManagement(AdminVO vo, Model model) {
@@ -202,7 +262,7 @@ public class AdminController {
 	// 차트 목록
 	@RequestMapping("/index.do")
 	public void index() {
-
+		System.out.println("차트");
 	}
 	
 	// 문의 목록
@@ -228,4 +288,25 @@ public class AdminController {
 			return "failure";
 		}
 	}
+
+	// 차트 관련
+    @RequestMapping("/chartTicketClubData.do")
+    @ResponseBody
+    public List<Map<String, Object>> chartTicketClubData(AdminVO vo) {
+        List<AdminVO> result = AdminService.chartTicketClubData(vo);
+
+        List<Map<String, Object>> chartData = new ArrayList<>();
+
+        for (AdminVO data : result) {
+            Map<String, Object> rowData = new HashMap<>();
+            rowData.put("athleteName", data.getAthletename());
+            rowData.put("ticketName", data.getTicketname());
+            rowData.put("ticketRemain", data.getTicketremain());
+
+            chartData.add(rowData);
+        }
+
+        return chartData;
+    }
+
 }

@@ -1,10 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%  
+response.setHeader("Cache-Control","no-store");  
+response.setHeader("Pragma","no-cache");  
+response.setDateHeader("Expires",0);  
+if (request.getProtocol().equals("HTTP/1.1"))        
+	response.setHeader("Cache-Control", "no-cache");
+%>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/admin/admin.js" type="text/javascript"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -51,50 +61,40 @@
                                     <thead>
 										<tr>
 											<th>구단명</th>
-											<th>선수명</th>
 											<th>경기장</th>
-											<th>소속리그</th>       
-											<th>
-							                	<input type="checkbox" id="selectAll" onchange="selectAllCheckboxes(this)">
-							            	</th>
+											<th>소속리그</th>
+											<th>구단삭제</th>
+											       
+
 										</tr>
 									</thead>
                                     <tbody>
                                     <c:forEach items="${clubList}" var="clubManagement">
 										<tr>
-										<td>${clubManagement.club}</td>
-										<td>${clubManagement.athletename}</td>
+										<td>
+                                			<a href="clubModify.do?club=${clubManagement.club}">${clubManagement.club}</a>
+                            			</td>
 										<td>${clubManagement.stadiumname}</td>
 										<td>${clubManagement.league}</td>
-										
 										<td>
-							        		<input type="checkbox" name="selectedUser" value="${clubManagement.club}" />
-							      		</td>
+                                			<button class="btn btn-danger" id="deleteClub" >구단 정보 및 이미지 삭제</button>
+                            			</td>
+										
 										</tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
                                 	<div id="actionButtons" style="display: block; ">
 										<a href="${pageContext.request.contextPath}/adminViewsJspFile/clubRegister.do" class="clubRegister">구단 등록</a>
-										<a href="${pageContext.request.contextPath}/adminViewsJspFile/clubModify.do" class="clubModify">구단 수정</a>
-										<a href="${pageContext.request.contextPath}/adminViewsJspFile/clubManagement.do" class="clubManagement">구단 삭제</a>
 							    	</div>
                             </div>
                         </div>
-									<script>
-										function selectAllCheckboxes(checkbox) {
-											var checkboxes = document.getElementsByName("selectedUser");
-											for (var i = 0; i < checkboxes.length; i++) {
-												checkboxes[i].checked = checkbox.checked;
-											}
-										}
-									</script>
                 </div>
                     </div>    
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-    </body>
 <jsp:include page="footer.jsp" />
+    </body>
 </html>

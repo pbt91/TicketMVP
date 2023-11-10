@@ -58,13 +58,15 @@
                         <th>홈구단vs원정구단</th>
                         <th>티켓명</th>
                         <th>가격</th>
-                        <th>전체수량</th>
-                        <th>남은수량</th>
-                        <th>티켓번호</th>
-                        <th>경기번호</th>
-                        <th>경기시간</th>
-                        <th>경기날짜</th>
-                        <th>삭제</th> <!-- 추가: 삭제 버튼 헤더 -->
+                        <th>전체 수량</th>
+                        <th>남은 수량</th>
+                        <th>티켓 번호</th>
+                        <th>경기 번호</th>
+                        <th>경기 시간</th>
+                        <th>경기 날짜</th>
+                        <th>티켓 삭제</th> <!-- 추가: 삭제 버튼 헤더 -->
+                        <th>경기 삭제</th> <!-- 추가: 삭제 버튼 헤더 -->
+                        
 
                     </tr>
                 </thead>
@@ -92,7 +94,10 @@
                             <td>${ticket.matchdate}</td>
                             <td>${ticket.matchtime}</td>
                             <td>
-                                <button class="btn btn-danger" id="deleteTicket" >삭제</button>
+                                <button class="btn btn-danger" id="deleteTicket" >티켓 삭제</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" id="deleteMatch" >경기 삭제</button>
                             </td>
                         </tr>
                     </c:forEach>

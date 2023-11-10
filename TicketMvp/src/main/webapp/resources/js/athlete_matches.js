@@ -23,12 +23,7 @@ $(function(){
     
     // 하트 버튼 클릭 이벤트
     $(".bi-heart").on("click", function () {
-        // 로그인 확인
-        if (!sessionStorage.getItem("userid") || sessionStorage.getItem("userid") === "") {
-            alert("찜하기 위해서는 로그인 필요합니다");
-            return;
-        }
-        
+       
         var matchId = $(this).data("matchid");
         var isFilled = $(this).hasClass("bi-heart-fill");
 

@@ -4,6 +4,9 @@
 <html lang="en">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/admin/admin.js" type="text/javascript"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -91,20 +94,22 @@
                             
                             <tr>
                                 <th>선수 정보<span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="text" id="info" name="info"  placeholder="선수 정보 입력해 주세요."  /></td>
+                                <td colspan="3">
+								<textarea id="info" name="info" cols="50" rows="10" placeholder="선수 정보 입력해 주세요."></textarea>
+                               
+                                </td>
                             </tr>
                             
                             <tr>
                                 <th>선수 경력<span class="es">필수 입력</span></th>
                                 <td colspan="3">
-                                <input type="text" id="career" name="career"  placeholder="선수 경력 입력해 주세요."  />
                                <textarea id="career" name="career" cols="50" rows="10" placeholder="선수 경력 입력해 주세요."></textarea>
                                 
                                 </td>
                             </tr>
 							
 							<tr>
-								<td colspan="2" align="center"><input type="submit"	value=" 선수 등록 " /></td>
+								<td colspan="2" align="center"><input type="submit" id="athleteRegi"	value=" 선수 등록 " /></td>
 							</tr>
                         </tbody>
                     </table>

@@ -5,6 +5,9 @@
 <html lang="en">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/admin/admin.js" type="text/javascript"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,33 +30,52 @@
     <!-- Custom styles for this page -->
     <link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawVisualization);
+<!--     <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawVisualization);
 
-      function drawVisualization() {
-        // Some raw data (not necessarily accurate)
-        var data = google.visualization.arrayToDataTable([
-          ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-          ['2004/05',  165,      938,         522,             998,           450,      614.6],
-          ['2005/06',  135,      1120,        599,             1268,          288,      682],
-          ['2006/07',  157,      1167,        587,             807,           397,      623],
-          ['2007/08',  139,      1110,        615,             968,           215,      609.4],
-          ['2008/09',  136,      691,         629,             1026,          366,      569.6]
-        ]);
+    function drawVisualization() {
+        // Ajax를 사용하여 서버에서 데이터 가져오기
+        $.ajax({
+            url: "chartTicketClubData.do",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                // 데이터를 받아와서 차트를 그리는 로직 호출
+                drawChartFromData(data);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    }
 
+    function drawChartFromData(data) {
+        // 초기 칼럼(열) 정보
+        var chartData = [['선수명', '티켓 판매량']];
+
+        // 서버에서 받아온 JSON 데이터 처리
+        for (var i = 0; i < data.length; i++) {
+            // 각 행의 데이터를 배열에 추가
+            chartData.push([
+                data[i].playerName,
+                data[i].ticketSales
+            ]);
+        }
+
+        // 차트 그리기
         var options = {
-          title : 'Monthly Coffee Production by Country',
-          vAxis: {title: 'Cups'},
-          hAxis: {title: '구단명'},
-          seriesType: 'bars',
-          series: {5: {type: 'line'}}
+            title: '선수별 티켓 판매량',
+            vAxis: { title: '티켓 판매량' },
+            hAxis: { title: '선수명' },
+            seriesType: 'bars',
+            series: { 1: { type: 'line' } }
         };
 
         var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
+        chart.draw(google.visualization.arrayToDataTable(chartData), options);
+    }
+    </script> -->
 </head>
  <style>
     #index {
