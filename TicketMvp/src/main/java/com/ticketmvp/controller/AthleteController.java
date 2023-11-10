@@ -134,4 +134,24 @@ public class AthleteController {
 	          return ResponseEntity.status(500).body("찜 삭제 실패");
 	      }
 	  }
+	  
+	  
+	  @RequestMapping(value = "/checkLikeStatus", method = RequestMethod.GET)
+	  @ResponseBody
+	  public void checkLikeStatus(@RequestParam("matchId") Integer matchId, HttpSession session, Model model) {
+	      try {
+	          String userId = (String) session.getAttribute("userid");
+	          List<MatchVO> list = athleteService.checkLikeStatus(userId, matchId);
+	        if (list != null) { 
+	        	model.addAttribute("like_list", list);
+	        }
+	       
+	      } catch (Exception e) {
+	         System.out.println("error");
+	      }
+	  }
+	  
+	  
+	  
+	  
 	}

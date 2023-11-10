@@ -25,38 +25,6 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
 
 
-
-<!-- <style>
-#container {
-	display: flex;
-	height: 1000px;
-	background-color: #f8f9fa;
-}
-
-#container>#sidebar {
-	flex: 1;
-	/* padding: 10px; */
-	background-color: #333;
-	min-width: 180px;
-	/* border: 1px solid #ccc; */
-	max-height: 1000px;
-	overflow: auto;
-}
-
-#container>#content {
-	flex: 9;
-	padding-top: 15px;
-	/*    border: 1px solid #ccc; */
-	height: auto;
-}
-
-iframe {
-	width: 100%;
-	height: 100%;
-	border: none;
-}
-</style> -->
-
 </head>
 <body>
 	<div id="body-wrapper">

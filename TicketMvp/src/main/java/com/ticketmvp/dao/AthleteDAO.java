@@ -23,6 +23,7 @@ public interface AthleteDAO {
     void addLike(@Param("userId") String userId, @Param("matchId") Integer matchId);
 
     void removeLike(@Param("userId") String userId, @Param("matchId") Integer matchId);
-    
-    
+
+    List<MatchVO> checkLikeStatus(String userId,  Integer matchId);
+
 }

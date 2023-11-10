@@ -2,6 +2,8 @@
     // athlete.js
     
 $(function(){
+
+	//예매 버튼 클릭
     $(".payment-button").on("click", function() {
         console.log("예매 버튼 클릭 성공");
 
@@ -10,7 +12,7 @@ $(function(){
         console.log("값이 들어가...?")
 
         // matchId를 세션에 저장
-        //sessionStorage.setItem("matchid", matchId);
+        sessionStorage.setItem("matchid", matchId);
 
        // console.log("매치아이디" + matchId);
 
@@ -35,6 +37,34 @@ $(function(){
                 addLike(matchId);
             }
         });
+        
+		 // 페이지 로딩 시 사용자가 좋아요를 눌렀는지 확인하고 하트 아이콘을 업데이트
+		$(document).ready(function () {
+		    $(".bi-heart").each(function() {
+		        var matchId = $(this).data("matchid");
+		        checkLikeStatus(matchId);
+		    });
+		});
+
+
+        function checkLikeStatus(matchId) {
+		    $.ajax({
+		        url: "/TicketMvp/athlete/checkLikeStatus",
+		        type: "GET",
+		        data: {
+		            matchId: matchId
+		        },
+		        success: function (response) {
+		            if (response.liked) {
+		                // 사용자가 좋아요를 눌렀다면 하트 아이콘을 채워진 상태로 변경
+		                $(".bi-heart[data-matchid='" + matchId + "']").addClass("bi-heart-fill");
+		            }
+		        },
+		        error: function (error) {
+		            console.error("좋아요 상태 확인 중 오류", error);
+		        }
+		    });
+		}
 
         // 찜 추가하는 함수
         function addLike(matchId) {
@@ -70,3 +100,9 @@ $(function(){
             });
         }
 });
+
+
+
+
+
+
