@@ -271,8 +271,6 @@ public class UserController {
 		
 	}
 	
-	// 찜목록 삭제?
-	
 	
 	// 쿠폰 리스트
 	@RequestMapping("/userMyCoupon.do")
@@ -306,5 +304,12 @@ public class UserController {
 		}
 	}
 	
-	
+	//찜 목록에서 찜 삭제
+	@RequestMapping("/userMyLikeDelete.do")
+	public String userMyLikeDelete(HttpSession session, Integer matchId) {
+		System.out.println("컨트롤러:"+matchId);
+		String userId = (String) session.getAttribute("userid");
+		userservice.removeLike(userId, matchId);
+		return "redirect:/user/userMyLike.do";
+	}
 }

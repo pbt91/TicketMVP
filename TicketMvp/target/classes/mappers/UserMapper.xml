@@ -162,4 +162,9 @@
 		UPDATE coupon SET userid=#{userid} WHERE couponid=#{couponid}
 	</update>
 
+	<!-- 찜 목록에서 찜 삭제 -->
+	<delete id="removeLike" parameterType="hashmap">
+		DELETE FROM `like` WHERE userid = '${userId}' AND matchid = ${matchId}
+	</delete>
+
 </mapper>

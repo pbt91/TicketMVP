@@ -123,11 +123,6 @@
 							<tr>
 								<td colspan="2" align="center"><input type="submit" id="ticketsubmit"	value=" 티켓 등록 " /></td>
 							</tr>
-                            
-                            <tr>
-                                <th>선수명 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><textarea id="content" name="content" cols="50" rows="10" placeholder="내용을 입력해 주세요."></textarea></td>
-                            </tr>
                            </tbody>
                           </table> 
 				</section>

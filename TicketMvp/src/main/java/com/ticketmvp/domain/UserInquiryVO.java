@@ -1,6 +1,8 @@
 package com.ticketmvp.domain;
 
+import lombok.Data;
 
+@Data
 public class UserInquiryVO {
 	private Integer helpid;
 	private String userid;

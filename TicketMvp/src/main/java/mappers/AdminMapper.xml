@@ -19,10 +19,8 @@
 	</select>
 
 	<select id="clubManagement"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
-		SELECT a.athletename athletename , a.club club,c.league league,c.stadiumname stadiumname
-		FROM  athlete a 
-		INNER JOIN club c
-		ON a.club= c.club
+		SELECT club, stadiumname, league
+		FROM club
 	</select>
 	
 	<!--  경기 및 티켓 리스트에 조회 -->
@@ -209,11 +207,6 @@ WHERE userid = #{userid}
 	)
 </insert>
 
-	<!--  클럽 리스트 -->
-	<select id="clubManagement"  parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">
-SELECT club,stadiumname,league
-FROM `club`
-	</select>
 	
 	<!--  클럽 클러명 기준으로 클럽 정보 삭제 -->
 <delete id="deleteCLub" parameterType="com.ticketmvp.domain.AdminVO">

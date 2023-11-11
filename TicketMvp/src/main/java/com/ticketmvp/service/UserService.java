@@ -73,4 +73,7 @@ public interface UserService {
 	
 	//내쿠폰 등록
 	Integer userMyCouponInsert(String userid, String couponid);
+
+	//찜 목록에서 찜 삭제
+	void removeLike(String userId, Integer matchId);
 }

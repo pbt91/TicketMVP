@@ -77,7 +77,7 @@
 								    <c:choose>
 								    	<c:when test="${stadiumImage.stadiumimgsize > 0}">
 								            <!-- 경기장 이미지 -->
-								        	<div class="text-center mb-4"><img id="stadium" alt="${stadiumImage.stadiumname} 좌석 지도" src="/TicketMvp/resources/images/stadium/${stadiumImage.stadiumimgfilefull}_${stadiumImage.stadiumimgfile}" id="stadiumMap" class="reserveSide"></div>
+								        	<div class="text-center mb-4"><img id="stadium" alt="${stadiumImage.stadiumname} 좌석 지도" src="/TicketMvp/resources/images/stadium_images/${stadiumImage.stadiumimgfilefull}_${stadiumImage.stadiumimgfile}" id="stadiumMap" class="reserveSide"></div>
 								        </c:when>
 								        <c:otherwise>
 								            <div id="stadiumMissing" class="message-container reserveSide">

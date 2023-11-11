@@ -250,4 +250,13 @@ public class UserDAOImpl implements UserDAO {
 		return mybatis.update("UserDAO.updatemycoupon", vo);
 	}
 	
+	//찜 목록에서 찜 삭제
+	@Override
+    public void removeLike(String userId, Integer matchId) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("userId", userId);
+		param.put("matchId", matchId);
+        mybatis.delete("com.ticketmvp.dao.AthleteDAO.removeLike", param);
+    }
+	
 }

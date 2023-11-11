@@ -1,5 +1,8 @@
 package com.ticketmvp.domain;
 
+import lombok.Data;
+
+@Data
 public class UserLikeVO {
 	
 	private String userid;				//유저아이디

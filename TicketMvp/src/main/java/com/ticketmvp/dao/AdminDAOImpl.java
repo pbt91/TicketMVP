@@ -27,7 +27,9 @@ public class AdminDAOImpl implements AdminDAO{
 	}
 	public List<AdminVO> clubManagement(AdminVO vo) {
 		System.out.println("===> Mybatis clubManagement() 호출");
-		return mybatis.selectList("AdminDAO.clubManagement", vo);
+		List<AdminVO> list = mybatis.selectList("AdminDAO.clubManagement", vo);
+		System.out.println(list.toString());
+		return list;
 	}
 
 	public List<AdminVO> ticket(AdminVO vo) {
@@ -39,7 +41,7 @@ public class AdminDAOImpl implements AdminDAO{
 	public void saveMatchTicket(AdminVO vo) {
 		System.out.println("===> Mybatis saveMatchTicket() 호출");
 		System.out.println(vo);
-		if(vo.getTicketname() == null) {
+		if(vo.getTicketname() == null || vo.getTicketname().equals("")) {
 			mybatis.insert("AdminDAO.insertMatch", vo);
 		}else {
 			mybatis.insert("AdminDAO.insertMatch", vo);
@@ -49,7 +51,7 @@ public class AdminDAOImpl implements AdminDAO{
 			if (lastMatchId != null) { 
 				System.out.println("널 아님 들어옴");
 				vo.setMatchid(lastMatchId);
-				System.out.println(vo);
+				System.out.println(vo.toString());
 				mybatis.insert("AdminDAO.saveMatchTicket", vo);
 				Integer getLastTickId = mybatis.selectOne("AdminDAO.getLastTickId");
 				vo.setTicketid(getLastTickId);
@@ -193,13 +195,7 @@ public class AdminDAOImpl implements AdminDAO{
 		System.out.println(vo);
 		Integer result = mybatis.update("AdminDAO.clubManageModify",vo);
 		System.out.println(result + "줄 수정완료");
-	}
-
-	//	public List<AdminVO> athleteManagement(AdminVO vo) {
-	//		System.out.println("===> Mybatis athleteManagement() 호출");
-	//		return mybatis.selectList("AdminDAO.athleteManagement", vo);
-	//	}
-	//	
+	}	
 
 	// 차트 관련 함수
 	public List<AdminVO> chartTicketClubData(AdminVO vo) {

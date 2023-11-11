@@ -47,7 +47,7 @@ public class AthleteDAOImpl implements AthleteDAO {
     public void addLike(String userId, Integer matchId) {
         mybatis.insert("com.ticketmvp.dao.AthleteDAO.addLike", new LikeDTO(userId, matchId));
     }
-
+	
     @Override
     public void removeLike(String userId, Integer matchId) {
         mybatis.delete("com.ticketmvp.dao.AthleteDAO.removeLike", new LikeDTO(userId, matchId));

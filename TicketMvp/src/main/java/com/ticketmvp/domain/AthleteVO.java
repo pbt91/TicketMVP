@@ -1,5 +1,8 @@
 package com.ticketmvp.domain;
 
+import lombok.Data;
+
+@Data
 public class AthleteVO {
 	
 	private String athletename;    		// 선수명  PK

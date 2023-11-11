@@ -172,7 +172,7 @@
 								
 								<div class="info" id="reply_view">
 									<dl>
-										<dt>답글 작성일</dt>
+										<dt>관리자 답글 작성일</dt>
 										<dd></dd>
 									</dl>
 									<div class="cont reply">

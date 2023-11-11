@@ -1,5 +1,8 @@
 package com.ticketmvp.domain;
 
+import lombok.Data;
+
+@Data
 public class UserCouponVO {
 	private String couponid;
 	private String userid;

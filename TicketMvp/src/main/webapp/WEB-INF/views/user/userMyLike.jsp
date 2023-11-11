@@ -12,7 +12,7 @@
 
 <meta charset="UTF-8">
 
-<!-- js 코드 호출 -->
+<!-- jquery 코드 호출 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- css 파일 연결 - main -->
 <link rel="stylesheet"
@@ -56,6 +56,7 @@
 								<tr>
 									<td>
 										<input type="checkbox" name="likes" value="굿" />
+										<input type="hidden" name="matchId" value="${like.matchid}" />
 									</td>
 									<td>${like.matchid}</td>
 									<td>${like.homeclub}</td>

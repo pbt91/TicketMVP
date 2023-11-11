@@ -138,5 +138,10 @@ public class UserServiceImpl implements UserService{
 		}
 	}
 
-
+	//찜 목록에서 찜 삭제
+	@Override
+	public void removeLike(String userId, Integer matchId) {
+		userDAO.removeLike(userId, matchId);
+	}
+	
 }
