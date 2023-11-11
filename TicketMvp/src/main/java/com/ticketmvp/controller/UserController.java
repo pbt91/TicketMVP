@@ -3,8 +3,6 @@ package com.ticketmvp.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -314,23 +312,18 @@ public class UserController {
 	@RequestMapping(value = "/userInquiryPage.do", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, Object> userInquiryPage(int page, int size, HttpSession session, Model model) throws Exception {
-		System.out.println("컨트롤러 page: "+ page+ " size: "+ size);
 		
 		String userid = (String) session.getAttribute("userid");
-		System.out.println("userid: "+ userid);
 		
 		int totalInquiries = userservice.countUserInquiries(userid);
 	    int totalPages = (int) Math.ceil((double) totalInquiries / size);
-	    System.out.println("totalInquiries: "+ totalInquiries+ " totaPages: " + totalPages);
 	    
 	    List<UserInquiryVO> inquiries = userservice.userMyInquiry(userid, page, size);
-        System.out.println("pagtinatedInquires: "+ inquiries.toString());
 	    
 	    HashMap<String, Object> response = new HashMap<>();
 	    response.put("inquiries", inquiries);
 	    response.put("currentPage", page);
 	    response.put("totalPages", totalPages);
-	    System.out.println("response: "+ response.toString());
         return response;	    
 	}
 }

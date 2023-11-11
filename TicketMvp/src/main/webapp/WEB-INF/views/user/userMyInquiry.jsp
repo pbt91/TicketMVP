@@ -189,38 +189,15 @@
 							</div>
 						</div>
 					</div>
-
-
-
 				</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			</div>
 		</div>
 		<!-- end of div#content -->
 	</div>
 	<!-- end of div#container-->
-
-
 	<div id="footer">
 		<jsp:include page="/WEB-INF/views/main/main_footer.jsp" />
 	</div>
-
-
 </body>
 </html>
 

@@ -145,19 +145,18 @@ $(function () {
 	    loadPage(selectedPage);
 	});
     
-    //페이지 번호 적용 method
     function loadPage(pageNumber) {
 	    $.ajax({
 	        url: "/TicketMvp/user/userInquiryPage.do",
 	        type: "GET",
 	        data: {
 	            page: pageNumber,
-	            size: 20 
+	            size: 20
 	        },
-	        dataType:'json',
-	        success: function(response) {     
-				console.log(response);
-
+	        dataType: 'json',
+	        success: function (response) {
+	            console.log(response);
+	
 	            // Extract data from the JSON response
 	            var inquiries = response.inquiries;
 	            var currentPage = response.currentPage;
@@ -166,6 +165,18 @@ $(function () {
 	            // Update the inquiry list in the HTML
 	            var boardList = $(".board_list");
 	            boardList.empty();
+	
+	            // Add the top header row
+	            var topHeader = `
+	                <div class="top">
+	                    <div class="num">번호</div>
+	                    <div class="title">제목</div>
+	                    <div class="writer">글쓴이</div>
+	                    <div class="date">작성일</div>
+	                    <div class="reply">답글</div>
+	                </div>
+	            `;
+	            boardList.append(topHeader);
 	
 	            if (inquiries != null && inquiries.length > 0) {
 	                $.each(inquiries, function (index, inquiry) {
@@ -204,10 +215,87 @@ $(function () {
 	                boardPage.append(`<a href="javascript:loadPage(${currentPage + 1})" class="bt next">&gt;</a>`);
 	            }
 	        },
-	        error: function(error) {
+	        error: function (error) {
 	            console.error("Error during AJAX call: ", error);
 	        }
 	    });
 	}
 })
+
+function loadPage(pageNumber) {
+    $.ajax({
+        url: "/TicketMvp/user/userInquiryPage.do",
+        type: "GET",
+        data: {
+            page: pageNumber,
+            size: 20
+        },
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+
+            // Extract data from the JSON response
+            var inquiries = response.inquiries;
+            var currentPage = response.currentPage;
+            var totalPages = response.totalPages;
+
+            // Update the inquiry list in the HTML
+            var boardList = $(".board_list");
+            boardList.empty();
+
+            // Add the top header row
+            var topHeader = `
+                <div class="top">
+                    <div class="num">번호</div>
+                    <div class="title">제목</div>
+                    <div class="writer">글쓴이</div>
+                    <div class="date">작성일</div>
+                    <div class="reply">답글</div>
+                </div>
+            `;
+            boardList.append(topHeader);
+
+            if (inquiries != null && inquiries.length > 0) {
+                $.each(inquiries, function (index, inquiry) {
+                    var replyStatus = inquiry.replydate ? "완료" : "대기";
+                    var inquiryItem = `
+                        <div>
+                            <div class="num">${inquiry.helpid}</div>
+                            <div class="title">
+                                <a href="javascript:loadInquiry(${inquiry.helpid})">${inquiry.helptitle}</a>
+                            </div>
+                            <div class="writer">${inquiry.userid}</div>
+                            <div class="date">${inquiry.helpdate}</div>
+                            <div class="reply">${replyStatus}</div>
+                        </div>
+                    `;
+                    boardList.append(inquiryItem);
+                });
+            } else {
+                boardList.append('<span class="tb-center" style="font-size: 20px; position: absolute;">아직 작성된 글이 없습니다</span>');
+            }
+
+            // Update the pagination links
+            var boardPage = $(".board_page");
+            boardPage.empty();
+
+            if (currentPage != 1) {
+                boardPage.append(`<a href="javascript:loadPage(${currentPage - 1})" class="bt prev">&lt;</a>`);
+            }
+
+            for (var i = 1; i <= totalPages; i++) {
+                var activeClass = currentPage == i ? 'on' : '';
+                boardPage.append(`<a href="javascript:loadPage(${i})" class="num ${activeClass}">${i}</a>`);
+            }
+
+            if (currentPage != totalPages) {
+                boardPage.append(`<a href="javascript:loadPage(${currentPage + 1})" class="bt next">&gt;</a>`);
+            }
+        },
+        error: function (error) {
+            console.error("Error during AJAX call: ", error);
+        }
+    });
+}
+
 
