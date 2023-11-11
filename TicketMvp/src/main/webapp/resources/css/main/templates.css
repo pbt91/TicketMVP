@@ -6,7 +6,7 @@
 	height: auto;									
 	min-height: 750px;								
 	min-width: 500px;								
-	background-color: #f8f9fa;
+	background-color: #505050;
 }
 
 #container>#sidebar {
@@ -28,36 +28,13 @@ iframe {
 }
 
 
-/*메인페이지에 있는 전체 <div>코드입니다. 혹시 몰라서 넣었어요!*/
-/* html {
-    height: 100%;
-}
-body {
-    min-height: 100%;
-}
-
-body {
-	margin: 0;
-	font-size: 1rem;
-	font-weight: 400;
-	line-height: 1.5;
-	/* color: #858796; */
-	text-align: left;
-	background-color: #fff;
-	border : none;
-}
-
 #body-wrapper {
-	flex-grow: 1; 푸터 위의 콘텐츠가 화면을 채울 수 있도록 설정
+	flex-grow: 1; /* 푸터 위의 콘텐츠가 화면을 채울 수 있도록 설정 */
 	display: flex;
 	flex-direction: column;
 }
 
-#body-content {
-	text-align: center;
-	padding-bottom: 100px; footer의 높이 조절
-	padding: 100px; 푸터와 콘텐츠 사이 여백 조절
-} */
+
 
 #header, .login-header, #footer {
     width: 100%; /* 헤더, 푸터는 화면 너비에 맞게 설정 */
@@ -76,7 +53,7 @@ body {
 
 .top-header .header-links {
 	position: absolute;
-	top : 50%;
+	top : 30%;
 	right : 2%;
 	font-size : 20px;
 	color: white;
@@ -134,52 +111,65 @@ body {
 }
 
 /* 푸터 스타일 */
-
-.footer {
-	width: 100%;
-	background-color: #333;
-	color: white;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	bottom: 0; left: 0;
-	height: 150px;
+#footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    height: 150px;
 }
 
-.footer_inner {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+#footer_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
 }
 
-.footer_links ul {
-	list-style: none;
-	padding: 0;
-	display: flex;
-	margin-right: 20px; 
+#footer_links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.footer_links li {
-	margin-right: 20px;
+#footer_links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.footer a {
-	color: white;
-	text-decoration: none;
+#footer_links li {
+    margin-right: 20px;
 }
 
-.footer_logo {
-	font-weight: bold;
-	font-size: 24px;
+#footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
 }
 
-.footer_inner .footer_team7 {
-	position : right;
+#footer_logo {
+  font-weight: bold;
+    font-size: 24px; /* 원하는 폰트 크기로 조정 */
+    margin-left: auto;
+    margin-right: auto; /* 가운데 정렬을 위해 추가 */
 }
 
-.footer_inner .footer_team7 p {
-	margin:2px;
+#footer_inner #footer_team7 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
+#footer_inner #footer_team7 p {
+    margin: 2px;
+}
 
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.ticketmvp.domain.AthleteVO;
 import com.ticketmvp.domain.MatchVO;
 import com.ticketmvp.service.AthleteService;
@@ -40,6 +41,7 @@ public class AthleteController {
 	public String showMain(Model model) {
 		List<AthleteVO> athletes = athleteService.getAthleteImagePaths();
 		model.addAttribute("athletes", athletes);
+		System.out.println(model.toString());
 		return "main_page";
 	}
 
@@ -51,6 +53,8 @@ public class AthleteController {
 		AthleteVO athlete = athleteService.getAthleteInformation(athleteName);
 		model.addAttribute("athlete", athlete);
 
+		System.out.println(model.toString());
+		
 		// 선수가 속한 구단의 경기 일정 가져오기
 		List<MatchVO> matches = athleteService.getMatchesForClub(athleteName);
 		model.addAttribute("matches", matches);
@@ -124,6 +128,7 @@ public class AthleteController {
 		}
 	}
 
+
 	@RequestMapping(value = "/removeLike", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> removeLike(@RequestParam("matchId") Integer matchId, HttpSession session) {
@@ -151,3 +156,4 @@ public class AthleteController {
 	}
 
 }
+

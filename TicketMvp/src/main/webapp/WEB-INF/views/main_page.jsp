@@ -9,6 +9,7 @@
 <title>메인화면</title>
 <link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/main/main.css">
 <link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/main/templates.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
 <script src='../resources/js/main.js' type="text/javascript"></script>
@@ -35,7 +36,7 @@
 									<a
 										href="${pageContext.request.contextPath}/athlete/athlete_information.do?athletename=${athlete.athletename}">
 										<img
-										src="/TicketMvp/resources/images/member_images/${athlete.athleteimgfile}"
+										src="/TicketMvp/resources/images/member_images/${athlete.athleteimgfilefull}_${athlete.athleteimgfile}"
 										alt="선수 이미지" />
 									</a>
 								</div>

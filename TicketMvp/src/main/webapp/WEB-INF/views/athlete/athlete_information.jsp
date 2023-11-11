@@ -42,16 +42,38 @@
 							<!-- 선수 이미지가 들어가는 부분의 박스 -->
 							<div class="image-layer">
 								<img id="athlete-image"
-									src="${pageContext.request.contextPath}/resources/images/member_images/${athlete.athleteimgfile}"
+									src="${pageContext.request.contextPath}/resources/images/member_images/${athlete.athleteimgfilefull}_${athlete.athleteimgfile}"
 									alt="선수 이미지" />
 							</div>
 						</div>
+
 						<!-- 선수 정보가 들어가는 부분 -->
 						<div class="gird-right">
 							<div class="text-layer">
 								<h1 id="athlete-name">${athlete.athletename}</h1>
 								<p id="athlete-info">${athlete.info}</p>
 								<p id="athlete-career">경력: ${athlete.career}</p>
+
+
+						<div class="athlete-schedule">
+							<h1 id="match-name">경기 일정</h1>
+							
+							<div class="grid-container">
+								<c:forEach var="match" items="${matches}">
+									<div class="gird-item">
+										<p class="match-info">
+											<input type="hidden" value="${match.matchid}">
+											<!-- 하트 이모티콘 삽입 -->
+											<i class="bi bi-heart" data-matchid="${match.matchid}"></i>
+
+											${match.homeclub} vs ${match.awayclub}   일자: ${match.matchdate}
+											시간: ${match.matchtime}
+
+											<button class="payment-button"
+												data-matchid="${match.matchid}">예매</button>
+										</p>
+									</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>

@@ -82,22 +82,63 @@ $(function(){
         });
     }
 
-    // 찜 삭제하는 함수
-    function removeLike(matchId) {
-        $.ajax({
-            url: "/TicketMvp/athlete/removeLike",
-            type: "POST",
-            data: {
-                matchId: matchId
-            },
-            success: function(response) {
-                console.log("찜 삭제 성공");
-            },
-            error: function(error) {
-                console.error("찜 삭제 실패", error);
-            }
-        });
-    }
+
+        function checkLikeStatus(matchId) {
+		    $.ajax({
+		        url: "/TicketMvp/athlete/checkLikeStatus",
+		        type: "GET",
+		        data: {
+		            matchId: matchId
+		        },
+		        success: function (response) {
+		        	console.log("좋아요 상태 확인:", response);
+		        	
+		        
+		            if (response.liked) {
+		                // 사용자가 좋아요를 눌렀다면 하트 아이콘을 채워진 상태로 변경
+		                $(".bi-heart[data-matchid='" + matchId + "']").addClass("bi-heart-fill");
+		            }
+		        },
+		        error: function (error) {
+		            console.error("좋아요 상태 확인 중 오류", error);
+		        }
+		    });
+		}
+
+        // 찜 추가하는 함수
+        function addLike(matchId) {
+            $.ajax({
+                url: "/TicketMvp/athlete/addLike",
+                type: "POST",
+                data: {
+                    matchId: matchId
+                },
+                success: function(response) {
+                    console.log("찜 추가 성공");
+                },
+                error: function(error) {
+                    console.error("찜 추가 실패", error);
+                }
+            });
+        }
+
+        // 찜 삭제하는 함수
+        function removeLike(matchId) {
+            $.ajax({
+                url: "/TicketMvp/athlete/removeLike",
+                type: "POST",
+                data: {
+                    matchId: matchId
+                },
+                success: function(response) {
+                    console.log("찜 삭제 성공");
+                },
+                error: function(error) {
+                    console.error("찜 삭제 실패", error);
+                }
+            });
+        }
+
 });
 
 

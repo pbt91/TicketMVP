@@ -5,13 +5,13 @@
 
 	<select id="getAthleteImagePaths"
 		resultType="com.ticketmvp.domain.AthleteVO">
-		SELECT athletename, athleteimgfile
+		SELECT *
 		FROM athlete
 	</select>
 
 	<select id="getAthleteInformation"
 		resultType="com.ticketmvp.domain.AthleteVO">
-		SELECT athletename, info, career, athleteimgfile
+		SELECT *
 		FROM
 		athlete
 		WHERE athletename = #{athletename}
