@@ -25,6 +25,32 @@
 	        }
 	    });
 	    
+	    
+	    // 경기 등록 폼 제출 전 필드 유효성 검사
+	    function validateTicketForm() {
+	        // 필드값을 가져오거나 검사하는 코드
+	        var homeclub = document.getElementById('homeclub').value;
+	        var awayclub = document.getElementById('awayclub').value;
+	        var matchdate = document.getElementById('matchdate').value;
+	        var matchtime = document.getElementById('matchtime').value;
+	
+	        // 필드값이 비어있는 경우 경고 표시 및 폼 제출 방지
+	        if (homeclub === '' || awayclub === '' || matchdate === '' || matchtime === '') {
+	            alert('경기 정보를 다 입력해주세요.');
+	            return false; // 폼 제출을 중지
+	        }
+	
+	        // 필드가 비어있지 않다면 폼을 제출
+	        return true;
+	    }
+	
+	    // 폼 제출 버튼 클릭 시 유효성 검사를 수행
+	    $('#matchsubmit').on('click', function(event) {
+	        if (!validateTicketForm()) {
+	            event.preventDefault(); // 폼 제출 방지
+	        }
+	    });
+	    
 	    // 선수 등록 폼 제출 전 필드 유효성 검사
 	    function validateAthleteForm() {
 	        // 필드값을 가져오거나 검사하는 코드
@@ -88,19 +114,15 @@ $('button#deleteAthlete').click(function() {
     var athletename = $(this).closest('tr').find('a').attr('href').split('=')[1];
     var url = "deleteAthletename.do"; // Spring 컨트롤러의 URL 경로
 
-    if (confirm("선택한 티켓을 삭제하시겠습니까?")) {
+    if (confirm("선택한 선수를 삭제하시겠습니까?")) {
         $.ajax({
             type: "POST",
             url: url,
             data: { athletename: athletename },
             dataType: "json", // JSON 데이터 타입으로 요청
             success: function (response) {
-                if (response.result === "success") {
                     location.reload();
-                } else {
-                 location.reload();
-                    alert("삭제에 실패했습니다.");
-                }
+
             },
             error: function(err) {
                 alert("오류가 발생했습니다.");
@@ -115,19 +137,15 @@ $('button#deleteUser').click(function() {
     var userid = $(this).closest('tr').find('td:first').text();
     var url = "deleteUserid.do"; // Spring 컨트롤러의 URL 경로
 
-    if (confirm("선택한 티켓을 삭제하시겠습니까?")) {
+    if (confirm("선택한 유저를 삭제하시겠습니까?")) {
         $.ajax({
             type: "POST",
             url: url,
             data: { userid: userid },
             dataType: "json", // JSON 데이터 타입으로 요청
             success: function (response) {
-                if (response.result === "success") {
                     location.reload();
-                } else {
-                 location.reload();
-                    alert("삭제에 실패했습니다.");
-                }
+
             },
             error: function(err) {
                 alert("오류가 발생했습니다.");
@@ -142,19 +160,14 @@ $('button#deleteMatch').click(function() {
     var matchid = $(this).closest('tr').find('td:nth-child(7)').text(); // 7번째 열은 경기 번호
     var url = "deleteMatch.do"; // Spring 컨트롤러의 URL 경로
 
-    if (confirm("선택한 티켓을 삭제하시겠습니까?")) {
+    if (confirm("선택한 경기를 삭제하시겠습니까?")) {
         $.ajax({
             type: "POST",
             url: url,
             data: { matchid: matchid },
             dataType: "json", // JSON 데이터 타입으로 요청
             success: function (response) {
-                if (response.result === "success") {
                     location.reload();
-                } else {
-                location.reload();
-                    alert("삭제에 실패했습니다.");
-                }
             },
             error: function(err) {
                 alert("티켓 먼저 삭제해주세요.");
@@ -171,21 +184,18 @@ $('button#deleteClub').click(function() {
     var clubname = $(this).closest('tr').find('a').attr('href').split('=')[1];
     var url = "deleteClubname.do"; // Spring 컨트롤러의 URL 경로
 
-    if (confirm("선택한 티켓을 삭제하시겠습니까?")) {
+    if (confirm("선택한 클럽을 삭제하시겠습니까?")) {
         $.ajax({
             type: "POST",
             url: url,
             data: { clubname: clubname },
             dataType: "json", // JSON 데이터 타입으로 요청
             success: function (response) {
-                if (response.result === "success") {
                     location.reload();
-                } else {
-                    alert("삭제에 실패했습니다.");
-                }
+
             },
             error: function(err) {
-                alert("경기 먼저 삭제해주세요.");
+                alert("경기 및 선수 먼저 삭제해주세요.");
                 console.log(err);
             }
         });
@@ -219,9 +229,9 @@ function drawChartFromData(data) {
 
     for (var i = 0; i < data.length; i++) {
         chartData.push([
-            data[i].athleteName,
-            data[i].ticketName,
-            data[i].ticketRemain
+            data[i].athletename,
+            data[i].ticketname,
+            data[i].ticketremain
         ]);
     }
 

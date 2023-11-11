@@ -20,6 +20,7 @@ public class AdminVO {
 	private long stadiumimgsize ;		// 경기장 이미지 사이즈 
 	
 	
+	
 	// 경기장 파일 넣기 위한 기본 설정
 	MultipartFile stadiumImg ; // input 태그에 type='file' name과 동일
 	public MultipartFile getStadiumImg() {
@@ -71,7 +72,7 @@ public class AdminVO {
 			
 			// 실제파일 저장 
 			// 추후에 웹서버 경로를 찾아서 수정 작업
-			File f = new File("C:\\Users\\ICT03-20\\git\\TicketMVP\\TicketMvp\\src\\main\\webapp\\resources\\images\\club_images\\" + clubimgfilefull+"_"+clubimgfile);
+			File f = new File("C:\\Users\\ICT03-20\\git\\TicketMVP\\TicketMvp\\src\\main\\webapp\\resources\\images\\club_images\\"+clubimgfilefull+"_"+clubimgfile);
 			
 			try {
 				clubImg.transferTo(f);
@@ -347,7 +348,12 @@ public class AdminVO {
 	}
 
 	public void setJoinstatus(Integer joinstatus) {
-		this.joinstatus = joinstatus;
+	    if (joinstatus != null) {
+	        this.joinstatus = joinstatus;
+	    } else {
+	        // joinstatus가 null인 경우 처리, 예를 들어 기본값 설정
+	        this.joinstatus = 0; // 여기에 원하는 기본값을 설정할 수 있습니다.
+	    }
 	}
 	
 	
@@ -359,6 +365,7 @@ public class AdminVO {
 	private String depositno ; 
 	private String name ; 
 	private String phone ;
+	
 	
 
 	@Override
@@ -400,11 +407,8 @@ public class AdminVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getJoinstatus() {
+	public Integer getJoinstatus() {
 		return joinstatus;
-	}
-	public void setJoinstatus(int joinstatus) {
-		this.joinstatus = joinstatus;
 	}
 	public String getDepositno() {
 		return depositno;

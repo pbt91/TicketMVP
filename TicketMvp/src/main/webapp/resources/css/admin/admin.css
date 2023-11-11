@@ -1,0 +1,308 @@
+/* templates. css */
+
+/* 헤더, 푸터, 사이드 바 전체 윤곽 */
+#container {
+	display: flex;
+	height: auto;									
+	min-height: 750px;								
+	min-width: 500px;								
+	background-color: #505050;
+}
+
+#container>#sidebar {
+	flex: 1;
+   	background-color:#333;
+	max-height: 1000px;
+	min-width: 200px;
+}
+
+#container>#content {
+	flex: 9;
+	height: 100%;
+	padding : 15px;
+}
+
+iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+#body-wrapper {
+	flex-grow: 1; /* 푸터 위의 콘텐츠가 화면을 채울 수 있도록 설정 */
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+#header, .login-header, #footer {
+    width: 100%; /* 헤더, 푸터는 화면 너비에 맞게 설정 */
+    max-width: 100%; /* 너비가 100%를 넘지 않도록 설정 */
+}
+
+
+
+/* 헤더 login status */
+
+.top-header {
+	height: 70px;
+	background-color: #333;
+	position : relative;
+}
+
+.top-header .header-links {
+	position: absolute;
+	top : 30%;
+	right : 2%;
+	font-size : 20px;
+	color: white;
+}
+
+.top-header .header-links a {
+	color: white;
+	text-decoration: none;
+	margin: 10px;
+}
+
+/* 헤더 logo-banner-header */
+
+
+.logo-banner-header {
+	display: flex;
+	align-items: center;
+	background-color: black;
+}
+
+.logo-banner-header.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*사이드 바 */
+
+.sidebar {
+	background-color: #333;
+	color: white;
+	width: 150px;
+	padding: 20px;
+}
+
+.sidebar .menu {
+	padding-bottom: 10px;
+	padding-top: 10px;
+	list-style: none;
+}
+
+.sidebar .menu li {
+	margin-bottom: 10px;
+	
+}
+
+.sidebar .menu a {
+	color: white;
+	text-decoration: none;
+	font-size: 17px; /* 수정된 부분 */
+	
+}
+
+.sidebar ul li a {
+	font-size: 15px;
+}
+
+/* 푸터 스타일 */
+
+.footer {
+	width: 100%;
+	background-color: #333;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	bottom: 0; left: 0;
+	height: 150px;
+}
+
+.footer_inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.footer_links ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	margin-right: 20px; 
+}
+
+.footer_links li {
+	margin-right: 20px;
+}
+
+.footer a {
+	color: white;
+	text-decoration: none;
+}
+
+.footer_logo {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.footer_inner .footer_team7 {
+	position : right;
+}
+
+.footer_inner .footer_team7 p {
+	margin:2px;
+}
+
+
+#dataTable {
+            text-align: center;
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+}
+
+#dataTable th, #dataTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        #dataTable th {
+            background-color: #8e8e8e;
+            color: white;
+        }
+
+        #dataTable td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        #dataTable tr:nth-child(even) {
+            background-color: #f8f9fc;
+        }
+        
+        
+        
+        table.tb {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table.tb th, table.tb td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table.tb th, .text-gray-800 ,.text-primary  {
+            background-color: #8e8e8e;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+        
+/* 기존 스타일 유지 */
+table.tb th, table.tb td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box; /* 추가한 부분 */
+}
+
+/* input 태그 스타일 수정 */
+table.tb textarea,
+table.tb input {
+    width: 101%;
+    padding: 5px;
+    margin: 0px 0;
+    box-sizing: border-box;
+    border: none; 
+}
+
+
+
+/* input 태그에 필수 입력 표시를 위한 스타일 추가 (예: .es 클래스가 적용된 경우) */
+table.tb textarea,
+table.tb input {
+    border: 1px solid ;
+    border: none; 
+}
+
+
+/*링크 관련 */
+a {
+    color: black; /* 링크의 색상 지정 */
+    text-decoration: none; /* 기본적으로 밑줄 없앰 */
+}
+
+/* 링크에 마우스를 올렸을 때의 스타일 */
+a:hover {
+    text-decoration: underline; /* 밑줄 추가 */
+    color: #0056b3; /* 올렸을 때 색상 변경 */
+}
+
+/* 버튼에 마우스를 올렸을 때의 스타일 */
+.btn:hover {
+    text-decoration: none; /* 버튼에서는 밑줄 없앰 */
+    color: #fff; /* 버튼 텍스트 색상 변경 */
+}
+
+/* "경기 및 티켓등록" 링크에 마우스를 올렸을 때의 스타일 */
+.ticketRegister:hover {
+    text-decoration: underline; /* 밑줄 추가 */
+    color: #dc3545; /* 올렸을 때 색상 변경 */
+}
+
+/* 링크들 버튼 느낌으로 */
+
+#actionButtons a {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* 버튼을 둥글게 만들기 위한 속성 */
+}
+
+#actionButtons a:hover {
+    background-color: #0056b3;
+}
+
+/* t삭제 버튼 */
+
+#dataTable .btn-danger,
+#dataTable .btn-danger:hover,
+#dataTable .btn-danger:focus {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 5px; /* 둥글게 만들기 */
+    padding: 8px 15px; /* 내용과의 간격 조절 */
+    color: #fff; /* 텍스트 색상을 흰색으로 설정 */
+    font-weight: bold; /* 텍스트 굵게 설정 */
+}
+
+#actionButtons .btn-danger,
+#actionButtons .btn-danger:hover,
+#actionButtons .btn-danger:focus {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 5px; /* 둥글게 만들기 */
+    padding: 8px 15px; /* 내용과의 간격 조절 */
+    color: #fff; /* 텍스트 색상을 흰색으로 설정 */
+    font-weight: bold; /* 텍스트 굵게 설정 */
+}

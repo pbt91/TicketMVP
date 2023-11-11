@@ -1,9 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%  
+response.setHeader("Cache-Control","no-store");  
+response.setHeader("Pragma","no-cache");  
+response.setDateHeader("Expires",0);  
+if (request.getProtocol().equals("HTTP/1.1"))        
+	response.setHeader("Cache-Control", "no-cache");
+%>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/admin/admin.js" type="text/javascript"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,19 +23,10 @@
 
     <title>SB Admin 2 - Tables</title>
 
-    <!-- Custom fonts for this template -->
-    <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    
-    <link
+   <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/resources/css1/sb-admin-2.min.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/resources/css1/sb-admin-2.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this page -->
-    <link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/admin/admin.css">
 
 </head>
  <style>
@@ -40,16 +42,27 @@
   }
 </style>
     <body>
-    <jsp:include page="headbar.jsp" />
-    <div class="container-fluid">
+    
+    <div id="body-wrapper">
+	<div id="body-content">
+		<div id="header">
+			<jsp:include page="/WEB-INF/views/admin/admin_header.jsp" />
+		</div>
+
+		<div id="container" style="background-color: white;">
+			<div id="sidebar">
+			<jsp:include page="/WEB-INF/views/admin/admin_side.jsp" />
+			</div>
+
+			<div id="content">
+				<div class="container-fluid">
     				<br></br>
     <h1 class="h3 mb-2 text-gray-800">경기 및 티켓 등록</h1>
                 <form action="updateMatchfrm.do"  method="get">
      <div class="card shadow mb-4">
      	<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">경기 등록</h6>
+			<h3 class="m-0 font-weight-bold text-primary">경기 등록</h3>
 		</div>
-		   <th:block layout:fragment="content">
         <div class="content">
 
 
@@ -59,43 +72,39 @@
                         <colgroup>
                             <col style="width:15%;" /><col style="width:35%;" /><col style="width:15%;" /><col style="width:35%;" />
                         </colgroup>
-                        <tbody>
+                        <tbody>							                            
                             <tr>
-                                <th scope="row">등록일</th>
-                                <td colspan="3"><input type="text" id="createdDate" name="createdDate" readonly /></td>
-                            </tr>
-							                            
-                            <tr>
-                                <th>홈구단 <span class="es">필수 입력</span></th>
+                                <th>홈구단</th>
                                 <td colspan="3"><input type="text" id="homeclub" name="homeclub" value="${ticketmo.homeclub}" placeholder="홈구단 입력해 주세요." /></td>
                             </tr>
                             <tr>
-                                <th>원정 구단<span class="es">필수 입력</span></th>
+                                <th>원정 구단</th>
                                 <td colspan="3"><input type="text" id="awayclub" name="awayclub" value="${ticketmo.awayclub}"  placeholder="원정 구단 입력해 주세요." /></td>
                             </tr>
 							
 							<tr>
-                                <th>경기 날짜<span class="es">필수 입력</span></th>
+                                <th>경기 날짜</th>
                                 <td colspan="3"><input type="date" id="matchdate" name="matchdate" value="${ticketmo.matchdate}"  placeholder="경기 날짜 입력해 주세요."  /></td>
                             </tr>
                             
                             <tr>
-                                <th>경기 시간<span class="es">필수 입력</span></th>
+                                <th>경기 시간</th>
                                 <td colspan="3"><input type="time" id="matchtime" name="matchtime" value="${ticketmo.matchtime}"  placeholder="경기 시간 입력해 주세요."  /></td>
                             </tr>
-							<td colspan="2" align="center"><input type="submit"	value=" 경기 수정 " />
-							</td>	                        
+							<tr colspan="2" align="center">
+							<td>
+							<input type="submit"	value=" 경기 수정 " />
+							</td>
+							</tr>	                        
                         </tbody>
                     </table>
         </div> <!--/* .content */-->
-    </th:block>
      </div>
                 	
        <div class="card shadow mb-4">
      	<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">티켓 등록</h6>
+			<h3 class="m-0 font-weight-bold text-primary">티켓 등록</h3>
 		</div>   
-		   <th:block layout:fragment="content">
         <div class="content">
 				<input name="ticketid" type="hidden" value="${ticketmo.ticketid}" />
 		            	<table class="tb tb_row">
@@ -104,58 +113,50 @@
                         </colgroup>	
 		            	  <tbody>    	
                             <tr>
-                                <th>경기 번호 <span class="es">필수 입력</span></th>
+                                <th>경기 번호 </th>
                                 <td colspan="3"><input type="number" id="matchid" name="matchid" value="${ticketmo.matchid}" readonly /></td>
                             </tr>
                             <tr>
-                                <th>티켓명 <span class="es">필수 입력</span></th>
+                                <th>티켓명 </th>
                                 <td colspan="3"><input type="text" id="ticketname" name="ticketname" value="${ticketmo.ticketname}"  placeholder="티켓명 입력해 주세요." /></td>
                             </tr>
                             
 							<tr>
-                                <th>티켓 가격<span class="es">필수 입력</span></th>
+                                <th>티켓 가격</th>
                                 <td colspan="3"><input type="number" id="ticketprice" name="ticketprice"value="${ticketmo.ticketprice}"  placeholder="티켓 가격 입력해 주세요." /></td>
                             </tr>
                             <tr>
-                                <th>티켓 전체 수량 <span class="es">필수 입력</span></th>
+                                <th>티켓 전체 수량</th>
                                 <td colspan="3"><input type="number" id="ticketall" name="ticketall" value="${ticketmo.ticketall}"  placeholder="티켓 전체 수량 입력해 주세요." /></td>
                             </tr>
 							 <tr>
-                                <th>티켓 남은 수량 <span class="es">필수 입력</span></th>
+                                <th>티켓 남은 수량 </th>
                                 <td colspan="3"><input type="number" id="ticketremain" name="ticketremain" value="${ticketmo.ticketremain}"  placeholder="티켓 남은 수량 입력해 주세요." /></td>
                             </tr>
                             
 							<tr>
 								<td colspan="2" align="center"><input type="submit"	value=" 티켓 수정 " /></td>
-								<td colspan="2" align="center"><input type="button" id="addTicket"	value=" 티켓 추가 " />
 							</td>
 								
 							</tr>
 							</tbody>
                           </table> 
-                   </div> <!--/* .content */-->
-    	</th:block>     
-       </div>
-<%--                 <p class="btn_set">
-                    <button type="button" id="saveBtn" onclick="ticketRegister();" class="btns btn_st3 btn_mid">경기 및 티켓 등록</button>
-                    <a href="${pageContext.request.contextPath}/adminViewsJspFile/ticket.do" class="btns btn_bdr3 btn_mid">경기 및 티켓 관리로 돌아가기</a>
-                </p> --%>
-
-     
+                   		</div> <!--/* .content */-->
+       				</div>
      
                     </form> 
-     </div>
-        <div class="d-flex" id="wrapper">
-            <!-- Sidebar-->
-            <div id="page-content-wrapper">
-                <!-- Page content-->
-            </div>
-        </div>
-        <!-- Bootstrap core JS-->
+    			 </div>
+			</div>
+		</div>
+
+		<div id="footer">
+			<jsp:include page="/WEB-INF/views/admin/admin_footer.jsp" />
+		</div>
+	</div>
+</div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
         <!-- Core theme JS-->
          <script src="${pageContext.request.contextPath}/resources/js/admin/admin.js"></script>
     </body>
-  <jsp:include page="footer.jsp" />    
 </html>
