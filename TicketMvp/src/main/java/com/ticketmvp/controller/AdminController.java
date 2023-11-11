@@ -233,21 +233,12 @@ public class AdminController {
 		System.out.println(av);
 	}
 
-//	@RequestMapping("/athleteModifysubmit.do")
-//	public String athleteModifysubmit(AdminVO vo, Model m)throws IOException, InterruptedException{
-//		System.out.println("athleteModifysubmit.do");
-//		AdminService.athleteModifysubmit(vo) ; 
-//		//m.addAttribute("updateResult");
-//		 Thread.sleep(1500);
-//		return "redirect:athleteManagement.do";
-//	}	
-//	
 	// 클럽 이미지 및 정보 수정 
 	@RequestMapping("/clubManageModify.do")
 	public String clubManageModify(AdminVO vo) throws IOException, InterruptedException {
 		System.out.println("clubManageModify.do");
 		AdminService.clubManageModify(vo) ;
-		Thread.sleep(1500);
+		Thread.sleep(1700);
 		return "redirect:clubManagement.do";
 	}
 	

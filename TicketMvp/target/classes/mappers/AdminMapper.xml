@@ -224,7 +224,7 @@ FROM `athlete` a
      JOIN `ticket` t ON m.matchid = t.matchid
 </select>
 
-
+<!--  지울 대상 -->
 
 	
 </mapper>
