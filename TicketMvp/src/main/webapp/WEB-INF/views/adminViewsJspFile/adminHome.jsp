@@ -5,7 +5,6 @@
 <html lang="en">
 
 <body>
-<jsp:include page="headbar.jsp" />
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 				<br></br>
@@ -65,6 +64,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-<jsp:include page="footer.jsp" />
 </html>
-
+>>>>>>> refs/remotes/origin/admin

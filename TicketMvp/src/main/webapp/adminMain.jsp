@@ -4,10 +4,36 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>메인화면</title>
+	<!-- 필수, 헤더에 넣기 -->
+	<link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/admin/admin.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style type="text/css">
+
+#content {
+back-ground : white ; 
+
+}
+</style>
 <body>
-<jsp:include page="WEB-INF/views/adminViewsJspFile/headbar.jsp" />
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+<div id="body-wrapper">
+	<div id="body-content">
+		<div id="header">
+			<jsp:include page="/WEB-INF/views/admin/admin_header.jsp" />
+		</div>
+
+		<div id="container" style="background-color: white;">
+			<div id="sidebar">
+				<!-- 여기 사이드바 -->
+				<jsp:include page="/WEB-INF/views/admin/admin_side.jsp" />
+			</div>
+
+			<div id="content">
+			 	<div class="container-fluid">
 				<br></br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">회원관리</h1>
@@ -62,8 +88,18 @@
 									</script>
                 </div>
                     </div>
+			
+				<!-- 여기내용 -->
+			</div>
+		</div>
+
+		<div id="footer">
+			<jsp:include page="/WEB-INF/views/admin/admin_footer.jsp" />
+		</div>
+	</div>
+</div>
+                <!-- Begin Page Content -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<jsp:include page="WEB-INF/views/adminViewsJspFile/footer.jsp" />
 
 </html>

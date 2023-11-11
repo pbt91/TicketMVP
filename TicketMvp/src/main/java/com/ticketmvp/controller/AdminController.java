@@ -1,7 +1,6 @@
 package com.ticketmvp.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ticketmvp.domain.AdminVO;
 import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.service.AdminService;
@@ -125,7 +126,7 @@ public class AdminController {
 	}
 
 	
-	  // 경기 등록
+	  // 경기 및 티켓 등록
 	@RequestMapping(value= "/saveMatchTicket.do") 
 	public String saveMatchTicket(AdminVO vo) throws IOException {
 	AdminService.saveMatchTicket(vo);
@@ -233,19 +234,10 @@ public class AdminController {
 		System.out.println(av);
 	}
 
-//	@RequestMapping("/athleteModifysubmit.do")
-//	public String athleteModifysubmit(AdminVO vo, Model m)throws IOException, InterruptedException{
-//		System.out.println("athleteModifysubmit.do");
-//		AdminService.athleteModifysubmit(vo) ; 
-//		//m.addAttribute("updateResult");
-//		 Thread.sleep(1500);
-//		return "redirect:athleteManagement.do";
-//	}	
-//	
+
 	// 클럽 이미지 및 정보 수정 
 	@RequestMapping("/clubManageModify.do")
 	public String clubManageModify(AdminVO vo) throws IOException, InterruptedException {
-		System.out.println("clubManageModify.do");
 		AdminService.clubManageModify(vo) ;
 		Thread.sleep(1500);
 		return "redirect:clubManagement.do";
@@ -292,21 +284,15 @@ public class AdminController {
 	// 차트 관련
     @RequestMapping("/chartTicketClubData.do")
     @ResponseBody
-    public List<Map<String, Object>> chartTicketClubData(AdminVO vo) {
+    public String chartTicketClubData(AdminVO vo) throws JsonProcessingException {
+    	System.out.println("차트 컨트롤러");
         List<AdminVO> result = AdminService.chartTicketClubData(vo);
+        
+        // 데이터를 JSON 형식으로 변환
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonData = objectMapper.writeValueAsString(result);
 
-        List<Map<String, Object>> chartData = new ArrayList<>();
-
-        for (AdminVO data : result) {
-            Map<String, Object> rowData = new HashMap<>();
-            rowData.put("athleteName", data.getAthletename());
-            rowData.put("ticketName", data.getTicketname());
-            rowData.put("ticketRemain", data.getTicketremain());
-
-            chartData.add(rowData);
-        }
-
-        return chartData;
+        return jsonData;
     }
 
 }

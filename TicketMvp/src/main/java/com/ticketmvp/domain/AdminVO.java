@@ -56,6 +56,7 @@ public class AdminVO {
 	
 	
 	
+	
 	// 경기장 파일 넣기 위한 기본 설정
 	MultipartFile stadiumImg ; // input 태그에 type='file' name과 동일
 	public MultipartFile getStadiumImg() {
@@ -108,6 +109,7 @@ public class AdminVO {
 			// 실제파일 저장 
 			// 추후에 웹서버 경로를 찾아서 수정 작업
 			File f = new File("C:\\Users\\ICT03-01\\git\\TicketMvp\\src\\main\\webapp\\resources\\images\\club_images\\" + clubimgfilefull+"_"+clubimgfile);
+
 			
 			try {
 				clubImg.transferTo(f);
@@ -151,6 +153,6 @@ public class AdminVO {
 		}
 	}
 		
-	
+
 
 }

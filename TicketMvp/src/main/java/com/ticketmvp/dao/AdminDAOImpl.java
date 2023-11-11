@@ -39,34 +39,36 @@ public class AdminDAOImpl implements AdminDAO{
 
 	// 티켓 및 경기  등록
 	public void saveMatchTicket(AdminVO vo) {
-		System.out.println("===> Mybatis saveMatchTicket() 호출");
-		System.out.println(vo);
-		if(vo.getTicketname() == null || vo.getTicketname().equals("")) {
-			mybatis.insert("AdminDAO.insertMatch", vo);
-		}else {
-			mybatis.insert("AdminDAO.insertMatch", vo);
-			System.out.println(vo);
-			Integer lastMatchId = mybatis.selectOne("AdminDAO.getLastMatchId");
-			System.out.println("마지막 경기 아이디"+lastMatchId);
-			if (lastMatchId != null) { 
-				System.out.println("널 아님 들어옴");
-				vo.setMatchid(lastMatchId);
-				System.out.println(vo.toString());
-				mybatis.insert("AdminDAO.saveMatchTicket", vo);
-				Integer getLastTickId = mybatis.selectOne("AdminDAO.getLastTickId");
-				vo.setTicketid(getLastTickId);
-				System.out.println(getLastTickId);
-				System.out.println( vo.getTicketall() ) ;
-				for (int i = 0; i < vo.getTicketall(); i++) {
-					mybatis.insert("AdminDAO.insertSeat", vo);
-					System.out.println(getLastTickId);
-				}
-			} else {
-				System.out.println("Last match ID is null.");
+	  System.out.println("===> Mybatis saveMatchTicket() 호출");
+	  System.out.println(vo);
+	  if(vo.getTicketname() == null || vo.getTicketname().equals("") ) {
+		  System.out.println("insertMatch 탄다");
+		  mybatis.insert("AdminDAO.insertMatch", vo);
+	  }else {
+	  mybatis.insert("AdminDAO.insertMatch", vo);
+	  System.out.println(vo);
+	  Integer lastMatchId = mybatis.selectOne("AdminDAO.getLastMatchId");
+	  System.out.println("마지막 경기 아이디"+lastMatchId);
+      if (lastMatchId != null ) { 
+    	  System.out.println("널 아님 들어옴");
+          vo.setMatchid(lastMatchId);
+          System.out.println(vo);
+          mybatis.insert("AdminDAO.saveMatchTicket", vo);
+          Integer getLastTickId = mybatis.selectOne("AdminDAO.getLastTickId");
+          vo.setTicketid(getLastTickId);
+          System.out.println(getLastTickId);
+          System.out.println( vo.getTicketall() ) ;
+          for (int i = 0; i < vo.getTicketall(); i++) {
+        	  mybatis.insert("AdminDAO.insertSeat", vo);
+        	  System.out.println(getLastTickId);
+          }
+      } else {
+          System.out.println("Last match ID is null.");
+      
+      }
+      
+	  }
 
-			}
-
-		}
 	}
 
 	// 선수 등록
