@@ -25,9 +25,9 @@
 <script src="/TicketMvp/resources/js/user/userMyInquiry.js"	type="text/javascript"></script>
 
 </head>
+
+
 <body>
-
-
 	<div id="header">
 		<jsp:include page="/WEB-INF/views/main/main_header.jsp" />
 	</div>
@@ -58,9 +58,7 @@
 					                <c:forEach var="inquiry" items="${inquiryList}">
 					                    <div>
 					                        <div class="num">${inquiry.helpid}</div>
-					                        <div class="title">
-					                            <a href="javascript:loadInquiry(${inquiry.helpid})">${inquiry.helptitle}</a>
-					                        </div>
+					                        <div class="title">${inquiry.helptitle}</div>
 					                        <div class="writer">${inquiry.userid}</div>
 					                        <div class="date">${inquiry.helpdate}</div>
 					                        <div class="reply">
@@ -77,19 +75,7 @@
 					            </c:otherwise>
 					        </c:choose>
 						</div>
-						<div class="board_page">
-					        <c:if test="${currentPage != 1}">
-					            <a href="javascript:loadPage(${currentPage - 1})" class="bt prev">&lt;</a>
-					        </c:if>
-					
-					        <c:forEach begin="1" end="${totalPages}" var="i">
-					            <a href="javascript:loadPage(${i})" class="num ${currentPage == i ? 'on' : ''}">${i}</a>
-					        </c:forEach>
-					
-					        <c:if test="${currentPage != totalPages}">
-					            <a href="javascript:loadPage(${currentPage + 1})" class="bt next">&gt;</a>
-					        </c:if>
-					    </div>
+
 						<div class="bt_wrap">
 							<a id="inquiryinsertform" class="on">등록</a>
 						</div>
@@ -134,11 +120,8 @@
 						</div>
 					</div>
 				</div>
+				
 				<!-- hide 할 부분 -->
-
-
-
-
 				<div id="view">
 					<!-- 보드 뷰 -->
 					<div class="board_wrap">
