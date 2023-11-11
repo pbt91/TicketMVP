@@ -151,7 +151,7 @@ $(function () {
         }) // end of $('#modify').click
         
         $('#elimination_no').click(function(e) {
-                location.href("/TicketMvp/user/userMyModifyForm.do");
+                location.href="/TicketMvp/user/userMyMain.do";
         });
         $('#elimination_yes').click(function(e) {
                 var userid = $('#userid').val();

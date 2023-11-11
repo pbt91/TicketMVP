@@ -42,7 +42,7 @@
 			<form method="post" id="usermodify">
 				<div class="container">
 					<div class="insert">
-						<table>
+						<table id="info">
 							<caption>
 								<h2>회원정보수정</h2>
 							</caption>
@@ -92,7 +92,7 @@
 					</div>
 
 					<div class="create">
-						<a href="/TicketMvp/athlete/main_page.do"><!-- 마이페이지 메인으로 -->
+						<a href="/TicketMvp/user/userMyMain.do">
 						<input class="but3" type="button" value="돌아가기" ></a>
 						<input class="but4" type="button" id="modify" value="수정하기">
 						<a href="#modal" rel="modal:open"> <input class="but5" type="button" id="elimination" value="탈퇴하기"></a>

@@ -49,7 +49,7 @@ public class UserDAOImpl implements UserDAO {
 
 	// 로그인 체크
 	public UserVO loginCheck(String id, String pw) {
-		System.out.println("===> Mybatis loginCheck() 호출");
+		System.out.println("===> Mybatis loginCheck() 호출1");
 		System.out.println("로그인 시도 id:"+id+" pw:"+pw);
 		UserVO vo = new UserVO();
 		vo.setUserid(id);

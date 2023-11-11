@@ -16,7 +16,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- css 파일 연결 - main -->
-<link rel="stylesheet"	href="/TicketMvp/resources/css/main/templates.css">
+<link rel="stylesheet"
+	href="/TicketMvp/resources/css/main/templates.css">
 
 
 </head>
@@ -33,19 +34,38 @@
 
 
 			<c:if test="${sessionScope.userid != null}">
-				<p>마이페이지</p>
 
-				<a href='/TicketMvp/user/userMyModify.do'>회원정보 수정</a>
-				<a href='/TicketMvp/user/userMyOrderList.do'>주문내역</a>
-				<a href='/TicketMvp/user/userMyLike.do'>찜목록</a>
-				<a href='/TicketMvp/user/userMyCoupon.do'>내쿠폰</a>
-				<a href='/TicketMvp/user/userMyInquiry.do'>Q&A</a>
+
+				<div align="center">
+					<div>
+						<p style="font-size: 50px; color:#DBE0CD;">My Page</p>
+					</div>
+					<div>
+						<div>
+						<a href='/TicketMvp/user/userMyModify.do'><img alt="회원정보수정"
+							src="/TicketMvp/resources/images/user/editprofile.png"> </a> <a
+							href='/TicketMvp/user/userMyOrderList.do'><img alt="주문내역"
+							src="/TicketMvp/resources/images/user/orderhistory.png"> </a> <a
+							href='/TicketMvp/user/userMyLike.do'><img alt="찜목록"
+							src="/TicketMvp/resources/images/user/likelist.png"> </a> 
+						</div>
+						<div>
+						<a href='/TicketMvp/user/userMyCoupon.do'><img alt="내쿠폰"
+							src="/TicketMvp/resources/images/user/coupon.png"> </a> <a
+							href='/TicketMvp/user/userMyInquiry.do'><img alt="Q&A"
+							src="/TicketMvp/resources/images/user/qna.png"> </a>
+						</div>
+					</div>
+				</div>
+
+
 
 			</c:if>
 			<c:if test="${sessionScope.userid == null}">
-				<div align="center"><p>로그인이 필요합니다</p>
-					<a href='/TicketMvp/user/userLoginForm.do'>
-						<input type="button" id='move_login' name='move_login' value='로그인'/>
+				<div align="center">
+					<p>로그인이 필요합니다</p>
+					<a href='/TicketMvp/user/userLoginForm.do'> <input
+						type="button" id='move_login' name='move_login' value='로그인' />
 					</a>
 				</div>
 			</c:if>

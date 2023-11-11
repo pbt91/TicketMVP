@@ -33,10 +33,12 @@ public class UserController {
 
 	// 메인 -> 회원가입폼
 	// 메인 -> 로그인폼
-	@RequestMapping("/{step}.do")
-	public String viewPage(@PathVariable String step) {
-		return "user/" + step;
-	}
+	
+	 @RequestMapping("/{step}.do") 
+	 public String viewPage(@PathVariable String step) { 
+		return "user/" + step; 
+	 }
+ 
 
 	// 회원가입폼_아이디중복체크
 	@RequestMapping(value = "/userIdCheck", method = RequestMethod.POST)
@@ -55,11 +57,26 @@ public class UserController {
 		return "redirect:userLoginForm.do";
 	}
 
+	// 로그인버튼 눌렀을 때 전페이지 세션저장 
+	@RequestMapping("/userLoginForm.do")
+	public void userLoginForm (HttpSession session, HttpServletRequest request) { 
+		String uri = request.getHeader("Referer"); 
+		System.out.println("저장된 유알아이"+ uri); 
+		if(uri != null && !uri.contains("/login")) { 
+			session.setAttribute("prevPage", uri); 
+		} 
+		System.out.println("session:"+session.getAttribute("prevPage"));
+	}
+	 
+	
 	// 로그인폼 -> 디비확인 -> 로그인 결과페이지
 	@RequestMapping("/loginCheck.do")
 	public String login(String userid, String userpw, HttpSession session, HttpServletRequest request) {
+		System.out.println("로그인 컨드롤러 진입");
 		UserVO result = userservice.loginCheck(userid, userpw);
 		if (result != null && result.isJoinstatus() == true) {
+			System.out.println("로그인 컨드롤러 회원 정보있음");
+			
 			// 검색된 회원정보 있으면 로그인한 사용자 이름 세션에 저장해야함
 			session.setAttribute("userid", result.getUserid());
 			session.setAttribute("name", result.getName());
@@ -75,14 +92,15 @@ public class UserController {
 			//세션시간 1시간
 			session.setMaxInactiveInterval(60*60);
 			
-			if (request.getHeader("Referer") != null) {
-			    return "redirect:" + request.getHeader("Referer");
-			  } else {
+		    if (session.getAttribute("prevPage") != null) {
+			    return "redirect:" + session.getAttribute("prevPage");
+			} else {
 				return "redirect:/athlete/main_page.do";
-			  }
+			}
 
 		} else {
 			// 회원정보 안맞으면 DB검색된 값 없음 -> 로그인 폼 그대로 있음. (비밀번호 틀렸다는 값 넘겨줘야 됨)
+			System.out.println("왜 여길 들어와");
 			return "redirect:userLoginForm.do";
 		}
 	}
@@ -311,11 +329,10 @@ public class UserController {
 	
 	//로그인 확인
 	@RequestMapping(value = "/isLoggedIn", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<Map<String, Boolean>> isLoggedIn(HttpSession session) {
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("isLoggedIn", session.getAttribute("userid") != null);
-        return ResponseEntity.ok(response);
-    }
-	
+	@ResponseBody public ResponseEntity<Map<String, Boolean>>isLoggedIn(HttpSession session) {
+		Map<String, Boolean> response = new	HashMap<>(); 
+		response.put("isLoggedIn", session.getAttribute("userid") != null); 
+		return ResponseEntity.ok(response); 
+	}
+
 }

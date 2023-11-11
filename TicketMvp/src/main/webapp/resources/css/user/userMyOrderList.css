@@ -11,13 +11,13 @@ table {
 }
 
 th {
-  text-align: left;
+  text-align: center;
 }
   
 thead {
   font-weight: bold;
   color: #fff;
-  background: #333;
+  background: #505050
 }
   
  td, th {
@@ -33,6 +33,12 @@ thead {
 a {
   color: #73685d;
 }
+  
+#div_orderlist {
+	padding-bottom:100px;
+	
+}
+  
   
  @media all and (max-width: 768px) {
     
@@ -77,4 +83,4 @@ a {
   }
   
   
-  }
+ }

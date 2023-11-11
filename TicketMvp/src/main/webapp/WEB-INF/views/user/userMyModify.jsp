@@ -17,7 +17,9 @@
 <!-- css 파일 연결 - main -->
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/main/templates.css">
-
+<!-- css 파일 연결 - page -->
+<link rel="stylesheet"
+	href="/TicketMvp/resources/css/user/userMyModify.css">
 
 </head>
 <body>
@@ -33,18 +35,28 @@
 		</div>
 		<div id="content">
 
+			<div id="modi">
+			
+			
+				<form action='/TicketMvp/user/checkPw.do' id='mymodify'
+					name='mymodify' method='post'>
+					<table id='tbmymodify' name='tbmymodify'>
 
-			<form action='/TicketMvp/user/checkPw.do' id='mymodify' name='mymodify' method='post'
-				align='center'>
-				<table id='tbmymodify' name='tbmymodify'>
-					<tr>
-						<td>현재 비밀번호</td>
-						<td><input type='password' id='userpw' name='userpw'></td>
-						<td><input type='submit' value='확인'></td>
-					</tr>
-				</table>
-			</form>
-
+						
+						<tr>						
+						
+							<td>
+							<input type='password' id='userpw' name='userpw' placeholder="현재 비밀번호">
+							<td><button type='submit' ><img alt="확인" src="/TicketMvp/resources/images/user/check.png"></button>
+							</td>
+							
+					</table>
+					
+				</form>
+				
+			
+			
+			</div>
 		</div>
 		<!-- end of div#content -->
 	</div>

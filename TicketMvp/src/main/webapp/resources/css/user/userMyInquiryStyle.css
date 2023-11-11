@@ -283,3 +283,9 @@ a {
     border: 0;
     resize: vertical;
 }
+
+#list, #input, #view {
+	background:#bfbfbf;
+	padding:15px 15px 15px 15px;
+    border-radius:15px;
+}

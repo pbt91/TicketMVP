@@ -38,7 +38,8 @@
 		<div id="content">
 			<h2>찜 목록</h2>
 			<form action="/TicketMvp/user/userMyLikeDelete.do">
-				<div>
+				<div id="like">
+				<div align="right" id="div_del"><button type="submit" id="delete"><img alt="삭제" src="/TicketMvp/resources/images/user/delete.png"> </button></div>
 					<table>
 						<thead>
 							<tr>
@@ -67,7 +68,8 @@
 						</tbody>
 					</table>
 				</div>
-				<div align="right"><input type="submit" value="삭제"></div>
+				<!-- <div align="right"><input type="submit" value="삭제"></div> -->
+				
 			</form>
 		</div>
 		<!-- end of div#content -->

@@ -18,7 +18,8 @@
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/main/templates.css">
 <!-- css 파일 연결 - page -->
-<!-- <link rel="stylesheet" href="/TicketMvp/resources/css/user/.css"> -->
+<link rel="stylesheet"
+	href="/TicketMvp/resources/css/user/userFindPwForm.css">
 <!-- js파일 연결 -->
 <script src='/TicketMvp/resources/js/user/userFindPwForm.js'
 	type="text/javascript"></script>

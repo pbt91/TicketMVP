@@ -1,5 +1,5 @@
 /* 전체 페이지 스타일 */
-body {
+/* body {
 	margin: 0;
 	font-size: 1rem;
 	font-weight: 400;
@@ -11,16 +11,16 @@ body {
 }
 
 #body-wrapper {
-	flex-grow: 1; /* 푸터 위의 콘텐츠가 화면을 채울 수 있도록 설정 */
+	flex-grow: 1; 푸터 위의 콘텐츠가 화면을 채울 수 있도록 설정
 	display: flex;
 	flex-direction: column;
 }
 
 #body-content {
 	text-align: center;
-	// padding-bottom: 100px; /* footer의 높이 조절 */
-	// padding: 100px; /* 푸터와 콘텐츠 사이 여백 조절 */
-}
+	// padding-bottom: 100px; footer의 높이 조절
+	// padding: 100px; 푸터와 콘텐츠 사이 여백 조절
+} */
 
 /* 메인 콘텐츠 스타일 */
 .main-content {
