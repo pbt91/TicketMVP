@@ -3,13 +3,12 @@
 	    // 티켓 등록 폼 제출 전 필드 유효성 검사
 	    function validateTicketForm() {
 	        // 필드값을 가져오거나 검사하는 코드
-	        var ticketName = document.getElementById('ticketname').value;
+	        var ticketName 	= document.getElementById('ticketname').value;
 	        var ticketPrice = document.getElementById('ticketprice').value;
-	        var ticketAll = document.getElementById('ticketall').value;
-	        var ticketRemain = document.getElementById('ticketremain').value;
+	        var ticketAll 	= document.getElementById('ticketall').value;
 	
 	        // 필드값이 비어있는 경우 경고 표시 및 폼 제출 방지
-	        if (ticketName === '' || ticketPrice === '' || ticketAll === '' || ticketRemain === '') {
+	        if (ticketName === '' || ticketPrice === '' || ticketAll === ''  ) {
 	            alert('티켓 정보를 입력해주세요.');
 	            return false; // 폼 제출을 중지
 	        }
@@ -29,10 +28,10 @@
 	    // 경기 등록 폼 제출 전 필드 유효성 검사
 	    function validateTicketForm() {
 	        // 필드값을 가져오거나 검사하는 코드
-	        var homeclub = document.getElementById('homeclub').value;
-	        var awayclub = document.getElementById('awayclub').value;
-	        var matchdate = document.getElementById('matchdate').value;
-	        var matchtime = document.getElementById('matchtime').value;
+	        var homeclub 	= document.getElementById('homeclub').value;
+	        var awayclub 	= document.getElementById('awayclub').value;
+	        var matchdate 	= document.getElementById('matchdate').value;
+	        var matchtime 	= document.getElementById('matchtime').value;
 	
 	        // 필드값이 비어있는 경우 경고 표시 및 폼 제출 방지
 	        if (homeclub === '' || awayclub === '' || matchdate === '' || matchtime === '') {
@@ -50,18 +49,64 @@
 	            event.preventDefault(); // 폼 제출 방지
 	        }
 	    });
+	
+	// 경기 및 티켓 수정 버튼 시 
+		$('button#modifyTicketMatch').click(function(){
+		    var row = $(this).closest("tr");
+		    var ticketid = row.find("td:eq(5)").text();
+		    var matchid = row.find("td:eq(6)").text();
+		    
+		    if(ticketid && ticketid.trim() !== ""){
+				console.log(ticketid);    
+        		window.location.href = "ticketModify.do?ticketid=" + ticketid;
+		    }   
+		    else if (matchid && matchid.trim() !== "") {
+        		console.log(matchid); 
+        		window.location.href = "ticketModify.do?matchid=" + matchid;
+    		}
+			return false;		
+		}) ; 
+	    
+	    	// 선수 수정 버튼 시 
+			$('button#modifyAthlete').click(function(){
+		    var athletename = $(this).closest("tr").find("td:eq(0)").text().trim();
+		
+		    if(athletename && athletename !== ""){
+		        console.log(athletename);    
+		        window.location.href = "athleteModify.do?athletename=" + athletename;
+		    } else {
+		        console.log("Athletename not found or empty");
+		    }
+		    return false;        
+		}); 
+	    
+	    
+	    // 구단 수정 버튼 클릭시
+			$('button#clubModify').click(function(){
+		    var club = $(this).closest("tr").find("td:eq(0)").text().trim();
+		
+		    if(club && club !== ""){
+		        console.log(club);    
+		        window.location.href = "clubModify.do?club=" + club;
+		    } else {
+		        console.log("club not found or empty");
+		    }
+		    return false;        
+		}); 
+	    
+	    
 	    
 	    // 선수 등록 폼 제출 전 필드 유효성 검사
 	    function validateAthleteForm() {
 	        // 필드값을 가져오거나 검사하는 코드
 	        var athletename = document.getElementById('athletename').value;
-	        var club = document.getElementById('club').value;
-	        var age = document.getElementById('age').value;
-	        var position = document.getElementById('position').value;
-	        var backno = document.getElementById('backno').value;
-	        var info = document.getElementById('info').value;
-	        var career = document.getElementById('career').value;
-	        var athleteImg = document.getElementById('athleteImg').value;
+	        var club 		= document.getElementById('club').value;
+	        var age 		= document.getElementById('age').value;
+	        var position 	= document.getElementById('position').value;
+	        var backno 		= document.getElementById('backno').value;
+	        var info 		= document.getElementById('info').value;
+	        var career 		= document.getElementById('career').value;
+	        var athleteImg 	= document.getElementById('athleteImg').value;
 	        
 	
 	        // 필드값이 비어있는 경우 경고 표시 및 폼 제출 방지
@@ -82,6 +127,34 @@
 	    });
 	    
 
+	    // 구단 등록 폼 제출 전 필드 유효성 검사
+	    function validateAthleteForm() {
+	        // 필드값을 가져오거나 검사하는 코드
+	        var clubImg = document.getElementById('clubImg').value;
+	        var club = document.getElementById('club').value;
+	        var league = document.getElementById('league').value;
+	        var stadiumImg = document.getElementById('stadiumImg').value;
+	        var stadiumname = document.getElementById('stadiumname').value;
+
+	        
+	
+	        // 필드값이 비어있는 경우 경고 표시 및 폼 제출 방지
+	        if (clubImg === '' || club === '' || league === '' || stadiumImg === '' || stadiumname === '') {
+	            alert('모든 정보 및 사진을 입력해주세요.');
+	            return false; // 폼 제출을 중지
+	        }
+	
+	        // 필드가 비어있지 않다면 폼을 제출
+	        return true;
+	    }
+	
+	    // 폼 제출 버튼 클릭 시 유효성 검사를 수행
+	    $('#clubRegi').on('click', function(event) {
+	        if (!validateAthleteForm()) {
+	            event.preventDefault(); // 폼 제출 방지
+	        }
+	    });
+	    
 
 
  // 티켓 삭제

@@ -93,7 +93,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
                             </tr>
 							<tr colspan="2" align="center">
 							<td>
-							<input type="submit"	value=" 경기 수정 " />
+							<input type="submit" id="clubModi"	value=" 경기 수정 " />
 							</td>
 							</tr>	                        
                         </tbody>
@@ -135,7 +135,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
                             </tr>
                             
 							<tr>
-								<td colspan="2" align="center"><input type="submit"	value=" 티켓 수정 " /></td>
+								<td colspan="2" align="center"><input type="submit" id="tickeModi"	value=" 티켓 수정 " /></td>
 							</td>
 								
 							</tr>

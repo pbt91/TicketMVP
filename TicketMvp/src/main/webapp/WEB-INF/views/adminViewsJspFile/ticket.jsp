@@ -77,6 +77,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					                        <th>경기 날짜</th>
 					                        <th>티켓 삭제</th> 
 					                        <th>경기 삭제</th> 
+					                        <th>경기 및 티켓 수정</th> 
 					                        
 					
 					                    </tr>
@@ -89,19 +90,8 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					                            <td>${ticket.ticketprice}원</td>
 					                            <td>${ticket.ticketall}개</td>
 					                            <td>${ticket.ticketremain}개</td>
-					                            <td>
-					                                <a href="ticketModify.do?ticketid=${ticket.ticketid}">${ticket.ticketid}</a>
-					                            </td>
-					                            <td>
-					                                <c:choose>
-					                                    <c:when test="${not empty ticket.ticketid}">
-					                                        ${ticket.matchid}
-					                                    </c:when>
-					                                    <c:otherwise>
-					                                        <a href="ticketModify.do?matchid=${ticket.matchid}">${ticket.matchid}</a>
-					                                    </c:otherwise>
-					                                </c:choose>
-					                            </td>
+					                            <td>${ticket.ticketid}</td>
+					                            <td>${ticket.matchid}</td>
 					                            <td>${ticket.matchdate}</td>
 					                            <td>${ticket.matchtime}</td>
 					                            <td>
@@ -109,6 +99,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					                            </td>
 					                            <td>
 					                                <button class="btn btn-danger" id="deleteMatch" >경기 삭제</button>
+					                            </td>
+					                            <td>
+					                                <button class="btn btn-dangerGRE" id="modifyTicketMatch" >경기 및 티켓 수정</button>
 					                            </td>
 					                        </tr>
 					                    </c:forEach>

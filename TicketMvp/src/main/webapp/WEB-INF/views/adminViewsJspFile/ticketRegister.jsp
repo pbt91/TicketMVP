@@ -109,32 +109,22 @@ if (request.getProtocol().equals("HTTP/1.1"))
     	<table class="tb tb_row">	
 		            	  <tbody>    	
                             <tr>
-                                <th>티켓명 <span class="es">필수 입력</span></th>
+                                <th>티켓명 </th>
                                 <td colspan="3"><input type="text" id="ticketname" name="ticketname"  placeholder="티켓명 입력해 주세요." /></td>
                             </tr>
                             
 							<tr>
-                                <th>티켓 가격<span class="es">필수 입력</span></th>
+                                <th>티켓 가격</th>
                                 <td colspan="3"><input type="number" id="ticketprice" name="ticketprice"  placeholder="티켓 가격 입력해 주세요." /></td>
                             </tr>
                             <tr>
-                                <th>티켓 전체 수량 <span class="es">필수 입력</span></th>
+                                <th>티켓 전체 수량 </th>
                                 <td colspan="3"><input type="number" id="ticketall" name="ticketall"  placeholder="티켓 전체 수량 입력해 주세요." /></td>
                             </tr>
-                            
-                            <tr>
-                                <th>티켓 남은 수량 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><input type="number" id="ticketremain" name="ticketremain"  placeholder="티켓 남은 수량 입력해 주세요." /></td>
-                            </tr>
-                            
+                                                  
 							<tr>
 								<td colspan="2" align="center"><input type="submit" id="ticketsubmit"	value=" 티켓 등록 " /></td>
 							</tr>
-                            
-                            <tr>
-                                <th>선수명 <span class="es">필수 입력</span></th>
-                                <td colspan="3"><textarea id="content" name="content" cols="50" rows="10" placeholder="내용을 입력해 주세요."></textarea></td>
-                            </tr>
                            </tbody>
                           </table> 
 				</section>

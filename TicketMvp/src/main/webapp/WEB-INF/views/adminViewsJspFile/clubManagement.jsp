@@ -65,7 +65,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 											<th>경기장</th>
 											<th>소속리그</th>
 											<th>구단삭제</th>
-											       
+											<th>구단수정</th>       
 
 										</tr>
 									</thead>
@@ -79,6 +79,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										<td>${clubManagement.league}</td>
 										<td>
                                 			<button class="btn btn-danger" id="deleteClub" >구단 정보 및 이미지 삭제</button>
+                            			</td>
+                            			<td>
+                                			<button class="btn btn-dangerGRE" id="clubModify" >구단 정보 및 이미지 삭제</button>
                             			</td>
 										
 										</tr>

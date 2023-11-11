@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>푸터</title>
 
-<link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/main/templates.css">
+<link rel="stylesheet" type="text/css" href="/TicketMvp/resources/css/admin/admin.css">
 </head>
 <body>
 	<footer class="footer">

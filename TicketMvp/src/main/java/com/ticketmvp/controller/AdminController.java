@@ -125,7 +125,7 @@ public class AdminController {
 	}
 
 	
-	  // 경기 등록
+	  // 경기 및 티켓 등록
 	@RequestMapping(value= "/saveMatchTicket.do") 
 	public String saveMatchTicket(AdminVO vo) throws IOException {
 	AdminService.saveMatchTicket(vo);

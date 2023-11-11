@@ -68,20 +68,23 @@ if (request.getProtocol().equals("HTTP/1.1"))
                                             <th>포지션</th>
                                             <th>등번호</th>
 											<th>선수삭제</th>
+											<th>선수수정</th>
+											
 										</tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${athleteList}" var="athleteManagement">
                                         <tr>
-                                        	<td>
-                                			<a href="athleteModify.do?athletename=${athleteManagement.athletename}">${athleteManagement.athletename}</a>
-                            				</td>
+                                        	<td>${athleteManagement.athletename}</td>
 											<td>${athleteManagement.club}</td>
 											<td>${athleteManagement.age}</td>
 											<td>${athleteManagement.position}</td>
 											<td>${athleteManagement.backno}</td>
 											<td>
                                 				<button class="btn btn-danger" id="deleteAthlete" >선수 정보 및 이미지 삭제</button>
+                            				</td>
+                            				<td>
+                                				<button class="btn btn-dangerGRE" id="modifyAthlete" >선수 정보 및 이미지 수정</button>
                             				</td>
 											
                                         </tr>

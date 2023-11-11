@@ -27,33 +27,35 @@
 		ORDER BY t.ticketid 
 	</select>	
 
-
-<insert id="insertMatch" parameterType="com.ticketmvp.domain.AdminVO" useGeneratedKeys="true" keyProperty="matchid" >
+<!-- 경기 입력  -->
+<insert id="insertMatch" parameterType="com.ticketmvp.domain.AdminVO" >
     INSERT INTO `match` (homeclub, awayclub, matchdate, matchtime)
     VALUES (#{homeclub}, #{awayclub}, #{matchdate}, #{matchtime})
 </insert>
 
+<!--  티켓 입력 -->
 <insert id="saveMatchTicket" parameterType="com.ticketmvp.domain.AdminVO">
   INSERT INTO `ticket` (ticketname, ticketprice, ticketall, ticketremain,matchid)
-  VALUES (#{ticketname}, #{ticketprice}, #{ticketall}, #{ticketremain},#{matchid})
+  VALUES (#{ticketname}, #{ticketprice}, #{ticketall}, #{ticketall},#{matchid})
 </insert>
 
+<!-- 가장 높은 경기 번호 조회  -->
 <select id="getLastMatchId" resultType="Integer">
   SELECT MAX(matchid) FROM `match`
 </select>
 
+<!-- 가장 높은 티켓 번호 조회  -->
 <select id ="getLastTickId" resultType="Integer">
   SELECT MAX(ticketid) FROM `ticket`
 </select>
 
+
+<!--  seat테이블 티켓 아이디 입력-->
 <insert id="insertSeat"  parameterType="com.ticketmvp.domain.AdminVO">
 INSERT INTO `seat` (ticketid) 
 VALUES ( #{ticketid} )
 </insert>
 
-<insert id="addTicket" parameterType="com.ticketmvp.domain.AdminVO">
-	
-</insert>
 
 <!-- 경기 및 티켓 수정 조회 -->
 <select id="ticketModify" parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO">

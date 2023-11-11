@@ -37,14 +37,15 @@ public class AdminDAOImpl implements AdminDAO{
 	public void saveMatchTicket(AdminVO vo) {
 	  System.out.println("===> Mybatis saveMatchTicket() 호출");
 	  System.out.println(vo);
-	  if(vo.getTicketname() == null) {
+	  if(vo.getTicketname() == null || vo.getTicketname().equals("") ) {
+		  System.out.println("insertMatch 탄다");
 		  mybatis.insert("AdminDAO.insertMatch", vo);
 	  }else {
 	  mybatis.insert("AdminDAO.insertMatch", vo);
 	  System.out.println(vo);
 	  Integer lastMatchId = mybatis.selectOne("AdminDAO.getLastMatchId");
 	  System.out.println("마지막 경기 아이디"+lastMatchId);
-      if (lastMatchId != null) { 
+      if (lastMatchId != null ) { 
     	  System.out.println("널 아님 들어옴");
           vo.setMatchid(lastMatchId);
           System.out.println(vo);

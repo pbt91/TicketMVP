@@ -80,12 +80,7 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
-                                
-                               		<div id="actionButtons" style="display: block; ">
-							        <!-- 선택된 항목이 있을 때만 표시될 버튼들 -->
-							        <button  id="deleteUser">선택한 회원 탈퇴</button>
-							        <button  id="stopUser">선택한 회원 정지</button>
-							    	</div> 
+
                             </div>
                         </div>
 

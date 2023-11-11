@@ -33,13 +33,13 @@ aside {
 	<section class="main-content">
 		<aside class="sidebar">
 			<ul class="menu">
-							<li class="nav-item">
+<%-- 							<li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/adminViewsJspFile/index.do" id="index" 
                     aria-expanded="true" aria-controls="collapseTwo">
                     <span>Charts</span>
                     
                 </a>
-            </li>
+            </li> --%>
            <li class="nav-item">
                 <a class="nav-link collapsed" href="${pageContext.request.contextPath}/adminViewsJspFile/userAdmin.do" id="userAdmin" 
                     aria-expanded="true" aria-controls="collapseTwo">
