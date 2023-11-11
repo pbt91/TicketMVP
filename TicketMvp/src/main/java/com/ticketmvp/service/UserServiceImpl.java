@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService{
 	// 문의하기 리스트 내것만
 	public List<UserInquiryVO> userMyInquiryMine(String userid){
 		return userDAO.userMyInquiryMine(userid);
-	}
+	};
 
 	// 문의하기 작성
 	public Integer userMyInquiryInsert(UserInquiryVO vo) {
@@ -142,6 +142,18 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void removeLike(String userId, Integer matchId) {
 		userDAO.removeLike(userId, matchId);
+	}
+
+	//문의하기 리스트 페이지 번호
+	public List<UserInquiryVO> userMyInquiry(String userId, Integer page, Integer size) {
+		int startRow = (page - 1) * size; 
+		return userDAO.getUserInquiriesPaginated(userId, startRow, size);
+	}
+
+	//문의하기 리스트 글 숫자 세기	
+	public int countUserInquiries(String userId) {
+	    List<UserInquiryVO> inquiries = userDAO.userMyInquiry(userId);
+	    return inquiries.size();
 	}
 	
 }

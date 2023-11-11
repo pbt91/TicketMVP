@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-
 import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserCouponVO;
 import com.ticketmvp.domain.UserLikeVO;
@@ -249,7 +246,7 @@ public class UserController {
 		System.out.println("로그인 아이디 :"+userid+" 작성자아이디 :"+helpuserid+" 글번호: "+helpid);
 		//아이디가 같으면 삭제
 		if (userid.equals(helpuserid)) {
-			Integer result = userservice.userMyInquiryDelete(helpid);
+			userservice.userMyInquiryDelete(helpid);
 			return true;
 		}else {
 			return false;
@@ -311,5 +308,29 @@ public class UserController {
 		String userId = (String) session.getAttribute("userid");
 		userservice.removeLike(userId, matchId);
 		return "redirect:/user/userMyLike.do";
+	}
+	
+	//문의하기 리스트 페이지 번호
+	@RequestMapping(value = "/userInquiryPage.do", method = RequestMethod.GET)
+	@ResponseBody
+	public HashMap<String, Object> userInquiryPage(int page, int size, HttpSession session, Model model) throws Exception {
+		System.out.println("컨트롤러 page: "+ page+ " size: "+ size);
+		
+		String userid = (String) session.getAttribute("userid");
+		System.out.println("userid: "+ userid);
+		
+		int totalInquiries = userservice.countUserInquiries(userid);
+	    int totalPages = (int) Math.ceil((double) totalInquiries / size);
+	    System.out.println("totalInquiries: "+ totalInquiries+ " totaPages: " + totalPages);
+	    
+	    List<UserInquiryVO> inquiries = userservice.userMyInquiry(userid, page, size);
+        System.out.println("pagtinatedInquires: "+ inquiries.toString());
+	    
+	    HashMap<String, Object> response = new HashMap<>();
+	    response.put("inquiries", inquiries);
+	    response.put("currentPage", page);
+	    response.put("totalPages", totalPages);
+	    System.out.println("response: "+ response.toString());
+        return response;	    
 	}
 }

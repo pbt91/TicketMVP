@@ -76,4 +76,10 @@ public interface UserService {
 
 	//찜 목록에서 찜 삭제
 	void removeLike(String userId, Integer matchId);
+	
+	//문의하기 리스트 페이지 번호
+	List<UserInquiryVO> userMyInquiry(String userId, Integer page, Integer size);
+
+	//문의하기 리스트 글 숫자 세기
+	int countUserInquiries(String userId);
 }

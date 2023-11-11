@@ -81,4 +81,6 @@ public interface UserDAO {
 	//찜 목록에서 찜 삭제
 	void removeLike(String userId, Integer matchId);
 
+	//문의하기 리스트 페이지 번호
+	List<UserInquiryVO> getUserInquiriesPaginated(String userId, int startRow, int size);
 }

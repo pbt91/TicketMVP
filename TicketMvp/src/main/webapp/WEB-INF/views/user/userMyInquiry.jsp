@@ -22,8 +22,7 @@
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/user/userMyInquiry.css">
 <!-- js파일 연결 -->
-<script src="/TicketMvp/resources/js/user/userMyInquiry.js"
-	type="text/javascript"></script>
+<script src="/TicketMvp/resources/js/user/userMyInquiry.js"	type="text/javascript"></script>
 
 </head>
 <body>
@@ -54,42 +53,45 @@
 								<div class="date">작성일</div>
 								<div class="reply">답글</div>
 							</div>
-							<c:forEach var="inquiry" items="${inquiryList}">
-								<c:choose>
-									<c:when test="${not empty inquiry}">
-										<div>
-											<div class="num">${inquiry.helpid}</div>
-											<div class="title">
-												<a> ${inquiry.helptitle} </a>
-											</div>
-											<div class="writer">${inquiry.userid}</div>
-											<div class="date">${inquiry.helpdate}</div>
-											<div class="reply">
-												<c:choose>
-													<c:when test="${not empty inquiry.replydate}">완료</c:when>
-													<c:otherwise>대기</c:otherwise>
-												</c:choose>
-											</div>
-										</div>
-									</c:when>
-									<c:otherwise>
-										<span class="tb-center"
-											style="font-size: 20px; position: absolute;">아직 작성된 글이
-											없습니다</span>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
+							<c:choose>
+					            <c:when test="${inquiryList != null && not empty inquiryList}">
+					                <c:forEach var="inquiry" items="${inquiryList}">
+					                    <div>
+					                        <div class="num">${inquiry.helpid}</div>
+					                        <div class="title">
+					                            <a href="javascript:loadInquiry(${inquiry.helpid})">${inquiry.helptitle}</a>
+					                        </div>
+					                        <div class="writer">${inquiry.userid}</div>
+					                        <div class="date">${inquiry.helpdate}</div>
+					                        <div class="reply">
+					                            <c:choose>
+					                                <c:when test="${not empty inquiry.replydate}">완료</c:when>
+					                                <c:otherwise>대기</c:otherwise>
+					                            </c:choose>
+					                        </div>
+					                    </div>
+					                </c:forEach>
+					            </c:when>
+					            <c:otherwise>
+					                <span class="tb-center" style="font-size: 20px; position: absolute;">아직 작성된 글이 없습니다</span>
+					            </c:otherwise>
+					        </c:choose>
 						</div>
 						<div class="board_page">
-							<a href="#" class="bt first"><<</a> <a href="#" class="bt prev"><</a>
-							<a href="#" class="num on">1</a> <a href="#" class="num">2</a> <a
-								href="#" class="num">3</a> <a href="#" class="num">4</a> <a
-								href="#" class="num">5</a> <a href="#" class="bt next">></a> <a
-								href="#" class="bt last">>></a>
-						</div>
+					        <c:if test="${currentPage != 1}">
+					            <a href="javascript:loadPage(${currentPage - 1})" class="bt prev">&lt;</a>
+					        </c:if>
+					
+					        <c:forEach begin="1" end="${totalPages}" var="i">
+					            <a href="javascript:loadPage(${i})" class="num ${currentPage == i ? 'on' : ''}">${i}</a>
+					        </c:forEach>
+					
+					        <c:if test="${currentPage != totalPages}">
+					            <a href="javascript:loadPage(${currentPage + 1})" class="bt next">&gt;</a>
+					        </c:if>
+					    </div>
 						<div class="bt_wrap">
 							<a id="inquiryinsertform" class="on">등록</a>
-							<!--<a href="#">수정</a>-->
 						</div>
 					</div>
 				</div>

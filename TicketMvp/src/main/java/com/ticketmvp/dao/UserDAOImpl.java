@@ -258,5 +258,14 @@ public class UserDAOImpl implements UserDAO {
 		param.put("matchId", matchId);
         mybatis.delete("com.ticketmvp.dao.AthleteDAO.removeLike", param);
     }
+
+	//문의하기 리스트 페이지 번호
+	public List<UserInquiryVO> getUserInquiriesPaginated(String userId, int startRow, int size) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("userId", userId);
+		param.put("startRow", startRow);
+		param.put("size", size);
+		return mybatis.selectList("UserDAO.getUserInquiriesPaginated", param);
+	}
 	
 }

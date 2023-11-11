@@ -2,8 +2,6 @@ package com.ticketmvp.dao;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import com.ticketmvp.domain.ReserveVO;
 import com.ticketmvp.domain.UserVO;
 

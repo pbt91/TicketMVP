@@ -167,4 +167,10 @@
 		DELETE FROM `like` WHERE userid = '${userId}' AND matchid = ${matchId}
 	</delete>
 
+    <select id="getUserInquiriesPaginated" parameterType="hashmap" resultType="com.ticketmvp.domain.UserInquiryVO">
+        SELECT * FROM help
+        WHERE userid = '${userId}'
+        ORDER BY helpdate DESC
+        LIMIT ${startRow}, ${size}
+    </select>
 </mapper>
