@@ -10,25 +10,25 @@ body {
     min-height: 100vh; /* 최소 화면 높이에 맞게 설정 */
 }
 
-main.athlete-information {
+.athlete-information {
     display: grid;
     gap: 120px; /* 열 사이의 간격 설정 */
-    background-color: #fff;
+    background-color: #505050;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px; /* 그리드 전체의 padding 조정 */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    padding: 80px; /* 그리드 전체의 padding 조정 */
     max-width: 100%; /* 최대 너비 설정 */
     max-height: 100%;
 }
 
 .athlete-top {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2개의 열로 나눔 */
+    grid-template-columns: 1fr 2fr; /* 2개의 열로 나눔 */
     align-items: center; /* 이미지 상단 정렬 */
 }
 
 .image-layer {
-    width: 50%; /* 이미지의 가로 크기를 화면 너비의 절반으로 설정합니다. */
+    width: 50%;
     max-height: 300px; /* 이미지의 최대 높이 설정 */
     text-align: center;
     margin-left: 150px; /* 오른쪽 마진 추가 */
@@ -36,11 +36,11 @@ main.athlete-information {
 
 .image-layer img {
     /* max-width: 100%; 이미지 최대 너비 설정
-    max-height: 100%; 이미지를 그리드에 맞게 확장합니다.
+    max-height: 100%;
     height: auto; 가로 비율 유지 */
     
-    max-width: 100%; /* 이미지를 최대 너비로 설정하여 가로 비율을 유지합니다. */
-    height: auto; /* 이미지 높이를 자동으로 조절하여 세로 비율을 유지합니다. */
+    max-width: 100%; /* 이미지를 최대 너비로 설정 가로 비율을 유지 */
+    height: auto; /* 이미지 높이를 자동으로 조절 세로 비율을 유지 */
     display: inline-block; /* 인라인 블록 요소로 설정하여 수직 가운데 정렬을 쉽게 할 수 있습니다. */
     vertical-align: middle; /* 수직 가운데 정렬을 활성화합니다. */
     border-radius: 5px; /* 이미지에 라운드 모서리 추가 */
@@ -53,11 +53,12 @@ main.athlete-information {
     text-align: left; 선수 정보를 왼쪽 정렬
     height: 300px; 선수 정보 박스의 높이를 이미지와 동일하게 설정합니다. */
     
-     padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
+    padding: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
     text-align: left; /* 선수 정보를 가운데 정렬로 변경 */
     height: auto; /* 선수 정보 박스의 높이를 이미지와 동일하게 설정합니다. */
+	margin-right: 150px; /* 오른쪽 마진을 줄여 왼쪽으로 이동시킵니다. */
 }
 
 h1 {
@@ -74,6 +75,7 @@ p {
 
 .athlete-schedule {
     margin-top: 20px; /* 이미지와 선수 정보와의 간격 설정 */
+	text-align: center; /* 텍스트 가운데 정렬 */
 }
 
 .athlete-schedule h2 {
@@ -94,41 +96,189 @@ p {
 /* 경기 일정 양식 */
 
 .grid-container {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .grid-item {
-    padding: 40px; /* 그리드 아이템의 패딩을 늘립니다. */
+	/* width: 100%;
+    padding: 100px; 그리드 아이템의 패딩을 늘립니다.
     background-color: #fff;
     border-radius: 5px;
     text-align: left;
+    margin-bottom: 10px; 각 그리드 아이템 간 여백 조절, 필요에 따라 조절 가능 */
+
+	width: 100%; /* 전체 너비를 차지하도록 설정 */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: left;
+    margin-bottom: 10px; /* 각 그리드 아이템 간 여백 조절, 필요에 따라 조절 가능 */
+    box-sizing: border-box;
+}
+
+#athlete-name{
+	color: black;
+	
+}
+
+#match-name{
+	color: gainsboro;
 }
 
 .match-info {
-    font-size: 22px; /* 글꼴 크기를 더 크게 설정합니다. */
-    margin: 0;
+    /* font-size: 22px; 글꼴 크기를 더 크게 설정합니다.
+    margin: 0; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 좌우 정렬 추가 */
+    border: 5px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    color: gainsboro;
 }
 
 .payment-button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: white;
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px; /* 결제 버튼의 글꼴 크기를 설정합니다. */
-    margin-left: 60px; /* 버튼을 오른쪽으로 이동시키려면 왼쪽에 간격을 추가합니다. */
+    font-size: 20px; /* 결제 버튼의 글꼴 크기를 설정합니다. */
+    margin-right: 100px; /* 버튼을 오른쪽으로 이동시키려면 왼쪽에 간격을 추가합니다. */
 }
 
 
 .bi-heart-fill{
 	color: red;
-	margin-right: 55px;
+	margin-left: 155px;
 	
 }
 
 .bi-heart{
-	margin-right: 55px;
+	margin-left: 155px;
+}
+
+/* 768px 이상 큰 화면에 대한 스타일 */
+@media only screen and (min-width: 769px) {
+    .athlete-information {
+        gap: 150px; /* 큰 화면일 때 열 사이의 간격을 더 크게 설정 */
+        padding: 100px; /* 큰 화면일 때 그리드 전체의 padding을 조정 */
+    }
+
+    .image-layer {
+        margin-left: 200px; /* 큰 화면일 때 이미지 왼쪽 마진을 더욱 늘림 */
+    }
+
+    .text-layer {
+        margin-right: 200px; /* 큰 화면일 때 텍스트 레이어 오른쪽 마진을 더욱 늘림 */
+    }
+
+    h1 {
+        font-size: 40px; /* 큰 화면일 때 헤더의 글자 크기를 늘림 */
+    }
+
+    p {
+        font-size: 24px; /* 큰 화면일 때 단락의 글자 크기를 늘림 */
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .athlete-schedule {
+        margin-top: 10px; /* 작은 화면일 때 일정 부분과 다른 요소 간의 간격 조절 */
+    }
+
+    .match-name {
+        font-size: 18px; /* 작은 화면일 때 일정 부분의 글자 크기 조절 */
+    }
+
+    .grid-container {
+        grid-gap: 10px; /* 작은 화면일 때 일정 부분의 그리드 간격 조절 */
+    }
+
+    .grid-item {
+        padding: 10px; /* 작은 화면일 때 일정 부분의 그리드 아이템 padding 조절 */
+    }
+
+    .athlete-top {
+        grid-template-columns: 1fr; /* 작은 화면일 때 이미지와 텍스트를 세로로 배치 */
+    }
+    
+     .gird-left {
+        order: 2; /* 작은 화면일 때 이미지를 아래로 이동시킵니다. */
+    }
+
+    .image-layer {
+        width: 100%; /* 작은 화면일 때 이미지가 전체 너비를 차지하도록 설정 */
+        max-height: 200px; /* 작은 화면일 때 이미지의 최대 높이 설정 */
+        margin-left: 0; /* 작은 화면일 때 이미지의 왼쪽 마진을 제거 */
+    }
+
+    .text-layer {
+        margin-right: 0; /* 작은 화면일 때 텍스트 레이어의 오른쪽 마진을 제거 */
+    }
+}
+
+/* 모든 화면 크기에 적용되는 스타일 */
+.athlete-schedule {
+    margin-top: 20px; /* 일정 부분과 다른 요소 간의 간격 조절 */
+}
+
+.match-name {
+    font-size: 20px; /* 일정 부분의 글자 크기 조절 */
+}
+
+.grid-container {
+    grid-gap: 40px; /* 일정 부분의 그리드 간격 조절 */
+}
+
+.grid-item {
+    padding: 20px; /* 일정 부분의 그리드 아이템 padding 조절 */
+}
+
+.athlete-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 2개의 열로 나눔 */
+    align-items: center; /* 이미지 상단 정렬 */
+}
+
+.image-layer {
+    width: 50%; /* 이미지의 가로 크기를 화면 너비의 절반으로 설정합니다. */
+    max-height: 300px; /* 이미지의 최대 높이 설정 */
+    text-align: center;
+    margin-left: 150px; /* 오른쪽 마진 추가 */
+}
+
+.image-layer img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.text-layer {
+    padding: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    text-align: left;
+    height: auto;
+    margin-right: 150px; /* 오른쪽 마진을 줄여 왼쪽으로 이동시킵니다. */
+}
+
+h1 {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    font-size: 20px;
+    margin: 0;
+    padding: 15px 0;
 }

@@ -60,7 +60,7 @@
 						</div>
 
 						<div class="athlete-schedule">
-							<h1>경기 일정</h1>
+							<h1 id="match-name">경기 일정</h1>
 							
 							<div class="grid-container">
 								<c:forEach var="match" items="${matches}">
@@ -70,7 +70,7 @@
 											<!-- 하트 이모티콘 삽입 -->
 											<i class="bi bi-heart" data-matchid="${match.matchid}"></i>
 
-											${match.homeclub} vs ${match.awayclub} 일자: ${match.matchdate}
+											${match.homeclub} vs ${match.awayclub}   일자: ${match.matchdate}
 											시간: ${match.matchtime}
 
 											<button class="payment-button"

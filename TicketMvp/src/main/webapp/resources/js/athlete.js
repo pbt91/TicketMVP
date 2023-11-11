@@ -55,6 +55,9 @@ $(function(){
 		            matchId: matchId
 		        },
 		        success: function (response) {
+		        	console.log("좋아요 상태 확인:", response);
+		        	
+		        
 		            if (response.liked) {
 		                // 사용자가 좋아요를 눌렀다면 하트 아이콘을 채워진 상태로 변경
 		                $(".bi-heart[data-matchid='" + matchId + "']").addClass("bi-heart-fill");

@@ -9,6 +9,7 @@
 <title>메인화면</title>
 <link rel="stylesheet" type="text/css" href="../resources/css/main/main.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/main/templates.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>

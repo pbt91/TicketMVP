@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import javax.servlet.http.HttpSession;
 
 import com.ticketmvp.domain.AthleteVO;
 import com.ticketmvp.domain.MatchVO;
@@ -102,7 +101,6 @@ public class AthleteController {
 	  @RequestMapping(value = "/checkLikeStatus", method = RequestMethod.GET)
 	  @ResponseBody
 	  public void checkLikeStatus(@RequestParam("matchId") Integer matchId, HttpSession session, Model model) {
-	      Map<String, Boolean> response = new HashMap<>();
 	      try {
 	          String userId = (String) session.getAttribute("userid");
 	          List<MatchVO> list = athleteService.checkLikeStatus(userId, matchId);
