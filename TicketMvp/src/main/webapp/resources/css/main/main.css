@@ -61,12 +61,13 @@ body {
 }
 
 .image-item:hover img {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 /* 쇼핑몰 화면 스타일 */
 .shopping-area {
 	flex: 1;
 	padding: 20px;
-	background-color: #505050;
+	background-color: white;
+	border-radius: 15px;
 }
