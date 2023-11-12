@@ -83,7 +83,7 @@
 				</tr>
 				<tr>				
 					<td align='center' colspan='5' >
-						<a href='userLoginStatus.do'><input type="button" name="reset" value="첫페이지로 이동"	class='btuserinput'></a>
+						<a href='/TicketMvp/athlete/main_page.do'><input type="button" name="reset" value="첫페이지로 이동"	class='btuserinput'></a>
 						<input type="reset" name="reset" value="리   셋" class='btuserinput'>
 						<input type="submit" name="join" id="join" value="등   록" class='btuserinput'>
 					</td>

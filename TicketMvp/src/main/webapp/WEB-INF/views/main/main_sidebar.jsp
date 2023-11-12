@@ -29,7 +29,7 @@ aside {
 				<li><a href="/TicketMvp/reserve/ReserveChoose.do?matchid=1">티켓예약</a></li>
 				<li><a href="#">선수소개</a></li>
 				<li><a href="#">문의하기</a></li>
-				<li><a href="#">마이페이지</a></li>
+				<li><a href="/TicketMvp/user/userMyMain.do">마이페이지</a></li>
 				<!-- 추가 메뉴 아이템 -->
 			</ul>
 		</aside>

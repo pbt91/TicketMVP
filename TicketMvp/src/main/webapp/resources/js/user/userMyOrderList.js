@@ -17,23 +17,12 @@ $(function() {
                     ticketName: ticketname
                 },
 	            success: function(response) {
-	                if (response === "success") {
-	                    alert("예매를 취소하셨습니다.");
-	                   	$.ajax({
-                            type: "GET", 
-                            url: "/TicketMvp/user/userMyOrderList.do",
-                            dataType: "html",
-                            success: function(newTableHTML) {
-                                table.html(newTableHTML); 
-                            },
-                            error: function() {
-                                alert("테이블 데이터를 다시 불러오는 도중에 오류가 발생했습니다.");
-                                table.html(newTableHTML); 
-                            }
-                        });
+	                if (response !== null) {
+	                	alert("예매 취소에 실패했습니다.");
 	                } else {
-	                    alert("예매 취소 실패했습니다..");
+	                   alert("예매 취소했습니다."); 
 	                }
+	                location.reload(true);
 	            },
 	            error: function() {
 	                alert("예매 취소 도중에 예상치 못한 오류가 발생하였습니다.");

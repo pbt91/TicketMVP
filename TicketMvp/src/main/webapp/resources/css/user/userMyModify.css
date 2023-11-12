@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+body div#container > div#content {
+	position:relative;
+	height:auto;
+
+}
+body div#container > div#content  div#modi{
+	position:absolute;
+	top :50%;
+	left:30%;
+	
+}
+
+
+input#userpw {
+	font-size:20px;
+	/* color:#fff; */
+	width: 250px;
+	height: 40px;
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	border-bottom: solid #DBE0CD 2px;
+	padding-left: 10px;
+	background-color: #333;
+
+} 
+
+input#userpw::placeholder {color:#DBE0CD;}
+input#userpw:focus {outline: none;}
+
+button{
+	padding:0 0 0 0;
+	border:0;
+	border-radius:12px;
+}

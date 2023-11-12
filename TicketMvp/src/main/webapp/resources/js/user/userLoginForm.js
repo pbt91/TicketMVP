@@ -20,7 +20,7 @@ $(function(){
                     alert(result);
                     $('#login-error-msg').css('opacity', '');
                 }else {
-                	location.href("/TicketMvp/user/userLoginStatus.do");
+                	location.href("/TicketMvp/athlete/main_page.do");
                 }
             }, error: function (err) {
                 alert("오류");

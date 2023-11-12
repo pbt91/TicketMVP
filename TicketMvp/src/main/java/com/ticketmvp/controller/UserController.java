@@ -3,9 +3,13 @@ package com.ticketmvp.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.ticketmvp.domain.UserInquiryVO;
 import com.ticketmvp.domain.UserCouponVO;
 import com.ticketmvp.domain.UserLikeVO;
@@ -28,17 +33,19 @@ public class UserController {
 
 	// 메인 -> 회원가입폼
 	// 메인 -> 로그인폼
-	@RequestMapping("/{step}.do")
-	public String viewPage(@PathVariable String step) {
-		return "user/" + step;
-	}
+	
+	 @RequestMapping("/{step}.do") 
+	 public String viewPage(@PathVariable String step) { 
+		return "user/" + step; 
+	 }
+ 
 
 	// 회원가입폼_아이디중복체크
 	@RequestMapping(value = "/userIdCheck", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer idCheck(@RequestParam("id") String id) {
 		Integer idCheckResult = userservice.selectIdCheck(id);
-		System.out.println("가져온 값 : " + id + "디비갔다온값 : " + idCheckResult);
+		//System.out.println("가져온 값 : " + id + "디비갔다온값 : " + idCheckResult);
 
 		return idCheckResult;
 	}
@@ -46,16 +53,30 @@ public class UserController {
 	// 회원가입폼 -> 디비저장 -> 회원가입완료페이지
 	@RequestMapping("/insertUser.do")
 	public String userInsertUser(UserVO vo) {
-		userservice.insertUser(vo);
-		
+		userservice.insertUser(vo);	
 		return "redirect:userLoginForm.do";
 	}
 
+	// 로그인버튼 눌렀을 때 전페이지 세션저장 
+	@RequestMapping("/userLoginForm.do")
+	public void userLoginForm (HttpSession session, HttpServletRequest request) { 
+		String uri = request.getHeader("Referer"); 
+		System.out.println("저장된 유알아이"+ uri); 
+		if(uri != null && !uri.contains("/login")) { 
+			session.setAttribute("prevPage", uri); 
+		} 
+		System.out.println("session:"+session.getAttribute("prevPage"));
+	}
+	 
+	
 	// 로그인폼 -> 디비확인 -> 로그인 결과페이지
 	@RequestMapping("/loginCheck.do")
-	public String login(String userid, String userpw, HttpSession session) {
+	public String login(String userid, String userpw, HttpSession session, HttpServletRequest request) {
+		System.out.println("로그인 컨드롤러 진입");
 		UserVO result = userservice.loginCheck(userid, userpw);
 		if (result != null && result.isJoinstatus() == true) {
+			System.out.println("로그인 컨드롤러 회원 정보있음");
+			
 			// 검색된 회원정보 있으면 로그인한 사용자 이름 세션에 저장해야함
 			session.setAttribute("userid", result.getUserid());
 			session.setAttribute("name", result.getName());
@@ -70,10 +91,16 @@ public class UserController {
 
 			//세션시간 1시간
 			session.setMaxInactiveInterval(60*60);
-			return "redirect:userLoginStatus.do";
+			
+		    if (session.getAttribute("prevPage") != null) {
+			    return "redirect:" + session.getAttribute("prevPage");
+			} else {
+				return "redirect:/athlete/main_page.do";
+			}
 
 		} else {
 			// 회원정보 안맞으면 DB검색된 값 없음 -> 로그인 폼 그대로 있음. (비밀번호 틀렸다는 값 넘겨줘야 됨)
+			System.out.println("왜 여길 들어와");
 			return "redirect:userLoginForm.do";
 		}
 	}
@@ -82,7 +109,7 @@ public class UserController {
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:userLoginStatus.do"; //나중에 바꾸기
+		return "redirect:/athlete/main_page.do"; 
 	}
 
 	// 아이디찾기폼 -> 디비확인 -> 아이디찾기폼
@@ -106,7 +133,7 @@ public class UserController {
 	@RequestMapping(value = "/checkTempPw", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer checkTempPw(UserVO vo) {
-		System.out.println("controller 진입: " + vo.toString());
+		//System.out.println("controller 진입: " + vo.toString());
 		Integer result = userservice.checkTempPw(vo);
 		return result;
 	}
@@ -115,9 +142,9 @@ public class UserController {
 	@RequestMapping(value = "/resetPw", method = RequestMethod.POST)
 	@ResponseBody
 	public String resetPw(UserVO vo) {
-		System.out.println("resetPw 컨트롤러 진입: " + vo.toString());
+		//System.out.println("resetPw 컨트롤러 진입: " + vo.toString());
 		String result = Integer.toString(userservice.resetPw(vo));
-		System.out.println("resetPw 컨트롤러 결과: " + result);
+		//System.out.println("resetPw 컨트롤러 결과: " + result);
 		return result;
 	}
 
@@ -126,7 +153,7 @@ public class UserController {
 	public String checkPw(UserVO vo, HttpSession session, Model model) {
 		String userid = (String) session.getAttribute("userid");
 		vo.setUserid(userid);
-		System.out.println("checkPw 컨트롤러 진입: " + vo.toString());
+		//System.out.println("checkPw 컨트롤러 진입: " + vo.toString());
 		UserVO result = userservice.checkPw(vo);
 		if (result != null) {
 
@@ -143,7 +170,7 @@ public class UserController {
 	@RequestMapping(value = "/userModify", method = RequestMethod.POST)
 	@ResponseBody //exceptpw - 비밀번호포함여부 true면 제외 false면 포함
 	public Integer userModify(UserVO vo, boolean exceptpw, HttpSession session) {
-		System.out.println("userModify 진입 : " + vo.toString() + " 비밀번호포함 : " + exceptpw);
+		//System.out.println("userModify 진입 : " + vo.toString() + " 비밀번호포함 : " + exceptpw);
 		Integer result = userservice.userModify(vo, exceptpw);
 		session.setAttribute("userid", vo.getUserid());
 		session.setAttribute("name", vo.getName());
@@ -178,12 +205,12 @@ public class UserController {
 	
 	// 내 주문목록에서 예매 취소하기
 	@ResponseBody
-	@RequestMapping("/userMyOrderCancel")
+	@RequestMapping("/userMyOrderCancel.do")
 	public String userMyOrderCancel(String orderId, String totalSeat, String ticketName){
 		if(userservice.cancelOrder(orderId, totalSeat, ticketName)>0) {
 			return "success";
 		} else {
-			return "fail";
+			return null;
 		}
 	}
 	
@@ -231,8 +258,8 @@ public class UserController {
 	public UserInquiryVO userMyInquiryView(String helpid) {
 		System.out.println(helpid);
 		UserInquiryVO result = userservice.userMyInquiryView(helpid);
-		System.out.println("controller:"+result.getHelptitle());
-		System.out.println(helpid);
+		//System.out.println("controller:"+result.getHelptitle());
+		//System.out.println(helpid);
 		return result;
 	}
 
@@ -241,7 +268,7 @@ public class UserController {
 	@ResponseBody 						// 삭제할 글번호랑 해당 글번호의 작성자
 	public boolean userMyInquiryDelete(String helpid, String helpuserid, HttpSession session) {
 		String userid = (String) session.getAttribute("userid");
-		System.out.println("로그인 아이디 :"+userid+" 작성자아이디 :"+helpuserid+" 글번호: "+helpid);
+		//System.out.println("로그인 아이디 :"+userid+" 작성자아이디 :"+helpuserid+" 글번호: "+helpid);
 		//아이디가 같으면 삭제
 		if (userid.equals(helpuserid)) {
 			userservice.userMyInquiryDelete(helpid);
@@ -266,7 +293,7 @@ public class UserController {
 		
 	}
 	
-	
+
 	// 쿠폰 리스트
 	@RequestMapping("/userMyCoupon.do")
 	public void userMyCoupon(HttpSession session, Model m) {
@@ -280,7 +307,7 @@ public class UserController {
 	@RequestMapping("/userMyCouponInsert.do")
 	public String userMyCouponInsert(HttpSession session, String in1, String in2, String in3, String in4 ) {
 		String userid = (String) session.getAttribute("userid");
-		System.out.println(in1+in2+in3+in4);
+		//System.out.println(in1+in2+in3+in4);
 		//쿠폰 번호 가져오기
 		StringBuffer buf = new StringBuffer();
 		buf.append(in1);
@@ -288,7 +315,7 @@ public class UserController {
 		buf.append(in3);
 		buf.append(in4);
 		String couponid = buf.toString();
-		System.out.println(couponid);
+		//System.out.println(couponid);
 		Integer result = userservice.userMyCouponInsert(userid, couponid);
 		
 		if(result!=null) {
@@ -308,22 +335,13 @@ public class UserController {
 		return "redirect:/user/userMyLike.do";
 	}
 	
-	//문의하기 리스트 페이지 번호
-	@RequestMapping(value = "/userInquiryPage.do", method = RequestMethod.GET)
-	@ResponseBody
-	public HashMap<String, Object> userInquiryPage(int page, int size, HttpSession session, Model model) throws Exception {
-		
-		String userid = (String) session.getAttribute("userid");
-		
-		int totalInquiries = userservice.countUserInquiries(userid);
-	    int totalPages = (int) Math.ceil((double) totalInquiries / size);
-	    
-	    List<UserInquiryVO> inquiries = userservice.userMyInquiry(userid, page, size);
-	    
-	    HashMap<String, Object> response = new HashMap<>();
-	    response.put("inquiries", inquiries);
-	    response.put("currentPage", page);
-	    response.put("totalPages", totalPages);
-        return response;	    
+
+	//로그인 확인
+	@RequestMapping(value = "/isLoggedIn", method = RequestMethod.GET)
+	@ResponseBody public ResponseEntity<Map<String, Boolean>>isLoggedIn(HttpSession session) {
+		Map<String, Boolean> response = new	HashMap<>(); 
+		response.put("isLoggedIn", session.getAttribute("userid") != null); 
+		return ResponseEntity.ok(response); 
 	}
+
 }

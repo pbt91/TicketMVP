@@ -127,9 +127,16 @@ $(function () {
     });
 
 
-	
+
+    })
     
-});
+    $('#inquirylist').click(function(){
+    	$('#input').hide();
+        $('#list').show();
+        $('#view').hide();
+    
+    
+    });
 
 
 

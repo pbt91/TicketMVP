@@ -17,8 +17,6 @@
 <!-- css 파일 연결 - main -->
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/main/templates.css">
-<!-- css 파일 연결 - page -->
-<!-- <link rel="stylesheet" href="/TicketMvp/resources/css/user/.css"> -->
 <!-- js파일 연결 -->
 <script src="/TicketMvp/resources/js/user/userResetPw.js"
 	type="text/javascript"></script>

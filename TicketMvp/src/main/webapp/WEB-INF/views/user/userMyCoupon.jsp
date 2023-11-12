@@ -36,18 +36,21 @@
 			<jsp:include page="/WEB-INF/views/main/main_sidebar.jsp" />
 		</div>
 		<div id="content">
-		<div>
-			<h2>내 쿠폰</h2>
-		</div>
-		<strong style="font-size:17px;">쿠폰등록</strong>
-		<form action="/TicketMvp/user/userMyCouponInsert.do">
-			<div style="padding-bottom:10px;">
-			<input id='in1' name="in1" maxlength='4' pattern="[0-9]+">-<input id='in2' name="in2" maxlength='4' pattern="[0-9]+">-
-			<input id='in3' name="in3" maxlength='4' pattern="[0-9]+">-<input id='in4' name="in4" maxlength='4' pattern="[0-9]+">
-			<input type="submit" value="등록" >
+			<div>
+				<h2>내 쿠폰</h2>
 			</div>
-		</form>
-		<strong style="font-size:17px;">보유쿠폰</strong>
+			<strong style="font-size: 17px;">쿠폰등록</strong>
+			<form action="/TicketMvp/user/userMyCouponInsert.do">
+				<div align="center" id="couponin">
+					<input id='in1' name="in1" maxlength='4' pattern="[0-9]+">-<input
+						id='in2' name="in2" maxlength='4' pattern="[0-9]+">- <input
+						id='in3' name="in3" maxlength='4' pattern="[0-9]+">-<input
+						id='in4' name="in4" maxlength='4' pattern="[0-9]+"> <input
+						type="submit" value="등록">
+				</div>
+			</form>
+			<strong style="font-size: 17px;">보유쿠폰</strong>
+			<div style="padding-top: 15px; padding-bottom:100px;">
 			<table>
 				<thead>
 					<tr>
@@ -60,26 +63,26 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="coupon" items="${couponList}">
-					<tr>
-						<td>${coupon.couponname}</td>
-						<td>${coupon.discount}</td>
-						<td>${coupon.issuedate}</td>
-						<td>${coupon.expiredate}</td>
-						<c:if test="${coupon.usestatus==false}">
-						<td>미사용</td>
-						</c:if>
-						<c:if test="${coupon.usestatus==true}">
-						<td>사용완료</td>
-						</c:if>
-					</tr>
-				</c:forEach>	
+					<c:forEach var="coupon" items="${couponList}">
+						<tr>
+							<td>${coupon.couponname}</td>
+							<td>${coupon.discount}</td>
+							<td>${coupon.issuedate}</td>
+							<td>${coupon.expiredate}</td>
+							<c:if test="${coupon.usestatus==false}">
+								<td>미사용</td>
+							</c:if>
+							<c:if test="${coupon.usestatus==true}">
+								<td>사용완료</td>
+							</c:if>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
-
-
 		</div>
-		<!-- end of div#content -->
+
+	</div>
+	<!-- end of div#content -->
 	</div>
 	<!-- end of div#container-->
 

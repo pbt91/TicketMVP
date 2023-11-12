@@ -16,7 +16,7 @@
 	<main id="main-holder">
 
 		<div align="center">
-			<a href="/TicketMvp/user/userLoginStatus.do">
+			<a href="/TicketMvp/athlete/main_page.do">
 				<img alt="메인 로고"  style="max-width:100%; height:auto; padding-left:30px;"
 				src="/TicketMvp/resources/images/main/main_rogo.png">
 			</a>

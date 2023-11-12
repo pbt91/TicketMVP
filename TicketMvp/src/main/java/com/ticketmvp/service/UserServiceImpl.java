@@ -130,7 +130,6 @@ public class UserServiceImpl implements UserService{
 		if(userDAO.checkOrderStatus(orderid) > 0) {
 			return -1;
 		} else {
-			System.out.println("취소 진행 id: "+ orderid);
 			userDAO.cancelOrderCoupon(orderid);
 			userDAO.cancelOrderSeat(orderid);
 			userDAO.updateTicket(totalSeat, ticketName);

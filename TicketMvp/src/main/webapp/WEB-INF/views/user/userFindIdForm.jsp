@@ -17,8 +17,6 @@
 <!-- css 파일 연결 - main -->
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/main/templates.css">
-<!-- css 파일 연결 - page -->
-<!-- <link rel="stylesheet" href="/TicketMvp/resources/css/user/.css"> -->
 <!-- js파일 연결 -->
 <script src='/TicketMvp/resources/js/user/userFindIdForm.js'
 	type="text/javascript"></script>
@@ -36,7 +34,7 @@
 		</div>
 		<div id="content">
 
-
+<div id="findid">
 			<h2>아이디 찾기</h2>
 
 			<form id='findidfrom' name='findidfrom' align="center">
@@ -55,7 +53,7 @@
 					id='move_login' name='move_login' value='로그인'
 					style="width: 102px; height: 30px;" /></a>
 			</form>
-
+</div>
 		</div>
 		<!-- end of div#content -->
 	</div>

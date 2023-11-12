@@ -33,7 +33,7 @@ caption {
 }
 
 .col1 {
-	background-color: #e8e8e8;
+	background-color: #DBE0CD;
 	padding: 10px;
 	text-align: right;
 	font-weight: bold;
@@ -64,21 +64,21 @@ caption {
 .but3 {
 	height: 35px;
 	width: 150px;
-	background-color: white;
+	background-color: #DBE0CD;
 	border: 2px solid black;
 }
 
 .but4 {
 	height: 35px;
 	width: 150px;
-	background-color: white;
+	background-color: #DBE0CD;
 	border: 2px solid black;
 }
 
 .but5 {
 	height: 35px;
 	width: 150px;
-	background-color: white;
+	background-color: #DBE0CD;
 	border: 2px solid black;
 }
 
@@ -129,5 +129,20 @@ p {
 	border: none;
  	background-color:none;
 }
- 
 
+.col2 input {
+	width:200px;
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	border-bottom:solid #DBE0CD 2px;
+	padding-left: 10px;
+	background-color: #333;
+	color:#DBE0CD;
+}
+
+table#info input:focus {outline: none;}
+
+body #container>#content {
+	background:#333;
+}

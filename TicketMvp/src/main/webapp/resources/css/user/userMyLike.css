@@ -11,13 +11,14 @@ table {
 }
 
 th {
-	text-align: left;
+	text-align: center;
+	
 }
 
 thead {
 	font-weight: bold;
 	color: #fff;
-	background: #333;
+	background: #505050
 }
 
 td, th {
@@ -32,6 +33,24 @@ td {
 
 a {
 	color: #73685d;
+}
+
+#like {
+	padding-top:10px;
+	padding-bottom:140px;
+}
+
+#delete {
+	padding: 0 0 0 0;
+	border-top:0;
+	border-bottom:0;
+	border-right:0;
+	border-left:0;
+	border-radius:10px;
+}
+
+#div_del {
+	padding-bottom:15px;
 }
 
 @media all and (max-width: 768px) {
