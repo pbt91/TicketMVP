@@ -37,12 +37,12 @@
 			<div id="content">
 				<main class="matches-information">
 					<div class="matches-schedule">
-						<h1>경기 일정</h1>
+						<h1>경기 일정</h1><br/><br/>
 						<div id="filters" class="row justify-content-center">
 						    <!-- 구단 필터 -->
-						    <div class="col-md-2">
+						    <div class="col-md-2 mb-2">
 						        <div class="dropdown">
-						            <button class="btn btn-primary dropdown-toggle" type="button" id="clubFilterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						            <button class="btn btn-secondary dropdown-toggle" type="button" id="clubFilterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						                구단 선택
 						            </button>
 						            <div class="dropdown-menu" aria-labelledby="clubFilterDropdown">
@@ -56,18 +56,18 @@
 						    </div>
 						
 						    <!-- 날짜 필터 -->
-							<div class="col-md-2">
+							<div class="col-md-2 mb-2">
 							    <button class="btn btn-primary" type="button" id="dateFilterButton">
 							        날짜 선택
 							    </button>
 							    <div id="dateInputs" style="display: none;">
-							        <input type="date" id="from" class="datepick" value="">
-							        <input type="date" id="to" class="datepick" value="">
+							        <input type="date" id="from" class="datepick" >
+							        <input type="date" id="to" class="datepick">
 							    </div>
 							</div>
 						
 						    <!-- 경기장 필터 -->
-						    <div class="col-md-2">
+						    <div class="col-md-2 mb-2">
 						        <div class="dropdown">
 						            <button class="btn btn-primary dropdown-toggle" type="button" id="stadiumFilterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						                경기장 선택
@@ -84,18 +84,20 @@
 						</div>
 						
 						<!-- 경기 리스트 -->
-						<c:forEach var="match" items="${matches}">
-						    <div class="gird-item" data-homeclub="${match.homeclub}" data-awayclub="${match.awayclub}" data-stadiumname="${match.stadiumname}" data-matchdate="${match.matchdate}">
-						        <p class="match-info">
-						            <input type="hidden" value="${match.matchid}">
-						            <i class="bi-heart" data-matchid="${match.matchid}"></i>
-						            ${match.homeclub} vs ${match.awayclub} 
-						            일자: ${match.matchdate} 
-						            시간: ${match.matchtime}
-						            <button class="payment-button" data-matchid="${match.matchid}">예매</button>
-						        </p>
-						    </div> 
-						</c:forEach>
+						<div id="list-matches">
+							<c:forEach var="match" items="${matches}">
+							    <div class="gird-item" data-homeclub="${match.homeclub}" data-awayclub="${match.awayclub}" data-stadiumname="${match.stadiumname}" data-matchdate="${match.matchdate}">
+							        <p class="match-info">
+							            <input type="hidden" value="${match.matchid}">
+							            <i class="bi-heart" data-matchid="${match.matchid}"></i>
+							            ${match.homeclub} vs ${match.awayclub} 
+							            일자: ${match.matchdate} 
+							            시간: ${match.matchtime}
+							            <button class="payment-button" data-matchid="${match.matchid}">예매</button>
+							        </p>
+							    </div> 
+							</c:forEach>
+						</div>
 					</div>
 				</main>
 			</div>

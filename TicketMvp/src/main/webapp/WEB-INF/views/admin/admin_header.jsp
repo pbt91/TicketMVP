@@ -15,12 +15,6 @@
 				${sessionScope.name}님 환영합니다 <a href="logout.do" class="logout-link">로그아웃</a> 
 			</div>
 		</c:if>
-		<c:if test="${sessionScope.name == null }">
-			<div class="header-links">
-				<a href="/TicketMvp/user/userLoginForm.do" class="login-link">로그인</a>
-				 <a href="/TicketMvp/user/userInsertUserForm.do" class="signup-link">회원가입</a>
-			</div>
-		</c:if>
 	</header>
 	<header class="logo-banner-header">
 		<div class="logo">

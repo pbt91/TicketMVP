@@ -59,6 +59,7 @@ public class ReserveDAOImpl implements ReserveDAO{
 		param.put("totalSeat", ticketQuantity);
 		param.put("orderName", orderName);
 		param.put("ticketPrice", ticketPrice);
+		System.out.println(param);
 		mybatis.insert("ReserveDAO.recordReservation", param);
 	}
 

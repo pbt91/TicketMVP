@@ -27,6 +27,7 @@
     	SELECT * FROM coupon 
     	WHERE userid=#{userid}
     	AND (usestatus != 1 OR usestatus IS NULL)
+    	AND expiredate > CURDATE();
     </select>
     
     <select id="getTicketInfo" parameterType="int" resultType="com.ticketmvp.domain.ReserveVO">

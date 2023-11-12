@@ -1,110 +1,105 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    min-height: 100vh; 
-}
-
-main.matches-information {
+.matches-information {
     display: grid;
-    gap: 120px; 
-    background-color: #fff;
+    gap: 20px;
+    background-color: #505050;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px; 
-    max-width: 100%; 
-    max-height: 100%;
-}
-
-.athlete-top {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    align-items: center; 
-}
-
-.image-layer {
-    width: 50%; 
-    max-height: 300px; 
-    text-align: center;
-}
-
-.image-layer img {   
-    max-width: 100%; 
-    height: auto; 
-    display: inline-block; 
-    vertical-align: middle; 
-}
-
-.text-layer {
     padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    text-align: left; 
-    height: auto; 
-}
-
-h1 {
-    font-size: 24px;
-    margin: 0;
-    padding: 0;
-}
-
-p {
-    font-size: 16px;
-    margin: 0;
-    padding: 5px 0;
+    max-width: 100%;
+    max-height: 100%;
+    color: #fff; 
 }
 
 .matches-schedule {
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
-.matches-schedule h2 {
-    font-size: 20px;
+.matches-schedule h1 {
+    font-size: 72px;
     margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    color: black;
 }
 
-.matches-schedule ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.matches-schedule li {
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-/* 경기 일정 양식 */
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 20px;
-}
-
-.grid-item {
-    padding: 20px; 
-    background-color: #fff;
-    border-radius: 5px;
-    text-align: left;
-}
-
-.match-info {
-    font-size: 18px; 
-    margin: 0;
-}
-
-.payment-button {
-    background-color: #007bff;
-    color: #fff;
+#filters {
+   	background-color: transparent; 
+    color: #000; 
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px; 
-    margin-left: 60px; 
+    font-size: 16px;
+    margin-bottom: 10px;
 }
+
+#filters .btn:hover {
+    background-color: #333; 
+    color: #fff;
+    padding: 12px 24px;  
+}
+
+#filters .btn {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 12px 24px;
+}
+
+#filters .btn:hover {
+    background-color: #0056b3; 
+}
+
+#dateInputs input {
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #666; 
+    padding: 5px;
+    background-color: #444; 
+    color: #fff; 
+}
+
+#dateInputs input[type="date"]:focus {
+    outline: none;
+    border-color: #007bff; 
+}
+
+#list-matches {
+    margin-top: 20px;
+}
+
+.gird-item {
+    padding: 20px;
+    background-color: #444; 
+    border-radius: 5px;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #fff; 
+}
+
+.gird-item .match-info {
+    font-size: 18px;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.payment-button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px; 
+    margin-right: 100px; 
+}
+
+.payment-button:hover {
+   	background-color: #ddd;
+    color: #000; 
+}
+
+

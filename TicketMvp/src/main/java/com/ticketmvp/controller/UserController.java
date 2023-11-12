@@ -54,7 +54,7 @@ public class UserController {
 	@RequestMapping("/insertUser.do")
 	public String userInsertUser(UserVO vo) {
 		userservice.insertUser(vo);	
-		return "redirect:userLoginForm.do";
+		return "redirect:/user/userLoginForm.do";
 	}
 
 	// 로그인버튼 눌렀을 때 전페이지 세션저장 
@@ -75,6 +75,9 @@ public class UserController {
 		System.out.println("로그인 컨드롤러 진입");
 		UserVO result = userservice.loginCheck(userid, userpw);
 		if (result != null && result.isJoinstatus() == true) {
+			if(result.isAdmin()) {
+				return "redirect:/adminViewsJspFile/adminMain.do";
+			}
 			System.out.println("로그인 컨드롤러 회원 정보있음");
 			
 			// 검색된 회원정보 있으면 로그인한 사용자 이름 세션에 저장해야함

@@ -5,11 +5,10 @@
 <meta charset="UTF-8">
 <title>메인</title>
 </head>
-<%  %>
+
 <body>
 
-<a href='/TicketMvp/athlete/main_page.do'> 메인 </a>
-
+<% response.sendRedirect("/TicketMvp/athlete/main_page.do"); %>
 
 
 </body>

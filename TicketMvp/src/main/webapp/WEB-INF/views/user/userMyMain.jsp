@@ -12,12 +12,12 @@
 
 <meta charset="UTF-8">
 
-<!-- js 코드 호출 -->
+<!-- jquery 코드 호출 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- css 파일 연결 - main -->
-<link rel="stylesheet"
-	href="/TicketMvp/resources/css/main/templates.css">
+<link rel="stylesheet"  href="/TicketMvp/resources/css/user/userMyMain.css">
+<link rel="stylesheet"	href="/TicketMvp/resources/css/main/templates.css">
 
 
 </head>
@@ -62,7 +62,8 @@
 
 			</c:if>
 			<c:if test="${sessionScope.userid == null}">
-				<div align="center">
+				<br/><br/><br/><br/>
+				<div id="login-box">
 					<p>로그인이 필요합니다</p>
 					<a href='/TicketMvp/user/userLoginForm.do'> <input
 						type="button" id='move_login' name='move_login' value='로그인' />
@@ -79,9 +80,6 @@
 	<div id="footer">
 		<jsp:include page="/WEB-INF/views/main/main_footer.jsp" />
 	</div>
-
-
-
 
 </body>
 </html>

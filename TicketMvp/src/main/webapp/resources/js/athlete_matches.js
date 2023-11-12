@@ -114,29 +114,28 @@ $(function(){
 	    var selectedClubs = $(".clubFilterCheckbox:checked").map(function () {
 	        return $(this).val();
 	    }).get();
-	
+		
 	    // 경기장명 가져오기
 	    var selectedStadiums = $(".stadiumFilterCheckbox:checked").map(function () {
 	        return $(this).val();
 	    }).get();
-	
+
 	    // 날짜 가져오기
 	    var fromDate = fromInput.val();
 	    var toDate = toInput.val();
 	
 	    // 가져온 정보로 경기 필터
-	    $("#matches-container .gird-item").each(function () {
+	    $("#list-matches .gird-item").each(function () {
 	        var match = $(this);
 	        var homeClub = match.data("homeclub");
 	        var awayClub = match.data("awayclub");
 	        var stadium = match.data("stadiumname");
-	        var matchDate = match.data("matchdate");
+	        var matchDate = match.data("matchdate");			
 	
 	        var showMatch =
 	            (!selectedClubs.length || selectedClubs.includes(homeClub) || selectedClubs.includes(awayClub)) &&
 	            (!selectedStadiums.length || selectedStadiums.includes(stadium));
 	
-	        // Check if the match date is within the selected date range
 	        if (fromDate && toDate) {
 	            var selectedFromDate = new Date(fromDate);
 	            var selectedToDate = new Date(toDate);
@@ -189,7 +188,6 @@ $(function(){
 	        }
 	    }
 	
-	    // Prevent selection of dates behind today
 	    if (selectedDateObj < today) {
 	        if (this === fromInput[0]) {
 	            fromInput.val(today.toISOString().split('T')[0]);
@@ -198,7 +196,6 @@ $(function(){
 	        }
 	    }
 	
-	    // Call the filterMatches function to update matches based on the selected date range
 	    filterMatches();
 	});
     

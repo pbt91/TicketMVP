@@ -27,6 +27,7 @@
 		SELECT matchid, homeclub, awayclub, matchdate, matchtime
 		FROM `match`
 		WHERE homeclub = #{club} OR awayclub = #{club}
+		ORDER BY matchdate ASC, matchtime ASC
 	</select>
 	
 	<!-- 모든 경기 불러오기 -->
@@ -34,7 +35,7 @@
 		SELECT m.*, c.stadiumname
 		FROM `match` m
 		JOIN `club` c ON m.homeclub = c.club
-		ORDER BY m.matchdate ASC, m.matchtime ASC;
+		ORDER BY m.matchdate ASC, m.matchtime ASC
 	</select>
 
 

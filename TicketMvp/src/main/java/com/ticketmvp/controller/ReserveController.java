@@ -101,15 +101,14 @@ public class ReserveController {
 		
 	//결제완료 페이지로 이동
 	@RequestMapping(value = "/ReserveFinish.do", method = RequestMethod.GET)
-	public ModelAndView reserveFinish(String orderId, String couponId, Integer amount, Integer ticketPrice, HttpSession session, Model m){
+	public ModelAndView reserveFinish(String orderId, String couponId, Integer amount, Integer ticketPrice, String orderName, HttpSession session, Model m){
 		ModelAndView mv = new ModelAndView();
 		Boolean paymentInProgress = (Boolean) session.getAttribute("paymentInProgress");
 		String userId = (String) session.getAttribute("userid");
 		Integer ticketId = (Integer) session.getAttribute("ticketId");
 		Integer ticketQuantityBuy = (Integer) session.getAttribute("ticketQuantityBuy");
-		String orderName = (String) session.getAttribute("orderName");
 		
-		System.out.println("스트링 컨트롤러: "+ ticketPrice);
+		System.out.println("스트링 컨트롤러: "+ orderName);
 	
 		// 만약 제대로된 결재 경로가 아니면 좌석화면으로 강제이동
 	    if (paymentInProgress == null || !paymentInProgress) {

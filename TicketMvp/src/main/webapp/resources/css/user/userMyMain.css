@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333; 
+    color: #fff; 
+    min-height: 200px;
+}
+
+#login-box {
+    text-align: center;
+    background-color: #444; 
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#move_login {
+    background-color: #555; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+#move_login:hover {
+    background-color: #444; 
+}
