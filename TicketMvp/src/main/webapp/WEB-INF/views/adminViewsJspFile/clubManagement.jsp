@@ -81,7 +81,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
                                 			<button class="btn btn-danger" id="deleteClub" >구단 정보 및 이미지 삭제</button>
                             			</td>
                             			<td>
-                                			<button class="btn btn-dangerGRE" id="clubModify" >구단 정보 및 이미지 삭제</button>
+                                			<button class="btn btn-dangerGRE" id="clubModify" >구단 정보 및 이미지 수정</button>
                             			</td>
 										
 										</tr>

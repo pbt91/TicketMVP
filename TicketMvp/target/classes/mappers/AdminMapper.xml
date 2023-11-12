@@ -188,9 +188,9 @@ WHERE userid = #{userid}
     <if test="athleteimgfile != null">, athleteimgfilefull = #{athleteimgfilefull}</if>
     <if test="athleteimgsize != null">, athleteimgsize = #{athleteimgsize}</if>
     <if test="athleteimgfile != null">, athleteimgfile = #{athleteimgfile}</if>
-  
     WHERE athletename = #{athletename}
 </update>
+
 
 <!--  클럽 등록  -->
 <insert id="clubManage" parameterType="com.ticketmvp.domain.AdminVO">
@@ -216,7 +216,7 @@ DELETE FROM `club`
 WHERE club = #{club}
 </delete>
 
-	<!--   -->
+	<!-- 선택된 클럽 정보 및 이미지 조회  -->
 <select id="clubModify" parameterType="com.ticketmvp.domain.AdminVO" resultType="com.ticketmvp.domain.AdminVO" >
  SELECT *, clubimgsize as clubimgsize, clubimgfilefull as clubimgfilefull, clubimgfile as clubimgfile
  			,stadiumimgfile as stadiumimgfile ,stadiumimgfilefull as stadiumimgfilefull ,stadiumimgsize as stadiumimgsize
@@ -224,18 +224,18 @@ WHERE club = #{club}
  WHERE club = #{club}
 </select>
 
-<!--  선수 정보 및 이미지 수정 -->
-<update id="clubManageModify" parameterType="com.ticketmvp.domain.AdminVO">
+<!--  클럽 이미지 및 정보 수정 수정 -->
+<update id="clubManageModify" parameterType="com.ticketmvp.domain.AdminVO" >
     UPDATE `club` SET
-    club = #{club}
+    club= #{club}
     ,stadiumname = #{stadiumname}
     ,league = #{league}
-    <if test="clubimgfilefull != null">, clubimgfilefull = #{clubimgfilefull}</if>
-    <if test="clubimgsize != null">, clubimgsize = #{clubimgsize}</if>
-    <if test="clubimgfile != null">, clubimgfile = #{clubimgfile}</if>
-    <if test="stadiumimgfilefull != null">, stadiumimgfilefull = #{stadiumimgfilefull}</if>
-    <if test="stadiumimgfile != null">, stadiumimgfile = #{stadiumimgfile}</if>
-    <if test="stadiumimgsize != null">, stadiumimgsize = #{stadiumimgsize}</if>
+    ,clubimgfilefull = #{clubimgfilefull}
+    ,clubimgsize = #{clubimgsize}
+    ,clubimgfile = #{clubimgfile}
+    ,stadiumimgfilefull = #{stadiumimgfilefull}
+    ,stadiumimgfile = #{stadiumimgfile}
+    ,stadiumimgsize = #{stadiumimgsize}
     WHERE club = #{club}
 </update>
 

@@ -12,7 +12,7 @@
 #container>#sidebar {
 	flex: 1;
    	background-color:#333;
-	max-height: 1000px;
+	max-height: 100%;
 	min-width: 200px;
 }
 
@@ -158,6 +158,8 @@ iframe {
 	margin:2px;
 }
 
+
+/*관리자 꺼만 */
 
 #dataTable {
             text-align: center;
@@ -330,3 +332,7 @@ a:hover {
     color: #fff; /* 텍스트 색상을 흰색으로 설정 */
     font-weight: bold; /* 텍스트 굵게 설정 */
 }
+
+
+/*  ㅁ지울수 잇는것들*/
+

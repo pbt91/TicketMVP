@@ -83,7 +83,9 @@ if (request.getProtocol().equals("HTTP/1.1"))
 										
 										<tr>
 										<th>선수명</th>
-			                                <td colspan="3"><input type="text" id="athletename" name="athletename"  value="${athleteM.athletename}"  placeholder="선수명 입력해 주세요." /></td>
+											<td colspan="3">
+			                                 <input type="text" id="athletename" name="athletename" value="${athleteM.athletename}"  readonly placeholder="선수명" />
+			                                </td>
 			                            </tr>
 			                            <tr>
 			                                <th>선수 구단</th>

@@ -106,10 +106,10 @@ public class AdminDAOImpl implements AdminDAO{
 
 	// 선수 이미지 및 정보 수정 
 	public void athleteModifysubmit(AdminVO vo) {
-		System.out.println("===> Mybatis athleteModifysubmit() 호출");
-		System.out.println(vo);
-		Integer result = mybatis.update("AdminDAO.athleteModifysubmit",vo);
-		System.out.println(result + "줄 수정완료");
+		  System.out.println("===> Mybatis athleteModifysubmit() 호출 탔ㅇ으");
+		  System.out.println(vo);
+		  Integer result = mybatis.update("AdminDAO.athleteModifysubmit",vo);
+		  System.out.println(result + "줄 수정완료");
 	}
 
 	// 선수 정보 및 이미지 수정 조회
@@ -193,12 +193,19 @@ public class AdminDAOImpl implements AdminDAO{
 
 	// 클럽 수정  clubManageModify
 	public void clubManageModify(AdminVO vo) {
-		System.out.println("===> Mybatis clubManageModify() 호출");
-		System.out.println(vo);
-		Integer result = mybatis.update("AdminDAO.clubManageModify",vo);
-		System.out.println(result + "줄 수정완료");
-	}	
+		  System.out.println("===> Mybatis clubManageModify() 호출");
+		  System.out.println(vo);
+		  System.out.println("Club value: " + vo.getClub());
+		  Integer result = mybatis.update("AdminDAO.clubManageModify",vo);
+		  System.out.println(result + "줄 수정완료");
+		    // 추가: 결과 출력
+		  System.out.println("결과: " + result);
 
+		    // 추가: 실행한 쿼리 확인
+		  System.out.println("실행한 쿼리: " + mybatis.getConfiguration().getMappedStatement("AdminDAO.clubManageModify").getBoundSql(vo).getSql());
+
+	}
+	
 	// 차트 관련 함수
 	public List<AdminVO> chartTicketClubData(AdminVO vo) {
 		System.out.println("===> Mybatis chartTicketClubData() 호출");
