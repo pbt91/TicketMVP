@@ -129,10 +129,6 @@ if (request.getProtocol().equals("HTTP/1.1"))
                                 <th>티켓 전체 수량</th>
                                 <td colspan="3"><input type="number" id="ticketall" name="ticketall" value="${ticketmo.ticketall}"  placeholder="티켓 전체 수량 입력해 주세요." /></td>
                             </tr>
-							 <tr>
-                                <th>티켓 남은 수량 </th>
-                                <td colspan="3"><input type="number" id="ticketremain" name="ticketremain" value="${ticketmo.ticketremain}"  placeholder="티켓 남은 수량 입력해 주세요." /></td>
-                            </tr>
                             
 							<tr>
 								<td colspan="2" align="center"><input type="submit" id="tickeModi"	value=" 티켓 수정 " /></td>

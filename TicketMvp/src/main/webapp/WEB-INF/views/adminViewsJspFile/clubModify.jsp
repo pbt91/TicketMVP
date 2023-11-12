@@ -82,9 +82,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							    </td>
                             </tr>
 							<tr>
-								<th>클럽명</th>
-	                                <td colspan="3"><input type="text" id="club" name="club" value="${clubM.club}"  placeholder="클럽명 입력해 주세요." /></td>
-	                            </tr>
+							    <th>클럽명</th>
+							    <td colspan="3">
+							    <input type="text" id="club" name="club" value="${clubM.club}"  readonly placeholder="클럽명." />
+							    </td>
+							</tr>
                             <tr>
                                 <th>소속 리그</th>
                                 <td colspan="3"><input type="text" id="league" name="league" value="${clubM.league}"  placeholder="소속 리그 입력해 주세요." /></td>

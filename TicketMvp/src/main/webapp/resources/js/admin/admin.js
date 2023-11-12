@@ -184,7 +184,7 @@ $('button#deleteTicket').click(function() {
 
 // 선수 삭제 버튼 클릭시	
 $('button#deleteAthlete').click(function() {
-    var athletename = $(this).closest('tr').find('a').attr('href').split('=')[1];
+    var athletename = $(this).closest('tr').find('td:first').text();
     var url = "deleteAthletename.do"; // Spring 컨트롤러의 URL 경로
 
     if (confirm("선택한 선수를 삭제하시겠습니까?")) {

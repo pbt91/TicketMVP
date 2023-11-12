@@ -28,6 +28,7 @@ public interface AdminDAO {
 	// 티켓 수정
 	//public void updateTiket(AdminVO vo) ;
 	
+	// 티켓 삭제
 	public int deleteTicket(Integer ticketId) ; 
 	
 	// 선수 등록
@@ -42,9 +43,21 @@ public interface AdminDAO {
 	// 선수 수정 조회
 	public AdminVO athleteModify(AdminVO vo);
 	
+	// 선수 수정
 	public void athleteModifysubmit(AdminVO vo) ; 
 	
 	// c차트 관련
 	public List<AdminVO> chartTicketClubData(AdminVO vo) ;
-
+	
+	// 클럽 수정 조회
+	public AdminVO clubModify(AdminVO vo);
+	
+	// 클럽 수정
+	public void clubManageModify(AdminVO vo) ; 
+	
+	// 클럽 등록
+	public void clubManage(AdminVO vo);
+	
+	// 클럽 삭제
+	public int deleteClubname(String clubname);
 }
