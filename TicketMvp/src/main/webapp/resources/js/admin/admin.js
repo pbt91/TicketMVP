@@ -159,10 +159,8 @@
 
  // 티켓 삭제
 $('button#deleteTicket').click(function() {
-    var ticketId = $(this).closest('tr').find('a').attr('href').split('=')[1];
+    var ticketId = $(this).closest('tr').find('td:eq(5)').text();
     var url = "deleteTicket.do"; // Spring 컨트롤러의 URL 경로
-    console.log(ticketId);
-    console.log(url);
     
     
     if (confirm("선택한 티켓을 삭제하시겠습니까?")) {
@@ -174,7 +172,7 @@ $('button#deleteTicket').click(function() {
                 location.reload(); 
             },
             error: function(err) {
-                alert('err');
+                alert('삭제가 불가합니다');
                 console.log(err);
             }
         });
@@ -198,7 +196,7 @@ $('button#deleteAthlete').click(function() {
 
             },
             error: function(err) {
-                alert("오류가 발생했습니다.");
+                alert("삭제가 불가합니다");
                 console.log(err);
             }
         });
@@ -221,7 +219,7 @@ $('button#deleteUser').click(function() {
 
             },
             error: function(err) {
-                alert("오류가 발생했습니다.");
+                alert("삭제가 불가합니다");
                 console.log(err);
             }
         });
@@ -232,7 +230,7 @@ $('button#deleteUser').click(function() {
 $('button#deleteMatch').click(function() {
     var matchid = $(this).closest('tr').find('td:nth-child(7)').text(); // 7번째 열은 경기 번호
     var url = "deleteMatch.do"; // Spring 컨트롤러의 URL 경로
-
+	
     if (confirm("선택한 경기를 삭제하시겠습니까?")) {
         $.ajax({
             type: "POST",

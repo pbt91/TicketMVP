@@ -79,7 +79,7 @@ VALUES ( #{ticketid} )
   ,t.ticketname = #{ticketname}
   ,t.ticketprice = #{ticketprice}
   ,t.ticketall  = #{ticketall}
-  ,t.ticketremain =#{ticketremain}
+  ,t.ticketremain =#{ticketall}
  WHERE t.ticketid = #{ticketid}
 </update>
 
@@ -87,7 +87,7 @@ VALUES ( #{ticketid} )
 <!--  티켓 등록 -->
 <insert id="onlyInsertTiket"  parameterType="com.ticketmvp.domain.AdminVO">
 INSERT INTO `ticket`(ticketname,ticketprice,ticketall,ticketremain,matchid)
-VALUES(#{ticketname}, #{ticketprice}, #{ticketall},#{ticketremain},#{matchid})
+VALUES(#{ticketname}, #{ticketprice}, #{ticketall},#{ticketall},#{matchid})
 
 </insert>
 
