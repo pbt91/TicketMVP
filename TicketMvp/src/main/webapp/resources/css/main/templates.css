@@ -123,7 +123,7 @@ iframe {
     align-items: center;
     bottom: 0;
     left: 0;
-    height: 150px;
+    height: 100%;
 }
 
 #footer_inner {
@@ -158,11 +158,19 @@ iframe {
     font-size: 15px;
 }
 
+
 #footer_logo {
   font-weight: bold;
     font-size: 24px; /* 원하는 폰트 크기로 조정 */
     margin-left: auto;
     margin-right: auto; /* 가운데 정렬을 위해 추가 */
+}
+
+#footer_inner p {
+    text-align: center;
+    margin: 0;
+    font-size: 15px;
+    color: darkgray;
 }
 
 #footer_inner #footer_team7 {
