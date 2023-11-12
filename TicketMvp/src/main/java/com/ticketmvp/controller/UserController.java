@@ -62,7 +62,7 @@ public class UserController {
 	public void userLoginForm (HttpSession session, HttpServletRequest request) { 
 		String uri = request.getHeader("Referer"); 
 		System.out.println("저장된 유알아이"+ uri); 
-		if(uri != null && !uri.contains("/login")) { 
+		if(uri != null && !uri.contains("/login") && uri.contains("/insertUser.do")) { 
 			session.setAttribute("prevPage", uri); 
 		} 
 		System.out.println("session:"+session.getAttribute("prevPage"));

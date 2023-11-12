@@ -37,7 +37,38 @@ public class AdminDAOImpl implements AdminDAO{
 		return mybatis.selectList("AdminDAO.ticket", vo);
 	}
 
-	// 티켓 및 경기  등록
+	//티켓 등록
+	public void saveTicket(AdminVO vo) {
+		System.out.println("===> Mybatis saveTicket() 호출");
+		mybatis.insert("AdminDAO.saveMatchTicket", vo);
+	}
+	
+	//경기 등록
+	public void saveMatch(AdminVO vo) {
+		System.out.println("===> Mybatis saveMatch() 호출");
+		mybatis.insert("AdminDAO.insertMatch", vo);
+	}
+	
+	//경기 matchid 호출
+	public int getMatchId(AdminVO vo) {
+		System.out.println("===> Mybatis getMatchId() 호출");
+		return mybatis.insert("AdminDAO.getLastMatchId", vo);
+	}
+	
+	//좌석 ticketid 호출
+	public int getTicketId(AdminVO vo) {
+		System.out.println("===> Mybatis getTicketId() 호출");
+		return mybatis.selectOne("AdminDAO.getLastTickId");
+	}
+
+	// 좌석 만들기
+	public void insertSeat(AdminVO vo) {
+		System.out.println("===> Mybatis insertSeat() 호출");
+		for (int i = 0; i < vo.getTicketall(); i++) {
+			mybatis.insert("AdminDAO.insertSeat", vo);
+        }
+	}
+	
 	public void saveMatchTicket(AdminVO vo) {
 	  System.out.println("===> Mybatis saveMatchTicket() 호출");
 	  System.out.println(vo);
@@ -91,16 +122,11 @@ public class AdminDAOImpl implements AdminDAO{
 		return (AdminVO) mybatis.selectOne("AdminDAO.ticketModify",vo);
 	}
 
-	// 경기 및 티켓 수정 
+	// 경기 및 티켓 추가 입력 
 	public void updateMatchfrm(AdminVO vo) {
 		System.out.println("===> Mybatis updateMatchfrm() 호출");
 		System.out.println(vo);
-		if(vo.getTicketid() == null  ) {
-			mybatis.insert("AdminDAO.onlyInsertTiket", vo);
-
-		}else {
-			mybatis.update("AdminDAO.updateMatchfrm", vo); 
-		} 
+		mybatis.insert("AdminDAO.onlyInsertTiket", vo);
 
 	} 
 
@@ -211,6 +237,8 @@ public class AdminDAOImpl implements AdminDAO{
 		System.out.println("===> Mybatis chartTicketClubData() 호출");
 		return mybatis.selectList("AdminDAO.chartTicketClubData", vo);
 	}
+
+
 
 
 }

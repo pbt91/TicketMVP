@@ -17,8 +17,16 @@ public interface AdminDAO {
 	public List<AdminVO> clubManagement(AdminVO vo) ;
 	
 	// 티켓 및 경기 입력
-	//public void insertTicket(AdminVO vo) ;
-	public void saveMatchTicket(AdminVO vo) ;
+	public void saveTicket(AdminVO vo) ;
+	
+	// 티켓 및 경기 입력
+	public void saveMatch(AdminVO vo) ;
+	
+	// 경시 matchid 호출
+	public int getMatchId(AdminVO vo);
+	
+	//좌석 ticketid 호출
+	public int getTicketId(AdminVO vo);
 	
 	//티켓 및 경기 수정 조회
 	public AdminVO ticketModify(AdminVO vo);

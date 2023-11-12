@@ -66,7 +66,7 @@ iframe {
 	color: white;
 }
 
-div#smallrogo {
+div.smallrogo {
 	position:absolute;
 	left:50%;
 	top:50%;

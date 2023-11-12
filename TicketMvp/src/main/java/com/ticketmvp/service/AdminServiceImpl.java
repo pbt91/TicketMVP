@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ticketmvp.dao.AdminDAOImpl;
 import com.ticketmvp.domain.AdminVO;
@@ -38,9 +39,19 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	// 티켓,경기 입력
+	@Transactional
 	public void saveMatchTicket(AdminVO vo) {
-		adminDAO.saveMatchTicket(vo); 
+		System.out.println(vo.getTicketname());
+		if(vo.getTicketname() != null && !vo.getTicketname().isEmpty()) {
+			adminDAO.saveMatch(vo);
+			vo.setMatchid(adminDAO.getMatchId(vo));
+			adminDAO.saveTicket(vo);
+			vo.setTicketid(adminDAO.getTicketId(vo));
+			adminDAO.insertSeat(vo);
+		} else {
+			adminDAO.saveMatch(vo);
 		}
+	}
 
 	// 티켓 및 경기 수정 조회
 	public AdminVO ticketModify(AdminVO vo) {

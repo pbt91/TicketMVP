@@ -77,7 +77,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					                        <th>경기 날짜</th>
 					                        <th>티켓 삭제</th> 
 					                        <th>경기 삭제</th> 
-					                        <th>경기 및 티켓 수정</th> 
+					                        <th>티켓 입력</th> 
 					                        
 					
 					                    </tr>
@@ -101,7 +101,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					                                <button class="btn btn-danger" id="deleteMatch" >경기 삭제</button>
 					                            </td>
 					                            <td>
-					                                <button class="btn btn-dangerGRE" id="modifyTicketMatch" >경기 및 티켓 수정</button>
+					                                <button class="btn btn-dangerGRE" id="modifyTicketMatch" >경기 수정 및 티켓 추가 입력</button>
 					                            </td>
 					                        </tr>
 					                    </c:forEach>

@@ -164,7 +164,7 @@ $(function () {
                         success : function(result){
                                 alert(userid+"님 탈퇴되었습니다\n 로그아웃되며 메인창으로 돌아갑니다");
                                 /*$('#modal').off();*/
-                                location.replace("/TicketMvp/user/userLoginStatus.do");
+                                location.replace("/TicketMvp/athlete/main_page.do");
                         },
                         error : function(err){
                                 alert("오류 : " + err);

@@ -57,11 +57,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			<div id="content">
 				<div class="container-fluid">
     				<br></br>
-    <h1 class="h3 mb-2 text-gray-800">경기 및 티켓 등록</h1>
+    <h1 class="h3 mb-2 text-gray-800">경기 수정 및 티켓 추가 등록</h1>
                 <form action="updateMatchfrm.do"  method="get">
      <div class="card shadow mb-4">
      	<div class="card-header py-3">
-			<h3 class="m-0 font-weight-bold text-primary">경기 등록</h3>
+			<h3 class="m-0 font-weight-bold text-primary">경기 수정</h3>
 		</div>
         <div class="content">
 
@@ -103,7 +103,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
                 	
        <div class="card shadow mb-4">
      	<div class="card-header py-3">
-			<h3 class="m-0 font-weight-bold text-primary">티켓 등록</h3>
+			<h3 class="m-0 font-weight-bold text-primary">티켓 추가 등록</h3>
 		</div>   
         <div class="content">
 				<input name="ticketid" type="hidden" value="${ticketmo.ticketid}" />
@@ -118,20 +118,20 @@ if (request.getProtocol().equals("HTTP/1.1"))
                             </tr>
                             <tr>
                                 <th>티켓명 </th>
-                                <td colspan="3"><input type="text" id="ticketname" name="ticketname" value="${ticketmo.ticketname}"  placeholder="티켓명 입력해 주세요." /></td>
+                                <td colspan="3"><input type="text" id="ticketname" name="ticketname"  placeholder="티켓명 입력해 주세요." /></td>
                             </tr>
                             
 							<tr>
                                 <th>티켓 가격</th>
-                                <td colspan="3"><input type="number" id="ticketprice" name="ticketprice"value="${ticketmo.ticketprice}"  placeholder="티켓 가격 입력해 주세요." /></td>
+                                <td colspan="3"><input type="number" id="ticketprice" name="ticketprice"  placeholder="티켓 가격 입력해 주세요." /></td>
                             </tr>
                             <tr>
                                 <th>티켓 전체 수량</th>
-                                <td colspan="3"><input type="number" id="ticketall" name="ticketall" value="${ticketmo.ticketall}"  placeholder="티켓 전체 수량 입력해 주세요." /></td>
+                                <td colspan="3"><input type="number" id="ticketall" name="ticketall"   placeholder="티켓 전체 수량 입력해 주세요." /></td>
                             </tr>
                             
 							<tr>
-								<td colspan="2" align="center"><input type="submit" id="tickeModi"	value=" 티켓 수정 " /></td>
+								<td colspan="2" align="center"><input type="submit" id="tickeModi"	value=" 티켓 추가 입력 " /></td>
 							</td>
 								
 							</tr>
