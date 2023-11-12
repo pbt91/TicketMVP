@@ -88,10 +88,13 @@ public class UserController {
 			String mailslc = result.getEmail().substring(asplit + 1, emaillength);
 			session.setAttribute("emailid", emailid);
 			session.setAttribute("mailslc", mailslc);
-
+			session.setAttribute("admin", result.isAdmin());
+			boolean admin = (boolean) session.getAttribute("admin");
 			//세션시간 1시간
 			session.setMaxInactiveInterval(60*60);
-			
+			if(admin == true) {
+				return  "redirect:/admin";			/* ***** 어드민 메인으로가는 주소입력 필요 ***** */
+			}
 		    if (session.getAttribute("prevPage") != null) {
 			    return "redirect:" + session.getAttribute("prevPage");
 			} else {
@@ -318,7 +321,6 @@ public class UserController {
 		String couponid = buf.toString();
 		//System.out.println(couponid);
 		Integer result = userservice.userMyCouponInsert(userid, couponid);
-		
 		if(result!=null) {
 			return "redirect:userMyCoupon.do";
 			
