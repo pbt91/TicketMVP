@@ -234,12 +234,11 @@ public class AdminController {
 		System.out.println(av);
 	}
 
-
 	// 클럽 이미지 및 정보 수정 
 	@RequestMapping("/clubManageModify.do")
 	public String clubManageModify(AdminVO vo) throws IOException, InterruptedException {
 		AdminService.clubManageModify(vo) ;
-		Thread.sleep(1500);
+		Thread.sleep(1700);
 		return "redirect:clubManagement.do";
 	}
 	
