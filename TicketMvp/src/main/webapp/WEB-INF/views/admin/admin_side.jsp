@@ -91,6 +91,9 @@ aside {
                 </a>
             </li>
             <li>
+            	<a href="/TicketMvp//adminViewsJspFile/handleInquiry.do">문의 관리하기</a>
+            </li>
+            <li>
             	<a href="/TicketMvp/user/logout.do" class="logout-link">로그아웃</a>
             </li>     
 			</ul>
