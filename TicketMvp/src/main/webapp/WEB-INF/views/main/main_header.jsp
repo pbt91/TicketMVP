@@ -18,7 +18,7 @@
 		</c:if>
 		<c:if test="${sessionScope.name == null }">
 			<div class="smallrogo"><a href="/TicketMvp/athlete/main_page.do"><img alt="smallrogo" src="/TicketMvp/resources/images/main/smallrogo.png"></a> </div>
-			<div class="header-links">W
+			<div class="header-links">
 				<a href="/TicketMvp/user/userLoginForm.do" class="login-link">로그인</a>
 				 <a href="/TicketMvp/user/userInsertUserForm.do" class="signup-link">회원가입</a>
 			</div>

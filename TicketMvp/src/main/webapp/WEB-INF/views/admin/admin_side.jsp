@@ -90,6 +90,9 @@ aside {
                     <span>구단 등록</span>
                 </a>
             </li>
+            <li>
+            	<a href="/TicketMvp/user/logout.do" class="logout-link">로그아웃</a>
+            </li>     
 			</ul>
 		</aside>
 	</section>
