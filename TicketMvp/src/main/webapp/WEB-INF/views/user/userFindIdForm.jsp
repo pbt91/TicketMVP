@@ -17,6 +17,8 @@
 <!-- css 파일 연결 - main -->
 <link rel="stylesheet"
 	href="/TicketMvp/resources/css/main/templates.css">
+<link rel="stylesheet"
+	href="/TicketMvp/resources/css/user/userFindIdForm.css">
 <!-- js파일 연결 -->
 <script src='/TicketMvp/resources/js/user/userFindIdForm.js'
 	type="text/javascript"></script>
@@ -38,6 +40,7 @@
 			<h2>아이디 찾기</h2>
 
 			<form id='findidfrom' name='findidfrom' align="center">
+				<div class="all">
 				<h3>이메일로 찾기</h3>
 				<p>회원가입한 이메일 주소를 입력해 주세요</p>
 				<input type='email' id='email' name='email' placeholder='이메일'
@@ -52,6 +55,7 @@
 					href="/TicketMvp/user/userLoginForm.do"><input type='button'
 					id='move_login' name='move_login' value='로그인'
 					style="width: 102px; height: 30px;" /></a>
+				</div>
 			</form>
 </div>
 		</div>

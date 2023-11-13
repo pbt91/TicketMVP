@@ -52,14 +52,17 @@ $(function () {
     });
 
     // 글 작성에서 취소눌렀을 때
-    $("#inquriylist").click(function () {
-        alert('test');
+    $("#inquirylist").click(function () {
         $("#inputtitle").val("");
         $("#inputproduct").val("");
         $("#inputtext").val("");
         $('#list').show();
         $('#input').hide();
         $('#view').hide();
+        
+        $('#input').hide();
+    	$('#view').hide();
+    	$('#list').show();
     });
 
     // 목록 리스트에서 글 제목 눌렀을때

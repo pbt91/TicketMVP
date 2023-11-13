@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
 #findid {
-	background:#595959;
-	
+	padding-bottom:50px;
+
+}
+
+div.all {
+	color : lightgray;
 }
