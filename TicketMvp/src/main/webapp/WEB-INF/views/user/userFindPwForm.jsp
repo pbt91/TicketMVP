@@ -41,6 +41,7 @@
 
 			<h2>비밀번호 찾기</h2>
 
+			<div id='all'>
 			<form id='findpwfrom' name='findpwfrom' align="center">
 				<h3>본인확인 이메일 인증</h3>
 				<p>
@@ -60,6 +61,7 @@
 					value='확인' style="width: 210px; height: 30px;" /> <br /> <br /> <a
 					href='userLoginForm.do'>돌아가기</a>
 			</form>
+			</div>
 		</div>
 		<!-- end of div#content -->
 	</div>
