@@ -11,12 +11,21 @@
 
 	<header class="top-header">
 		<c:if test="${sessionScope.name != null }">
+		<div id="smallrogo">
+				<a href="/TicketMvp/athlete/main_page.do">
+					<img alt="smallrogo" src="/TicketMvp/resources/images/main/smallrogo.png">
+				</a> 
+			</div>
 			<div class="header-links">
 				${sessionScope.name}님 환영합니다 <a href="/TicketMvp/user/logout.do" class="logout-link">로그아웃</a> 
 			</div>
 		</c:if>
 		<c:if test="${sessionScope.name == null }">
-			<div id="smallrogo"><a href="/TicketMvp/athlete/main_page.do"><img alt="smallrogo" src="/TicketMvp/resources/images/main/smallrogo.png"></a> </div>
+			<div id="smallrogo">
+				<a href="/TicketMvp/athlete/main_page.do">
+					<img alt="smallrogo" src="/TicketMvp/resources/images/main/smallrogo.png">
+				</a> 
+			</div>
 			<div class="header-links">
 			
 				<a href="/TicketMvp/user/userLoginForm.do" class="login-link">로그인</a>
