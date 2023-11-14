@@ -13,7 +13,7 @@ $(function(){
         $(this).addClass("active");
 
         // 수량표시란에서 티켓명 표시
-        $("#matchName").text($(this).find("h6").text());
+        $("#matchName").text($(this).find(".mb-0").text());
         $("#ticketQuantity").attr("max", parseInt($(this).find(".ticket-info span.ticketquantityleft").text()));
         $("#ticketQuantity").val(1);
         calculate(parseFloat($(this).find("div.ticket-info span.priceperticket").attr("price")), 1);
@@ -83,12 +83,14 @@ $(function(){
 	    
 	
 	// 예매확인 페이지에 정보 입력
-    function updateReservationInfo() {	    
+    function updateReservationInfo() {	  
         $("#reservationStadium").text($("#stadiumName").text());
-        $("#reservationDate").text($("#matchDay").text());
-        $("#reservationTime").text($("#matchTime").text());
-        $("#reservationSeat").text($("#matchName").text());
+        $("#reservationDate").text($("p#matchDay").text().trim().substring(5));
+        $("#reservationTime").text($("#matchTimeDisplay").text().trim().substring(6));
+        $("#reservationSeat").text($("#matchName").text().trim());
         $("#reservationQuantity").text($("#ticketQuantity").val());
         $("#reservationTotal").text($("#totalAmount").text());
+        
     }
+
 }); ///end of document load

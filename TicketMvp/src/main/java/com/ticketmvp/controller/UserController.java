@@ -331,10 +331,16 @@ public class UserController {
 	
 	//찜 목록에서 찜 삭제
 	@RequestMapping("/userMyLikeDelete.do")
-	public String userMyLikeDelete(HttpSession session, Integer matchId) {
-		System.out.println("컨트롤러:"+matchId);
-		String userId = (String) session.getAttribute("userid");
-		userservice.removeLike(userId, matchId);
+	public String userMyLikeDelete(@RequestParam(value = "likes", required = false) String[] likes, HttpSession session, HttpServletRequest request) {
+		// Check if any checkboxes were selected
+	    if (likes != null && likes.length > 0) {
+	        String userId = (String) session.getAttribute("userid");
+
+	        for (String like : likes) {
+	            Integer matchId = Integer.parseInt(like);
+	            userservice.removeLike(userId, matchId);
+	        }
+	    }
 		return "redirect:/user/userMyLike.do";
 	}
 	

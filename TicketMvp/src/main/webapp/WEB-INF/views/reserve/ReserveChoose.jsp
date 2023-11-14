@@ -97,7 +97,7 @@
 											        <p id="matchDay">경기일: ${formattedDate}</p>
 											    </c:when>
 											    <c:otherwise>
-											        <p id="matchDay">경기일: 0000년 00월 00일</p>
+											        <p id="matchDay">경기일: 경기일 없음</p>
 											    </c:otherwise>
 											</c:choose>
 										</p>
@@ -105,10 +105,10 @@
 				                    		<c:choose><c:when test="${not empty ticketList[0].matchtime}">
 											        <fmt:parseDate value="${ticketList[0].matchtime}" pattern="HH:mm:ss" var="parsedTime" />
 											        <fmt:formatDate value="${parsedTime}" pattern="a hh'시' mm'분'" var="formattedTime" />
-											        <p id="matchTime">경기시간: ${formattedTime}</p>
+											        <p id="matchTimeDisplay">경기시간: ${formattedTime}</p>
 											    </c:when>
 											    <c:otherwise>
-											        <p id="matchTime">경기시간: 오전/오후 00시 00분</p>
+											        <p id="matchTimeDisplay">경기시간: 경기시간 없음</p>
 											    </c:otherwise>
 											</c:choose>
 				                    	</p>
