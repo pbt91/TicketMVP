@@ -58,7 +58,7 @@
 							
 							<div class="form-group row">
 							    <label for="phone" class="col-sm-3 col-form-label form-label">휴대폰 번호</label>
-							    <div class="col-sm-7 d-flex align-items-center justify-content-center">
+							    <div class="col-sm-7 d-flex align-items-center justify-content-left">
 							        <span id="userPhone" data-phone="${userInfo.phone}" class="mr-2">${userInfo.phone}</span> 
 							        <input type="tel" size="10" id="userPhoneInput" value="${userInfo.phone}" class="form-control mr-2 tel-input" style="display:none;" placeholder="전화번호 입력하세요">
 							        <button type="button" class="btn btn-primary" id="editPhone">수정</button>
